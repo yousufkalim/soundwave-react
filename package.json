@@ -1,11 +1,11 @@
 {
-  "name": "react-typescript",
+  "name": "Soundwave",
   "version": "1.0.0",
   "private": true,
-  "description": "ReactJS boilerplate with TypeScript",
+  "description": "Soundwave generator using an audio",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yousufkalim/react-typescript.git"
+    "url": "git+https://github.com/falconitconsultant/soundwave-react.git"
   },
   "scripts": {
     "start": "react-scripts start",
