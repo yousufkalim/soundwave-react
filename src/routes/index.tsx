@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import Home from '../pages/home/Home';
+import CustomDesigner from '../pages/CustomDesigner/index';
 
 // Types
 interface BaseRoute {
@@ -25,7 +25,7 @@ type Route = Element | Navigate;
 const routes: Route[] = [
   {
     path: '/',
-    element: <Home />,
+    element: <CustomDesigner />,
   },
   {
     path: '*',

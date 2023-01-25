@@ -27,6 +27,7 @@
     // eslint-disable-next-line quote-props
     "eqeqeq": "error",
     // eslint-disable-next-line quote-props
-    "camelcase": "error"
+    "camelcase": "error",
+    "@typescript-eslint/no-invalid-void-type": "off"
   }
 }

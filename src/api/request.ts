@@ -1,16 +1,15 @@
 import axios, { Method, AxiosResponse, AxiosError } from 'axios';
 import { baseUrl } from '../config';
 
-const request = async <T>(method: Method, url: string, body: T): Promise<T> => {
-  const token = localStorage.getItem('token');
+const request = async <T>(method: Method, url: string, body?: T): Promise<AxiosResponse<T>> => {
+  const token = localStorage.getItem('token') as string;
 
   // Axios initialization with default config
   const api = axios.create({
     baseURL: baseUrl,
     headers: {
-      Authorization: `Bearer ${token ?? ''}`,
+      Authorization: token,
     },
-    withCredentials: token !== null,
   });
 
   return await new Promise((resolve, reject) => {
@@ -20,10 +19,10 @@ const request = async <T>(method: Method, url: string, body: T): Promise<T> => {
         url,
         data: body,
       })
-      .then((response: AxiosResponse<T>) => {
-        resolve(response.data);
+      .then((response: AxiosResponse) => {
+        resolve(response);
       })
-      .catch((err: AxiosError<T>) => {
+      .catch((err: AxiosError) => {
         // If user is not authenticated, then redirect to login page
         if (err?.response?.status === 403) {
           localStorage.removeItem('token');
