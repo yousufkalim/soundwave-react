@@ -77,7 +77,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       <div className="relative bg-gradient-to-tr from-[#FC3853] to-[#A72EC9] p-[1px] rounded-xl">
         <input
           name="SearchInput-input"
-          className="relative w-full h-12 text-black px-4 rounded-xl outline-none text-base text-center"
+          className="relative w-full h-12 text-black px-4 rounded-xl outline-none text-base"
           type="search"
           placeholder={placeholder}
           value={query}

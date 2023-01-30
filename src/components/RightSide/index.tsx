@@ -6,6 +6,7 @@ import Step2 from '../Stepper/step2';
 import Step3 from '../Stepper/step3';
 import Step4 from '../Stepper/step4';
 import { ReactComponent as TitleIcon } from '../../assets/titleIcon.svg';
+import { ReactComponent as Cart } from '../../assets/cart.svg';
 interface DataSetProps {
   songName: string;
   trackId: string;
@@ -31,6 +32,18 @@ interface RightSideProps {
   setCustomDescription: (value: boolean) => void;
   customAlbumDescripition: string;
   setCustomAlbumDescripition: (value: string) => void;
+  posterColor: boolean;
+  soundWaveColor: boolean;
+  songTitleColor: boolean;
+  setBoxColor: (value: string) => void;
+  setPosterColor: (value: boolean) => void;
+  setSoundWaveColor: (value: boolean) => void;
+  setSongTitleColor: (value: boolean) => void;
+  posterSize: string;
+  setPosterSize: (value: string) => void;
+  addToCart: boolean;
+  setAddToCart: (value: boolean) => void;
+  primaryColor: string;
 }
 const RightSide: FC<RightSideProps> = ({
   handleDataSets,
@@ -44,26 +57,40 @@ const RightSide: FC<RightSideProps> = ({
   setCustomDescription,
   customAlbumDescripition,
   setCustomAlbumDescripition,
+  setBoxColor,
+  setPosterColor,
+  setSoundWaveColor,
+  setSongTitleColor,
+  posterColor,
+  soundWaveColor,
+  songTitleColor,
+  posterSize,
+  setPosterSize,
+  addToCart,
+  setAddToCart,
+  primaryColor,
 }) => {
   const [openDescripition, setOpenDescripition] = useState(false);
   const [openColorSetting, setOpenColorSetting] = useState(false);
   const [openStyles, setOpenStyles] = useState(false);
-
+  const handleAddToCart = (): void => {
+    setAddToCart(!addToCart);
+  };
   return (
-    <div className="bg-white w-[44%] flex items-center justify-center">
+    <div className="bg-white w-[44%] flex items-start justify-start mt-14 pl-24">
       <div>
-        <div className="w-full flex items-center justify-start pt-8">
+        <div className="w-full flex items-center justify-start">
           <TitleIcon className="mx-2" />
           <span className="text-lg font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FC3853] to-[#A72EC9]">
             Soundwave Poster
           </span>
         </div>
-        <div className="w-full flex items-center justify-start pt-8">
-          <i className="text-[#454238] text-4xl   tracking-tight font-semibold">
+        <div className="w-full flex items-center justify-start mb-10">
+          <i className="text-[#454238] text-4xl tracking-tight font-semibold">
             Let’s Start with your Content
           </i>
         </div>
-        <span className="text-[#454238] text-sm my-5 font-semibold">Search an Album or Artist</span>
+        <span className="text-[#454238] text-sm font-semibold">Search an Album or Artist</span>
         <div className="flex flex-col gap-3">
           <Step1
             handleDataSets={handleDataSets}
@@ -86,17 +113,40 @@ const RightSide: FC<RightSideProps> = ({
             setCustomDescription={setCustomDescription}
           />
           <Step3
+            primaryColor={primaryColor}
             openColorSetting={openColorSetting}
             setOpenColorSetting={setOpenColorSetting}
             setOpenDescripition={setOpenDescripition}
             setOpenStyles={setOpenStyles}
+            posterColor={posterColor}
+            soundWaveColor={soundWaveColor}
+            songTitleColor={songTitleColor}
+            setBoxColor={setBoxColor}
+            setPosterColor={setPosterColor}
+            setSoundWaveColor={setSoundWaveColor}
+            setSongTitleColor={setSongTitleColor}
           />
           <Step4
             openStyles={openStyles}
             setOpenColorSetting={setOpenColorSetting}
             setOpenDescripition={setOpenDescripition}
             setOpenStyles={setOpenStyles}
+            posterSize={posterSize}
+            setPosterSize={setPosterSize}
           />
+          <button
+            className={
+              addToCart
+                ? 'bg-gradient-to-r from-[#FC3853] to-[#A72EC9] flex items-center justify-center h-14 rounded-xl cursor-pointer'
+                : 'bg-[#919B9B] flex items-center justify-center h-14 rounded-xl cursor-pointer'
+            }
+            onClick={handleAddToCart}
+          >
+            <span className="text-white flex">
+              <Cart />
+              &nbsp;&nbsp;&nbsp;&nbsp;Add To Cart&nbsp;<b>$10.00</b>
+            </span>
+          </button>
         </div>
       </div>
     </div>
