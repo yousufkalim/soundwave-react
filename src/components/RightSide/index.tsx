@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 import React, { FC, useState } from 'react';
-import Step1 from '../Stepper/step1';
-import Step2 from '../Stepper/step2';
-import Step3 from '../Stepper/step3';
-import Step4 from '../Stepper/step4';
+import html2canvas from 'html2canvas';
+import Step1 from '../PosterSteps/step1';
+import Step2 from '../PosterSteps/step2';
+import Step3 from '../PosterSteps/step3';
+import Step4 from '../PosterSteps/step4';
 import { ReactComponent as TitleIcon } from '../../assets/titleIcon.svg';
 import { ReactComponent as Cart } from '../../assets/cart.svg';
 interface DataSetProps {
@@ -73,7 +76,11 @@ const RightSide: FC<RightSideProps> = ({
   const [openDescripition, setOpenDescripition] = useState(false);
   const [openColorSetting, setOpenColorSetting] = useState(false);
   const [openStyles, setOpenStyles] = useState(false);
-  const handleAddToCart = (): void => {
+  const handleAddToCart = async () => {
+    const element = document.getElementById('custom-poster-div') as HTMLElement;
+    const canvas = await html2canvas(element, { allowTaint: true });
+    const imgData = canvas.toDataURL('image/png');
+    console.log(imgData);
     setAddToCart(!addToCart);
   };
   return (

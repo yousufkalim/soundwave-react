@@ -1,6 +1,5 @@
-
-let baseUrl = 'http://localhost:5050/api/';
-let mediaUrl = 'http://localhost:5050';
+let baseUrl = 'http://localhost:5000/api/v1';
+let mediaUrl = 'http://localhost:5000';
 
 // Update the baseUrl and mediaUrl on every environment
 switch (window.location.host) {

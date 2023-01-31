@@ -32,7 +32,7 @@ const PosterSize: FC<PosterSizeProps> = ({ posterSize, setPosterSize }) => {
             className={
               posterSize === '1620'
                 ? 'text-sm tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FC3853] to-[#A72EC9]'
-                : 'text-sm tracking-tight text-transparent bg-clip-text text-[#919B9B]'
+                : 'text-sm tracking-tight bg-clip-text text-[#919B9B]'
             }
           >
             &quot;16 X 20&quot;
@@ -41,7 +41,7 @@ const PosterSize: FC<PosterSizeProps> = ({ posterSize, setPosterSize }) => {
             className={
               posterSize === '1620'
                 ? 'text-sm tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FC3853] to-[#A72EC9]'
-                : 'text-sm tracking-tight text-transparent bg-clip-text text-[#919B9B]'
+                : 'text-sm tracking-tight bg-clip-text text-[#919B9B]'
             }
           >
             Frame Size
@@ -67,7 +67,7 @@ const PosterSize: FC<PosterSizeProps> = ({ posterSize, setPosterSize }) => {
             className={
               posterSize === '1824'
                 ? 'text-sm tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FC3853] to-[#A72EC9]'
-                : 'text-sm tracking-tight text-transparent bg-clip-text text-[#919B9B]'
+                : 'text-sm tracking-tight bg-clip-text text-[#919B9B]'
             }
           >
             &quot;18 X 24&quot;
@@ -76,7 +76,7 @@ const PosterSize: FC<PosterSizeProps> = ({ posterSize, setPosterSize }) => {
             className={
               posterSize === '1824'
                 ? 'text-sm tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FC3853] to-[#A72EC9]'
-                : 'text-sm tracking-tight text-transparent bg-clip-text text-[#919B9B]'
+                : 'text-sm tracking-tight  bg-clip-text text-[#919B9B]'
             }
           >
             Frame Size

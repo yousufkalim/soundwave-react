@@ -37,7 +37,7 @@ const index: FC<waveformProps> = ({
   setActiveAlignment,
 }) => {
   return (
-    <div className="bg-[#fcfcfc] w-[56%] flex items-center justify-center flex-col gap-5">
+    <div className="bg-[#fcfcfc] w-[56%] flex items-center justify-center flex-col gap-6">
       <PosterBody
         dataSets={dataSets}
         albumDescripition={albumDescripition}
