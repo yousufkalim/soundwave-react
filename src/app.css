@@ -3,6 +3,36 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Proxima+Nova:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'Aemstel-LineInside';
+  src: url('../src/assets/fonts/Aemstel-LineInside.otf');
+}
+
+@font-face {
+  font-family: 'Aemstel-Regular';
+  src: url('../src/assets/fonts/Aemstel-Regular.otf');
+}
+
+@font-face {
+  font-family: 'blowbrush';
+  src: url('../src/assets/fonts/blowbrush.otf');
+}
+
+@font-face {
+  font-family: 'blacksword';
+  src: url('../src/assets/fonts/Blacksword.otf');
+}
+
+@font-face {
+  font-family: 'Morganite';
+  src: url('../src/assets/fonts/Morganite-BoldItalic.ttf');
+}
+
 * {
   padding: 0;
   margin: 0;

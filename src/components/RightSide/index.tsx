@@ -47,6 +47,8 @@ interface RightSideProps {
   addToCart: boolean;
   setAddToCart: (value: boolean) => void;
   primaryColor: string;
+  selectedTemplate: string;
+  setSelectedTemplate: (value: string) => void;
 }
 const RightSide: FC<RightSideProps> = ({
   handleDataSets,
@@ -72,6 +74,8 @@ const RightSide: FC<RightSideProps> = ({
   addToCart,
   setAddToCart,
   primaryColor,
+  selectedTemplate,
+  setSelectedTemplate,
 }) => {
   const [openDescripition, setOpenDescripition] = useState(false);
   const [openColorSetting, setOpenColorSetting] = useState(false);
@@ -132,6 +136,8 @@ const RightSide: FC<RightSideProps> = ({
             setPosterColor={setPosterColor}
             setSoundWaveColor={setSoundWaveColor}
             setSongTitleColor={setSongTitleColor}
+            selectedTemplate={selectedTemplate}
+            setSelectedTemplate={setSelectedTemplate}
           />
           <Step4
             openStyles={openStyles}

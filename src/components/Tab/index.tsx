@@ -11,10 +11,10 @@ interface tabComponentProps {
 const Tab: FC<tabComponentProps> = ({ onClick, heading, open }) => {
   return (
     <div
-      className="cursor-pointer flex items-center justify-between px-4 w-full h-14 rounded-xl bg-red-100"
+      className="cursor-pointer flex items-center justify-between px-4 w-full h-14 rounded-xl bg-gradient-to-r from-pink-500/10 to-purple-500/10"
       onClick={onClick}
     >
-      <span className={open ? 'text-[14px] font-semibold' : 'text-[14px] text-[#424240]'}>
+      <span className={open ? 'text-[14px] text-black' : 'text-[14px] text-[#424240]'}>
         {heading}
       </span>
       {open ? <MinusIcon /> : <AddIcon />}
