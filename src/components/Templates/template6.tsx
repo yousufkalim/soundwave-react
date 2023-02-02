@@ -43,7 +43,7 @@ const Template6: FC<Template6Props> = ({
     >
       <div className="flex items-center justify-center">
         <span className={`text-4xl font-extrabold font-[blacksword] text-white`}>
-          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
+          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
         </span>
       </div>
       <Grid

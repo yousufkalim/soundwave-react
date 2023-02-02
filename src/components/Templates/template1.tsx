@@ -43,10 +43,10 @@ const Template1: FC<Template1Props> = ({
     >
       <div className="flex items-center justify-center flex-col">
         <span className={`text-white text-4xl font-extrabold font-[Montserrat]`}>
-          {selectedAlbum?.label.toUpperCase()}
+          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
         </span>
         <span className={`text-white text-md font-[Montserrat]`}>
-          {selectedAlbum?.singerName.toUpperCase()}
+          {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
         </span>
       </div>
       <Grid

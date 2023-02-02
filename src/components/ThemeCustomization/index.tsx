@@ -1,9 +1,11 @@
-import GradientPicker from 'react-best-gradient-color-picker';
-import Checkbox from '../Checkbox/index';
-import { ReactComponent as PickerImage } from '../../assets/colorPicker.svg';
+// import GradientPicker from 'react-best-gradient-color-picker';
+// import Checkbox from '../Checkbox/index';
+// import { ReactComponent as PickerImage } from '../../assets/colorPicker.svg';
+import { ReactComponent as ColorPickerIcon } from '../../assets/colorPickerIcon.svg';
+
 import React, {
   FC,
-  useState,
+  // useState,
   // , useRef, useEffect
 } from 'react';
 
@@ -28,34 +30,34 @@ const Theme: FC<ThemeProps> = ({
   songTitleColor,
   primaryColor,
 }) => {
-  const [color, setColor] = useState<string>('rgba(255,255,255,1)');
-  const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
-  const handleAlbumColor = (color: string): void => {
-    setBoxColor(color);
-  };
+  // const [color, setColor] = useState<string>('rgba(255,255,255,1)');
+  // const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
+  // const handleAlbumColor = (color: string): void => {
+  //   setBoxColor(color);
+  // };
 
-  const handleShowColorPicker = (): void => {
-    setShowColorPicker(!showColorPicker);
-  };
-  const handleColor = (colorSetting: string): void => {
-    switch (colorSetting) {
-      case 'background':
-        setPosterColor(!posterColor);
-        break;
-      case 'wave':
-        setSoundWaveColor(!soundWaveColor);
-        break;
-      case 'title':
-        setSongTitleColor(!songTitleColor);
-        break;
-      default:
-        break;
-    }
-  };
+  // const handleShowColorPicker = (): void => {
+  //   setShowColorPicker(!showColorPicker);
+  // };
+  // const handleColor = (colorSetting: string): void => {
+  //   switch (colorSetting) {
+  //     case 'background':
+  //       setPosterColor(!posterColor);
+  //       break;
+  //     case 'wave':
+  //       setSoundWaveColor(!soundWaveColor);
+  //       break;
+  //     case 'title':
+  //       setSongTitleColor(!songTitleColor);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
   return (
     <div>
-      <span className="text-sm">Poster Box Color</span>
-      <div className="flex justify-between">
+      {/* <span className="text-sm">Poster Box Color</span> */}
+      {/* <div className="flex justify-between">
         <div
           style={{ backgroundColor: `${primaryColor}` }}
           onClick={() => {
@@ -81,8 +83,8 @@ const Theme: FC<ThemeProps> = ({
         >
           <PickerImage />
         </div>
-      </div>
-      {showColorPicker ? (
+      </div> */}
+      {/* {showColorPicker && (
         <div className="absolute z-50 right-[18.5rem] bottom-[7rem] bg-gray-100 p-1 shadow-2xl shadow-[#BAB8B8] border-solid border-2 border-gray-300 rounded-lg">
           <GradientPicker
             hideAdvancedSliders={true}
@@ -102,37 +104,67 @@ const Theme: FC<ThemeProps> = ({
             gradient={'linear-gradient(90deg, #ff0000 0%, #0000ff 100%)'}
           />
         </div>
-      ) : (
-        ''
-      )}
-
+      )} */}
       <div className="flex justify-start flex-col">
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+          <span className="text-sm">Poster Box Colour</span>
+          <div
+            style={{ backgroundColor: `black` }}
+            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            // onClick={() => {
+            //   handleAlbumColor(primaryColor);
+            // }}
+          >
+            <ColorPickerIcon />
+          </div>
+        </div>
+        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
           <span className="text-sm">Background</span>
-          <Checkbox
-            onChange={() => {
-              handleColor('background');
-            }}
-            checked={posterColor}
-          />
+          <div
+            style={{ backgroundColor: `black` }}
+            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            // onClick={() => {
+            //   handleAlbumColor(primaryColor);
+            // }}
+          >
+            <ColorPickerIcon />
+          </div>
         </div>
-        <div className="flex items-center justify-between py-4">
-          <span className="text-sm">Soundwave Color</span>
-          <Checkbox
-            onChange={() => {
-              handleColor('wave');
-            }}
-            checked={soundWaveColor}
-          />
+        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+          <span className="text-sm">Soundwave and Name Color</span>
+          <div
+            style={{ backgroundColor: `black` }}
+            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            // onClick={() => {
+            //   handleAlbumColor(primaryColor);
+            // }}
+          >
+            <ColorPickerIcon />
+          </div>
         </div>
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
           <span className="text-sm">Song Title</span>
-          <Checkbox
-            onChange={() => {
-              handleColor('title');
-            }}
-            checked={songTitleColor}
-          />
+          <div
+            style={{ backgroundColor: `black` }}
+            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            // onClick={() => {
+            //   handleAlbumColor(primaryColor);
+            // }}
+          >
+            <ColorPickerIcon />
+          </div>
+        </div>
+        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+          <span className="text-sm">Description</span>
+          <div
+            style={{ backgroundColor: `black` }}
+            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            // onClick={() => {
+            //   handleAlbumColor(primaryColor);
+            // }}
+          >
+            <ColorPickerIcon />
+          </div>
         </div>
       </div>
     </div>

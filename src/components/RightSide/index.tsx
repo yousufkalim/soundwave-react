@@ -88,20 +88,20 @@ const RightSide: FC<RightSideProps> = ({
     setAddToCart(!addToCart);
   };
   return (
-    <div className="bg-white w-[44%] flex items-start justify-start mt-14 pl-24">
+    <div className="bg-white w-[44%] flex items-start justify-start mt-11 pl-20">
       <div>
         <div className="w-full flex items-center justify-start">
           <TitleIcon className="mx-2" />
-          <span className="text-lg font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FC3853] to-[#A72EC9]">
-            Soundwave Poster
-          </span>
+          <span className="text-lg font-semibold tracking-tight text-black">Soundwave Poster</span>
         </div>
-        <div className="w-full flex items-center justify-start mb-10">
-          <i className="text-[#454238] text-4xl tracking-tight font-semibold">
+        <div className="w-full flex items-center justify-start mb-7">
+          <i className="text-[#454238] text-3xl tracking-tight font-semibold">
             Let’s Start with your Content
           </i>
         </div>
-        <span className="text-[#454238] text-sm font-semibold">Search an Album or Artist</span>
+        <div className="mb-2">
+          <span className="text-[#454238] text-sm font-semibold ">Search an Album or Artist</span>
+        </div>
         <div className="flex flex-col gap-3">
           <Step1
             handleDataSets={handleDataSets}
@@ -148,11 +148,7 @@ const RightSide: FC<RightSideProps> = ({
             setPosterSize={setPosterSize}
           />
           <button
-            className={
-              addToCart
-                ? 'bg-gradient-to-r from-[#FC3853] to-[#A72EC9] flex items-center justify-center h-14 rounded-xl cursor-pointer'
-                : 'bg-[#919B9B] flex items-center justify-center h-14 rounded-xl cursor-pointer'
-            }
+            className={'bg-black flex items-center justify-center h-14 rounded-xl cursor-pointer'}
             onClick={handleAddToCart}
           >
             <span className="text-white flex">

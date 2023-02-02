@@ -305,16 +305,14 @@ const step1: FC<Step1Props> = ({ handleDataSets, selectedAlbum, setSelectedAlbum
     <>
       <div>
         {selectedAlbum && selected === selectedAlbum.label ? (
-          <div className="bg-gradient-to-r from-[#FC3853] to-[#A72EC9] p-[1px] rounded-xl">
-            <div
-              className="flex items-center justify-start gap-3 cursor-pointer border-none w-full bg-white py-2 px-2 rounded-xl hover:bg-[#f0efef]"
-              onClick={() => setSelected('')}
-            >
-              <img src={selectedAlbum.photo} className="object-cover rounded-full w-12 h-12 ml-1" />
-              <div className="flex items-start justify-center flex-col">
-                <span className="font-light text-md">{selectedAlbum.label}</span>
-                <span className="font-extralight text-sm">{selectedAlbum.singerName}</span>
-              </div>
+          <div
+            className="flex items-center justify-start gap-3 cursor-pointer border-[1px] border-black w-full bg-white py-2 px-2 rounded-xl hover:bg-[#f0efef]"
+            onClick={() => setSelected('')}
+          >
+            <img src={selectedAlbum.photo} className="object-cover rounded-full w-12 h-12 ml-1" />
+            <div className="flex items-start justify-center flex-col">
+              <span className="font-light text-md">{selectedAlbum.label}</span>
+              <span className="font-extralight text-sm">{selectedAlbum.singerName}</span>
             </div>
           </div>
         ) : (

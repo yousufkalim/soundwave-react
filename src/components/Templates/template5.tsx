@@ -78,10 +78,10 @@ const Template5: FC<Template5Props> = ({
         className={`flex flex-col break-words text-white w-[90%] h-[23%] ${activeAlignment} text-center absolute bottom-6 right-6`}
       >
         <span className={`text-4xl font-extrabold font-[blowbrush] tracking-wide`}>
-          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
+          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
         </span>
         <span className="text-[10px] font-bold font-[Montserrat]">
-          {selectedAlbum?.singerName ? selectedAlbum.singerName : 'Song Name'}
+          {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
         </span>
         <p className={`text-[7px] bg-transparent tracking-tighter `}>{albumDescripition}</p>
       </div>

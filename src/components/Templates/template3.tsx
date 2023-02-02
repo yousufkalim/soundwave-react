@@ -80,9 +80,9 @@ const Template3: FC<Template3Props> = ({
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
         </span>
         <span
-          className={`text-4xl font-[Aemstel-LineInside] absolute top-[7px] left-[8.8rem] text-white`}
+          className={`text-4xl font-[Aemstel-LineInside] absolute top-[7px] left-[6.2rem] text-white`}
         >
-          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
+          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
         </span>
       </div>
       <div
@@ -90,7 +90,7 @@ const Template3: FC<Template3Props> = ({
       >
         <p className={`text-[7px] bg-transparent tracking-tighter mb-[1%]`}>{albumDescripition}</p>
         <span className="text-[10px] border p-1 rounded-lg font-bold">
-          {selectedAlbum?.singerName ? selectedAlbum.singerName : 'HAMZA'}
+          {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
         </span>
       </div>
       <div className="w-full">

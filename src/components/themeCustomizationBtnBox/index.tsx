@@ -11,8 +11,8 @@ const ThemeBtnBox: FC<ThemeBtnBoxProps> = ({ selectedSection, handleButtonClick 
       <button
         className={
           selectedSection === 'templates'
-            ? 'bg-gradient-to-r from-[#FC3853] to-[#A72EC9] h-9 rounded-lg cursor-pointer text-white w-[47%] text-md'
-            : 'bg-transparent h-9 rounded-lg cursor-pointer text-[#363535] w-[47%] text-md'
+            ? 'bg-black h-9 rounded-lg cursor-pointer text-white w-[42%] text-md font-semibold'
+            : 'bg-transparent h-9 rounded-lg cursor-pointer text-[#363535] w-[42%] text-md font-semibold'
         }
         onClick={() => {
           handleButtonClick('templates');
@@ -23,8 +23,8 @@ const ThemeBtnBox: FC<ThemeBtnBoxProps> = ({ selectedSection, handleButtonClick 
       <button
         className={
           selectedSection === 'themeCustomization'
-            ? 'bg-gradient-to-r from-[#FC3853] to-[#A72EC9] h-9 rounded-lg cursor-pointer text-white w-[47%] text-md'
-            : 'bg-transparent h-9 rounded-lg cursor-pointer text-[#363535] w-[47%] text-md'
+            ? 'bg-black h-9 rounded-lg cursor-pointer text-white w-[42%] text-md font-semibold'
+            : 'bg-transparent h-9 rounded-lg cursor-pointer text-[#363535] w-[42%] text-md font-semibold'
         }
         onClick={() => {
           handleButtonClick('themeCustomization');

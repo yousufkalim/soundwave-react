@@ -79,7 +79,7 @@ const Template2: FC<Template2Props> = ({
       >
         <div className="text-center">
           <span className={`text-black text-4xl font-extrabold font-proxima-nova`}>
-            <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'HAMZA'}</i>
+            <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}</i>
           </span>
         </div>
         <p className={`text-[7px] bg-transparent text-black tracking-tighter font-proxima-nova`}>

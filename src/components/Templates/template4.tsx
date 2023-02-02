@@ -75,10 +75,10 @@ const Template4: FC<Template4Props> = ({
       </Grid>
       <div className="text-white absolute bottom-28 left-10 flex flex-col bg-black px-2">
         <span className={`text-4xl font-extrabold font-[Morganite]`}>
-          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
+          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
         </span>
         <span className="text-[10px] font-bold font-[Morganite]">
-          {selectedAlbum?.singerName ? selectedAlbum.singerName : 'Song Name'}
+          {selectedAlbum?.singerName ? selectedAlbum.singerName : 'SINGER NAME'}
         </span>
       </div>
       <div className={`break-words text-white w-[95%] h-[23%] ${activeAlignment} text-left mt-10`}>
