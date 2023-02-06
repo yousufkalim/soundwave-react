@@ -4,8 +4,8 @@ import ThemeCustomizationBox from '../ThemeCustomization/index';
 import PosterTemplatesBox from '../PosterTemplates/index';
 import ThemeBtnBox from '../themeCustomizationBtnBox/index';
 interface Step3Props {
-  openColorSetting: boolean;
-  setOpenColorSetting: (value: boolean) => void;
+  openTheme: boolean;
+  setOpenTheme: (value: boolean) => void;
   setOpenDescripition: (value: boolean) => void;
   setOpenStyles: (value: boolean) => void;
   setBoxColor: (value: string) => void;
@@ -18,10 +18,11 @@ interface Step3Props {
   primaryColor: string;
   selectedTemplate: string;
   setSelectedTemplate: (value: string) => void;
+  setOpenSize: (value: boolean) => void;
 }
 const step3: FC<Step3Props> = ({
-  openColorSetting,
-  setOpenColorSetting,
+  openTheme,
+  setOpenTheme,
   setOpenDescripition,
   setOpenStyles,
   setBoxColor,
@@ -34,14 +35,16 @@ const step3: FC<Step3Props> = ({
   primaryColor,
   selectedTemplate,
   setSelectedTemplate,
+  setOpenSize,
 }) => {
   // const ref = useRef<HTMLDivElement>(null);
-  const [selectedSection, setSelectedSection] = useState<string>('templates');
+  const [selectedSection, setSelectedSection] = useState<string>('btn1');
 
   const handleIconClick = (): void => {
-    setOpenColorSetting(!openColorSetting);
+    setOpenTheme(!openTheme);
     setOpenDescripition(false);
     setOpenStyles(false);
+    setOpenSize(false);
   };
 
   const handleButtonClick = (targetSection: string): void => {
@@ -54,16 +57,21 @@ const step3: FC<Step3Props> = ({
 
   return (
     <>
-      <Tab onClick={handleIconClick} heading={'Theme'} open={openColorSetting} />
-      <div className={openColorSetting ? 'block w-full' : 'hidden'}>
-        <ThemeBtnBox selectedSection={selectedSection} handleButtonClick={handleButtonClick} />
-        {selectedSection === 'templates' ? (
+      <Tab onClick={handleIconClick} heading={'Theme'} open={openTheme} />
+      <div className={openTheme ? 'block w-full' : 'hidden'}>
+        <ThemeBtnBox
+          selectedSection={selectedSection}
+          handleButtonClick={handleButtonClick}
+          btn1Text={'Templates'}
+          btn2Text={'Customization'}
+        />
+        {selectedSection === 'btn1' ? (
           <PosterTemplatesBox
             handleTemplateClick={handleTemplateClick}
             selectedTemplate={selectedTemplate}
           />
         ) : (
-          selectedSection === 'themeCustomization' && (
+          selectedSection === 'btn2' && (
             <ThemeCustomizationBox
               setBoxColor={setBoxColor}
               setPosterColor={setPosterColor}

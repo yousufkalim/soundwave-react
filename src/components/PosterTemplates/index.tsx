@@ -14,7 +14,7 @@ interface PosterTemplatesProps {
 const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTemplateClick }) => {
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex items-center justify-start gap-4">
+      <div className="flex items-center justify-evenly">
         <div
           onClick={() => {
             handleTemplateClick('template1');
@@ -51,6 +51,8 @@ const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTem
         >
           <img src={Template3} className="h-24" />
         </div>
+      </div>
+      <div className="flex items-center justify-evenly">
         <div
           onClick={() => {
             handleTemplateClick('template4');
@@ -63,8 +65,6 @@ const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTem
         >
           <img src={Template4} className="h-24" />
         </div>
-      </div>
-      <div className="flex items-center justify-start gap-4">
         <div
           onClick={() => {
             handleTemplateClick('template5');

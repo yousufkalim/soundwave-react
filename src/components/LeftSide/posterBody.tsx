@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { ReactComponent as WaterMark } from '../../assets/WaterMark.svg';
 import Waves from '../Waves';
 
 interface DatasetProps {
@@ -47,15 +46,6 @@ const PosterBody: FC<waveformProps> = ({
         </span>
         <br />
         <p className={`text-[7px] ${songTitleColor} tracking-tighter`}>{albumDescripition}</p>
-      </div>
-      <div
-        className={
-          activeAlignment === 'text-right'
-            ? ' absolute left-0 bottom-3'
-            : ' absolute right-0 bottom-3'
-        }
-      >
-        <WaterMark />
       </div>
     </div>
   );

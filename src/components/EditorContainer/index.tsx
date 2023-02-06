@@ -42,9 +42,8 @@ const index: FC = () => {
 
   // states for step # 4
   // ------> states for setting frame size
-  const [posterSize, setPosterSize] = useState<string>('1620');
+  const [posterSize, setPosterSize] = useState<string>('1218');
   // state for add to cart button
-  // ------> states for setting frame size
   const [addToCart, setAddToCart] = useState<boolean>(true);
 
   const handleDataSets = (value: DataSetProps[]) => {

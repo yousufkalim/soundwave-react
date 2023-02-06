@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { ReactComponent as WaterMark } from '../../assets/WaterMark.svg';
 import { Grid } from '@mui/material';
 import Waveform from 'react-audio-waveform';
 
@@ -84,15 +83,6 @@ const Template5: FC<Template5Props> = ({
           {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
         </span>
         <p className={`text-[7px] bg-transparent tracking-tighter `}>{albumDescripition}</p>
-      </div>
-      <div className="w-full">
-        <WaterMark
-          className={
-            activeAlignment === 'text-right'
-              ? 'absolute left-0 bottom-3'
-              : 'absolute right-0 bottom-3'
-          }
-        />
       </div>
     </div>
   );

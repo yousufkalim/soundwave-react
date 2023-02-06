@@ -106,11 +106,11 @@ const Theme: FC<ThemeProps> = ({
         </div>
       )} */}
       <div className="flex justify-start flex-col">
-        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+        <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
           <span className="text-sm">Poster Box Colour</span>
           <div
             style={{ backgroundColor: `black` }}
-            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
             // onClick={() => {
             //   handleAlbumColor(primaryColor);
             // }}
@@ -118,11 +118,11 @@ const Theme: FC<ThemeProps> = ({
             <ColorPickerIcon />
           </div>
         </div>
-        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+        <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
           <span className="text-sm">Background</span>
           <div
             style={{ backgroundColor: `black` }}
-            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
             // onClick={() => {
             //   handleAlbumColor(primaryColor);
             // }}
@@ -130,11 +130,11 @@ const Theme: FC<ThemeProps> = ({
             <ColorPickerIcon />
           </div>
         </div>
-        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+        <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
           <span className="text-sm">Soundwave and Name Color</span>
           <div
             style={{ backgroundColor: `black` }}
-            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
             // onClick={() => {
             //   handleAlbumColor(primaryColor);
             // }}
@@ -142,11 +142,11 @@ const Theme: FC<ThemeProps> = ({
             <ColorPickerIcon />
           </div>
         </div>
-        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+        <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
           <span className="text-sm">Song Title</span>
           <div
             style={{ backgroundColor: `black` }}
-            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
             // onClick={() => {
             //   handleAlbumColor(primaryColor);
             // }}
@@ -154,11 +154,11 @@ const Theme: FC<ThemeProps> = ({
             <ColorPickerIcon />
           </div>
         </div>
-        <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+        <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
           <span className="text-sm">Description</span>
           <div
             style={{ backgroundColor: `black` }}
-            className="h-12 w-20 flex items-center justify-center border-[2px] border-[#E1E1E1] rounded-lg cursor-pointer"
+            className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
             // onClick={() => {
             //   handleAlbumColor(primaryColor);
             // }}
@@ -166,6 +166,21 @@ const Theme: FC<ThemeProps> = ({
             <ColorPickerIcon />
           </div>
         </div>
+
+        <div className="py-1">
+          <span className="text-sm">Select Font</span>
+        </div>
+        <select
+          name="SelectFont"
+          id="SelectFont"
+          value={'default'}
+          className="border-[1px] border-[#CCCCCC] px-2 h-12 rounded-xl outline-none text-sm"
+        >
+          <option value="default">Select a font family</option>
+          <option value="mulish">mulish</option>
+          <option value="times new roman">times new roman</option>
+          <option value="chiller">chiller</option>
+        </select>
       </div>
     </div>
   );
