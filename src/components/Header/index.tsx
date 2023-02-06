@@ -1,13 +1,31 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { ReactComponent as Logo } from '../../assets/Logo.svg';
-import { ReactComponent as Profile } from '../../assets/Profile.svg';
+import { ReactComponent as HeaderCart } from '../../assets/HeaderCart.svg';
+import CartModal from '../../Modals/CartModal';
 const index: FC = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = (): void => {
+    setOpen(true);
+  };
+  const handleClose = (): void => {
+    setOpen(false);
+  };
   return (
-    <div className="w-full h-20 bg-gradient-to-r from-[#FC3853] to-[#A72EC9] flex items-center justify-between px-20">
-      <Logo className="w-14" />
-      <span className="text-white text-xl font-semibold">Create Your Own Design</span>
-      <Profile className="w-14" />
-    </div>
+    <>
+      <div className="w-full h-20 bg-black flex items-center justify-between px-20">
+        <Logo />
+        <span className="text-white text-lg font-bold">
+          <i>Create Your Own Design</i>
+        </span>
+        <div className="flex items-center justify-center gap-4">
+          <button className="bg-white px-4 py-3 text-sm rounded-md  font-medium">
+            Return to Store
+          </button>
+          <HeaderCart className="cursor-pointer" onClick={handleOpen} />
+        </div>
+      </div>
+      <CartModal open={open} handleClose={handleClose} />
+    </>
   );
 };
 

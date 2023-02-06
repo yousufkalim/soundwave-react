@@ -38,11 +38,12 @@ const index: FC = () => {
   const [posterColor, setPosterColor] = useState<boolean>(true);
   const [soundWaveColor, setSoundWaveColor] = useState<boolean>(true);
   const [songTitleColor, setSongTitleColor] = useState<boolean>(true);
+  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
+
   // states for step # 4
   // ------> states for setting frame size
-  const [posterSize, setPosterSize] = useState<string>('1620');
+  const [posterSize, setPosterSize] = useState<string>('1218');
   // state for add to cart button
-  // ------> states for setting frame size
   const [addToCart, setAddToCart] = useState<boolean>(true);
 
   const handleDataSets = (value: DataSetProps[]) => {
@@ -56,7 +57,7 @@ const index: FC = () => {
   return (
     <>
       <Header />
-      <div className="flex h-[80vh]">
+      <div className="flex h-[85vh]">
         <LeftSide
           dataSets={dataSets}
           albumDescripition={posterDescription}
@@ -67,6 +68,7 @@ const index: FC = () => {
           songTitleColor={songTitleColor ? 'text-black' : 'text-white'}
           activeAlignment={activeAlignment}
           setActiveAlignment={setActiveAlignment}
+          selectedTemplate={selectedTemplate}
         />
         <RightSide
           // props for step # 1
@@ -91,6 +93,8 @@ const index: FC = () => {
           setSoundWaveColor={setSoundWaveColor}
           songTitleColor={songTitleColor}
           setSongTitleColor={setSongTitleColor}
+          selectedTemplate={selectedTemplate}
+          setSelectedTemplate={setSelectedTemplate}
           // props for step # 4
           posterSize={posterSize}
           setPosterSize={setPosterSize}

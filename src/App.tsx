@@ -32,7 +32,7 @@ const App: FC = () => {
   };
 
   return (
-    <div className="App h-full w-full">
+    <div className="App h-full w-full font-[Montserrat]">
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       <Router routes={routes} isAuthenticated={checkAuth} />

@@ -31,9 +31,9 @@ const SongWave: FC<SongWaveProps> = ({ item, key, soundWaveColor }) => {
         color={soundWaveColor}
         transitionDuration={200}
       />
-      <div className="flex justify-between mt-3 px-2">
-        <span style={{ color: `${soundWaveColor}` }} className="text-[8.5px]">
-          {item.songName}
+      <div className="flex items-center justify-start gap-1 mt-3 pl-2">
+        <span style={{ color: `${soundWaveColor}` }} className="text-[8.5px] font-semibold">
+          &quot;{item.songName}&quot;
         </span>
         <span style={{ color: `${soundWaveColor}` }} className="text-[8.5px]">
           {convertMilisecondToMinutes(item.time)}
