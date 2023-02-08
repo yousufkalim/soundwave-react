@@ -12,10 +12,15 @@ interface Step5Props {
   setOpenTheme: (value: boolean) => void;
   setOpenSize: (value: boolean) => void;
   setOpenStyles: (value: boolean) => void;
-  posterSize: string;
-  setPosterSize: (value: string) => void;
+  posterSize: IPosterSize;
+  setPosterSize: ({ value, unit }: IPosterSize) => void;
   activeStep: number;
   setActiveStep: (value: number) => void;
+}
+
+interface IPosterSize {
+  value: string;
+  unit: string;
 }
 
 const step5: FC<Step5Props> = ({
@@ -52,7 +57,7 @@ const step5: FC<Step5Props> = ({
     setActiveIndex((prev) => {
       const nextIndex = (prev + 1) % frameSizeArr.length;
       const item = frameSizeArr[nextIndex];
-      setPosterSize(item);
+      setPosterSize({ value: item, unit: measurement });
       return nextIndex;
     });
   };
@@ -64,7 +69,7 @@ const step5: FC<Step5Props> = ({
         nextIndex = frameSizeArr.length - 1;
       }
       const item = frameSizeArr[nextIndex];
-      setPosterSize(item);
+      setPosterSize({ value: item, unit: measurement });
       return nextIndex;
     });
   };

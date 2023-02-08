@@ -23,6 +23,10 @@ interface SelectedAlbumProps {
   photo: string;
   singerName: string;
 }
+interface IPosterSize {
+  value: string;
+  unit: string;
+}
 interface RightSideProps {
   handleDataSets: (val: DataSetProps[]) => void;
   selectedAlbum?: SelectedAlbumProps;
@@ -42,14 +46,23 @@ interface RightSideProps {
   setPosterColor: (value: boolean) => void;
   setSoundWaveColor: (value: boolean) => void;
   setSongTitleColor: (value: boolean) => void;
-  posterSize: string;
-  setPosterSize: (value: string) => void;
+  posterSize: IPosterSize;
+  setPosterSize: ({ value, unit }: IPosterSize) => void;
   addToCart: boolean;
   setAddToCart: (value: boolean) => void;
   primaryColor: string;
   selectedTemplate: string;
   setSelectedTemplate: (value: string) => void;
+  frame: IFrameProps;
+  setFrame: ({ frameType, selectedFrame }: IFrameProps) => void;
+  handleSettingData: () => void;
 }
+
+interface IFrameProps {
+  frameType: string;
+  selectedFrame: string;
+}
+
 const RightSide: FC<RightSideProps> = ({
   handleDataSets,
   selectedAlbum,
@@ -76,6 +89,9 @@ const RightSide: FC<RightSideProps> = ({
   primaryColor,
   selectedTemplate,
   setSelectedTemplate,
+  frame,
+  setFrame,
+  handleSettingData,
 }) => {
   const [openDescripition, setOpenDescripition] = useState<boolean>(false);
   const [openTheme, setOpenTheme] = useState<boolean>(false);
@@ -88,9 +104,10 @@ const RightSide: FC<RightSideProps> = ({
     // const element = document.getElementById('custom-poster-template-1') as HTMLElement;
     // const canvas = await html2canvas(element, { allowTaint: true });
     // const imgData = canvas.toDataURL('image/png');
-    console.log('imgData');
     // setSs(imgData);
+    console.log('Data');
     setAddToCart(!addToCart);
+    handleSettingData();
   };
 
   return (
@@ -161,12 +178,12 @@ const RightSide: FC<RightSideProps> = ({
             setOpenTheme={setOpenTheme}
             setOpenDescripition={setOpenDescripition}
             setOpenStyles={setOpenStyles}
-            posterSize={posterSize}
-            setPosterSize={setPosterSize}
             setOpenSize={setOpenSize}
             // steps active states
             activeStep={activeStep}
             setActiveStep={setActiveStep}
+            frame={frame}
+            setFrame={setFrame}
           />
           <Step5
             setOpenTheme={setOpenTheme}

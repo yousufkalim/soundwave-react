@@ -4,16 +4,23 @@ import ThemeBtnBox from '../themeCustomizationBtnBox/index';
 import PosterFrame from '../PosterFrames/index';
 import PosterCanvas from '../PosterCanvas/index';
 
+
+interface IFrameProps {
+  frameType: string;
+  selectedFrame: string;
+}
 interface Step4Props {
   openStyles: boolean;
   setOpenDescripition: (value: boolean) => void;
   setOpenTheme: (value: boolean) => void;
   setOpenStyles: (value: boolean) => void;
-  posterSize: string;
-  setPosterSize: (value: string) => void;
   setOpenSize: (value: boolean) => void;
   activeStep: number;
   setActiveStep: (value: number) => void;
+  frame: IFrameProps;
+  setFrame: ({ frameType, selectedFrame }: IFrameProps) => void;
+  // selectedFrame:string
+  // setSelectedFrame
 }
 
 const step4: FC<Step4Props> = ({
@@ -21,22 +28,20 @@ const step4: FC<Step4Props> = ({
   setOpenStyles,
   setOpenDescripition,
   setOpenTheme,
-  // posterSize,
-  // setPosterSize,
   setOpenSize,
   activeStep,
   setActiveStep,
+  frame,
+  setFrame,
+  // selectedFrame,
+  // setSelectedFrame
 }) => {
   const [selectedSection, setSelectedSection] = useState<string>('btn1');
-  const [selectedFrame, setSelectedFrame] = useState<string>('woodenblack');
+
   const [selectedCanvas, setSelectedCanvas] = useState<string>('');
 
   const handleButtonClick = (targetSection: string): void => {
     setSelectedSection(targetSection);
-  };
-
-  const handleSelectedFrame = (targetFrame: string): void => {
-    setSelectedFrame(targetFrame);
   };
 
   const handleSelectedCanvas = (targetFrame: string): void => {
@@ -74,7 +79,7 @@ const step4: FC<Step4Props> = ({
           btn2Text={'Canvas'}
         />
         {selectedSection === 'btn1' ? (
-          <PosterFrame selectedFrame={selectedFrame} handleSelectedFrame={handleSelectedFrame} />
+          <PosterFrame frame={frame} setFrame={setFrame} />
         ) : (
           selectedSection === 'btn2' && (
             <PosterCanvas
