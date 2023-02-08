@@ -1,4 +1,4 @@
-let baseUrl = 'http://localhost:5000/api/v1';
+let baseUrl = 'http://192.168.0.212:5000/api/v1';
 let mediaUrl = 'http://localhost:5000';
 
 // Update the baseUrl and mediaUrl on every environment

@@ -2,26 +2,42 @@
 import React, { useContext, useState, createContext, ReactNode } from 'react';
 import User from '../types/user';
 
+interface IFrameProps {
+  frameType: string;
+  selectedFrame: string;
+}
 
-interface CartItemArrayProps {
+interface IPosterSize {
+  value: string;
+  unit: string;
+}
+interface IResponsePoster {
+  frame: IFrameProps;
+  size: IPosterSize;
   albumName: string;
   singerName: string;
-  posterSize: string;
-  frame: string;
-  posterAmount: number;
   price: number;
+  posterImage: string;
+  posterQuantity: number;
+  _id: string;
 }
+interface IResponseCart {
+  _id: string;
+  totalPoster: IResponsePoster[];
+  totalPrice: number;
+  shippingCost: number;
+}
+
 // Initializing Create Context Hook
 interface StoreType {
-  loggedIn: boolean;
-  user: User | object;
-  cartItems: CartItemArrayProps[];
+  loggedIn?: boolean;
+  user?: User | object;
+  cart?: IResponseCart | string;
 }
 const storeContext = createContext<StoreType | null>(null);
 
-interface UpdateStoreType {
-  updateStore: (data: StoreType) => void;
-}
+export type UpdateStoreType = (data: StoreType) => void;
+
 const storeUpdateContext = createContext<UpdateStoreType | null>(null);
 
 // We are also initializing useContexts here
@@ -30,8 +46,8 @@ export const Store = (): StoreType | null => {
   return useContext(storeContext);
 };
 
-export const UpdateStore = (): UpdateStoreType | null => {
-  return useContext(storeUpdateContext);
+export const UpdateStore = (): UpdateStoreType => {
+  return useContext(storeUpdateContext) as UpdateStoreType;
 };
 
 // Initializing Store Provider
@@ -40,7 +56,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [store, setStore] = useState<StoreType>({
     loggedIn: false,
     user: {},
-    cartItems: [],
+    cart: '',
   });
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -54,7 +70,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   // Render
   return (
     <storeContext.Provider value={store}>
-      <storeUpdateContext.Provider value={{ updateStore }}>{children}</storeUpdateContext.Provider>
+      <storeUpdateContext.Provider value={updateStore}>{children}</storeUpdateContext.Provider>
     </storeContext.Provider>
   );
 };

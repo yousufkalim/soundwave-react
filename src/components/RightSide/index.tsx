@@ -11,6 +11,8 @@ import Step4 from '../PosterSteps/step4';
 import Step5 from '../PosterSteps/step5';
 import { ReactComponent as TitleIcon } from '../../assets/titleIcon.svg';
 import { ReactComponent as Cart } from '../../assets/cart.svg';
+import request from '../../api/request';
+import { UpdateStore, Store } from '../../context/store';
 interface DataSetProps {
   songName: string;
   trackId: string;
@@ -63,6 +65,45 @@ interface IFrameProps {
   selectedFrame: string;
 }
 
+interface IResponsePoster {
+  frame: IFrameProps;
+  size: IPosterSize;
+  albumName: string;
+  singerName: string;
+  price: number;
+  posterImage: string;
+  posterQuantity: number;
+  _id: string;
+}
+interface IResponseCart {
+  _id: string;
+  totalPoster: IResponsePoster[];
+  totalPrice: number;
+  shippingCost: number;
+  createdAt?: string;
+  updatedAt?: string;
+  __v?: number;
+}
+
+interface IResponseSuccess {
+  success: boolean;
+  cart: IResponseCart;
+}
+
+interface IBodyTotalPoster {
+  posterImage?: string;
+  posterQuantity: number;
+  unitPrice: number;
+  totalPrice: number;
+  size: IPosterSize;
+  frame: IFrameProps;
+  albumName?: string;
+  singerName?: string;
+}
+interface IBody {
+  totalPoster: IBodyTotalPoster[];
+}
+
 const RightSide: FC<RightSideProps> = ({
   handleDataSets,
   selectedAlbum,
@@ -100,14 +141,75 @@ const RightSide: FC<RightSideProps> = ({
   const [activeStep, setActiveStep] = useState<number>(1);
   // const [ss, setSs] = useState('');
 
+  const updateStore = UpdateStore();
+  const store = Store();
+
+  const getCartData = (cartId: string): void => {
+    request<IResponseSuccess>('get', `/cart/${cartId}`)
+      .then((res) => {
+        console.log('Get cart ', res.data);
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        const cart = res.data.cart;
+        const data = {
+          shippingCost: cart.shippingCost,
+          totalPoster: cart.totalPoster,
+          totalPrice: cart.totalPrice,
+          _id: cart._id,
+        };
+        console.log('Cart Data ', store);
+        updateStore({ cart: data });
+      })
+      .catch((err) => {
+        console.log('Get cart Error ', err.message);
+      });
+  };
+
+  console.log('Store value ', store);
+
+  useEffect(() => {
+    const cartId = localStorage.getItem('cartId');
+    if (cartId) {
+      getCartData(cartId);
+    }
+  }, []);
+
   const handleAddToCart = async () => {
     // const element = document.getElementById('custom-poster-template-1') as HTMLElement;
     // const canvas = await html2canvas(element, { allowTaint: true });
     // const imgData = canvas.toDataURL('image/png');
     // setSs(imgData);
+    const posterData: IBody = {
+      totalPoster: [
+        {
+          posterImage: selectedAlbum?.photo,
+          posterQuantity: 1,
+          unitPrice: 120,
+          totalPrice: 120,
+          size: posterSize,
+          frame,
+          albumName: selectedAlbum?.label,
+          singerName: selectedAlbum?.singerName,
+        },
+      ],
+    };
     console.log('Data');
     setAddToCart(!addToCart);
-    handleSettingData();
+    // handleSettingData();
+    try {
+      const data = await request<IResponseSuccess, IBody>('post', '/cart/add-poster', posterData);
+      const cart = data.data.cart;
+      localStorage.setItem('cartId', cart._id);
+      if (cart._id) {
+        getCartData(cart._id);
+      }
+      console.log('Add to cart successfully');
+    } catch (err) {
+      console.log('Add cart Error ');
+    }
+
+    // const cart = await data;
+    // console.log('General data ', data);
+    // console.log('General cart ', cart);
   };
 
   return (
