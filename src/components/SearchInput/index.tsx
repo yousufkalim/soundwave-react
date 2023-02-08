@@ -73,10 +73,10 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
   return (
     <div ref={autocomplete} className={'relative w-full'}>
-      <div className="border-[1px] border-black p-[1px] rounded-xl">
+      <div className="border-[1px] border-[#454238] p-[1px] rounded-xl">
         <input
           name="SearchInput-input"
-          className="relative w-full h-12 text-black px-4 rounded-xl outline-none text-sm font-semibold placeholder:text-black"
+          className="relative w-full h-12 text-black px-4 rounded-xl outline-none text-sm font-semibold placeholder:text-[#454238]"
           type="search"
           placeholder={placeholder}
           value={query}
