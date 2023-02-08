@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import Counter from '../Counter/index';
 import { ReactComponent as DeleteIcon } from '../../assets/DeleteIcon.svg';
 
 interface CartPosterDetailsProps {
@@ -18,6 +19,14 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
   frame,
   key,
 }) => {
+  const [counter, setCounter] = useState<number>(0);
+  const handleIncrement = (): void => {
+    setCounter(counter + 1);
+  };
+
+  const handleDecrement = (): void => {
+    setCounter(counter - 1);
+  };
   return (
     <div key={key} className="flex justify-between w-full border-[1px] rounded-lg p-3 my-3">
       <div className="w-[25%]">
@@ -34,8 +43,16 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
         </span>
         <span className="text-sm font-light">
           Frame
-          <span className="text-sm font-semibold">{frame}</span>
+          <span className="text-sm font-semibold"> {frame}</span>
         </span>
+        <div className="flex items-start justify-start gap-3">
+          <Counter
+            counter={counter}
+            handleDecrement={handleDecrement}
+            handleIncrement={handleIncrement}
+          />
+          <span className="text-sm font-semibold">$120.00</span>
+        </div>
       </div>
       <div className="w-[5%] flex flex-col">
         <DeleteIcon className="cursor-pointer" />

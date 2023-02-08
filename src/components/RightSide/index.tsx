@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import html2canvas from 'html2canvas';
 import Step1 from '../PosterSteps/step1';
 import Step2 from '../PosterSteps/step2';
@@ -77,17 +77,22 @@ const RightSide: FC<RightSideProps> = ({
   selectedTemplate,
   setSelectedTemplate,
 }) => {
-  const [openDescripition, setOpenDescripition] = useState(false);
-  const [openTheme, setOpenTheme] = useState(false);
-  const [openStyles, setOpenStyles] = useState(false);
-  const [openSize, setOpenSize] = useState(false);
+  const [openDescripition, setOpenDescripition] = useState<boolean>(false);
+  const [openTheme, setOpenTheme] = useState<boolean>(false);
+  const [openStyles, setOpenStyles] = useState<boolean>(false);
+  const [openSize, setOpenSize] = useState<boolean>(false);
+  const [activeStep, setActiveStep] = useState<number>(1);
+  // const [ss, setSs] = useState('');
+
   const handleAddToCart = async () => {
-    const element = document.getElementById('custom-poster-div') as HTMLElement;
-    const canvas = await html2canvas(element, { allowTaint: true });
-    const imgData = canvas.toDataURL('image/png');
-    console.log(imgData);
+    // const element = document.getElementById('custom-poster-template-1') as HTMLElement;
+    // const canvas = await html2canvas(element, { allowTaint: true });
+    // const imgData = canvas.toDataURL('image/png');
+    console.log('imgData');
+    // setSs(imgData);
     setAddToCart(!addToCart);
   };
+
   return (
     <div className="bg-white w-[44%] flex items-start justify-start mt-11 pl-20">
       <div className="w-[60%]">
@@ -108,6 +113,9 @@ const RightSide: FC<RightSideProps> = ({
             handleDataSets={handleDataSets}
             selectedAlbum={selectedAlbum}
             setSelectedAlbum={setSelectedAlbum}
+            // steps active states
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
           />
           <Step2
             openDescripition={openDescripition}
@@ -124,6 +132,9 @@ const RightSide: FC<RightSideProps> = ({
             customDescription={customDescription}
             setCustomDescription={setCustomDescription}
             setOpenSize={setOpenSize}
+            // steps active states
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
           />
           <Step3
             primaryColor={primaryColor}
@@ -141,6 +152,9 @@ const RightSide: FC<RightSideProps> = ({
             selectedTemplate={selectedTemplate}
             setSelectedTemplate={setSelectedTemplate}
             setOpenSize={setOpenSize}
+            // steps active states
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
           />
           <Step4
             openStyles={openStyles}
@@ -150,6 +164,9 @@ const RightSide: FC<RightSideProps> = ({
             posterSize={posterSize}
             setPosterSize={setPosterSize}
             setOpenSize={setOpenSize}
+            // steps active states
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
           />
           <Step5
             setOpenTheme={setOpenTheme}
@@ -159,10 +176,18 @@ const RightSide: FC<RightSideProps> = ({
             openSize={openSize}
             setOpenStyles={setOpenStyles}
             setOpenSize={setOpenSize}
+            // steps active states
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
           />
           <button
-            className={'bg-black flex items-center justify-center h-14 rounded-xl cursor-pointer'}
+            className={
+              activeStep === 6
+                ? 'bg-black flex items-center justify-center h-14 rounded-xl cursor-pointer'
+                : 'bg-[#919B9B] flex items-center justify-center h-14 rounded-xl'
+            }
             onClick={handleAddToCart}
+            // disabled={activeStep < 6}
           >
             <span className="text-white flex">
               <Cart />

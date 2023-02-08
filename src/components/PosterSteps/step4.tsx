@@ -12,6 +12,8 @@ interface Step4Props {
   posterSize: string;
   setPosterSize: (value: string) => void;
   setOpenSize: (value: boolean) => void;
+  activeStep: number;
+  setActiveStep: (value: number) => void;
 }
 
 const step4: FC<Step4Props> = ({
@@ -22,11 +24,12 @@ const step4: FC<Step4Props> = ({
   // posterSize,
   // setPosterSize,
   setOpenSize,
+  activeStep,
+  setActiveStep,
 }) => {
   const [selectedSection, setSelectedSection] = useState<string>('btn1');
-
   const [selectedFrame, setSelectedFrame] = useState<string>('woodenblack');
-  const [selectedCanvas, setSelectedCanvas] = useState<string>('Thin');
+  const [selectedCanvas, setSelectedCanvas] = useState<string>('');
 
   const handleButtonClick = (targetSection: string): void => {
     setSelectedSection(targetSection);
@@ -41,14 +44,27 @@ const step4: FC<Step4Props> = ({
   };
 
   const handleIconClick = (): void => {
-    setOpenStyles(!openStyles);
-    setOpenDescripition(false);
-    setOpenTheme(false);
-    setOpenSize(false);
+    if (activeStep >= 4) {
+      setOpenStyles(!openStyles);
+      setOpenDescripition(false);
+      setOpenTheme(false);
+      setOpenSize(false);
+      setActiveStep(5);
+    } else {
+      setOpenStyles(false);
+      setOpenDescripition(false);
+      setOpenTheme(false);
+      setOpenSize(false);
+    }
   };
   return (
     <>
-      <Tab open={openStyles} onClick={handleIconClick} heading={'Print Format'} />
+      <Tab
+        open={openStyles}
+        onClick={handleIconClick}
+        heading={'Print Format'}
+        active={activeStep >= 4}
+      />
       <div className={openStyles ? 'block w-full' : 'hidden'}>
         <span className="text-sm">Select</span>
         <ThemeBtnBox

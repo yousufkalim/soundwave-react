@@ -198,6 +198,8 @@ interface Step1Props {
   handleDataSets: (value: dataSetsProps[]) => void;
   selectedAlbum?: SelectedAlbumProps;
   setSelectedAlbum: (value: SelectedAlbumProps) => void;
+  activeStep: number;
+  setActiveStep: (value: number) => void;
 }
 interface SelectedAlbumProps {
   id: string;
@@ -206,10 +208,17 @@ interface SelectedAlbumProps {
   singerName: string;
 }
 
-const step1: FC<Step1Props> = ({ handleDataSets, selectedAlbum, setSelectedAlbum }) => {
+const step1: FC<Step1Props> = ({
+  handleDataSets,
+  selectedAlbum,
+  setSelectedAlbum,
+  activeStep,
+  setActiveStep,
+}) => {
   const [selected, setSelected] = useState<string>('');
   const [selectedAlbumId, setSelectedAlbumId] = useState<string>('');
   const [albumOptions, setAlbumOptions] = useState<listProps[]>([]);
+
   const onQurreyChange = (value: string): void => {
     setSelected(value);
   };
@@ -288,6 +297,9 @@ const step1: FC<Step1Props> = ({ handleDataSets, selectedAlbum, setSelectedAlbum
         });
     }
   };
+  const handleSelectedAlbum = (val: SelectedAlbumProps) => {
+    setSelectedAlbum(val);
+  };
 
   useEffect(() => {
     handleSpotifyData();
@@ -297,21 +309,23 @@ const step1: FC<Step1Props> = ({ handleDataSets, selectedAlbum, setSelectedAlbum
     handleGetAlbumData();
   }, [selectedAlbumId]);
 
-  const handleSelectedAlbum = (val: SelectedAlbumProps) => {
-    setSelectedAlbum(val);
-  };
+  useEffect(() => {
+    if (selectedAlbum && selected === selectedAlbum.label) {
+      setActiveStep(2);
+    }
+  }, [selectedAlbum, selected]);
 
   return (
     <>
       <div>
         {selectedAlbum && selected === selectedAlbum.label ? (
           <div
-            className="flex items-center justify-start gap-3 cursor-pointer border-[1px] border-black w-full bg-white py-2 px-2 rounded-xl hover:bg-[#f0efef]"
+            className="flex items-center justify-start gap-3 cursor-pointer border-[1px] border-black w-full bg-[#F9F9F9] py-2 px-2 rounded-xl hover:bg-[#f0efef]"
             onClick={() => setSelected('')}
           >
             <img src={selectedAlbum.photo} className="object-cover rounded-full w-12 h-12 ml-1" />
             <div className="flex items-start justify-center flex-col">
-              <span className="font-light text-md">{selectedAlbum.label}</span>
+              <i className="text-md font-semibold">{selectedAlbum.label}</i>
               <span className="font-extralight text-sm">{selectedAlbum.singerName}</span>
             </div>
           </div>

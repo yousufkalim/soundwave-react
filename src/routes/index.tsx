@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import CustomDesigner from '../pages/CustomDesigner/index';
+import CheckoutPage from '../pages/CheckoutPage/index';
 
 // Types
 interface BaseRoute {
@@ -26,6 +27,10 @@ const routes: Route[] = [
   {
     path: '/',
     element: <CustomDesigner />,
+  },
+  {
+    path: '/cart',
+    element: <CheckoutPage />,
   },
   {
     path: '*',

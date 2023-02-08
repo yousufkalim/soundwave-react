@@ -24,12 +24,11 @@ const SongWave: FC<SongWaveProps> = ({ item, key, soundWaveColor }) => {
   return (
     <Grid item xs={4} className="h-[7%] py-3" key={key}>
       <Waveform
-        barWidth={0.2}
+        // barWidth={0.2}
         peaks={item.levels}
         height={20}
-        duration={210}
         color={soundWaveColor}
-        transitionDuration={200}
+        pixelRatio={1}
       />
       <div className="flex items-center justify-start gap-1 mt-3 pl-2">
         <span style={{ color: `${soundWaveColor}` }} className="text-[8.5px] font-semibold">

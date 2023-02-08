@@ -1,7 +1,11 @@
+/* eslint-disable array-callback-return */
 import React, { FC, useState } from 'react';
 import Tab from '../Tab/index';
 import PosterSizeBox from '../PosterSize/index';
-import Tmep from '../Testcomp';
+import { ReactComponent as BackArrow } from '../../assets/SimpleBackArrow.svg';
+import { ReactComponent as ForwardArrow } from '../../assets/SimpleForwardArrow.svg';
+import { ReactComponent as BoldBackArrow } from '../../assets/boldBackArrow.svg';
+import { ReactComponent as BoldForwardArrow } from '../../assets/boldForwardArrow.svg';
 interface Step5Props {
   openSize: boolean;
   setOpenDescripition: (value: boolean) => void;
@@ -10,6 +14,8 @@ interface Step5Props {
   setOpenStyles: (value: boolean) => void;
   posterSize: string;
   setPosterSize: (value: string) => void;
+  activeStep: number;
+  setActiveStep: (value: number) => void;
 }
 
 const step5: FC<Step5Props> = ({
@@ -20,49 +26,106 @@ const step5: FC<Step5Props> = ({
   setOpenTheme,
   posterSize,
   setPosterSize,
+  activeStep,
+  setActiveStep,
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [measurement, setMeasurement] = useState<string>('inch');
   const frameSizeArr = ['1218', '1620', '1824', '2028', '2436', '2840'];
 
   const handleIconClick = (): void => {
-    setOpenSize(!openSize);
-    setOpenStyles(false);
-    setOpenDescripition(false);
-    setOpenTheme(false);
+    if (activeStep >= 5) {
+      setOpenSize(!openSize);
+      setOpenStyles(false);
+      setOpenDescripition(false);
+      setOpenTheme(false);
+      setActiveStep(6);
+    } else {
+      setOpenSize(false);
+      setOpenStyles(false);
+      setOpenDescripition(false);
+      setOpenTheme(false);
+    }
   };
 
   const handleNext = (): void => {
-    setActiveIndex(activeIndex === frameSizeArr.length - 1 ? 0 : activeIndex + 1);
+    setActiveIndex((prev) => {
+      const nextIndex = (prev + 1) % frameSizeArr.length;
+      const item = frameSizeArr[nextIndex];
+      setPosterSize(item);
+      return nextIndex;
+    });
   };
 
   const handlePrev = (): void => {
-    setActiveIndex(activeIndex === 0 ? frameSizeArr.length - 1 : activeIndex - 1);
+    setActiveIndex((prev) => {
+      let nextIndex = prev - 1;
+      if (nextIndex < 0) {
+        nextIndex = frameSizeArr.length - 1;
+      }
+      const item = frameSizeArr[nextIndex];
+      setPosterSize(item);
+      return nextIndex;
+    });
+  };
+
+  const handleMeasurement = (targetMeasurement: string): void => {
+    setMeasurement(targetMeasurement);
   };
 
   return (
     <>
-      <Tab open={openSize} onClick={handleIconClick} heading={'Size'} />
-      <Tmep />
-
+      <Tab open={openSize} onClick={handleIconClick} heading={'Size'} active={activeStep >= 5} />
       <div className={openSize ? 'block w-full' : 'hidden'}>
         <div className=" flex items-center justify-between">
           <div className="flex items-center justify-start gap-3">
-            <span className="text-sm border-b-[2px] text-green-500 border-green-400 pb-1 font-semibold cursor-pointer">
+            <span
+              onClick={() => {
+                handleMeasurement('inch');
+              }}
+              className={
+                measurement === 'inch'
+                  ? 'text-sm border-b-[2px] text-[#47B45F] border-[#47B45F] pb-1 font-semibold'
+                  : 'text-sm border-b-[2px] border-gray-400 pb-1 font-semibold cursor-pointer'
+              }
+            >
               Inch
             </span>
-            <span className="text-sm border-b-[2px] border-green-400 pb-1">Centimeter</span>
+            <span
+              onClick={() => {
+                handleMeasurement('centimeter');
+              }}
+              className={
+                measurement === 'centimeter'
+                  ? 'text-sm border-b-[2px] text-[#47B45F] border-[#47B45F] pb-1 font-semibold'
+                  : 'text-sm border-b-[2px] border-gray-400 pb-1 font-semibold cursor-pointer'
+              }
+            >
+              Centimeter
+            </span>
           </div>
           <div className="flex items-center justify-center gap-3">
-            <span className="text-sm" onClick={handlePrev}>
-              Back
-            </span>
-            <span className="text-sm" onClick={handleNext}>
-              Next
-            </span>
+            <button className="text-sm" disabled={activeIndex === 0} onClick={handlePrev}>
+              {activeIndex === 0 ? <BackArrow /> : <BoldBackArrow />}
+            </button>
+            <button
+              className="text-sm"
+              disabled={activeIndex === frameSizeArr.length - 1}
+              onClick={handleNext}
+            >
+              {activeIndex === frameSizeArr.length - 1 ? <ForwardArrow /> : <BoldForwardArrow />}
+            </button>
           </div>
         </div>
         <div className="overflow-x-scroll">
-          <PosterSizeBox posterSize={posterSize} setPosterSize={setPosterSize} />
+          <PosterSizeBox
+            measurement={measurement}
+            posterSize={posterSize}
+            setPosterSize={setPosterSize}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+            frameSizeArr={frameSizeArr}
+          />
         </div>
       </div>
     </>

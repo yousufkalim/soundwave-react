@@ -2,10 +2,20 @@
 import React, { useContext, useState, createContext, ReactNode } from 'react';
 import User from '../types/user';
 
+
+interface CartItemArrayProps {
+  albumName: string;
+  singerName: string;
+  posterSize: string;
+  frame: string;
+  posterAmount: number;
+  price: number;
+}
 // Initializing Create Context Hook
 interface StoreType {
   loggedIn: boolean;
   user: User | object;
+  cartItems: CartItemArrayProps[];
 }
 const storeContext = createContext<StoreType | null>(null);
 
@@ -30,6 +40,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [store, setStore] = useState<StoreType>({
     loggedIn: false,
     user: {},
+    cartItems: [],
   });
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values

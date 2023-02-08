@@ -33,6 +33,11 @@
   src: url('../src/assets/fonts/Morganite-BoldItalic.ttf');
 }
 
+@font-face {
+  font-family: 'julee';
+  src: url('../src/assets/fonts/Julee-Regular.ttf');
+}
+
 * {
   padding: 0;
   margin: 0;

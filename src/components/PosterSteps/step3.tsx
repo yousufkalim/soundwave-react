@@ -19,6 +19,8 @@ interface Step3Props {
   selectedTemplate: string;
   setSelectedTemplate: (value: string) => void;
   setOpenSize: (value: boolean) => void;
+  activeStep: number;
+  setActiveStep: (value: number) => void;
 }
 const step3: FC<Step3Props> = ({
   openTheme,
@@ -36,15 +38,25 @@ const step3: FC<Step3Props> = ({
   selectedTemplate,
   setSelectedTemplate,
   setOpenSize,
+  activeStep,
+  setActiveStep,
 }) => {
   // const ref = useRef<HTMLDivElement>(null);
   const [selectedSection, setSelectedSection] = useState<string>('btn1');
 
   const handleIconClick = (): void => {
-    setOpenTheme(!openTheme);
-    setOpenDescripition(false);
-    setOpenStyles(false);
-    setOpenSize(false);
+    if (activeStep >= 3) {
+      setOpenTheme(!openTheme);
+      setOpenDescripition(false);
+      setOpenStyles(false);
+      setOpenSize(false);
+      setActiveStep(4);
+    } else {
+      setOpenTheme(false);
+      setOpenDescripition(false);
+      setOpenStyles(false);
+      setOpenSize(false);
+    }
   };
 
   const handleButtonClick = (targetSection: string): void => {
@@ -57,7 +69,7 @@ const step3: FC<Step3Props> = ({
 
   return (
     <>
-      <Tab onClick={handleIconClick} heading={'Theme'} open={openTheme} />
+      <Tab onClick={handleIconClick} heading={'Theme'} open={openTheme} active={activeStep >= 3} />
       <div className={openTheme ? 'block w-full' : 'hidden'}>
         <ThemeBtnBox
           selectedSection={selectedSection}
