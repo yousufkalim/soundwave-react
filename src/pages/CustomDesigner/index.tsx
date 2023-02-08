@@ -17,6 +17,16 @@ interface SelectedAlbumProps {
   singerName: string;
 }
 
+interface IPosterSize {
+  value: string;
+  unit: string;
+}
+
+interface IFrameProps {
+  frameType: string;
+  selectedFrame: string;
+}
+
 // interface ItemsProps {
 //   posterImage: string;
 //   posterQuantitiy: number;
@@ -52,13 +62,17 @@ const index: FC = () => {
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
 
   // states for step # 4
+  const [frame, setFrame] = useState<IFrameProps>({
+    frameType: 'noframe',
+    selectedFrame: '',
+  });
+
+  // states for step # 5
   // ------> states for setting frame size
-  const [posterSize, setPosterSize] = useState<string>('1218');
+  const [posterSize, setPosterSize] = useState<IPosterSize>({ value: '12 X 18', unit: 'inch' });
+
   // state for add to cart button
   const [addToCart, setAddToCart] = useState<boolean>(true);
-  // state to manage data of items in cart
-
-  // const [cartItem, setCartItem] = useState<ItemsProps>({});
 
   const handleDataSets = (value: DataSetProps[]) => {
     setDataSets(value);
@@ -68,6 +82,30 @@ const index: FC = () => {
     : customAlbumDescripition;
 
   useGetPrimaryColor(selectedAlbum?.photo, setPrimaryColor);
+
+  const handleSettingData = () => {
+    const posterObject = {
+      posterImage: selectedAlbum?.photo,
+      posterQuantitiy: 2,
+      price: 120,
+      posterSize,
+      frameStyle: frame,
+      albumName: selectedAlbum?.label,
+      singerName: selectedAlbum?.singerName,
+    };
+    // checking for exitsing data
+    const cartItemArray = localStorage.getItem('posters');
+    console.log('🚀 ~ file: index.tsx:98 ~ handleSettingData ~ cartItemArray', cartItemArray);
+    if (!cartItemArray) {
+      const cartData = JSON.stringify([posterObject]);
+      localStorage.setItem('posters', cartData);
+    } else {
+      const parsedData = JSON.parse(cartItemArray);
+      const cartData = parsedData.push(posterObject);
+      localStorage.setItem('posters', cartData);
+    }
+  };
+
   return (
     <>
       <Header HeaderTitle="Create Your Own Design" />
@@ -110,10 +148,16 @@ const index: FC = () => {
           selectedTemplate={selectedTemplate}
           setSelectedTemplate={setSelectedTemplate}
           // props for step # 4
+
+          frame={frame}
+          setFrame={setFrame}
+          // props for step # 5
           posterSize={posterSize}
           setPosterSize={setPosterSize}
+          // add to cart btn
           addToCart={addToCart}
           setAddToCart={setAddToCart}
+          handleSettingData={handleSettingData}
         />
       </div>
     </>

@@ -1,9 +1,13 @@
 /* eslint-disable array-callback-return */
 import React, { FC, useEffect, useRef } from 'react';
-
+interface IPosterSize {
+  value: string;
+  unit: string;
+}
 interface PosterSizeProps {
-  posterSize: string;
-  setPosterSize: (value: string) => void;
+  posterSize: IPosterSize;
+  setPosterSize: ({ value, unit }: IPosterSize) => void;
+
   setActiveIndex: (value: number) => void;
   frameSizeArr: string[];
   activeIndex: number;
@@ -21,7 +25,7 @@ const PosterSize: FC<PosterSizeProps> = ({
   const itemRef = useRef<any>({});
 
   const handleSelectPosterSize = (targetPosterSize: string): void => {
-    setPosterSize(targetPosterSize);
+    setPosterSize({ value: targetPosterSize, unit: measurement });
     frameSizeArr.find((item, index) => {
       if (item === targetPosterSize) {
         setActiveIndex(index);
@@ -99,9 +103,19 @@ const PosterSize: FC<PosterSizeProps> = ({
           ref={(c) => (itemRef.current[index] = c)}
           key={index}
           onClick={() => {
-            handleSelectPosterSize(item.id);
+            handleSelectPosterSize(
+              measurement === 'inch' ? item.frameSizeInch : item.frameSizeCentimeter,
+            );
           }}
-          className={posterSize === item.id ? item.activeClass : item.notActiveClass}
+          className={
+            measurement === 'inch'
+              ? posterSize.value === item.frameSizeInch
+                ? item.activeClass
+                : item.notActiveClass
+              : posterSize.value === item.frameSizeCentimeter
+              ? item.activeClass
+              : item.notActiveClass
+          }
         >
           <span>
             {measurement === 'inch' ? `${item.frameSizeInch}"` : `${item.frameSizeCentimeter}cm`}
