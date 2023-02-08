@@ -1,7 +1,11 @@
 import axios, { Method, AxiosResponse, AxiosError } from 'axios';
 import { baseUrl } from '../config';
 
-const request = async <T>(method: Method, url: string, body?: T): Promise<AxiosResponse<T>> => {
+const request = async <R, T = any>(
+  method: Method,
+  url: string,
+  body?: T,
+): Promise<AxiosResponse<R>> => {
   const token = localStorage.getItem('token') as string;
 
   // Axios initialization with default config

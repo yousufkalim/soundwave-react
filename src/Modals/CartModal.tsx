@@ -1,12 +1,12 @@
 /* eslint-disable array-callback-return */
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/system';
 import { ReactComponent as CrossIcon } from '../assets/CrossIcon.svg';
 import { ReactComponent as CartIcon } from '../assets/cart.svg';
 import PosterImage from '../assets/posterIcons/template2.svg';
 import CartPosterDetails from '../components/CartPosterDetails';
-
+import request from '../api/request';
 interface OrdersArrProps {
   id: string;
   posterImage: string;
@@ -19,6 +19,40 @@ interface OrdersArrProps {
 interface CartModalProps {
   open: boolean;
   handleClose: () => void;
+}
+
+interface IFrameProps {
+  frameType: string;
+  selectedFrame: string;
+}
+
+interface IPosterSize {
+  value: string;
+  unit: string;
+}
+interface IResponsePoster {
+  frame: IFrameProps;
+  size: IPosterSize;
+  albumName: string;
+  singerName: string;
+  price: number;
+  posterImage: string;
+  posterQuantity: number;
+  _id: string;
+}
+interface IResponseCart {
+  _id: string;
+  totalPoster: IResponsePoster[];
+  totalPrice: number;
+  shippingCost: number;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+interface IResponseSuccess {
+  success: boolean;
+  cart: IResponseCart;
 }
 
 const CartModal: FC<CartModalProps> = ({ open, handleClose }) => {
@@ -58,6 +92,25 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose }) => {
       frame: 'No Frame (Poster only)',
     },
   ];
+
+  const getCartData = (): void => {
+    const cartId = localStorage.getItem('cartId');
+    if (cartId) {
+      request<IResponseSuccess>('get', `/cart/${cartId}`)
+        .then((res) => {
+          console.log('Get cart ', res.data);
+        })
+        .catch((err) => {
+          console.log('Get cart Error ', err.message);
+        });
+    }
+  };
+
+  useEffect(() => {
+    if (open) {
+      getCartData();
+    }
+  }, [open]);
 
   return (
     <Modal open={open} onClose={handleClose}>
