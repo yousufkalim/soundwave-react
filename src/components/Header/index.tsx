@@ -5,9 +5,10 @@ import CartModal from '../../Modals/CartModal';
 
 interface HeaderProps {
   HeaderTitle: string;
+  setLoading?: (loading: boolean) => void;
 }
 
-const index: FC<HeaderProps> = ({ HeaderTitle }) => {
+const index: FC<HeaderProps> = ({ HeaderTitle, setLoading }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = (): void => {
     setOpen(true);
@@ -29,7 +30,7 @@ const index: FC<HeaderProps> = ({ HeaderTitle }) => {
           <HeaderCart className="cursor-pointer" onClick={handleOpen} />
         </div>
       </div>
-      <CartModal open={open} handleClose={handleClose} />
+      <CartModal setLoading={setLoading} open={open} handleClose={handleClose} />
     </>
   );
 };
