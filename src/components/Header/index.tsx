@@ -6,10 +6,14 @@ import { useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
   HeaderTitle: string;
+  setLoading?: (loading: boolean) => void;
 }
 
-const index: FC<HeaderProps> = ({ HeaderTitle }) => {
+
+const index: FC<HeaderProps> = ({ HeaderTitle, setLoading }) => {
+
   const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
 
   const handleOpen = (): void => {
@@ -38,7 +42,7 @@ const index: FC<HeaderProps> = ({ HeaderTitle }) => {
           <HeaderCart className="cursor-pointer" onClick={handleOpen} />
         </div>
       </div>
-      <CartModal open={open} handleClose={handleClose} />
+      <CartModal setLoading={setLoading} open={open} handleClose={handleClose} />
     </>
   );
 };

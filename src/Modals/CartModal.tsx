@@ -1,24 +1,26 @@
 /* eslint-disable array-callback-return */
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/system';
 import { ReactComponent as CrossIcon } from '../assets/CrossIcon.svg';
 import { ReactComponent as CartIcon } from '../assets/cart.svg';
-import PosterImage from '../assets/posterIcons/template2.svg';
+// import PosterImage from '../assets/posterIcons/template2.svg';
 import CartPosterDetails from '../components/CartPosterDetails';
 import request from '../api/request';
-interface OrdersArrProps {
-  id: string;
-  posterImage: string;
-  AlbumName: string;
-  SingerName: string;
-  size: string;
-  frame: string;
-}
+
+// interface OrdersArrProps {
+//   id: string;
+//   posterImage: string;
+//   AlbumName: string;
+//   SingerName: string;
+//   size: IPosterSize;
+//   frame: string;
+// }
 
 interface CartModalProps {
   open: boolean;
   handleClose: () => void;
+  setLoading?: (loading: boolean) => void;
 }
 
 interface IFrameProps {
@@ -35,27 +37,25 @@ interface IResponsePoster {
   size: IPosterSize;
   albumName: string;
   singerName: string;
-  price: number;
+  totalPrice: number;
+  unitPrice: number;
   posterImage: string;
   posterQuantity: number;
   _id: string;
 }
 interface IResponseCart {
+  success: boolean;
+  cart: ICart;
+}
+
+interface ICart {
   _id: string;
   totalPoster: IResponsePoster[];
   totalPrice: number;
-  shippingCost: number;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
+  shippingCost?: number;
 }
 
-interface IResponseSuccess {
-  success: boolean;
-  cart: IResponseCart;
-}
-
-const CartModal: FC<CartModalProps> = ({ open, handleClose }) => {
+const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
   const style = {
     position: 'absolute' as const,
     top: '50%',
@@ -66,51 +66,118 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose }) => {
     p: 4,
   };
 
-  const orders = [
-    {
-      id: '1',
-      posterImage: PosterImage,
-      AlbumName: 'StarBoy',
-      SingerName: 'The Weeknd',
-      size: '16X20',
-      frame: 'No Frame (Poster only)',
-    },
-    {
-      id: '2',
-      posterImage: PosterImage,
-      AlbumName: 'StarBoy',
-      SingerName: 'The Weeknd',
-      size: '18X22',
-      frame: 'No Frame (Poster only)',
-    },
-    {
-      id: '3',
-      posterImage: PosterImage,
-      AlbumName: 'StarBoy',
-      SingerName: 'The Weeknd',
-      size: '16X20',
-      frame: 'No Frame (Poster only)',
-    },
-  ];
+  // const orders = [
+  //   {
+  //     id: '1',
+  //     posterImage: PosterImage,
+  //     AlbumName: 'StarBoy',
+  //     SingerName: 'The Weeknd',
+  //     size: '16X20',
+  //     frame: 'No Frame (Poster only)',
+  //   },
+  //   {
+  //     id: '2',
+  //     posterImage: PosterImage,
+  //     AlbumName: 'StarBoy',
+  //     SingerName: 'The Weeknd',
+  //     size: '18X22',
+  //     frame: 'No Frame (Poster only)',
+  //   },
+  //   {
+  //     id: '3',
+  //     posterImage: PosterImage,
+  //     AlbumName: 'StarBoy',
+  //     SingerName: 'The Weeknd',
+  //     size: '16X20',
+  //     frame: 'No Frame (Poster only)',
+  //   },
+  // ];
 
-  const getCartData = (): void => {
-    const cartId = localStorage.getItem('cartId');
-    if (cartId) {
-      request<IResponseSuccess>('get', `/cart/${cartId}`)
+  const [cart, setCart] = useState<ICart>({
+    _id: '',
+    totalPoster: [],
+    totalPrice: 0,
+    shippingCost: 0,
+  });
+
+  useEffect(() => {
+    if (open) {
+      const cartId = localStorage.getItem('cartId');
+      if (cartId) {
+        getCartData(cartId);
+      }
+    }
+  }, [open]);
+
+  const handleCartQuantity = (id: string, isAdd: boolean, unitPrice: number): void => {
+    const updatedCart = {
+      ...cart,
+      totalPoster: cart?.totalPoster.map((poster) => {
+        if (id === poster._id) {
+          if (isAdd) {
+            return {
+              ...poster,
+              posterQuantity: poster.posterQuantity + 1,
+              totalPrice: poster.totalPrice + poster.unitPrice,
+            };
+          }
+          return {
+            ...poster,
+            posterQuantity: poster.posterQuantity - 1,
+            totalPrice: poster.totalPrice - poster.unitPrice,
+          };
+        } else {
+          return poster;
+        }
+      }),
+      totalPrice: isAdd ? cart.totalPrice + unitPrice : cart.totalPrice - unitPrice,
+    };
+
+    updateCartQuantity(id, updatedCart, isAdd);
+  };
+
+  const updateCartQuantity = (id: string, updatedCart: ICart, isAdd: boolean): void => {
+    const updatedPoster = updatedCart.totalPoster.find((item) => item._id === id);
+    if (updatedPoster?._id) {
+      setLoading?.(true);
+
+      request('patch', `/cart/changePosterQuantity/${cart._id}`, {
+        isAdd,
+        posterId: updatedPoster?._id,
+        unitPrice: updatedPoster?.unitPrice,
+        quantity: updatedPoster.posterQuantity,
+      })
         .then((res) => {
-          console.log('Get cart ', res.data);
+          setCart(updatedCart);
+          setLoading?.(false);
         })
         .catch((err) => {
-          console.log('Get cart Error ', err.message);
+          console.log('Update Error', err);
         });
     }
   };
 
-  useEffect(() => {
-    if (open) {
-      getCartData();
-    }
-  }, [open]);
+  const getCartData = (cartId: string): void => {
+    setLoading?.(true);
+    request<IResponseCart>('get', `/cart/${cartId}`)
+      .then((res) => {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        const cart = res.data.cart;
+        const data = {
+          shippingCost: cart.shippingCost,
+          totalPoster: cart.totalPoster,
+          totalPrice: cart.totalPrice,
+          _id: cart._id,
+        };
+        setCart(data);
+        setLoading?.(false);
+      })
+      .catch((err) => {
+        setLoading?.(false);
+
+        console.log('Get cart Error ', err.message);
+      });
+  };
 
   return (
     <Modal open={open} onClose={handleClose}>
@@ -122,28 +189,35 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose }) => {
           <CrossIcon onClick={handleClose} className="cursor-pointer w-5" />
         </div>
         <div className="h-[64%] overflow-scroll">
-          {orders.map((item: OrdersArrProps) => (
+          {cart?.totalPoster.map((item) => (
             <CartPosterDetails
-              key={item.id}
+              key={item?._id}
+              id={item?._id}
               posterImage={item.posterImage}
-              AlbumName={item.AlbumName}
-              SingerName={item.SingerName}
+              albumName={item.albumName}
+              singerName={item.singerName}
               size={item.size}
+              unitPrice={item.unitPrice}
               frame={item.frame}
+              totalPrice={item.totalPrice}
+              posterQuantity={item.posterQuantity}
+              cartId={cart._id}
+              handleCartQuantity={handleCartQuantity}
+              getCartData={getCartData}
             />
           ))}
         </div>
         <div className="flex items-center justify-between text-sm py-2 font-semibold">
           <span>Order value</span>
-          <span>$120.00</span>
+          <span>$ {cart.totalPrice}</span>
         </div>
         <div className="flex items-center justify-between text-sm py-2 font-semibold">
           <span>Shipping</span>
-          <span>0.00</span>
+          <span>${cart?.shippingCost}</span>
         </div>
         <div className="flex items-center justify-between text-sm py-3 border-t-[1px] font-semibold">
           <span>Sub Total</span>
-          <span>$120.00</span>
+          <span>${cart?.shippingCost ? cart.totalPrice + cart.shippingCost : cart.totalPrice}</span>
         </div>
 
         <div className="py-2 flex flex-col gap-2">

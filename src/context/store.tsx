@@ -32,7 +32,7 @@ interface IResponseCart {
 interface StoreType {
   loggedIn?: boolean;
   user?: User | object;
-  cart?: IResponseCart | string;
+  cart?: IResponseCart | null;
 }
 const storeContext = createContext<StoreType | null>(null);
 
@@ -56,7 +56,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [store, setStore] = useState<StoreType>({
     loggedIn: false,
     user: {},
-    cart: '',
+    cart: null,
   });
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
