@@ -195,6 +195,8 @@ interface dataSetsProps {
   levels: number[];
 }
 interface Step1Props {
+  selected: string;
+  setSelected: (value: string) => void;
   handleDataSets: (value: dataSetsProps[]) => void;
   selectedAlbum?: SelectedAlbumProps;
   setSelectedAlbum: (value: SelectedAlbumProps) => void;
@@ -209,13 +211,15 @@ interface SelectedAlbumProps {
 }
 
 const step1: FC<Step1Props> = ({
+  selected,
+  setSelected,
   handleDataSets,
   selectedAlbum,
   setSelectedAlbum,
   activeStep,
   setActiveStep,
 }) => {
-  const [selected, setSelected] = useState<string>('');
+  // const [selected, setSelected] = useState<string>('');
   const [selectedAlbumId, setSelectedAlbumId] = useState<string>('');
   const [albumOptions, setAlbumOptions] = useState<listProps[]>([]);
 
