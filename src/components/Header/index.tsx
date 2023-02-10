@@ -1,26 +1,21 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { ReactComponent as Logo } from '../../assets/Logo.svg';
 import { ReactComponent as HeaderCart } from '../../assets/HeaderCart.svg';
-import CartModal from '../../Modals/CartModal';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Badge } from '@mui/material';
 
 interface HeaderProps {
   HeaderTitle: string;
-  setLoading?: (loading: boolean) => void;
+  cartItemsLength?: number;
+  setOpen?: (value: boolean) => void;
 }
 
-const index: FC<HeaderProps> = ({ HeaderTitle, setLoading }) => {
+const index: FC<HeaderProps> = ({ HeaderTitle, cartItemsLength, setOpen }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [open, setOpen] = useState(false);
-
   const handleOpen = (): void => {
-    setOpen(true);
-  };
-
-  const handleClose = (): void => {
-    setOpen(false);
+    setOpen?.(true);
   };
 
   const handleLogoClick = (): void => {
@@ -39,13 +34,14 @@ const index: FC<HeaderProps> = ({ HeaderTitle, setLoading }) => {
             Return to Store
           </button>
           {location.pathname !== '/cart' ? (
-            <HeaderCart className="cursor-pointer" onClick={handleOpen} />
+            <Badge badgeContent={cartItemsLength} color="error">
+              <HeaderCart className="cursor-pointer" onClick={handleOpen} />
+            </Badge>
           ) : (
             ''
           )}
         </div>
       </div>
-      <CartModal setLoading={setLoading} open={open} handleClose={handleClose} />
     </>
   );
 };
