@@ -3,31 +3,22 @@ import React, { FC, useEffect, useState } from 'react';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/system';
 import { ReactComponent as CrossIcon } from '../assets/CrossIcon.svg';
+import { ReactComponent as NoFramePlaceholder } from '../assets/NoFramePlaceholder.svg';
+
 import { ReactComponent as CartIcon } from '../assets/cart.svg';
-// import PosterImage from '../assets/posterIcons/template2.svg';
 import CartPosterDetails from '../components/CartPosterDetails';
 import request from '../api/request';
-
-// interface OrdersArrProps {
-//   id: string;
-//   posterImage: string;
-//   AlbumName: string;
-//   SingerName: string;
-//   size: IPosterSize;
-//   frame: string;
-// }
+import { useNavigate } from 'react-router-dom';
 
 interface CartModalProps {
   open: boolean;
   handleClose: () => void;
   setLoading?: (loading: boolean) => void;
 }
-
 interface IFrameProps {
   frameType: string;
   selectedFrame: string;
 }
-
 interface IPosterSize {
   value: string;
   unit: string;
@@ -47,15 +38,15 @@ interface IResponseCart {
   success: boolean;
   cart: ICart;
 }
-
 interface ICart {
   _id: string;
   totalPoster: IResponsePoster[];
   totalPrice: number;
-  shippingCost?: number;
+  shippingCost: number;
 }
 
 const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
+  const navigate = useNavigate();
   const style = {
     position: 'absolute' as const,
     top: '50%',
@@ -65,33 +56,6 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
     border: 'none',
     p: 4,
   };
-
-  // const orders = [
-  //   {
-  //     id: '1',
-  //     posterImage: PosterImage,
-  //     AlbumName: 'StarBoy',
-  //     SingerName: 'The Weeknd',
-  //     size: '16X20',
-  //     frame: 'No Frame (Poster only)',
-  //   },
-  //   {
-  //     id: '2',
-  //     posterImage: PosterImage,
-  //     AlbumName: 'StarBoy',
-  //     SingerName: 'The Weeknd',
-  //     size: '18X22',
-  //     frame: 'No Frame (Poster only)',
-  //   },
-  //   {
-  //     id: '3',
-  //     posterImage: PosterImage,
-  //     AlbumName: 'StarBoy',
-  //     SingerName: 'The Weeknd',
-  //     size: '16X20',
-  //     frame: 'No Frame (Poster only)',
-  //   },
-  // ];
 
   const [cart, setCart] = useState<ICart>({
     _id: '',
@@ -140,7 +104,6 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
     const updatedPoster = updatedCart.totalPoster.find((item) => item._id === id);
     if (updatedPoster?._id) {
       setLoading?.(true);
-
       request('patch', `/cart/changePosterQuantity/${cart._id}`, {
         isAdd,
         posterId: updatedPoster?._id,
@@ -179,6 +142,31 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
       });
   };
 
+  const handleViewCartClick = (): void => {
+    navigate('/cart');
+  };
+
+  const CartItems =
+    cart?.totalPoster?.length > 0
+      ? cart?.totalPoster.map((item) => (
+          <CartPosterDetails
+            key={item?._id}
+            id={item?._id}
+            posterImage={item.posterImage}
+            albumName={item.albumName}
+            singerName={item.singerName}
+            size={item.size}
+            unitPrice={item.unitPrice}
+            frame={item.frame}
+            totalPrice={item.totalPrice}
+            posterQuantity={item.posterQuantity}
+            cartId={cart._id}
+            handleCartQuantity={handleCartQuantity}
+            getCartData={getCartData}
+          />
+        ))
+      : cart?.totalPoster?.length === 0 && <NoFramePlaceholder className=" w-[80%]" />;
+
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style} className="bg-white w-[29%] outline-none h-[85%] overflow-hidden">
@@ -188,24 +176,14 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
           </span>
           <CrossIcon onClick={handleClose} className="cursor-pointer w-5" />
         </div>
-        <div className="h-[64%] overflow-scroll">
-          {cart?.totalPoster.map((item) => (
-            <CartPosterDetails
-              key={item?._id}
-              id={item?._id}
-              posterImage={item.posterImage}
-              albumName={item.albumName}
-              singerName={item.singerName}
-              size={item.size}
-              unitPrice={item.unitPrice}
-              frame={item.frame}
-              totalPrice={item.totalPrice}
-              posterQuantity={item.posterQuantity}
-              cartId={cart._id}
-              handleCartQuantity={handleCartQuantity}
-              getCartData={getCartData}
-            />
-          ))}
+        <div
+          className={
+            cart?.totalPoster?.length === 0
+              ? 'h-[64%] overflow-scroll flex items-center justify-center'
+              : 'h-[64%] overflow-scroll '
+          }
+        >
+          {CartItems}
         </div>
         <div className="flex items-center justify-between text-sm py-2 font-semibold">
           <span>Order value</span>
@@ -217,7 +195,7 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
         </div>
         <div className="flex items-center justify-between text-sm py-3 border-t-[1px] font-semibold">
           <span>Sub Total</span>
-          <span>${cart?.shippingCost ? cart.totalPrice + cart.shippingCost : cart.totalPrice}</span>
+          <span>{`$ ${cart?.totalPrice ? cart?.totalPrice + cart.shippingCost : '0'}.00`}</span>
         </div>
 
         <div className="py-2 flex flex-col gap-2">
@@ -225,7 +203,10 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
             <CartIcon />
             &nbsp; &nbsp;CHECKOUT
           </button>
-          <button className="bg-white py-3 text-black text-sm rounded-lg font-semibold border-[1px] border-black">
+          <button
+            onClick={handleViewCartClick}
+            className="bg-white py-3 text-black text-sm rounded-lg font-semibold border-[1px] border-black"
+          >
             View Cart
           </button>
         </div>

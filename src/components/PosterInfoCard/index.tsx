@@ -21,12 +21,13 @@ interface PosterInfoCardProps {
   posterImage: string;
   Quantity: number;
   posterId: string;
-  key: string;
+  unitPrice: number;
+
   handleRemovePoster: (value: string) => void;
+  handleCartQuantity: (id: string, isAdd: boolean, unitPrice: number) => void;
 }
 const PosterInfoCard: FC<PosterInfoCardProps> = ({
   posterImage,
-  key,
   albumName,
   singerName,
   size,
@@ -34,11 +35,14 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
   posterPrice,
   Quantity,
   posterId,
+  unitPrice,
   handleRemovePoster,
+  handleCartQuantity,
 }) => {
   const [counter, setCounter] = useState<number>(Quantity);
   const handleIncrement = (): void => {
     setCounter(counter + 1);
+    handleCartQuantity(posterId, true, unitPrice);
   };
 
   const handleDecrement = (): void => {
@@ -46,14 +50,12 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
       setCounter(1);
     } else {
       setCounter(counter - 1);
+      handleCartQuantity(posterId, false, unitPrice);
     }
   };
 
   return (
-    <div
-      key={key}
-      className="bg-white w-[78%] h-[31%] flex flex-row rounded-lg outline outline-white hover:outline-2 hover:outline-black relative cursor-pointer"
-    >
+    <div className="bg-white w-[78%] h-[31%] flex flex-row rounded-lg outline outline-white hover:outline-2 hover:outline-black relative cursor-pointer">
       <RemoveIcon
         className=" absolute top-[-1rem] right-[-1rem] cursor-pointer"
         onClick={() => {

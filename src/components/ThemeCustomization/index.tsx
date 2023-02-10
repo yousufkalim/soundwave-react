@@ -166,7 +166,6 @@ const Theme: FC<ThemeProps> = ({
             <ColorPickerIcon />
           </div>
         </div>
-
         <div className="py-1">
           <span className="text-sm">Select Font</span>
         </div>

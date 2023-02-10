@@ -7,6 +7,7 @@ import { ReactComponent as Cart } from '../../assets/cart.svg';
 import { Checkbox } from '@mui/material';
 import request from '../../api/request';
 import { useNavigate } from 'react-router-dom';
+import Spinner from '../../components/Spinner/Spinner';
 
 interface IFrameProps {
   frameType: string;
@@ -27,32 +28,37 @@ interface IResponsePoster {
   posterQuantity: number;
   _id: string;
 }
-interface IResponseCart {
+interface ICart {
   _id: string;
   totalPoster: IResponsePoster[];
   totalPrice: number;
   shippingCost: number;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
 }
 interface IResponseSuccess {
   success: boolean;
-  cart: IResponseCart;
+  cart: ICart;
 }
 
 const Checkout: FC = () => {
   const naviagte = useNavigate();
-  const [cartItems, setCartItems] = useState<IResponseCart>();
+  const [cart, setCart] = useState<ICart>({
+    _id: '',
+    totalPoster: [],
+    totalPrice: 0,
+    shippingCost: 0,
+  });
+  const [loading, setLoading] = useState<boolean>(false);
 
   const getCartData = (cartId: string): void => {
     if (cartId) {
+      setLoading(true);
       request<IResponseSuccess>('get', `/cart/${cartId}`)
         .then((res) => {
-          setCartItems(res.data.cart);
+          setCart(res.data.cart);
+          setLoading(false);
         })
-        .catch((err) => {
-          console.log('Get cart Error ', err.message);
+        .catch(() => {
+          setLoading(false);
         });
     }
   };
@@ -64,6 +70,7 @@ const Checkout: FC = () => {
   const handleRemovePoster = (posterId: string): void => {
     const cartId = localStorage.getItem('cartId');
     if (posterId && cartId) {
+      setLoading(true);
       request<IResponseSuccess>('patch', `/cart/deletePoster/${cartId}`, { posterId })
         .then((res) => {
           console.log('handleRemovePoster', res.data);
@@ -71,10 +78,57 @@ const Checkout: FC = () => {
         })
         .catch((err) => {
           console.log('Get cart Error ', err.message);
+          setLoading(false);
         });
     }
   };
 
+  const handleCartQuantity = (id: string, isAdd: boolean, unitPrice: number): void => {
+    const updatedCart = {
+      ...cart,
+      totalPoster: cart?.totalPoster.map((poster) => {
+        if (id === poster._id) {
+          if (isAdd) {
+            return {
+              ...poster,
+              posterQuantity: poster.posterQuantity + 1,
+              totalPrice: poster.totalPrice + poster.unitPrice,
+            };
+          }
+          return {
+            ...poster,
+            posterQuantity: poster.posterQuantity - 1,
+            totalPrice: poster.totalPrice - poster.unitPrice,
+          };
+        } else {
+          return poster;
+        }
+      }),
+      totalPrice: isAdd ? cart?.totalPrice + unitPrice : cart?.totalPrice - unitPrice,
+    };
+
+    updateCartQuantity(id, updatedCart, isAdd);
+  };
+
+  const updateCartQuantity = (id: string, updatedCart: ICart, isAdd: boolean): void => {
+    const updatedPoster = updatedCart.totalPoster.find((item) => item._id === id);
+    if (updatedPoster?._id) {
+      setLoading?.(true);
+      request('patch', `/cart/changePosterQuantity/${cart._id}`, {
+        isAdd,
+        posterId: updatedPoster?._id,
+        unitPrice: updatedPoster?.unitPrice,
+        quantity: updatedPoster.posterQuantity,
+      })
+        .then((res) => {
+          setCart(updatedCart);
+          setLoading?.(false);
+        })
+        .catch((err) => {
+          console.log('Update Error', err);
+        });
+    }
+  };
   useEffect(() => {
     const cartId = localStorage.getItem('cartId');
     if (cartId) {
@@ -83,8 +137,8 @@ const Checkout: FC = () => {
   }, []);
 
   const CartItems =
-    cartItems && cartItems?.totalPoster?.length > 0
-      ? cartItems?.totalPoster.map((item) => (
+    cart?.totalPoster?.length > 0
+      ? cart?.totalPoster.map((item) => (
           <PosterInfoCard
             posterImage={item.posterImage}
             key={item._id}
@@ -96,13 +150,15 @@ const Checkout: FC = () => {
             Quantity={item.posterQuantity}
             posterId={item._id}
             handleRemovePoster={handleRemovePoster}
+            handleCartQuantity={handleCartQuantity}
+            unitPrice={item.unitPrice}
           />
         ))
-      : cartItems && cartItems?.totalPoster?.length === 0 && <NoFramePlaceholder />;
-
+      : cart?.totalPoster?.length === 0 && <NoFramePlaceholder />;
   return (
-    <>
-      <Header HeaderTitle="Checkout" />
+    <div className="relative">
+      {loading && <Spinner />}
+      <Header HeaderTitle="Checkout" setLoading={setLoading} />
       <div className="flex h-[85vh]">
         <div className="bg-[#fcfcfc] w-[56%] flex flex-col items-center justify-center gap-5 ">
           {CartItems}
@@ -123,17 +179,15 @@ const Checkout: FC = () => {
             <div className="mb-2">
               <div className="text-[#454238] text-sm flex items-center justify-between my-3">
                 <span>Order value</span>
-                <i className="font-bold">${cartItems?.totalPrice}.00</i>
+                <i className="font-bold">${cart.totalPrice}.00</i>
               </div>
               <div className="text-[#454238] text-sm flex items-center justify-between my-3">
                 <span>Shipping</span>
-                <i className="font-bold">${cartItems?.shippingCost}.00</i>
+                <i className="font-bold">${cart.shippingCost}.00</i>
               </div>
               <div className="text-[#454238] text-md font-bold flex items-center justify-between border-t-[1px] my-4 py-4">
                 <span>Sub Total</span>
-                <i>
-                  {cartItems ? `$ ${cartItems?.totalPrice + cartItems?.shippingCost}.00` : `$0.00`}
-                </i>
+                <i>{`$ ${cart?.totalPrice ? cart.totalPrice + cart.shippingCost : '0'}.00`}</i>
               </div>
             </div>
             <p className="font-light text-sm my-4 text-[#454238]">
@@ -142,7 +196,14 @@ const Checkout: FC = () => {
               <span className="font-bold"> privacy policy.</span>
             </p>
             <div className="my-3">
-              <Checkbox color="success" />
+              <Checkbox
+                sx={{
+                  color: 'black',
+                  '&.Mui-checked': {
+                    color: 'black',
+                  },
+                }}
+              />
               <span className="font-light text-sm text-[#454238]">
                 I have read and agree to the website
                 <span className="font-bold"> terms and conditions</span>
@@ -150,12 +211,12 @@ const Checkout: FC = () => {
             </div>
             <div className="flex flex-col gap-3">
               <button
+                disabled={cart.totalPoster?.length === 0}
                 className={
-                  cartItems && cartItems.totalPoster.length > 0
+                  cart.totalPoster.length > 0
                     ? 'bg-black flex items-center justify-center h-12 rounded-xl cursor-pointer text-white text-sm font-semibold'
                     : 'bg-[#919B9B] flex items-center justify-center h-12 rounded-xl cursor-pointer text-white text-sm font-semibold'
                 }
-                disabled={cartItems?.totalPoster?.length === 0}
               >
                 <Cart className="w-4" />
                 &nbsp;&nbsp;Checkout
@@ -166,15 +227,13 @@ const Checkout: FC = () => {
                   'flex items-center justify-center h-12 rounded-xl cursor-pointer text-black text-sm font-semibold border-[1px] border-black'
                 }
               >
-                {cartItems && cartItems.totalPoster.length > 0
-                  ? 'Create Another Poster'
-                  : 'Create A Poster'}
+                {cart.totalPoster.length > 0 ? 'Create Another Poster' : 'Create A Poster'}
               </button>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
