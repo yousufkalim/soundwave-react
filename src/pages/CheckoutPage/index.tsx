@@ -8,6 +8,7 @@ import { Checkbox } from '@mui/material';
 import request from '../../api/request';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner/Spinner';
+import { toast } from 'react-toastify';
 
 interface IFrameProps {
   frameType: string;
@@ -38,7 +39,6 @@ interface IResponseSuccess {
   success: boolean;
   cart: ICart;
 }
-
 const Checkout: FC = () => {
   const naviagte = useNavigate();
   const [cart, setCart] = useState<ICart>({
@@ -48,7 +48,6 @@ const Checkout: FC = () => {
     shippingCost: 0,
   });
   const [loading, setLoading] = useState<boolean>(false);
-
   const getCartData = (cartId: string): void => {
     if (cartId) {
       setLoading(true);
@@ -57,32 +56,30 @@ const Checkout: FC = () => {
           setCart(res.data.cart);
           setLoading(false);
         })
-        .catch(() => {
+        .catch((err) => {
           setLoading(false);
+          toast.error(err.response.data.message);
         });
     }
   };
-
   const handleCreateAnotherPoster = (): void => {
     naviagte('/');
   };
-
   const handleRemovePoster = (posterId: string): void => {
     const cartId = localStorage.getItem('cartId');
     if (posterId && cartId) {
       setLoading(true);
       request<IResponseSuccess>('patch', `/cart/deletePoster/${cartId}`, { posterId })
-        .then((res) => {
-          console.log('handleRemovePoster', res.data);
+        .then(() => {
           getCartData(cartId);
+          toast.success('Poster removed from cart');
         })
         .catch((err) => {
-          console.log('Get cart Error ', err.message);
           setLoading(false);
+          toast.error(err.response.data.message);
         });
     }
   };
-
   const handleCartQuantity = (id: string, isAdd: boolean, unitPrice: number): void => {
     const updatedCart = {
       ...cart,
@@ -109,7 +106,6 @@ const Checkout: FC = () => {
 
     updateCartQuantity(id, updatedCart, isAdd);
   };
-
   const updateCartQuantity = (id: string, updatedCart: ICart, isAdd: boolean): void => {
     const updatedPoster = updatedCart.totalPoster.find((item) => item._id === id);
     if (updatedPoster?._id) {
@@ -125,7 +121,7 @@ const Checkout: FC = () => {
           setLoading?.(false);
         })
         .catch((err) => {
-          console.log('Update Error', err);
+          toast.error(err.response.data.message);
         });
     }
   };
@@ -158,7 +154,7 @@ const Checkout: FC = () => {
   return (
     <div className="relative">
       {loading && <Spinner />}
-      <Header HeaderTitle="Checkout" setLoading={setLoading} />
+      <Header HeaderTitle="Checkout" />
       <div className="flex h-[85vh]">
         <div className="bg-[#fcfcfc] w-[56%] flex flex-col items-center justify-center gap-5 ">
           {CartItems}
