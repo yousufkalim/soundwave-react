@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import Modal from '@mui/material/Modal';
 import { Box } from '@mui/system';
 import { ReactComponent as CrossIcon } from '../assets/CrossIcon.svg';
@@ -9,11 +9,15 @@ import { ReactComponent as CartIcon } from '../assets/cart.svg';
 import CartPosterDetails from '../components/CartPosterDetails';
 import request from '../api/request';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 interface CartModalProps {
   open: boolean;
   handleClose: () => void;
-  setLoading?: (loading: boolean) => void;
+  setLoading: (loading: boolean) => void;
+  cart: ICart;
+  setCart: (cart: ICart) => void;
+  getCartData: (value: string) => void;
 }
 interface IFrameProps {
   frameType: string;
@@ -34,10 +38,7 @@ interface IResponsePoster {
   posterQuantity: number;
   _id: string;
 }
-interface IResponseCart {
-  success: boolean;
-  cart: ICart;
-}
+
 interface ICart {
   _id: string;
   totalPoster: IResponsePoster[];
@@ -45,30 +46,30 @@ interface ICart {
   shippingCost: number;
 }
 
-const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
+const style = {
+  position: 'absolute' as const,
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  boxShadow: 24,
+  border: 'none',
+  p: 4,
+};
+
+const CartModal: FC<CartModalProps> = ({
+  open,
+  handleClose,
+  setLoading,
+  cart,
+  setCart,
+  getCartData,
+}) => {
   const navigate = useNavigate();
-  const style = {
-    position: 'absolute' as const,
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    boxShadow: 24,
-    border: 'none',
-    p: 4,
-  };
-
-  const [cart, setCart] = useState<ICart>({
-    _id: '',
-    totalPoster: [],
-    totalPrice: 0,
-    shippingCost: 0,
-  });
-
   useEffect(() => {
     if (open) {
       const cartId = localStorage.getItem('cartId');
       if (cartId) {
-        getCartData(cartId);
+        getCartData?.(cartId);
       }
     }
   }, [open]);
@@ -110,36 +111,14 @@ const CartModal: FC<CartModalProps> = ({ open, handleClose, setLoading }) => {
         unitPrice: updatedPoster?.unitPrice,
         quantity: updatedPoster.posterQuantity,
       })
-        .then((res) => {
+        .then(() => {
           setCart(updatedCart);
           setLoading?.(false);
         })
         .catch((err) => {
-          console.log('Update Error', err);
+          toast.error(err.response.data.message);
         });
     }
-  };
-
-  const getCartData = (cartId: string): void => {
-    setLoading?.(true);
-    request<IResponseCart>('get', `/cart/${cartId}`)
-      .then((res) => {
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        const cart = res.data.cart;
-        const data = {
-          shippingCost: cart.shippingCost,
-          totalPoster: cart.totalPoster,
-          totalPrice: cart.totalPrice,
-          _id: cart._id,
-        };
-        setCart(data);
-        setLoading?.(false);
-      })
-      .catch((err) => {
-        setLoading?.(false);
-
-        console.log('Get cart Error ', err.message);
-      });
   };
 
   const handleViewCartClick = (): void => {
