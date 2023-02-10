@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react';
 import Counter from '../Counter/index';
 import { ReactComponent as DeleteIcon } from '../../assets/DeleteIcon.svg';
 import request from '../../api/request';
+import { toast } from 'react-toastify';
 
 interface IFrameProps {
   frameType: string;
@@ -55,11 +56,11 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
   const deletePoster = (): void => {
     request('patch', `/cart/deletePoster/${cartId}`, { posterId: id })
       .then(() => {
-        console.log('Deleted');
         getCartData(cartId);
+        toast.success('Poster removed from cart');
       })
       .catch((err) => {
-        console.log('Delete poster ERROR ', err.message);
+        toast.error(err.response.data.message);
       });
   };
 
