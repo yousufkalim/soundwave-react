@@ -1,6 +1,5 @@
 // Init
 import React, { useContext, useState, createContext, ReactNode } from 'react';
-import User from '../types/user';
 
 interface IFrameProps {
   frameType: string;
@@ -30,8 +29,6 @@ interface IResponseCart {
 
 // Initializing Create Context Hook
 interface StoreType {
-  loggedIn?: boolean;
-  user?: User | object;
   cart?: IResponseCart | null;
 }
 const storeContext = createContext<StoreType | null>(null);
@@ -54,8 +51,6 @@ export const UpdateStore = (): UpdateStoreType => {
 export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Initializing State
   const [store, setStore] = useState<StoreType>({
-    loggedIn: false,
-    user: {},
     cart: null,
   });
 
