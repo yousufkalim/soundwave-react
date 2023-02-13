@@ -72,3 +72,13 @@ body {
 .css-79ws1d-MuiModal-root {
   z-index: 10 !important;
 }
+
+.template_album_name {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+}

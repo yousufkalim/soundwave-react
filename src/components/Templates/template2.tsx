@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveform from 'react-audio-waveform';
+import { rgbaToHex } from '../../utils/common';
 
 interface DatasetProps {
   songName: string;
@@ -71,6 +72,12 @@ const Template2: FC<Template2Props> = ({
     });
   }, []);
 
+  const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
+  const descriptionColor = colors.descriptionColor.includes('gradient')
+    ? colors.descriptionColor
+    : '';
+  const soundWaveColor = colors.soundWaveColor.includes('gradient') ? colors.soundWaveColor : '';
+
   return (
     <div
       id="custom-poster-template-1"
@@ -82,7 +89,7 @@ const Template2: FC<Template2Props> = ({
           container
           spacing={1}
           className={`h-[77%] px-1 py-3`}
-          style={{ backgroundColor: colors.boxColor }}
+          style={{ background: colors.boxColor }}
         >
           {dataSets.map((item) => (
             <Grid item xs={4} className="h-[4%]" key={item.trackId}>
@@ -90,23 +97,26 @@ const Template2: FC<Template2Props> = ({
                 // barWidth={1}
                 peaks={item.levels}
                 height={20}
-                color={colors.soundWaveColor}
+                color={rgbaToHex(colors.soundWaveColor)}
                 pixelRatio={1}
-                progressGradientColors={[
-                  [0, '#000000'],
-                  [1, '#000000'],
-                ]}
+                progressColor={rgbaToHex(colors.soundWaveColor)}
               />
               <div className="flex items-center justify-start gap-1 mt-3 pl-2">
                 <span
-                  style={{ color: colors.soundWaveColor }}
-                  className="text-[8.5px] font-semibold font-[Montserrat]"
+                  style={{
+                    backgroundColor: colors.soundWaveColor,
+                    backgroundImage: soundWaveColor,
+                  }}
+                  className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
                   &quot;{item.songName}&quot;
                 </span>
                 <span
-                  style={{ color: colors.soundWaveColor }}
-                  className="text-[8.5px] font-[Montserrat]"
+                  style={{
+                    backgroundColor: colors.soundWaveColor,
+                    backgroundImage: soundWaveColor,
+                  }}
+                  className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
                   {convertMilisecondToMinutes(item.time)}
                 </span>
@@ -119,15 +129,21 @@ const Template2: FC<Template2Props> = ({
         >
           <div className="text-center">
             <span
-              className={`text-4xl font-extrabold font-proxima-nova`}
-              style={{ color: colors.songTitleColor }}
+              className={`text-4xl font-extrabold font-proxima-nova template_album_name`}
+              style={{
+                backgroundColor: colors.songTitleColor,
+                backgroundImage: titleColor,
+              }}
             >
               <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}</i>
             </span>
           </div>
           <p
-            className={`text-[7px] bg-transparent tracking-tighter font-proxima-nova`}
-            style={{ color: colors.descriptionColor }}
+            className={`text-[7px] bg-transparent tracking-tighter font-proxima-nova template_album_name`}
+            style={{
+              backgroundColor: colors.descriptionColor,
+              backgroundImage: descriptionColor,
+            }}
           >
             {albumDescripition}
           </p>

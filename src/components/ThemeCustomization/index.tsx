@@ -59,8 +59,6 @@ const Theme: FC<ThemeProps> = ({
     },
   ];
 
-  console.log('Selected template ', selectedTemplate);
-
   // const handleShowColorPicker = (): void => {
   //   setShowColorPicker(!showColorPicker);
   // };
