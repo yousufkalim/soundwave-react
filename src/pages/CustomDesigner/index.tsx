@@ -32,6 +32,25 @@ interface IFrameProps {
   selectedFrame: string;
 }
 
+
+interface IStateColors {
+  boxColor: string;
+  posterColor: string;
+  soundWaveColor: string;
+  songTitleColor: string;
+  descriptionColor: string;
+}
+
+// interface ItemsProps {
+//   posterImage: string;
+//   posterQuantitiy: number;
+//   price: number;
+//   posterSize: string;
+//   frameStyle: string;
+//   albumName: string;
+//   singerName: string;
+// }
+
 interface IFrameProps {
   frameType: string;
   selectedFrame: string;
@@ -61,6 +80,7 @@ interface ICart {
   totalPrice: number;
   shippingCost: number;
 }
+
 
 const index: FC = () => {
   // state for header
@@ -93,11 +113,21 @@ const index: FC = () => {
   const [customDescription, setCustomDescription] = useState<boolean>(false);
 
   // states for step # 3
+  // ------> states for colorSetting
+  const [colors, setColors] = useState<IStateColors>({
+    boxColor: '',
+    posterColor: '',
+    soundWaveColor: '',
+    songTitleColor: '',
+    descriptionColor: '',
+  });
+
   const [primaryColor, setPrimaryColor] = useState<string>('');
-  const [boxColor, setBoxColor] = useState<string>('#D3D3D3');
-  const [posterColor, setPosterColor] = useState<boolean>(true);
-  const [soundWaveColor, setSoundWaveColor] = useState<boolean>(true);
-  const [songTitleColor, setSongTitleColor] = useState<boolean>(true);
+  // const [boxColor, setBoxColor] = useState<string>('#D3D3D3');
+  // const [posterColor, setPosterColor] = useState<string>('#D3D3D3');
+  // const [soundWaveColor, setSoundWaveColor] = useState<string>('#D3D3D3');
+  // const [songTitleColor, setSongTitleColor] = useState<string>('#D3D3D3');
+  // const [descriptionColor, setDescriptionColor] = useState<string>('#D3D3D3');
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   // states for step # 4
   const [frame, setFrame] = useState<IFrameProps>({
@@ -118,6 +148,39 @@ const index: FC = () => {
     : customAlbumDescripition;
 
   useGetPrimaryColor(selectedAlbum?.photo, setPrimaryColor);
+
+
+  const getSetColor = (currentColor: string, fieldName: string): void => {
+    // const updatedColors = colors.map((item) => fieldName === item)
+    setColors((prevState) => ({ ...prevState, [fieldName]: currentColor }));
+  };
+
+  console.log('ALL Colors ', colors);
+
+  const handleSettingData = () => {
+    const posterObject = {
+      posterImage: selectedAlbum?.photo,
+      posterQuantitiy: 2,
+      price: 120,
+      posterSize,
+      frameStyle: frame,
+      albumName: selectedAlbum?.label,
+      singerName: selectedAlbum?.singerName,
+    };
+    // checking for exitsing data
+    const cartItemArray = localStorage.getItem('posters');
+    console.log('🚀 ~ file: index.tsx:98 ~ handleSettingData ~ cartItemArray', cartItemArray);
+    if (!cartItemArray) {
+      const cartData = JSON.stringify([posterObject]);
+      localStorage.setItem('posters', cartData);
+    } else {
+      const parsedData = JSON.parse(cartItemArray);
+      const cartData = parsedData.push(posterObject);
+      localStorage.setItem('posters', cartData);
+    }
+  };
+
+
   const handleResetData = (): void => {
     // left side
     setDataSets([]);
@@ -176,6 +239,7 @@ const index: FC = () => {
   }, []);
 
   return (
+
     <>
       <div className="relative">
         {loading && <Spinner />}
@@ -186,16 +250,16 @@ const index: FC = () => {
         />
         <div className="flex h-[85vh]">
           <LeftSide
-            dataSets={dataSets}
-            albumDescripition={posterDescription}
-            selectedAlbum={selectedAlbum}
-            boxColor={boxColor}
-            posterColor={posterColor ? 'bg-white' : 'bg-black'}
-            soundWaveColor={soundWaveColor ? 'black' : 'black'}
-            songTitleColor={songTitleColor ? 'text-black' : 'text-black'}
-            activeAlignment={activeAlignment}
-            setActiveAlignment={setActiveAlignment}
-            selectedTemplate={selectedTemplate}
+
+          dataSets={dataSets}
+          albumDescripition={posterDescription}
+          selectedAlbum={selectedAlbum}
+          colors={colors}
+          setColors={setColors}
+          activeAlignment={activeAlignment}
+          setActiveAlignment={setActiveAlignment}
+          selectedTemplate={selectedTemplate}
+        
           />
           <RightSide
             // props for step # 1
@@ -215,13 +279,12 @@ const index: FC = () => {
             setCustomDescription={setCustomDescription}
             // props for step # 3
             primaryColor={primaryColor}
-            setBoxColor={setBoxColor}
-            posterColor={posterColor}
-            setPosterColor={setPosterColor}
-            soundWaveColor={soundWaveColor}
-            setSoundWaveColor={setSoundWaveColor}
-            songTitleColor={songTitleColor}
-            setSongTitleColor={setSongTitleColor}
+             boxColor={colors.boxColor}
+             posterColor={colors?.posterColor}
+            soundWaveColor={colors.soundWaveColor}
+          songTitleColor={colors.songTitleColor}
+          descriptionColor={colors.descriptionColor}
+          getSetColor={getSetColor}
             selectedTemplate={selectedTemplate}
             setSelectedTemplate={setSelectedTemplate}
             // props for step # 4

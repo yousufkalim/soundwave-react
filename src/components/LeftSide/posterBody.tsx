@@ -16,6 +16,7 @@ interface waveformProps {
   posterColor: string;
   soundWaveColor: string;
   songTitleColor: string;
+  descriptionColor: string;
   activeAlignment: string;
 }
 interface SelectedAlbumProps {
@@ -32,20 +33,25 @@ const PosterBody: FC<waveformProps> = ({
   posterColor,
   soundWaveColor,
   songTitleColor,
+  descriptionColor,
   activeAlignment,
 }) => {
+  console.log('Title color ', boxColor);
   return (
     <div
       id="custom-poster-div"
-      className={`${posterColor} w-[48%] h-[89%] shadow-lg shadow-[#BAB8B8] pt-8 pl-6 pr-4 relative mt-[3%]`}
+      style={{ background: posterColor }}
+      className={` w-[48%] h-[89%] shadow-lg shadow-[#BAB8B8] pt-8 pl-6 pr-4 relative mt-[3%]`}
     >
       <Waves dataSets={dataSets} boxColor={boxColor} soundWaveColor={soundWaveColor} />
       <div className={`break-words w-[90%] h-[23%] absolute bottom-2 ${activeAlignment}`}>
-        <span className={`${songTitleColor} text-4xl font-semibold `}>
+        <span style={{ color: songTitleColor }} className={`text-4xl font-semibold `}>
           <i>{selectedAlbum?.label ? selectedAlbum?.label : 'Album/Song Name'}</i>
         </span>
         <br />
-        <p className={`text-[7px] ${songTitleColor} tracking-tighter`}>{albumDescripition}</p>
+        <p style={{ color: descriptionColor }} className={`text-[7px] tracking-tighter`}>
+          {albumDescripition}
+        </p>
       </div>
     </div>
   );

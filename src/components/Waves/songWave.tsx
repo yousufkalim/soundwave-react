@@ -21,6 +21,8 @@ const SongWave: FC<SongWaveProps> = ({ item, key, soundWaveColor }) => {
     const seconds = Math.round((minutes - minutesAsInt) * 60);
     return `${minutesAsInt}:${seconds}`;
   };
+
+  console.log('Sound wave color ', soundWaveColor);
   return (
     <Grid item xs={4} className="h-[7%] py-3" key={key}>
       <Waveform

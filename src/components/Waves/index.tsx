@@ -21,7 +21,7 @@ const index: FC<WaveProps> = ({ dataSets, boxColor, soundWaveColor }) => {
       container
       spacing={1}
       className={`w-full h-[80%] py-1 px-2`}
-      style={{ backgroundColor: `${boxColor}` }}
+      style={{ background: `${boxColor}` }}
     >
       {dataSets.map((item) => (
         <SongWave item={item} soundWaveColor={soundWaveColor} key={item.trackId} />
