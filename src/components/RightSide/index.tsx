@@ -40,13 +40,11 @@ interface RightSideProps {
   setCustomDescription: (value: boolean) => void;
   customAlbumDescripition: string;
   setCustomAlbumDescripition: (value: string) => void;
-  posterColor: boolean;
-  soundWaveColor: boolean;
-  songTitleColor: boolean;
-  setBoxColor: (value: string) => void;
-  setPosterColor: (value: boolean) => void;
-  setSoundWaveColor: (value: boolean) => void;
-  setSongTitleColor: (value: boolean) => void;
+  boxColor: string;
+  descriptionColor: string;
+  posterColor: string;
+  soundWaveColor: string;
+  songTitleColor: string;
   posterSize: IPosterSize;
   setPosterSize: ({ value, unit }: IPosterSize) => void;
   addToCart: boolean;
@@ -54,6 +52,7 @@ interface RightSideProps {
   primaryColor: string;
   selectedTemplate: string;
   setSelectedTemplate: (value: string) => void;
+  getSetColor: (currentColor: string, fieldName: string) => void;
   frame: IFrameProps;
   setFrame: ({ frameType, selectedFrame }: IFrameProps) => void;
   handleSettingData: () => void;
@@ -118,13 +117,12 @@ const RightSide: FC<RightSideProps> = ({
   setCustomDescription,
   customAlbumDescripition,
   setCustomAlbumDescripition,
-  setBoxColor,
-  setPosterColor,
-  setSoundWaveColor,
-  setSongTitleColor,
   posterColor,
+  boxColor,
   soundWaveColor,
   songTitleColor,
+  descriptionColor,
+  getSetColor,
   posterSize,
   setPosterSize,
   addToCart,
@@ -238,13 +236,12 @@ const RightSide: FC<RightSideProps> = ({
             setOpenTheme={setOpenTheme}
             setOpenDescripition={setOpenDescripition}
             setOpenStyles={setOpenStyles}
+            boxColor={boxColor}
             posterColor={posterColor}
             soundWaveColor={soundWaveColor}
             songTitleColor={songTitleColor}
-            setBoxColor={setBoxColor}
-            setPosterColor={setPosterColor}
-            setSoundWaveColor={setSoundWaveColor}
-            setSongTitleColor={setSongTitleColor}
+            descriptionColor={descriptionColor}
+            getSetColor={getSetColor}
             selectedTemplate={selectedTemplate}
             setSelectedTemplate={setSelectedTemplate}
             setOpenSize={setOpenSize}

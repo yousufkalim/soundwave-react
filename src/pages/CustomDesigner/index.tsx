@@ -31,6 +31,14 @@ interface IFrameProps {
   selectedFrame: string;
 }
 
+interface IStateColors {
+  boxColor: string;
+  posterColor: string;
+  soundWaveColor: string;
+  songTitleColor: string;
+  descriptionColor: string;
+}
+
 // interface ItemsProps {
 //   posterImage: string;
 //   posterQuantitiy: number;
@@ -58,11 +66,19 @@ const index: FC = () => {
 
   // states for step # 3
   // ------> states for colorSetting
+  const [colors, setColors] = useState<IStateColors>({
+    boxColor: '',
+    posterColor: '',
+    soundWaveColor: '',
+    songTitleColor: '',
+    descriptionColor: '',
+  });
   const [primaryColor, setPrimaryColor] = useState<string>('');
-  const [boxColor, setBoxColor] = useState<string>('#D3D3D3');
-  const [posterColor, setPosterColor] = useState<boolean>(true);
-  const [soundWaveColor, setSoundWaveColor] = useState<boolean>(true);
-  const [songTitleColor, setSongTitleColor] = useState<boolean>(true);
+  // const [boxColor, setBoxColor] = useState<string>('#D3D3D3');
+  // const [posterColor, setPosterColor] = useState<string>('#D3D3D3');
+  // const [soundWaveColor, setSoundWaveColor] = useState<string>('#D3D3D3');
+  // const [songTitleColor, setSongTitleColor] = useState<string>('#D3D3D3');
+  // const [descriptionColor, setDescriptionColor] = useState<string>('#D3D3D3');
   const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -93,6 +109,13 @@ const index: FC = () => {
   // useEffect(() => {}, []);
 
   useGetPrimaryColor(selectedAlbum?.photo, setPrimaryColor);
+
+  const getSetColor = (currentColor: string, fieldName: string): void => {
+    // const updatedColors = colors.map((item) => fieldName === item)
+    setColors((prevState) => ({ ...prevState, [fieldName]: currentColor }));
+  };
+
+  console.log('ALL Colors ', colors);
 
   const handleSettingData = () => {
     const posterObject = {
@@ -132,10 +155,8 @@ const index: FC = () => {
           dataSets={dataSets}
           albumDescripition={posterDescription}
           selectedAlbum={selectedAlbum}
-          boxColor={boxColor}
-          posterColor={posterColor ? 'bg-white' : 'bg-black'}
-          soundWaveColor={soundWaveColor ? 'black' : 'black'}
-          songTitleColor={songTitleColor ? 'text-black' : 'text-black'}
+          colors={colors}
+          setColors={setColors}
           activeAlignment={activeAlignment}
           setActiveAlignment={setActiveAlignment}
           selectedTemplate={selectedTemplate}
@@ -156,13 +177,16 @@ const index: FC = () => {
           setCustomDescription={setCustomDescription}
           // props for step # 3
           primaryColor={primaryColor}
-          setBoxColor={setBoxColor}
-          posterColor={posterColor}
-          setPosterColor={setPosterColor}
-          soundWaveColor={soundWaveColor}
-          setSoundWaveColor={setSoundWaveColor}
-          songTitleColor={songTitleColor}
-          setSongTitleColor={setSongTitleColor}
+          // setBoxColor={colors?.setBoxColor}
+          boxColor={colors.boxColor}
+          posterColor={colors?.posterColor}
+          soundWaveColor={colors.soundWaveColor}
+          songTitleColor={colors.songTitleColor}
+          descriptionColor={colors.descriptionColor}
+          getSetColor={getSetColor}
+          // setPosterColor={colors?.setPosterColor}
+          // setSoundWaveColor={colors?.setSoundWaveColor}
+          // setSongTitleColor={setSongTitleColor}
           selectedTemplate={selectedTemplate}
           setSelectedTemplate={setSelectedTemplate}
           // props for step # 4
