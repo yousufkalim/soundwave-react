@@ -12,6 +12,7 @@ import Step5 from '../PosterSteps/step5';
 import { ReactComponent as TitleIcon } from '../../assets/titleIcon.svg';
 import { ReactComponent as Cart } from '../../assets/cart.svg';
 import request from '../../api/request';
+import { toast } from 'react-toastify';
 interface DataSetProps {
   songName: string;
   trackId: string;
@@ -29,6 +30,8 @@ interface IPosterSize {
   unit: string;
 }
 interface RightSideProps {
+  selected: string;
+  setSelected: (value: string) => void;
   handleDataSets: (val: DataSetProps[]) => void;
   selectedAlbum?: SelectedAlbumProps;
   setSelectedAlbum: (value: SelectedAlbumProps) => void;
@@ -55,9 +58,19 @@ interface RightSideProps {
   getSetColor: (currentColor: string, fieldName: string) => void;
   frame: IFrameProps;
   setFrame: ({ frameType, selectedFrame }: IFrameProps) => void;
-  handleSettingData: () => void;
   handleResetData: () => void;
   setLoading: (loading: boolean) => void;
+  getCartData: (value: string) => void;
+  openDescripition: boolean;
+  setOpenDescripition: (value: boolean) => void;
+  openTheme: boolean;
+  setOpenTheme: (value: boolean) => void;
+  openStyles: boolean;
+  setOpenStyles: (value: boolean) => void;
+  openSize: boolean;
+  setOpenSize: (value: boolean) => void;
+  activeStep: number;
+  setActiveStep: (value: number) => void;
 }
 
 interface IFrameProps {
@@ -106,6 +119,8 @@ interface IBody {
 }
 
 const RightSide: FC<RightSideProps> = ({
+  selected,
+  setSelected,
   handleDataSets,
   selectedAlbum,
   setSelectedAlbum,
@@ -132,22 +147,24 @@ const RightSide: FC<RightSideProps> = ({
   setSelectedTemplate,
   frame,
   setFrame,
-  handleSettingData,
   handleResetData,
   setLoading,
+  getCartData,
+  openDescripition,
+  setOpenDescripition,
+  openTheme,
+  setOpenTheme,
+  openStyles,
+  setOpenStyles,
+  openSize,
+  setOpenSize,
+  activeStep,
+  setActiveStep,
 }) => {
-  const [openDescripition, setOpenDescripition] = useState<boolean>(false);
-  const [openTheme, setOpenTheme] = useState<boolean>(false);
-  const [openStyles, setOpenStyles] = useState<boolean>(false);
-  const [openSize, setOpenSize] = useState<boolean>(false);
-  const [activeStep, setActiveStep] = useState<number>(1);
-  // const [ss, setSs] = useState('');
-
   const handleAddToCart = async () => {
     // const element = document.getElementById('custom-poster-template-1') as HTMLElement;
     // const canvas = await html2canvas(element, { allowTaint: true });
     // const imgData = canvas.toDataURL('image/png');
-    // setSs(imgData);
     const cartId = localStorage.getItem('cartId');
     setLoading(true);
     const posterData: IBody = {
@@ -168,25 +185,20 @@ const RightSide: FC<RightSideProps> = ({
     if (cartId) {
       posterData.cartId = cartId;
     }
-
     setAddToCart(!addToCart);
-    // handleSettingData();
     try {
       const data = await request<IResponseSuccess, IBody>('post', '/cart/add-poster', posterData);
       const cart = data.data.cart;
       localStorage.setItem('cartId', cart._id);
       handleResetData();
+      getCartData(cart._id);
       setLoading(false);
+      toast.success('Poster Added To Cart');
     } catch (err) {
       setLoading(false);
       console.log('Add cart Error ');
     }
-
-    // const cart = await data;
-    // console.log('General data ', data);
-    // console.log('General cart ', cart);
   };
-
   return (
     <div className="bg-white w-[44%] flex items-start justify-start mt-11 pl-20">
       <div className="w-[60%]">
@@ -210,6 +222,8 @@ const RightSide: FC<RightSideProps> = ({
             // steps active states
             activeStep={activeStep}
             setActiveStep={setActiveStep}
+            selected={selected}
+            setSelected={setSelected}
           />
           <Step2
             openDescripition={openDescripition}
