@@ -220,6 +220,7 @@ const index: FC = () => {
             activeAlignment={activeAlignment}
             setActiveAlignment={setActiveAlignment}
             selectedTemplate={selectedTemplate}
+            frame={frame}
           />
           <RightSide
             // props for step # 1

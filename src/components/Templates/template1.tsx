@@ -15,6 +15,11 @@ interface SelectedAlbumProps {
   singerName: string;
 }
 
+interface IFrameProps {
+  frameType: string;
+  selectedFrame: string;
+}
+
 interface Template1Props {
   activeAlignment: string;
   selectedAlbum?: SelectedAlbumProps;
@@ -28,6 +33,7 @@ interface Template1Props {
     songTitleColor,
     descriptionColor,
   }: IColors) => void;
+  frame: IFrameProps;
 }
 
 interface IColors {
@@ -45,6 +51,7 @@ const Template1: FC<Template1Props> = ({
   dataSets,
   colors,
   setColors,
+  frame,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -64,65 +71,67 @@ const Template1: FC<Template1Props> = ({
     console.log('USEEFFECT Runs');
   }, []);
 
-  console.log('Template colors ', colors);
+  console.log('Template colors ', frame);
 
   return (
     <div
       id="custom-poster-template-1"
-      className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] pt-6 pl-2 mt-[3%]`}
-      style={{ background: colors.posterColor }}
+      className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] p-2 mt-[3%]`}
+      style={{ background: '#000' }}
     >
-      <div className="flex items-center justify-center flex-col">
-        <span
-          className={`text-4xl font-extrabold font-[Montserrat]`}
-          style={{ color: colors.songTitleColor }}
+      <div className={`pt-6 pl-2 h-full`} style={{ background: colors.posterColor }}>
+        <div className="flex items-center justify-center flex-col">
+          <span
+            className={`text-4xl font-extrabold font-[Montserrat]`}
+            style={{ color: colors.songTitleColor }}
+          >
+            {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
+          </span>
+          <span className={`text-md font-[Montserrat]`} style={{ color: colors.songTitleColor }}>
+            {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
+          </span>
+        </div>
+        <Grid
+          container
+          spacing={1}
+          className={`h-[70%] px-2 py-3`}
+          style={{ background: colors?.boxColor }}
         >
-          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
-        </span>
-        <span className={`text-md font-[Montserrat]`} style={{ color: colors.songTitleColor }}>
-          {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
-        </span>
-      </div>
-      <Grid
-        container
-        spacing={1}
-        className={`h-[70%] px-2 py-3`}
-        style={{ background: colors?.boxColor }}
-      >
-        {dataSets.map((item) => (
-          <Grid item xs={4} className="h-[4%]" key={item.trackId}>
-            <Waveform
-              // barWidth={1}
-              peaks={item.levels}
-              height={20}
-              color={colors.soundWaveColor}
-              pixelRatio={1}
-              progressGradientColors={[
-                [0, '#FFF'],
-                [1, '#FFF'],
-              ]}
-            />
-            <div className="flex items-center justify-start gap-1 mt-3 pl-2">
-              <span
-                style={{ color: colors.soundWaveColor }}
-                className="text-[8.5px] font-semibold font-[Montserrat]"
-              >
-                &quot;{item.songName}&quot;
-              </span>
-              <span
-                style={{ color: colors.soundWaveColor }}
-                className="text-[8.5px] font-[Montserrat]"
-              >
-                {convertMilisecondToMinutes(item.time)}
-              </span>
-            </div>
-          </Grid>
-        ))}
-      </Grid>
-      <div className={`break-words w-[93%] h-[23%] ${activeAlignment}`}>
-        <p className={`text-[7px] bg-transparent text-white tracking-tighter font-[Montserrat]`}>
-          {albumDescripition}
-        </p>
+          {dataSets.map((item) => (
+            <Grid item xs={4} className="h-[4%]" key={item.trackId}>
+              <Waveform
+                // barWidth={1}
+                peaks={item.levels}
+                height={20}
+                color={colors.soundWaveColor}
+                pixelRatio={1}
+                progressGradientColors={[
+                  [0, '#FFF'],
+                  [1, '#FFF'],
+                ]}
+              />
+              <div className="flex items-center justify-start gap-1 mt-3 pl-2">
+                <span
+                  style={{ color: colors.soundWaveColor }}
+                  className="text-[8.5px] font-semibold font-[Montserrat]"
+                >
+                  &quot;{item.songName}&quot;
+                </span>
+                <span
+                  style={{ color: colors.soundWaveColor }}
+                  className="text-[8.5px] font-[Montserrat]"
+                >
+                  {convertMilisecondToMinutes(item.time)}
+                </span>
+              </div>
+            </Grid>
+          ))}
+        </Grid>
+        <div className={`break-words w-[93%] h-[23%] ${activeAlignment}`}>
+          <p className={`text-[7px] bg-transparent text-white tracking-tighter font-[Montserrat]`}>
+            {albumDescripition}
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -17,8 +17,6 @@ interface ThemeProps {
   getSetColor: (currentColor: string, fieldName: string) => void;
 }
 
-const filteredTemplates = ['template2, template3'];
-
 const Theme: FC<ThemeProps> = ({
   getSetColor,
   boxColor,
@@ -33,32 +31,34 @@ const Theme: FC<ThemeProps> = ({
       title: 'Poster box colour',
       name: 'boxColor',
       value: boxColor,
+      enabled: selectedTemplate === 'template2' || selectedTemplate === 'template3',
     },
     {
       title: 'Background',
       name: 'posterColor',
       value: posterColor,
+      enabled: true,
     },
     {
       title: 'Soundwave and Name Color',
       name: 'soundWaveColor',
       value: soundWaveColor,
+      enabled: true,
     },
     {
       title: 'Song Title',
       name: 'songTitleColor',
       value: songTitleColor,
+      enabled: true,
     },
     {
       title: 'Description',
       name: 'descriptionColor',
       value: descriptionColor,
+      enabled: true,
     },
   ];
 
-  const templatesColors = colorsArray.filter(
-    (item) => !filteredTemplates.includes(selectedTemplate) && item.name !== 'boxColor',
-  );
   console.log('Selected template ', selectedTemplate);
 
   // const handleShowColorPicker = (): void => {
@@ -110,15 +110,20 @@ const Theme: FC<ThemeProps> = ({
         </div>
       </div> */}
       <div className="flex justify-start flex-col">
-        {templatesColors?.map(({ name, value, title }) => (
-          <ColorPicker
-            key={name}
-            name={name}
-            value={value}
-            title={title}
-            getSetColor={getSetColor}
-          />
-        ))}
+        {colorsArray?.map(({ name, value, title, enabled }) => {
+          if (enabled) {
+            return (
+              <ColorPicker
+                key={name}
+                name={name}
+                value={value}
+                title={title}
+                getSetColor={getSetColor}
+              />
+            );
+          }
+          return null;
+        })}
 
         {/* <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
           <span className="text-sm">Poster Box Colour</span>
