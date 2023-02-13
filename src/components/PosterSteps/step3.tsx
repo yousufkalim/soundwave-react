@@ -8,15 +8,14 @@ interface Step3Props {
   setOpenTheme: (value: boolean) => void;
   setOpenDescripition: (value: boolean) => void;
   setOpenStyles: (value: boolean) => void;
-  setBoxColor: (value: string) => void;
-  setPosterColor: (value: boolean) => void;
-  setSoundWaveColor: (value: boolean) => void;
-  setSongTitleColor: (value: boolean) => void;
-  posterColor: boolean;
-  soundWaveColor: boolean;
-  songTitleColor: boolean;
-  // primaryColor: string;
+  boxColor: string;
+  posterColor: string;
+  soundWaveColor: string;
+  songTitleColor: string;
+  descriptionColor: string;
+  primaryColor: string;
   selectedTemplate: string;
+  getSetColor: (currentColor: string, fieldName: string) => void;
   setSelectedTemplate: (value: string) => void;
   setOpenSize: (value: boolean) => void;
   activeStep: number;
@@ -27,19 +26,20 @@ const step3: FC<Step3Props> = ({
   setOpenTheme,
   setOpenDescripition,
   setOpenStyles,
-  setBoxColor,
-  setPosterColor,
-  setSoundWaveColor,
-  setSongTitleColor,
+  boxColor,
   posterColor,
   soundWaveColor,
   songTitleColor,
-  // primaryColor,
+
+  descriptionColor,
+  primaryColor,
+
   selectedTemplate,
   setSelectedTemplate,
   setOpenSize,
   activeStep,
   setActiveStep,
+  getSetColor,
 }) => {
   // const ref = useRef<HTMLDivElement>(null);
   const [selectedSection, setSelectedSection] = useState<string>('btn1');
@@ -85,14 +85,14 @@ const step3: FC<Step3Props> = ({
         ) : (
           selectedSection === 'btn2' && (
             <ThemeCustomizationBox
-              setBoxColor={setBoxColor}
-              setPosterColor={setPosterColor}
-              setSoundWaveColor={setSoundWaveColor}
-              setSongTitleColor={setSongTitleColor}
+              selectedTemplate={selectedTemplate}
+              boxColor={boxColor}
               posterColor={posterColor}
               soundWaveColor={soundWaveColor}
               songTitleColor={songTitleColor}
-              // primaryColor={primaryColor}
+              descriptionColor={descriptionColor}
+              primaryColor={primaryColor}
+              getSetColor={getSetColor}
             />
           )
         )}

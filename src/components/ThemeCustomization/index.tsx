@@ -1,40 +1,69 @@
-// import GradientPicker from 'react-best-gradient-color-picker';
 // import Checkbox from '../Checkbox/index';
 // import { ReactComponent as PickerImage } from '../../assets/colorPicker.svg';
-import { ReactComponent as ColorPickerIcon } from '../../assets/colorPickerIcon.svg';
 
 import React, {
   FC,
-  // useState,
   // , useRef, useEffect
 } from 'react';
+import ColorPicker from '../ColorPicker/ColorPicker';
 
 interface ThemeProps {
-  setBoxColor: (value: string) => void;
-  setPosterColor: (value: boolean) => void;
-  setSoundWaveColor: (value: boolean) => void;
-  setSongTitleColor: (value: boolean) => void;
-  posterColor: boolean;
-  soundWaveColor: boolean;
-  songTitleColor: boolean;
-  // primaryColor: string;
+
+  boxColor: string;
+  posterColor: string;
+  soundWaveColor: string;
+  songTitleColor: string;
+  descriptionColor: string;
+  primaryColor: string;
+  selectedTemplate: string;
+  getSetColor: (currentColor: string, fieldName: string) => void;
 }
 
+const filteredTemplates = ['template2, template3'];
+
 const Theme: FC<ThemeProps> = ({
-  setBoxColor,
-  setPosterColor,
-  setSoundWaveColor,
-  setSongTitleColor,
+  getSetColor,
+  boxColor,
   posterColor,
   soundWaveColor,
   songTitleColor,
-  // primaryColor,
+
+  descriptionColor,
+  selectedTemplate,
+  primaryColor,
 }) => {
-  // const [color, setColor] = useState<string>('rgba(255,255,255,1)');
-  // const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
-  // const handleAlbumColor = (color: string): void => {
-  //   setBoxColor(color);
-  // };
+  const colorsArray = [
+    {
+      title: 'Poster box colour',
+      name: 'boxColor',
+      value: boxColor,
+    },
+    {
+      title: 'Background',
+      name: 'posterColor',
+      value: posterColor,
+    },
+    {
+      title: 'Soundwave and Name Color',
+      name: 'soundWaveColor',
+      value: soundWaveColor,
+    },
+    {
+      title: 'Song Title',
+      name: 'songTitleColor',
+      value: songTitleColor,
+    },
+    {
+      title: 'Description',
+      name: 'descriptionColor',
+      value: descriptionColor,
+    },
+  ];
+
+  const templatesColors = colorsArray.filter(
+    (item) => !filteredTemplates.includes(selectedTemplate) && item.name !== 'boxColor',
+  );
+  console.log('Selected template ', selectedTemplate);
 
   // const handleShowColorPicker = (): void => {
   //   setShowColorPicker(!showColorPicker);
@@ -84,36 +113,25 @@ const Theme: FC<ThemeProps> = ({
           <PickerImage />
         </div>
       </div> */}
-      {/* {showColorPicker && (
-        <div className="absolute z-50 right-[18.5rem] bottom-[7rem] bg-gray-100 p-1 shadow-2xl shadow-[#BAB8B8] border-solid border-2 border-gray-300 rounded-lg">
-          <GradientPicker
-            hideAdvancedSliders={true}
-            hideColorGuide={true}
-            hideControls={false}
-            hideInputType={true}
-            hidePresets={false}
-            hideOpacity={true}
-            hideEyeDrop={true}
-            hideInputs={true}
-            hideHue={false}
-            value={color}
-            onChange={setColor}
-            width={270}
-            height={120}
-            direction="vertical"
-            gradient={'linear-gradient(90deg, #ff0000 0%, #0000ff 100%)'}
-          />
-        </div>
-      )} */}
       <div className="flex justify-start flex-col">
-        <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
+        {templatesColors?.map(({ name, value, title }) => (
+          <ColorPicker
+            key={name}
+            name={name}
+            value={value}
+            title={title}
+            getSetColor={getSetColor}
+          />
+        ))}
+
+        {/* <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
           <span className="text-sm">Poster Box Colour</span>
           <div
             style={{ backgroundColor: `black` }}
             className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
-            // onClick={() => {
-            //   handleAlbumColor(primaryColor);
-            // }}
+            onClick={() => {
+              handleAlbumColor(primaryColor);
+            }}
           >
             <ColorPickerIcon />
           </div>
@@ -123,9 +141,9 @@ const Theme: FC<ThemeProps> = ({
           <div
             style={{ backgroundColor: `black` }}
             className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
-            // onClick={() => {
-            //   handleAlbumColor(primaryColor);
-            // }}
+            onClick={() => {
+              handleAlbumColor(primaryColor);
+            }}
           >
             <ColorPickerIcon />
           </div>
@@ -135,9 +153,9 @@ const Theme: FC<ThemeProps> = ({
           <div
             style={{ backgroundColor: `black` }}
             className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
-            // onClick={() => {
-            //   handleAlbumColor(primaryColor);
-            // }}
+            onClick={() => {
+              handleAlbumColor(primaryColor);
+            }}
           >
             <ColorPickerIcon />
           </div>
@@ -147,9 +165,9 @@ const Theme: FC<ThemeProps> = ({
           <div
             style={{ backgroundColor: `black` }}
             className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
-            // onClick={() => {
-            //   handleAlbumColor(primaryColor);
-            // }}
+            onClick={() => {
+              handleAlbumColor(primaryColor);
+            }}
           >
             <ColorPickerIcon />
           </div>
@@ -159,13 +177,16 @@ const Theme: FC<ThemeProps> = ({
           <div
             style={{ backgroundColor: `black` }}
             className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
-            // onClick={() => {
-            //   handleAlbumColor(primaryColor);
-            // }}
+            onClick={() => {
+              handleAlbumColor(primaryColor);
+            }}
           >
             <ColorPickerIcon />
           </div>
-        </div>
+
+        </div> */}
+
+
         <div className="py-1">
           <span className="text-sm">Select Font</span>
         </div>

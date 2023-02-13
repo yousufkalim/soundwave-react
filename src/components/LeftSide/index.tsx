@@ -21,31 +21,94 @@ interface SelectedAlbumProps {
   photo: string;
   singerName: string;
 }
-interface waveformProps {
-  dataSets: DatasetProps[];
-  albumDescripition: string;
-  selectedAlbum?: SelectedAlbumProps;
+
+interface IColors {
   boxColor: string;
   posterColor: string;
   soundWaveColor: string;
   songTitleColor: string;
+  descriptionColor: string;
+}
+interface waveformProps {
+  dataSets: DatasetProps[];
+  albumDescripition: string;
+  selectedAlbum?: SelectedAlbumProps;
   activeAlignment: string;
   setActiveAlignment: (value: string) => void;
+  colors: IColors;
+  setColors: ({
+    boxColor,
+    posterColor,
+    soundWaveColor,
+    songTitleColor,
+    descriptionColor,
+  }: IColors) => void;
   selectedTemplate: string;
 }
+
+// const templatesArr = [
+//   {
+//     name: 'template1',
+//     boxColor: 'transparent',
+//     posterColor: '#000000',
+//     soundWaveColor: '#ffffff',
+//     songTitleColor: '#ffffff',
+//     descriptionColor: '#ffffff',
+//   },
+//   {
+//     name: 'template2',
+//     boxColor: 'transparent',
+//     posterColor: '#000000',
+//     soundWaveColor: '#ffffff',
+//     songTitleColor: '#ffffff',
+//     descriptionColor: '#ffffff',
+//   },
+//   {
+//     name: 'template3',
+//     boxColor: 'transparent',
+//     posterColor: '#000000',
+//     soundWaveColor: '#ffffff',
+//     songTitleColor: '#ffffff',
+//     descriptionColor: '#ffffff',
+//   },
+//   {
+//     name: 'template4',
+//     boxColor: 'transparent',
+//     posterColor: '#000000',
+//     soundWaveColor: '#ffffff',
+//     songTitleColor: '#ffffff',
+//     descriptionColor: '#ffffff',
+//   },
+//   {
+//     name: 'template5',
+//     boxColor: 'transparent',
+//     posterColor: '#000000',
+//     soundWaveColor: '#ffffff',
+//     songTitleColor: '#ffffff',
+//     descriptionColor: '#ffffff',
+//   },
+//   {
+//     name: 'template6',
+//     boxColor: 'transparent',
+//     posterColor: '#000000',
+//     soundWaveColor: '#ffffff',
+//     songTitleColor: '#ffffff',
+//     descriptionColor: '#ffffff',
+//   },
+// ];
 
 const index: FC<waveformProps> = ({
   dataSets,
   albumDescripition,
   selectedAlbum,
-  boxColor,
-  posterColor,
-  soundWaveColor,
-  songTitleColor,
+  colors,
   activeAlignment,
   setActiveAlignment,
   selectedTemplate,
+  setColors,
 }) => {
+  // const currentTemplate = templatesArr.find((item) => item.name === selectedTemplate);
+
   return (
     <div className="bg-[#fcfcfc] w-[56%] flex items-center justify-center flex-col gap-6">
       {selectedTemplate === 'template1' ? (
@@ -54,6 +117,8 @@ const index: FC<waveformProps> = ({
           selectedAlbum={selectedAlbum}
           albumDescripition={albumDescripition}
           dataSets={dataSets}
+          colors={colors}
+          setColors={setColors}
         />
       ) : selectedTemplate === 'template2' ? (
         <Template2
@@ -61,6 +126,8 @@ const index: FC<waveformProps> = ({
           selectedAlbum={selectedAlbum}
           albumDescripition={albumDescripition}
           dataSets={dataSets}
+          colors={colors}
+          setColors={setColors}
         />
       ) : selectedTemplate === 'template3' ? (
         <Template3
@@ -68,6 +135,8 @@ const index: FC<waveformProps> = ({
           selectedAlbum={selectedAlbum}
           albumDescripition={albumDescripition}
           dataSets={dataSets}
+          colors={colors}
+          setColors={setColors}
         />
       ) : selectedTemplate === 'template4' ? (
         <Template4
@@ -75,6 +144,8 @@ const index: FC<waveformProps> = ({
           selectedAlbum={selectedAlbum}
           albumDescripition={albumDescripition}
           dataSets={dataSets}
+          colors={colors}
+          setColors={setColors}
         />
       ) : selectedTemplate === 'template5' ? (
         <Template5
@@ -82,6 +153,8 @@ const index: FC<waveformProps> = ({
           selectedAlbum={selectedAlbum}
           albumDescripition={albumDescripition}
           dataSets={dataSets}
+          colors={colors}
+          setColors={setColors}
         />
       ) : selectedTemplate === 'template6' ? (
         <Template6
@@ -89,16 +162,19 @@ const index: FC<waveformProps> = ({
           selectedAlbum={selectedAlbum}
           albumDescripition={albumDescripition}
           dataSets={dataSets}
+          colors={colors}
+          setColors={setColors}
         />
       ) : (
         <PosterBody
           dataSets={dataSets}
           albumDescripition={albumDescripition}
           selectedAlbum={selectedAlbum}
-          boxColor={boxColor}
-          posterColor={posterColor}
-          soundWaveColor={soundWaveColor}
-          songTitleColor={songTitleColor}
+          boxColor={colors.boxColor}
+          posterColor={colors.posterColor}
+          soundWaveColor={colors.soundWaveColor}
+          songTitleColor={colors.songTitleColor}
+          descriptionColor={colors.descriptionColor}
           activeAlignment={activeAlignment}
         />
       )}
