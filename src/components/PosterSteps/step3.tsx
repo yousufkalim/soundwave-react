@@ -30,8 +30,10 @@ const step3: FC<Step3Props> = ({
   posterColor,
   soundWaveColor,
   songTitleColor,
+
   descriptionColor,
   primaryColor,
+
   selectedTemplate,
   setSelectedTemplate,
   setOpenSize,

@@ -8,6 +8,7 @@ import React, {
 import ColorPicker from '../ColorPicker/ColorPicker';
 
 interface ThemeProps {
+
   boxColor: string;
   posterColor: string;
   soundWaveColor: string;
@@ -26,6 +27,7 @@ const Theme: FC<ThemeProps> = ({
   posterColor,
   soundWaveColor,
   songTitleColor,
+
   descriptionColor,
   selectedTemplate,
   primaryColor,

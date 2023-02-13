@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
-import React, { FC, useState, useEffect } from 'react';
-import html2canvas from 'html2canvas';
+import React, { FC } from 'react';
+// import html2canvas from 'html2canvas';
 import Step1 from '../PosterSteps/step1';
 import Step2 from '../PosterSteps/step2';
 import Step3 from '../PosterSteps/step3';
@@ -52,7 +52,7 @@ interface RightSideProps {
   setPosterSize: ({ value, unit }: IPosterSize) => void;
   addToCart: boolean;
   setAddToCart: (value: boolean) => void;
-  primaryColor: string;
+  // primaryColor: string;
   selectedTemplate: string;
   setSelectedTemplate: (value: string) => void;
   getSetColor: (currentColor: string, fieldName: string) => void;
@@ -71,6 +71,8 @@ interface RightSideProps {
   setOpenSize: (value: boolean) => void;
   activeStep: number;
   setActiveStep: (value: number) => void;
+  selectedCanvas: string;
+  setSelectedCanvas: (value: string) => void;
 }
 
 interface IFrameProps {
@@ -110,6 +112,7 @@ interface IBodyTotalPoster {
   totalPrice: number;
   size: IPosterSize;
   frame: IFrameProps;
+  canvasSize: string;
   albumName?: string;
   singerName?: string;
 }
@@ -142,7 +145,7 @@ const RightSide: FC<RightSideProps> = ({
   setPosterSize,
   addToCart,
   setAddToCart,
-  primaryColor,
+  // primaryColor,
   selectedTemplate,
   setSelectedTemplate,
   frame,
@@ -160,6 +163,8 @@ const RightSide: FC<RightSideProps> = ({
   setOpenSize,
   activeStep,
   setActiveStep,
+  selectedCanvas,
+  setSelectedCanvas,
 }) => {
   const handleAddToCart = async () => {
     // const element = document.getElementById('custom-poster-template-1') as HTMLElement;
@@ -175,6 +180,7 @@ const RightSide: FC<RightSideProps> = ({
           unitPrice: 120,
           totalPrice: 120,
           size: posterSize,
+          canvasSize: selectedCanvas,
           frame,
           albumName: selectedAlbum?.label,
           singerName: selectedAlbum?.singerName,
@@ -245,7 +251,7 @@ const RightSide: FC<RightSideProps> = ({
             setActiveStep={setActiveStep}
           />
           <Step3
-            primaryColor={primaryColor}
+            // primaryColor={primaryColor}
             openTheme={openTheme}
             setOpenTheme={setOpenTheme}
             setOpenDescripition={setOpenDescripition}
@@ -274,6 +280,8 @@ const RightSide: FC<RightSideProps> = ({
             setActiveStep={setActiveStep}
             frame={frame}
             setFrame={setFrame}
+            selectedCanvas={selectedCanvas}
+            setSelectedCanvas={setSelectedCanvas}
           />
           <Step5
             setOpenTheme={setOpenTheme}
