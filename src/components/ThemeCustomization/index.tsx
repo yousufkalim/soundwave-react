@@ -17,7 +17,7 @@ interface ThemeProps {
   posterColor: boolean;
   soundWaveColor: boolean;
   songTitleColor: boolean;
-  primaryColor: string;
+  // primaryColor: string;
 }
 
 const Theme: FC<ThemeProps> = ({
@@ -28,7 +28,7 @@ const Theme: FC<ThemeProps> = ({
   posterColor,
   soundWaveColor,
   songTitleColor,
-  primaryColor,
+  // primaryColor,
 }) => {
   // const [color, setColor] = useState<string>('rgba(255,255,255,1)');
   // const [showColorPicker, setShowColorPicker] = useState<boolean>(false);

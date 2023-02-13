@@ -4,7 +4,6 @@ import ThemeBtnBox from '../themeCustomizationBtnBox/index';
 import PosterFrame from '../PosterFrames/index';
 import PosterCanvas from '../PosterCanvas/index';
 
-
 interface IFrameProps {
   frameType: string;
   selectedFrame: string;
@@ -19,8 +18,8 @@ interface Step4Props {
   setActiveStep: (value: number) => void;
   frame: IFrameProps;
   setFrame: ({ frameType, selectedFrame }: IFrameProps) => void;
-  // selectedFrame:string
-  // setSelectedFrame
+  selectedCanvas: string;
+  setSelectedCanvas: (value: string) => void;
 }
 
 const step4: FC<Step4Props> = ({
@@ -33,12 +32,10 @@ const step4: FC<Step4Props> = ({
   setActiveStep,
   frame,
   setFrame,
-  // selectedFrame,
-  // setSelectedFrame
+  selectedCanvas,
+  setSelectedCanvas,
 }) => {
   const [selectedSection, setSelectedSection] = useState<string>('btn1');
-
-  const [selectedCanvas, setSelectedCanvas] = useState<string>('');
 
   const handleButtonClick = (targetSection: string): void => {
     setSelectedSection(targetSection);

@@ -11,10 +11,10 @@ const PosterCanvas: FC<PosterCanvasProps> = ({ selectedCanvas, handleSelectedCan
       <div className="flex items-center justify-start gap-4 my-2">
         <div
           onClick={() => {
-            handleSelectedCanvas('Thin');
+            handleSelectedCanvas('2-3 cm');
           }}
           className={
-            selectedCanvas === 'Thin'
+            selectedCanvas === '2-3 cm'
               ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-5 py-4 flex flex-col'
               : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-5 py-4 flex flex-col'
           }
@@ -26,10 +26,10 @@ const PosterCanvas: FC<PosterCanvasProps> = ({ selectedCanvas, handleSelectedCan
         </div>
         <div
           onClick={() => {
-            handleSelectedCanvas('Think');
+            handleSelectedCanvas('4 cm');
           }}
           className={
-            selectedCanvas === 'Think'
+            selectedCanvas === '4 cm'
               ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-5 py-4 flex flex-col'
               : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-5 py-4 flex flex-col'
           }
