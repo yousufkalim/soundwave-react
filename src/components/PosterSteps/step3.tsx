@@ -13,7 +13,6 @@ interface Step3Props {
   soundWaveColor: string;
   songTitleColor: string;
   descriptionColor: string;
-  primaryColor: string;
   selectedTemplate: string;
   getSetColor: (currentColor: string, fieldName: string) => void;
   setSelectedTemplate: (value: string) => void;
@@ -30,10 +29,7 @@ const step3: FC<Step3Props> = ({
   posterColor,
   soundWaveColor,
   songTitleColor,
-
   descriptionColor,
-  primaryColor,
-
   selectedTemplate,
   setSelectedTemplate,
   setOpenSize,
@@ -91,7 +87,6 @@ const step3: FC<Step3Props> = ({
               soundWaveColor={soundWaveColor}
               songTitleColor={songTitleColor}
               descriptionColor={descriptionColor}
-              primaryColor={primaryColor}
               getSetColor={getSetColor}
             />
           )

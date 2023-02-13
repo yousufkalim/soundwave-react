@@ -8,13 +8,11 @@ import React, {
 import ColorPicker from '../ColorPicker/ColorPicker';
 
 interface ThemeProps {
-
   boxColor: string;
   posterColor: string;
   soundWaveColor: string;
   songTitleColor: string;
   descriptionColor: string;
-  primaryColor: string;
   selectedTemplate: string;
   getSetColor: (currentColor: string, fieldName: string) => void;
 }
@@ -27,10 +25,8 @@ const Theme: FC<ThemeProps> = ({
   posterColor,
   soundWaveColor,
   songTitleColor,
-
   descriptionColor,
   selectedTemplate,
-  primaryColor,
 }) => {
   const colorsArray = [
     {
@@ -185,7 +181,6 @@ const Theme: FC<ThemeProps> = ({
           </div>
 
         </div> */}
-
 
         <div className="py-1">
           <span className="text-sm">Select Font</span>

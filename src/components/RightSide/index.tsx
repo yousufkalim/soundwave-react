@@ -145,7 +145,6 @@ const RightSide: FC<RightSideProps> = ({
   setPosterSize,
   addToCart,
   setAddToCart,
-  // primaryColor,
   selectedTemplate,
   setSelectedTemplate,
   frame,
@@ -251,7 +250,6 @@ const RightSide: FC<RightSideProps> = ({
             setActiveStep={setActiveStep}
           />
           <Step3
-            // primaryColor={primaryColor}
             openTheme={openTheme}
             setOpenTheme={setOpenTheme}
             setOpenDescripition={setOpenDescripition}
