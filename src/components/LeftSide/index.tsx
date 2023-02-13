@@ -29,6 +29,11 @@ interface IColors {
   songTitleColor: string;
   descriptionColor: string;
 }
+
+interface IFrameProps {
+  frameType: string;
+  selectedFrame: string;
+}
 interface waveformProps {
   dataSets: DatasetProps[];
   albumDescripition: string;
@@ -44,6 +49,7 @@ interface waveformProps {
     descriptionColor,
   }: IColors) => void;
   selectedTemplate: string;
+  frame: IFrameProps;
 }
 
 // const templatesArr = [
@@ -106,6 +112,7 @@ const index: FC<waveformProps> = ({
   setActiveAlignment,
   selectedTemplate,
   setColors,
+  frame,
 }) => {
   // const currentTemplate = templatesArr.find((item) => item.name === selectedTemplate);
 
@@ -119,6 +126,7 @@ const index: FC<waveformProps> = ({
           dataSets={dataSets}
           colors={colors}
           setColors={setColors}
+          frame={frame}
         />
       ) : selectedTemplate === 'template2' ? (
         <Template2
@@ -128,6 +136,7 @@ const index: FC<waveformProps> = ({
           dataSets={dataSets}
           colors={colors}
           setColors={setColors}
+          frame={frame}
         />
       ) : selectedTemplate === 'template3' ? (
         <Template3
@@ -137,6 +146,7 @@ const index: FC<waveformProps> = ({
           dataSets={dataSets}
           colors={colors}
           setColors={setColors}
+          frame={frame}
         />
       ) : selectedTemplate === 'template4' ? (
         <Template4
@@ -146,6 +156,7 @@ const index: FC<waveformProps> = ({
           dataSets={dataSets}
           colors={colors}
           setColors={setColors}
+          frame={frame}
         />
       ) : selectedTemplate === 'template5' ? (
         <Template5
@@ -155,6 +166,7 @@ const index: FC<waveformProps> = ({
           dataSets={dataSets}
           colors={colors}
           setColors={setColors}
+          frame={frame}
         />
       ) : selectedTemplate === 'template6' ? (
         <Template6
@@ -164,6 +176,7 @@ const index: FC<waveformProps> = ({
           dataSets={dataSets}
           colors={colors}
           setColors={setColors}
+          frame={frame}
         />
       ) : (
         <PosterBody
