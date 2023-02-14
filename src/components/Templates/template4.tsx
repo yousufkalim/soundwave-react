@@ -34,6 +34,7 @@ interface Template4Props {
     soundWaveColor,
     songTitleColor,
     descriptionColor,
+    soundWaveNameColor,
   }: IColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
@@ -45,6 +46,7 @@ interface IColors {
   soundWaveColor: string;
   songTitleColor: string;
   descriptionColor: string;
+  soundWaveNameColor: string;
 }
 
 const Template4: FC<Template4Props> = ({
@@ -69,6 +71,7 @@ const Template4: FC<Template4Props> = ({
       boxColor: '#000',
       posterColor: '#000',
       soundWaveColor: '#fff',
+      soundWaveNameColor: '#fff',
       songTitleColor: '#fff',
       descriptionColor: '#fff',
     });
@@ -78,7 +81,9 @@ const Template4: FC<Template4Props> = ({
   const descriptionColor = colors.descriptionColor.includes('gradient')
     ? colors.descriptionColor
     : '';
-  const soundWaveColor = colors.soundWaveColor.includes('gradient') ? colors.soundWaveColor : '';
+  const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
+    ? colors.soundWaveNameColor
+    : '';
 
   return (
     <div
@@ -109,8 +114,8 @@ const Template4: FC<Template4Props> = ({
               <div className="flex items-center justify-start gap-1 mt-3 pl-2">
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveColor,
-                    backgroundImage: soundWaveColor,
+                    backgroundColor: colors.soundWaveNameColor,
+                    backgroundImage: soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
@@ -118,8 +123,8 @@ const Template4: FC<Template4Props> = ({
                 </span>
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveColor,
-                    backgroundImage: soundWaveColor,
+                    backgroundColor: colors.soundWaveNameColor,
+                    backgroundImage: soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-[Montserrat] template_album_name"
                 >

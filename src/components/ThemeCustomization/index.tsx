@@ -13,6 +13,7 @@ interface ThemeProps {
   soundWaveColor: string;
   songTitleColor: string;
   descriptionColor: string;
+  soundWaveNameColor: string;
   selectedTemplate: string;
   getSetColor: (currentColor: string, fieldName: string) => void;
 }
@@ -24,6 +25,7 @@ const Theme: FC<ThemeProps> = ({
   soundWaveColor,
   songTitleColor,
   descriptionColor,
+  soundWaveNameColor,
   selectedTemplate,
 }) => {
   const colorsArray = [
@@ -40,7 +42,13 @@ const Theme: FC<ThemeProps> = ({
       enabled: true,
     },
     {
-      title: 'Soundwave and Name Color',
+      title: 'Soundwave Name Color',
+      name: 'soundWaveNameColor',
+      value: soundWaveNameColor,
+      enabled: true,
+    },
+    {
+      title: 'Soundwave Color',
       name: 'soundWaveColor',
       value: soundWaveColor,
       enabled: true,
