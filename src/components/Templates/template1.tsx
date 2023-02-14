@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveform from 'react-audio-waveform';
+// import Black from '../../assets/PosterFrames/Black.svg';
 
 interface DatasetProps {
   songName: string;
@@ -34,6 +35,7 @@ interface Template1Props {
     descriptionColor,
   }: IColors) => void;
   frame: IFrameProps;
+  BackgroundFrame: string;
 }
 
 interface IColors {
@@ -52,6 +54,7 @@ const Template1: FC<Template1Props> = ({
   colors,
   setColors,
   frame,
+  BackgroundFrame,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -68,16 +71,17 @@ const Template1: FC<Template1Props> = ({
       songTitleColor: 'rgba(255, 255, 255, 1)',
       descriptionColor: 'rgba(255, 255, 255, 1)',
     });
-    console.log('USEEFFECT Runs');
   }, []);
-
-  console.log('Template colors ', frame);
 
   return (
     <div
-      id="custom-poster-template-1"
-      className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] p-2 mt-[3%]`}
-      style={{ background: '#000' }}
+      id="custom-poster-template"
+      className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] mt-[3%]`}
+      style={{
+        background:
+          frame.frameType !== 'No Frame' ? `url(${BackgroundFrame}) center no-repeat` : '',
+        padding: frame.frameType !== 'No Frame' ? (BackgroundFrame ? '12px' : '0px') : '',
+      }}
     >
       <div className={`pt-6 pl-2 h-full`} style={{ background: colors.posterColor }}>
         <div className="flex items-center justify-center flex-col">

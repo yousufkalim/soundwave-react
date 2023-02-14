@@ -7,6 +7,10 @@ import Spinner from '../../components/Spinner/Spinner';
 import { toast } from 'react-toastify';
 import request from '../../api/request';
 import CartModal from '../../Modals/CartModal';
+import BlackWoodenFrame from '../../assets/PosterFrames/Black.svg';
+import WhiteWoodenFrame from '../../assets/PosterFrames/White.svg';
+import NuetralWoodenFrame from '../../assets/PosterFrames/Nuetral.svg';
+import MetalFrame from '../../assets/PosterFrames/Metal.svg';
 
 interface DataSetProps {
   time: number;
@@ -38,17 +42,6 @@ interface IStateColors {
   songTitleColor: string;
   descriptionColor: string;
 }
-
-// interface ItemsProps {
-//   posterImage: string;
-//   posterQuantitiy: number;
-//   price: number;
-//   posterSize: string;
-//   frameStyle: string;
-//   albumName: string;
-//   singerName: string;
-// }
-
 interface IFrameProps {
   frameType: string;
   selectedFrame: string;
@@ -194,6 +187,16 @@ const index: FC = () => {
     setOpen(false);
   };
 
+  const BackgroundFrame =
+    frame.selectedFrame === 'Wooden Black'
+      ? BlackWoodenFrame
+      : frame.selectedFrame === 'Wooden Nuteral'
+      ? NuetralWoodenFrame
+      : frame.selectedFrame === 'Wooden White'
+      ? WhiteWoodenFrame
+      : frame.selectedFrame === 'Aluminium Metal'
+      ? MetalFrame
+      : '';
   useEffect(() => {
     const cartId = localStorage.getItem('cartId');
     if (cartId) {
@@ -221,6 +224,7 @@ const index: FC = () => {
             setActiveAlignment={setActiveAlignment}
             selectedTemplate={selectedTemplate}
             frame={frame}
+            BackgroundFrame={BackgroundFrame}
           />
           <RightSide
             // props for step # 1

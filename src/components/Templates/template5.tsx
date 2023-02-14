@@ -34,6 +34,7 @@ interface Template5Props {
     descriptionColor,
   }: IColors) => void;
   frame: IFrameProps;
+  BackgroundFrame: string;
 }
 interface IColors {
   boxColor: string;
@@ -51,6 +52,7 @@ const Template5: FC<Template5Props> = ({
   colors,
   frame,
   setColors,
+  BackgroundFrame,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -72,9 +74,13 @@ const Template5: FC<Template5Props> = ({
   // from-white via-gray-100 to-black
   return (
     <div
-      id="custom-poster-template-1"
-      className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] p-2 mt-[3%] relative `}
-      style={{ background: 'transparent' }}
+      id="custom-poster-template"
+      className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] mt-[3%] relative `}
+      style={{
+        background:
+          frame.frameType !== 'No Frame' ? `url(${BackgroundFrame}) center no-repeat` : '',
+        padding: frame.frameType !== 'No Frame' ? (BackgroundFrame ? '12px' : '0px') : '',
+      }}
     >
       <div
         className={`bg-gradient-to-b h-full pt-6 pl-8 pr-6 `}

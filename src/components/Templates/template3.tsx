@@ -35,6 +35,7 @@ interface Template3Props {
     descriptionColor,
   }: IColors) => void;
   frame: IFrameProps;
+  BackgroundFrame: string;
 }
 
 interface IColors {
@@ -53,6 +54,7 @@ const Template3: FC<Template3Props> = ({
   colors,
   frame,
   setColors,
+  BackgroundFrame,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -74,9 +76,13 @@ const Template3: FC<Template3Props> = ({
 
   return (
     <div
-      id="custom-poster-template-1"
-      className={` w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] p-2 mt-[3%] relative `}
-      style={{ background: 'transparent' }}
+      id="custom-poster-template"
+      className={` w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] mt-[3%] relative `}
+      style={{
+        background:
+          frame.frameType !== 'No Frame' ? `url(${BackgroundFrame}) center no-repeat` : '',
+        padding: frame.frameType !== 'No Frame' ? (BackgroundFrame ? '12px' : '0px') : '',
+      }}
     >
       <div className={`h-full pt-6 pl-8 pr-6`} style={{ background: colors.posterColor }}>
         <Grid

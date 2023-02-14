@@ -36,7 +36,6 @@ const PosterBody: FC<waveformProps> = ({
   descriptionColor,
   activeAlignment,
 }) => {
-  console.log('Title color ', boxColor);
   return (
     <div
       id="custom-poster-div"
