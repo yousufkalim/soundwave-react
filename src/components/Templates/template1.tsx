@@ -5,7 +5,6 @@ import Waveform from 'react-audio-waveform';
 import { rgbaToHex } from '../../utils/common';
 // import gradient from 'gradient-parser';
 
-
 interface DatasetProps {
   songName: string;
   trackId: string;
@@ -36,6 +35,7 @@ interface Template1Props {
     soundWaveColor,
     songTitleColor,
     descriptionColor,
+    soundWaveNameColor,
   }: IColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
@@ -47,6 +47,7 @@ interface IColors {
   soundWaveColor: string;
   songTitleColor: string;
   descriptionColor: string;
+  soundWaveNameColor: string;
 }
 
 const Template1: FC<Template1Props> = ({
@@ -71,55 +72,19 @@ const Template1: FC<Template1Props> = ({
       boxColor: 'transparent',
       posterColor: '#000',
       soundWaveColor: 'rgba(255, 255, 255, 1)',
+      soundWaveNameColor: 'rgba(255, 255, 255, 1)',
       songTitleColor: 'rgba(255, 255, 255, 1)',
       descriptionColor: 'rgba(255, 255, 255, 1)',
     });
   }, []);
 
-
   const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
   const descriptionColor = colors.descriptionColor.includes('gradient')
     ? colors.descriptionColor
     : '';
-  const soundWaveColor = colors.soundWaveColor.includes('gradient') ? colors.soundWaveColor : '';
-
-  // let waveColors;
-  // const isLinear = colors.soundWaveColor.includes('linear');
-  // const isRadial = colors.soundWaveColor.includes('radial');
-  // let filteredColors: string[] = [];
-  // if (isLinear || isRadial) {
-  //   waveColors = isLinear
-  //     ? colors.soundWaveColor
-  //         .substring(colors.soundWaveColor.indexOf('(') + 1, colors.soundWaveColor.lastIndexOf(')'))
-  //         .split('deg, ')[1]
-  //     : colors.soundWaveColor
-  //         .substring(colors.soundWaveColor.indexOf('(') + 1, colors.soundWaveColor.lastIndexOf(')'))
-  //         .split('circle, ')[1];
-  //   const a = waveColors.split('%');
-  //   const test = a.map((item) => {
-  //     const b = item.split(')')[0];
-  //     let c;
-  //     if (b.startsWith(', ')) {
-  //       c = b.split(', ')[1];
-  //     } else {
-  //       c = b;
-  //     }
-  //     return c?.concat(')');
-  //   });
-  //   const filtered = test.filter((item) => item.startsWith('r') || item.startsWith('R'));
-  //   // const obj = gradient.parse('linear-gradient(30deg, #000, transparent)');
-  //   console.log('TEsting Gradient =====>  ', filtered);
-  //   filteredColors = filtered;
-  //   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-  //   filteredColors = JSON.stringify(filteredColors.map((item, index) => [index, rgbaToHex(item)]));
-  //   // console.log(
-  //   //   'Selected colors ===> ',
-  //   //   waveColors.split(/,(?![^(]*\))(?![^"']*["'](?:[^"']*["'][^"']*["'])*[^"']*$)/),
-  //   // );
-  // } else {
-  //   console.log('test');
-  // }
-  // console.log('GET Hexa  ', typeof filteredColors);
+  const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
+    ? colors.soundWaveNameColor
+    : '';
 
   return (
     <div
@@ -167,13 +132,13 @@ const Template1: FC<Template1Props> = ({
                 color={rgbaToHex(colors.soundWaveColor)}
                 pixelRatio={1}
                 progressColor={rgbaToHex(colors.soundWaveColor)}
-                // progressGradientColors={[[0, '#000']]}
+                // progressGradientColors={['#ffffff', '#000000']}
               />
               <div className="flex items-center justify-start gap-1 mt-3 pl-2">
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveColor,
-                    backgroundImage: soundWaveColor,
+                    backgroundColor: colors.soundWaveNameColor,
+                    backgroundImage: soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
@@ -181,8 +146,8 @@ const Template1: FC<Template1Props> = ({
                 </span>
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveColor,
-                    backgroundImage: soundWaveColor,
+                    backgroundColor: colors.soundWaveNameColor,
+                    backgroundImage: soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-[Montserrat] template_album_name"
                 >

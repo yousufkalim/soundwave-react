@@ -82,3 +82,16 @@ body {
   background-size: 100%;
   background-repeat: repeat;
 }
+
+.rbgcp-wrapper
+  > div
+  > div:nth-child(2)
+  > div
+  > div:nth-child(1)
+  > div
+  > div:nth-child(1)
+  > div
+  > div:nth-child(2) {
+  display: none !important;
+  visibility: hidden !important;
+}
