@@ -1,31 +1,32 @@
 // Init
 import React, { useContext, useState, createContext, ReactNode } from 'react';
+import { IResponseCart } from '../types/index';
 
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
+// interface IFrameProps {
+//   frameType: string;
+//   selectedFrame: string;
+// }
 
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
-interface IResponsePoster {
-  frame: IFrameProps;
-  size: IPosterSize;
-  albumName: string;
-  singerName: string;
-  price: number;
-  posterImage: string;
-  posterQuantity: number;
-  _id: string;
-}
-interface IResponseCart {
-  _id: string;
-  totalPoster: IResponsePoster[];
-  totalPrice: number;
-  shippingCost: number;
-}
+// interface IPosterSize {
+//   value: string;
+//   unit: string;
+// }
+// interface IResponsePoster {
+//   frame: IFrameProps;
+//   size: IPosterSize;
+//   albumName: string;
+//   singerName: string;
+//   price: number;
+//   posterImage: string;
+//   posterQuantity: number;
+//   _id: string;
+// }
+// interface IResponseCart {
+//   _id: string;
+//   totalPoster: IResponsePoster[];
+//   totalPrice: number;
+//   shippingCost: number;
+// }
 
 // Initializing Create Context Hook
 interface StoreType {

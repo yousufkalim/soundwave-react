@@ -3,16 +3,8 @@ import Counter from '../Counter/index';
 import { ReactComponent as DeleteIcon } from '../../assets/DeleteIcon.svg';
 import request from '../../api/request';
 import { toast } from 'react-toastify';
+import { IPosterSize, IFrameProps } from '../../types/index';
 
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
 interface CartPosterDetailsProps {
   posterImage: string;
   albumName: string;

@@ -9,32 +9,8 @@ import request from '../../api/request';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner/Spinner';
 import { toast } from 'react-toastify';
+import { ICart } from '../../types/index';
 
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
-interface IResponsePoster {
-  frame: IFrameProps;
-  size: IPosterSize;
-  albumName: string;
-  singerName: string;
-  unitPrice: number;
-  totalPrice: number;
-  posterImage: string;
-  posterQuantity: number;
-  _id: string;
-}
-interface ICart {
-  _id: string;
-  totalPoster: IResponsePoster[];
-  totalPrice: number;
-  shippingCost: number;
-}
 interface IResponseSuccess {
   success: boolean;
   cart: ICart;
