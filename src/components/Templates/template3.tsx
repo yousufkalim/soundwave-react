@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveform from 'react-audio-waveform';
+import { rgbaToHex } from '../../utils/common';
 
 interface DatasetProps {
   songName: string;
@@ -63,14 +64,19 @@ const Template3: FC<Template3Props> = ({
 
   useEffect(() => {
     setColors({
-      boxColor: 'linear-gradient(180deg, #e28743 0%, #fc666d 100%)',
+      boxColor: 'linear-gradient(180deg, rgb(226, 135, 67) 0%, rgb(252, 102, 109) 100%)',
       posterColor: '#000',
       soundWaveColor: 'rgba(0,0,0,1)',
       songTitleColor: '#fff',
       descriptionColor: 'rgba(0,0,0,1)',
     });
-    console.log('USEEFFECT Runs');
   }, []);
+
+  const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
+  const descriptionColor = colors.descriptionColor.includes('gradient')
+    ? colors.descriptionColor
+    : '';
+  const soundWaveColor = colors.soundWaveColor.includes('gradient') ? colors.soundWaveColor : '';
 
   return (
     <div
@@ -83,7 +89,7 @@ const Template3: FC<Template3Props> = ({
           container
           spacing={1}
           className={`h-[77%] px-1 py-3 bg-gradient-to-b`}
-          style={{ background: colors.boxColor }}
+          style={{ background: colors?.boxColor }}
           // style={{ backgroundColor: '#EA8444' }}
         >
           {dataSets.map((item) => (
@@ -92,23 +98,26 @@ const Template3: FC<Template3Props> = ({
                 // barWidth={1}
                 peaks={item.levels}
                 height={20}
-                color={colors.soundWaveColor}
+                color={rgbaToHex(colors.soundWaveColor)}
                 pixelRatio={1}
-                progressGradientColors={[
-                  [0, '#000000'],
-                  [1, '#000000'],
-                ]}
+                progressColor={rgbaToHex(colors.soundWaveColor)}
               />
               <div className="flex items-center justify-start gap-1 mt-3 pl-2">
                 <span
-                  style={{ color: colors.soundWaveColor }}
-                  className="text-[8.5px] font-semibold font-[Montserrat]"
+                  style={{
+                    backgroundColor: colors.soundWaveColor,
+                    backgroundImage: soundWaveColor,
+                  }}
+                  className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
                   &quot;{item.songName}&quot;
                 </span>
                 <span
-                  style={{ color: colors.soundWaveColor }}
-                  className="text-[8.5px] font-[Montserrat]"
+                  style={{
+                    backgroundColor: colors.soundWaveColor,
+                    backgroundImage: soundWaveColor,
+                  }}
+                  className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
                   {convertMilisecondToMinutes(item.time)}
                 </span>
@@ -119,21 +128,30 @@ const Template3: FC<Template3Props> = ({
 
         <div className="text-center  relative bottom-6">
           <span
-            className={`text-4xl font-extrabold font-[Aemstel-Regular]`}
-            style={{ color: colors.songTitleColor }}
+            className={`text-4xl font-extrabold font-[Aemstel-Regular] template_album_name`}
+            style={{
+              backgroundColor: colors.songTitleColor,
+              backgroundImage: titleColor,
+            }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
           </span>
           <span
-            className={`text-4xl font-[Aemstel-LineInside] absolute top-[7px] left-[6.2rem]`}
-            style={{ color: colors.songTitleColor }}
+            className={`text-4xl font-[Aemstel-LineInside] absolute top-[7px] left-[6.2rem] template_album_name`}
+            style={{
+              backgroundColor: colors.songTitleColor,
+              backgroundImage: titleColor,
+            }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
           </span>
         </div>
         <div
-          className={`break-words w-[94%] h-[23%] ${activeAlignment} text-center mt-[-10px]`}
-          style={{ color: colors.songTitleColor }}
+          className={`break-words w-[94%] h-[23%] ${activeAlignment} text-center mt-[-10px] template_album_name`}
+          style={{
+            backgroundColor: colors.descriptionColor,
+            backgroundImage: descriptionColor,
+          }}
         >
           <p className={`text-[7px] bg-transparent tracking-tighter mb-[1%]`}>
             {albumDescripition}

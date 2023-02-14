@@ -12,6 +12,7 @@ interface IColorPickerProps {
 
 const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor }) => {
   const [open, setOpen] = useState<boolean>(false);
+  // const { setSolid, setGradient } = useColorPicker(color, setColor);
 
   const colorPickerRef = useRef<HTMLDivElement>(null);
 
@@ -26,6 +27,7 @@ const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor })
   };
 
   const handleChangeColor = (color: string): void => {
+    console.log('Color ', color);
     getSetColor(color, name);
   };
 
@@ -34,7 +36,7 @@ const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor })
       <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
         <span className="text-sm">{title}</span>
         <div
-          style={{ backgroundColor: value }}
+          style={{ background: value }}
           className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
           onClick={handleOpenColorPicker}
         >

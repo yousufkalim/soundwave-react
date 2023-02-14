@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveform from 'react-audio-waveform';
+import { rgbaToHex } from '../../utils/common';
 
 interface DatasetProps {
   songName: string;
@@ -63,12 +64,18 @@ const Template6: FC<Template6Props> = ({
   useEffect(() => {
     setColors({
       boxColor: 'transparent',
-      posterColor: 'linear-gradient(180deg, #E984D1 0%, ,#E98449 100%)',
+      posterColor: 'linear-gradient(180deg, rgb(233, 132, 209) 0%, rgb(233,132,73) 100%)',
       soundWaveColor: '#fff',
       songTitleColor: '#fff',
       descriptionColor: '#fff',
     });
   }, []);
+
+  const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
+  const descriptionColor = colors.descriptionColor.includes('gradient')
+    ? colors.descriptionColor
+    : '';
+  const soundWaveColor = colors.soundWaveColor.includes('gradient') ? colors.soundWaveColor : '';
 
   return (
     <div
@@ -82,8 +89,11 @@ const Template6: FC<Template6Props> = ({
       >
         <div className="flex items-center justify-center">
           <span
-            className={`text-4xl font-extrabold font-[blacksword]`}
-            style={{ color: colors.songTitleColor }}
+            className={`text-4xl font-extrabold font-[blacksword] template_album_name`}
+            style={{
+              backgroundColor: colors.songTitleColor,
+              backgroundImage: titleColor,
+            }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
           </span>
@@ -100,23 +110,26 @@ const Template6: FC<Template6Props> = ({
                 // barWidth={1}
                 peaks={item.levels}
                 height={20}
-                color={colors.soundWaveColor}
+                color={rgbaToHex(colors.soundWaveColor)}
                 pixelRatio={1}
-                progressGradientColors={[
-                  [0, '#FFF'],
-                  [1, '#FFF'],
-                ]}
+                progressColor={rgbaToHex(colors.soundWaveColor)}
               />
               <div className="flex items-center justify-start gap-1 mt-3 pl-2">
                 <span
-                  style={{ color: colors.soundWaveColor }}
-                  className="text-[8.5px] font-semibold font-[Montserrat]"
+                  style={{
+                    backgroundColor: colors.soundWaveColor,
+                    backgroundImage: soundWaveColor,
+                  }}
+                  className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
                   &quot;{item.songName}&quot;
                 </span>
                 <span
-                  style={{ color: colors.soundWaveColor }}
-                  className="text-[8.5px] font-[Montserrat]"
+                  style={{
+                    backgroundColor: colors.soundWaveColor,
+                    backgroundImage: soundWaveColor,
+                  }}
+                  className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
                   {convertMilisecondToMinutes(item.time)}
                 </span>
@@ -125,8 +138,11 @@ const Template6: FC<Template6Props> = ({
           ))}
         </Grid>
         <div
-          className={`break-words w-full h-[23%] ${activeAlignment} text-center mt-[-5px]`}
-          style={{ color: colors.descriptionColor }}
+          style={{
+            backgroundColor: colors.descriptionColor,
+            backgroundImage: descriptionColor,
+          }}
+          className={`break-words w-full h-[23%] ${activeAlignment} text-center mt-[-5px] template_album_name`}
         >
           <p className={`text-[7px] bg-transparent tracking-tighter font-[Montserrat]`}>
             {albumDescripition}
