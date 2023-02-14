@@ -34,6 +34,7 @@ interface Template3Props {
     soundWaveColor,
     songTitleColor,
     descriptionColor,
+    soundWaveNameColor,
   }: IColors) => void;
   frame: IFrameProps;
 }
@@ -44,6 +45,7 @@ interface IColors {
   soundWaveColor: string;
   songTitleColor: string;
   descriptionColor: string;
+  soundWaveNameColor: string;
 }
 
 const Template3: FC<Template3Props> = ({
@@ -67,6 +69,7 @@ const Template3: FC<Template3Props> = ({
       boxColor: 'linear-gradient(180deg, rgb(226, 135, 67) 0%, rgb(252, 102, 109) 100%)',
       posterColor: '#000',
       soundWaveColor: 'rgba(0,0,0,1)',
+      soundWaveNameColor: 'rgba(0,0,0,1)',
       songTitleColor: '#fff',
       descriptionColor: 'rgba(0,0,0,1)',
     });
@@ -76,7 +79,9 @@ const Template3: FC<Template3Props> = ({
   const descriptionColor = colors.descriptionColor.includes('gradient')
     ? colors.descriptionColor
     : '';
-  const soundWaveColor = colors.soundWaveColor.includes('gradient') ? colors.soundWaveColor : '';
+  const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
+    ? colors.soundWaveNameColor
+    : '';
 
   return (
     <div
@@ -90,7 +95,6 @@ const Template3: FC<Template3Props> = ({
           spacing={1}
           className={`h-[77%] px-1 py-3 bg-gradient-to-b`}
           style={{ background: colors?.boxColor }}
-          // style={{ backgroundColor: '#EA8444' }}
         >
           {dataSets.map((item) => (
             <Grid item xs={4} className="h-[4%]" key={item.trackId}>
@@ -105,8 +109,8 @@ const Template3: FC<Template3Props> = ({
               <div className="flex items-center justify-start gap-1 mt-3 pl-2">
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveColor,
-                    backgroundImage: soundWaveColor,
+                    backgroundColor: colors.soundWaveNameColor,
+                    backgroundImage: soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
@@ -114,8 +118,8 @@ const Template3: FC<Template3Props> = ({
                 </span>
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveColor,
-                    backgroundImage: soundWaveColor,
+                    backgroundColor: colors.soundWaveNameColor,
+                    backgroundImage: soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-[Montserrat] template_album_name"
                 >

@@ -27,7 +27,6 @@ const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor })
   };
 
   const handleChangeColor = (color: string): void => {
-    console.log('Color ', color);
     getSetColor(color, name);
   };
 

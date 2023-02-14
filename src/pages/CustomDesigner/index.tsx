@@ -35,6 +35,7 @@ interface IStateColors {
   boxColor: string;
   posterColor: string;
   soundWaveColor: string;
+  soundWaveNameColor: string;
   songTitleColor: string;
   descriptionColor: string;
 }
@@ -115,6 +116,7 @@ const index: FC = () => {
     boxColor: '',
     posterColor: '',
     soundWaveColor: '',
+    soundWaveNameColor: '',
     songTitleColor: '',
     descriptionColor: '',
   });
@@ -244,6 +246,7 @@ const index: FC = () => {
             soundWaveColor={colors.soundWaveColor}
             songTitleColor={colors.songTitleColor}
             descriptionColor={colors.descriptionColor}
+            soundWaveNameColor={colors.soundWaveNameColor}
             getSetColor={getSetColor}
             selectedTemplate={selectedTemplate}
             setSelectedTemplate={setSelectedTemplate}

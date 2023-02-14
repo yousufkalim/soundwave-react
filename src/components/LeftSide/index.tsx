@@ -28,6 +28,7 @@ interface IColors {
   soundWaveColor: string;
   songTitleColor: string;
   descriptionColor: string;
+  soundWaveNameColor: string;
 }
 
 interface IFrameProps {
@@ -47,6 +48,7 @@ interface waveformProps {
     soundWaveColor,
     songTitleColor,
     descriptionColor,
+    soundWaveNameColor,
   }: IColors) => void;
   selectedTemplate: string;
   frame: IFrameProps;

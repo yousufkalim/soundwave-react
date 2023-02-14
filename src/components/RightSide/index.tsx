@@ -48,6 +48,7 @@ interface RightSideProps {
   posterColor: string;
   soundWaveColor: string;
   songTitleColor: string;
+  soundWaveNameColor: string;
   posterSize: IPosterSize;
   setPosterSize: ({ value, unit }: IPosterSize) => void;
   addToCart: boolean;
@@ -139,6 +140,7 @@ const RightSide: FC<RightSideProps> = ({
   boxColor,
   soundWaveColor,
   songTitleColor,
+  soundWaveNameColor,
   descriptionColor,
   getSetColor,
   posterSize,
@@ -261,6 +263,7 @@ const RightSide: FC<RightSideProps> = ({
             descriptionColor={descriptionColor}
             getSetColor={getSetColor}
             selectedTemplate={selectedTemplate}
+            soundWaveNameColor={soundWaveNameColor}
             setSelectedTemplate={setSelectedTemplate}
             setOpenSize={setOpenSize}
             // steps active states
