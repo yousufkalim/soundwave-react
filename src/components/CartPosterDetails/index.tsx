@@ -64,11 +64,10 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
       });
   };
 
-  console.log('Album name ', albumName);
   return (
     <div className="flex justify-between w-full border-[1px] rounded-lg p-3 my-3">
       <div className="w-[25%]">
-        <img src={posterImage} className="object-fill w-full" />
+        <img src={`http://localhost:5000${posterImage}`} className="object-fill w-full" />
       </div>
       <div className="w-[60%] flex flex-col items-start justify-center bg-white">
         <span className="text-lg font-semibold">

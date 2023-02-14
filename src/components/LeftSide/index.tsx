@@ -50,6 +50,7 @@ interface waveformProps {
   }: IColors) => void;
   selectedTemplate: string;
   frame: IFrameProps;
+  BackgroundFrame: string;
 }
 
 // const templatesArr = [
@@ -113,6 +114,7 @@ const index: FC<waveformProps> = ({
   selectedTemplate,
   setColors,
   frame,
+  BackgroundFrame,
 }) => {
   // const currentTemplate = templatesArr.find((item) => item.name === selectedTemplate);
 
@@ -127,6 +129,7 @@ const index: FC<waveformProps> = ({
           colors={colors}
           setColors={setColors}
           frame={frame}
+          BackgroundFrame={BackgroundFrame}
         />
       ) : selectedTemplate === 'template2' ? (
         <Template2
@@ -137,6 +140,7 @@ const index: FC<waveformProps> = ({
           colors={colors}
           setColors={setColors}
           frame={frame}
+          BackgroundFrame={BackgroundFrame}
         />
       ) : selectedTemplate === 'template3' ? (
         <Template3
@@ -147,6 +151,7 @@ const index: FC<waveformProps> = ({
           colors={colors}
           setColors={setColors}
           frame={frame}
+          BackgroundFrame={BackgroundFrame}
         />
       ) : selectedTemplate === 'template4' ? (
         <Template4
@@ -157,6 +162,7 @@ const index: FC<waveformProps> = ({
           colors={colors}
           setColors={setColors}
           frame={frame}
+          BackgroundFrame={BackgroundFrame}
         />
       ) : selectedTemplate === 'template5' ? (
         <Template5
@@ -167,6 +173,7 @@ const index: FC<waveformProps> = ({
           colors={colors}
           setColors={setColors}
           frame={frame}
+          BackgroundFrame={BackgroundFrame}
         />
       ) : selectedTemplate === 'template6' ? (
         <Template6
@@ -177,6 +184,7 @@ const index: FC<waveformProps> = ({
           colors={colors}
           setColors={setColors}
           frame={frame}
+          BackgroundFrame={BackgroundFrame}
         />
       ) : (
         <PosterBody

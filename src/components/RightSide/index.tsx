@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
-import React, { FC } from 'react';
-// import html2canvas from 'html2canvas';
+import React, { FC, useRef, useState } from 'react';
+import html2canvas from 'html2canvas';
 import Step1 from '../PosterSteps/step1';
 import Step2 from '../PosterSteps/step2';
 import Step3 from '../PosterSteps/step3';
@@ -165,16 +165,24 @@ const RightSide: FC<RightSideProps> = ({
   selectedCanvas,
   setSelectedCanvas,
 }) => {
+  // const [svgImage, setSvgImage] = useState('');
+  // const myDivRef = useRef(null);
+
   const handleAddToCart = async () => {
-    // const element = document.getElementById('custom-poster-template-1') as HTMLElement;
-    // const canvas = await html2canvas(element, { allowTaint: true });
-    // const imgData = canvas.toDataURL('image/png');
+    const element = document.getElementById('custom-poster-template') as HTMLElement;
+    const canvas = await html2canvas(element, {
+      logging: false,
+      allowTaint: true,
+      scale: 3,
+    });
+    const img = canvas.toDataURL();
+    // setSvgImage(img);
     const cartId = localStorage.getItem('cartId');
     setLoading(true);
     const posterData: IBody = {
       totalPoster: [
         {
-          posterImage: selectedAlbum?.photo,
+          posterImage: img,
           posterQuantity: 1,
           unitPrice: 120,
           totalPrice: 120,
@@ -309,6 +317,7 @@ const RightSide: FC<RightSideProps> = ({
           </button>
         </div>
       </div>
+      {/* <img src={svgImage} /> */}
     </div>
   );
 };

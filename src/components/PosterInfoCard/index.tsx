@@ -63,7 +63,7 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
         }}
       />
       <div className="w-[26%] flex items-center justify-center">
-        <img src={posterImage} className="object-cover h-[85%]" />
+        <img src={`http://localhost:5000${posterImage}`} className="object-cover h-[85%]" />
       </div>
       <div className="w-[55%] flex flex-col items-start justify-center gap-2">
         <span className="text-3xl font-semibold">
