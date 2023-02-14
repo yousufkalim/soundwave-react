@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveform from 'react-audio-waveform';
+import { rgbaToHex } from '../../utils/common';
 
 interface DatasetProps {
   songName: string;
@@ -71,7 +72,12 @@ const Template5: FC<Template5Props> = ({
     });
   }, []);
 
-  // from-white via-gray-100 to-black
+  const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
+  const descriptionColor = colors.descriptionColor.includes('gradient')
+    ? colors.descriptionColor
+    : '';
+  const soundWaveColor = colors.soundWaveColor.includes('gradient') ? colors.soundWaveColor : '';
+
   return (
     <div
       id="custom-poster-template"
@@ -98,23 +104,26 @@ const Template5: FC<Template5Props> = ({
                 // barWidth={1}
                 peaks={item.levels}
                 height={20}
-                color={colors.soundWaveColor}
+                color={rgbaToHex(colors.soundWaveColor)}
                 pixelRatio={1}
-                progressGradientColors={[
-                  [0, '#000000'],
-                  [1, '#000000'],
-                ]}
+                progressColor={rgbaToHex(colors.soundWaveColor)}
               />
-              <div className="flex items-center justify-start gap-1 mt-3 pl-2">
+              <div className="flex items-center justify-start gap-1 mt-3 pl-2 ">
                 <span
-                  style={{ color: colors.soundWaveColor }}
-                  className="text-[8.5px] font-semibold font-[Montserrat]"
+                  style={{
+                    backgroundColor: colors.soundWaveColor,
+                    backgroundImage: soundWaveColor,
+                  }}
+                  className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
                   &quot;{item.songName}&quot;
                 </span>
                 <span
-                  style={{ color: colors.soundWaveColor }}
-                  className="text-[8.5px] font-[Montserrat]"
+                  style={{
+                    backgroundColor: colors.soundWaveColor,
+                    backgroundImage: soundWaveColor,
+                  }}
+                  className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
                   {convertMilisecondToMinutes(item.time)}
                 </span>
@@ -126,20 +135,29 @@ const Template5: FC<Template5Props> = ({
           className={`flex flex-col break-words w-[90%] h-[23%] ${activeAlignment} text-center absolute bottom-6 right-6`}
         >
           <span
-            className={`text-4xl font-extrabold font-[blowbrush] tracking-wide`}
-            style={{ color: colors.songTitleColor }}
+            className={`text-4xl font-extrabold font-[blowbrush] tracking-wide template_album_name`}
+            style={{
+              backgroundColor: colors.songTitleColor,
+              backgroundImage: titleColor,
+            }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
           </span>
           <span
-            className="text-[10px] font-bold font-[Montserrat]"
-            style={{ color: colors.songTitleColor }}
+            className="text-[10px] font-bold font-[Montserrat] template_album_name"
+            style={{
+              backgroundColor: colors.songTitleColor,
+              backgroundImage: titleColor,
+            }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
           <p
-            className={`text-[7px] bg-transparent tracking-tighter `}
-            style={{ color: colors.songTitleColor }}
+            className={`text-[7px] bg-transparent tracking-tighter template_album_name`}
+            style={{
+              backgroundColor: colors.descriptionColor,
+              backgroundImage: descriptionColor,
+            }}
           >
             {albumDescripition}
           </p>
