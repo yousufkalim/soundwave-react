@@ -5,7 +5,6 @@ import Waveform from 'react-audio-waveform';
 import { rgbaToHex } from '../../utils/common';
 // import gradient from 'gradient-parser';
 
-
 interface DatasetProps {
   songName: string;
   trackId: string;
@@ -78,7 +77,6 @@ const Template1: FC<Template1Props> = ({
       descriptionColor: 'rgba(255, 255, 255, 1)',
     });
   }, []);
-
 
   const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
   const descriptionColor = colors.descriptionColor.includes('gradient')

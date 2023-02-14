@@ -1,15 +1,12 @@
-export default interface User {
-  _id: string;
-  name: string;
-  email: string;
-  password: string;
-  number: string;
-  gender?: string;
-  role: string;
-  address?: string;
-  city?: string;
-  country?: string;
-  photo?: string;
-  createdAt: Date;
-  updatedAt: Date;
+export interface DataSetProps {
+  time: number;
+  levels: number[];
+  songName: string;
+  trackId: string;
+}
+export interface SelectedAlbumProps {
+  id: string;
+  label: string;
+  photo: string;
+  singerName: string;
 }
