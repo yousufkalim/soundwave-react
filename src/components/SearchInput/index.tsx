@@ -2,27 +2,16 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useEffect, useRef, useState } from 'react';
 import { useOnClickOutside } from '../../hooks/useClickOutSide';
+import { SelectedAlbumProps } from '../../types/index';
 
-interface SearchOption {
-  label: string;
-  id: string;
-  singerName: string;
-  photo: string;
-}
-interface SelectedAlbum {
-  id: string;
-  label: string;
-  photo: string;
-  singerName: string;
-}
 interface SearchInputProps {
-  options: SearchOption[];
+  options: SelectedAlbumProps[];
   value: string;
   placeholder: string;
   className: string;
   onChange: (value: string) => void;
   setSelectedAlbumId: (value: string) => void;
-  handleSelectedAlbum: (value: SelectedAlbum) => void;
+  handleSelectedAlbum: (value: SelectedAlbumProps) => void;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
@@ -35,7 +24,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
 }) => {
   const autocomplete = useRef<HTMLDivElement>(null);
   // states
-  const [optionsData, setOptionsData] = useState<SearchOption[]>([]);
+  const [optionsData, setOptionsData] = useState<SelectedAlbumProps[]>([]);
   const [query, setQuery] = useState<string>(value);
   const [isShow, setIsShow] = useState<boolean>(false);
 
@@ -44,7 +33,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
     const { value } = e.target;
     setQuery(value);
     onChange(value);
-    const updatedOptions: SearchOption[] = !value
+    const updatedOptions: SelectedAlbumProps[] = !value
       ? []
       : [...options.filter((option) => option.label.toLowerCase().includes(value.toLowerCase()))];
     setOptionsData(updatedOptions);

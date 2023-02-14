@@ -3,11 +3,8 @@ import Tab from '../Tab/index';
 import ThemeBtnBox from '../themeCustomizationBtnBox/index';
 import PosterFrame from '../PosterFrames/index';
 import PosterCanvas from '../PosterCanvas/index';
+import { IFrameProps } from '../../types/index';
 
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
 interface Step4Props {
   openStyles: boolean;
   setOpenDescripition: (value: boolean) => void;

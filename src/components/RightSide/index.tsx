@@ -13,22 +13,15 @@ import { ReactComponent as TitleIcon } from '../../assets/titleIcon.svg';
 import { ReactComponent as Cart } from '../../assets/cart.svg';
 import request from '../../api/request';
 import { toast } from 'react-toastify';
-interface DataSetProps {
-  songName: string;
-  trackId: string;
-  time: number;
-  levels: number[];
-}
-interface SelectedAlbumProps {
-  id: string;
-  label: string;
-  photo: string;
-  singerName: string;
-}
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
+import {
+  IPosterSize,
+  SelectedAlbumProps,
+  DataSetProps,
+  IFrameProps,
+  IResponsePoster,
+  IResponseCart,
+} from '../../types/index';
+
 interface RightSideProps {
   selected: string;
   setSelected: (value: string) => void;
@@ -74,31 +67,6 @@ interface RightSideProps {
   setActiveStep: (value: number) => void;
   selectedCanvas: string;
   setSelectedCanvas: (value: string) => void;
-}
-
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-
-interface IResponsePoster {
-  frame: IFrameProps;
-  size: IPosterSize;
-  albumName: string;
-  singerName: string;
-  price: number;
-  posterImage: string;
-  posterQuantity: number;
-  _id: string;
-}
-interface IResponseCart {
-  _id: string;
-  totalPoster: IResponsePoster[];
-  totalPrice: number;
-  shippingCost: number;
-  createdAt?: string;
-  updatedAt?: string;
-  __v?: number;
 }
 
 interface IResponseSuccess {

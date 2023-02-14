@@ -2,25 +2,14 @@ import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveform from 'react-audio-waveform';
 import { rgbaToHex } from '../../utils/common';
+import { DataSetProps, SelectedAlbumProps, IFrameProps, IStateColors } from '../../types/index';
 
-interface DatasetProps {
-  songName: string;
-  trackId: string;
-  time: number;
-  levels: number[];
-}
-interface SelectedAlbumProps {
-  id: string;
-  label: string;
-  photo: string;
-  singerName: string;
-}
 interface Template6Props {
   activeAlignment: string;
   selectedAlbum?: SelectedAlbumProps;
   albumDescripition: string;
-  dataSets: DatasetProps[];
-  colors: IColors;
+  dataSets: DataSetProps[];
+  colors: IStateColors;
   setColors: ({
     boxColor,
     posterColor,
@@ -28,23 +17,12 @@ interface Template6Props {
     songTitleColor,
     descriptionColor,
     soundWaveNameColor,
-  }: IColors) => void;
+  }: IStateColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
 }
 
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-interface IColors {
-  boxColor: string;
-  posterColor: string;
-  soundWaveColor: string;
-  songTitleColor: string;
-  descriptionColor: string;
-  soundWaveNameColor: string;
-}
+
 
 const Template6: FC<Template6Props> = ({
   activeAlignment,

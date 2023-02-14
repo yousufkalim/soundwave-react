@@ -10,6 +10,7 @@ import CartPosterDetails from '../components/CartPosterDetails';
 import request from '../api/request';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { ICart } from '../types/index';
 
 interface CartModalProps {
   open: boolean;
@@ -19,32 +20,32 @@ interface CartModalProps {
   setCart: (cart: ICart) => void;
   getCartData: (value: string) => void;
 }
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
-interface IResponsePoster {
-  frame: IFrameProps;
-  size: IPosterSize;
-  albumName: string;
-  singerName: string;
-  totalPrice: number;
-  unitPrice: number;
-  posterImage: string;
-  posterQuantity: number;
-  _id: string;
-}
+// interface IFrameProps {
+//   frameType: string;
+//   selectedFrame: string;
+// }
+// interface IPosterSize {
+//   value: string;
+//   unit: string;
+// }
+// interface IResponsePoster {
+//   frame: IFrameProps;
+//   size: IPosterSize;
+//   albumName: string;
+//   singerName: string;
+//   totalPrice: number;
+//   unitPrice: number;
+//   posterImage: string;
+//   posterQuantity: number;
+//   _id: string;
+// }
 
-interface ICart {
-  _id: string;
-  totalPoster: IResponsePoster[];
-  totalPrice: number;
-  shippingCost: number;
-}
+// interface ICart {
+//   _id: string;
+//   totalPoster: IResponsePoster[];
+//   totalPrice: number;
+//   shippingCost: number;
+// }
 
 const style = {
   position: 'absolute' as const,

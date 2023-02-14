@@ -1,10 +1,4 @@
-// import Checkbox from '../Checkbox/index';
-// import { ReactComponent as PickerImage } from '../../assets/colorPicker.svg';
-
-import React, {
-  FC,
-  // , useRef, useEffect
-} from 'react';
+import React, { FC } from 'react';
 import ColorPicker from '../ColorPicker/ColorPicker';
 
 interface ThemeProps {

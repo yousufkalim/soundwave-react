@@ -5,11 +5,8 @@ import Whiteframe from '../../assets/woodenFrame/woodenWhite.svg';
 import AluminiumMetal from '../../assets/woodenFrame/aluminiumMetal.svg';
 import woodenFrameIcon from '../../assets/woodenFrameIcon.svg';
 import metalFrameIcon from '../../assets/metalFrameIcon.svg';
+import { IFrameProps } from '../../types/index';
 
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
 interface PosterFrameProps {
   frame: IFrameProps;
   setFrame: ({ frameType, selectedFrame }: IFrameProps) => void;

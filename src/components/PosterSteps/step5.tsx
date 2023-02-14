@@ -6,6 +6,7 @@ import { ReactComponent as BackArrow } from '../../assets/SimpleBackArrow.svg';
 import { ReactComponent as ForwardArrow } from '../../assets/SimpleForwardArrow.svg';
 import { ReactComponent as BoldBackArrow } from '../../assets/boldBackArrow.svg';
 import { ReactComponent as BoldForwardArrow } from '../../assets/boldForwardArrow.svg';
+import { IPosterSize } from '../../types/index';
 interface Step5Props {
   openSize: boolean;
   setOpenDescripition: (value: boolean) => void;
@@ -16,11 +17,6 @@ interface Step5Props {
   setPosterSize: ({ value, unit }: IPosterSize) => void;
   activeStep: number;
   setActiveStep: (value: number) => void;
-}
-
-interface IPosterSize {
-  value: string;
-  unit: string;
 }
 
 const step5: FC<Step5Props> = ({

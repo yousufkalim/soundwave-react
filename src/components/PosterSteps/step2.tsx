@@ -3,13 +3,8 @@
 import React, { FC, useEffect } from 'react';
 import { Checkbox } from '@mui/material';
 import Tab from '../Tab/index';
+import { SelectedAlbumProps } from '../../types/index';
 
-interface SelectedAlbumProps {
-  id: string;
-  label: string;
-  photo: string;
-  singerName: string;
-}
 interface Step2Props {
   openDescripition: boolean;
   setOpenDescripition: (value: boolean) => void;
