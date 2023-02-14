@@ -9,19 +9,7 @@ import Template4 from '../Templates/template4';
 import Template5 from '../Templates/template5';
 import Template6 from '../Templates/template6';
 
-interface DatasetProps {
-  songName: string;
-  trackId: string;
-  time: number;
-  levels: number[];
-}
-interface SelectedAlbumProps {
-  id: string;
-  label: string;
-  photo: string;
-  singerName: string;
-}
-
+import { SelectedAlbumProps, DataSetProps } from '../../types/index';
 interface IColors {
   boxColor: string;
   posterColor: string;
@@ -35,7 +23,7 @@ interface IFrameProps {
   selectedFrame: string;
 }
 interface waveformProps {
-  dataSets: DatasetProps[];
+  dataSets: DataSetProps[];
   albumDescripition: string;
   selectedAlbum?: SelectedAlbumProps;
   activeAlignment: string;
