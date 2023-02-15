@@ -45,20 +45,12 @@ const Template4: FC<Template4Props> = ({
     setColors({
       boxColor: '#000',
       posterColor: '#000',
-      soundWaveColor: '#fff',
+      soundWaveColor: 'rgba(255,255,255,1)',
       soundWaveNameColor: '#fff',
       songTitleColor: '#fff',
       descriptionColor: '#fff',
     });
   }, []);
-
-  const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
-  const descriptionColor = colors.descriptionColor.includes('gradient')
-    ? colors.descriptionColor
-    : '';
-  const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
-    ? colors.soundWaveNameColor
-    : '';
 
   return (
     <div
@@ -89,8 +81,7 @@ const Template4: FC<Template4Props> = ({
               <div className="flex items-center justify-start gap-1 mt-3 pl-2">
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveNameColor,
-                    backgroundImage: soundWaveNameColor,
+                    color: colors.soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
@@ -98,8 +89,7 @@ const Template4: FC<Template4Props> = ({
                 </span>
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveNameColor,
-                    backgroundImage: soundWaveNameColor,
+                    color: colors.soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
@@ -110,10 +100,10 @@ const Template4: FC<Template4Props> = ({
           ))}
         </Grid>
         <div
-          className=" absolute bottom-28 left-10 flex flex-col bg-black px-2 template_album_name"
+          className=" absolute left-10 flex flex-col bg-black px-2 template_album_name"
           style={{
-            backgroundColor: colors.songTitleColor,
-            backgroundImage: titleColor,
+            color: colors.songTitleColor,
+            bottom: '16%',
           }}
         >
           <span className={`text-4xl font-extrabold font-[Morganite]`}>
@@ -124,13 +114,14 @@ const Template4: FC<Template4Props> = ({
           </span>
         </div>
         <div
-          className={`break-words w-[95%] h-[23%] ${activeAlignment} text-left mt-10 template_album_name`}
+          className={`w-[95%] h-[23%] ${activeAlignment} text-left pt-10 template_album_name overflow-hidden `}
           style={{
-            backgroundColor: colors.descriptionColor,
-            backgroundImage: descriptionColor,
+            color: colors.descriptionColor,
           }}
         >
-          <p className={`text-[7px] bg-transparent tracking-tighter `}>{albumDescripition}</p>
+          <p className={`text-[7px] bg-transparent text-ellipsis-8 tracking-tighter`}>
+            {albumDescripition}
+          </p>
         </div>
       </div>
     </div>
