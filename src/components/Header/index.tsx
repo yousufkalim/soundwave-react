@@ -24,13 +24,13 @@ const index: FC<HeaderProps> = ({ HeaderTitle, cartItemsLength, setOpen }) => {
 
   return (
     <>
-      <div className="w-full h-20 bg-black flex items-center justify-between px-20">
+      <div className="w-full h-20 bg-black flex items-center justify-between px-4 md:px-20">
         <Logo onClick={handleLogoClick} className="cursor-pointer" />
-        <span className="text-white text-lg font-bold">
+        <span className="text-white font-bold hidden md:text-lg md:block">
           <i>{HeaderTitle}</i>
         </span>
         <div className="flex items-center justify-center gap-4">
-          <button className="bg-white px-4 py-3 text-sm rounded-md  font-medium">
+          <button className="bg-white w-32 py-3 text-sm rounded-md font-medium">
             Return to Store
           </button>
           {location.pathname !== '/cart' ? (

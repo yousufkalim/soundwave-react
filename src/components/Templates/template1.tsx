@@ -131,7 +131,7 @@ const Template1: FC<Template1Props> = ({
             </Grid>
           ))}
         </Grid>
-        <div className={`break-words w-[93%] h-[23%] ${activeAlignment}`}>
+        <div className={`break-words px-2 h-[23%] ${activeAlignment}`}>
           <p
             style={{
               backgroundColor: colors.descriptionColor,

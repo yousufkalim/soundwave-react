@@ -88,9 +88,7 @@ export interface imagesArrayProps {
   url: string;
   width: number;
 }
-// export interface Externalurls {
-//   spotify: string;
-// }
+
 export interface listProps {
   id: string;
   label: string;

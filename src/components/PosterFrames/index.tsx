@@ -33,7 +33,7 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
               : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-3 cursor-pointer'
           }
         >
-          <span className="text-sm">No Frame</span>
+          <span className="text-[12px]">No Frame</span>
         </div>
         <div
           onClick={() => {
@@ -45,8 +45,8 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
               : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
           }
         >
-          <img src={woodenFrameIcon} alt="" />
-          <span className="text-sm">Wooden</span>
+          <img src={woodenFrameIcon} className="w-12" alt="" />
+          <span className="text-[12px]">Wooden</span>
         </div>
         <div
           onClick={() => {
@@ -58,26 +58,26 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
               : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
           }
         >
-          <img src={metalFrameIcon} alt="" />
-          <span className="text-sm">Metal</span>
+          <img src={metalFrameIcon} className="w-12" alt="" />
+          <span className="text-[12px]">Metal</span>
         </div>
       </div>
       {frame.frameType === 'No Frame' ? (
         ''
       ) : frame.frameType === 'Wooden' ? (
-        <div className="flex items-center justify-start gap-4 my-2">
+        <div className="flex items-center justify-start gap-5 my-2">
           <div
             onClick={() => {
               handleSelectedFrame('Wooden Black');
             }}
             className={
               frame.selectedFrame === 'Wooden Black'
-                ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-5 py-3 flex flex-col'
-                : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-5 py-3 flex flex-col'
+                ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
+                : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
             }
           >
             <img src={Blackframe} />
-            <span className="text-center text-sm">Black</span>
+            <span className="text-center text-[12px]">Black</span>
           </div>
           <div
             onClick={() => {
@@ -85,12 +85,12 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
             }}
             className={
               frame.selectedFrame === 'Wooden Nuteral'
-                ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-5 py-3 flex flex-col'
-                : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-5 py-3 flex flex-col'
+                ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
+                : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
             }
           >
             <img src={Neturalframe} />
-            <span className="text-center text-sm">Netural</span>
+            <span className="text-center text-[12px]">Netural</span>
           </div>
           <div
             onClick={() => {
@@ -98,12 +98,12 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
             }}
             className={
               frame.selectedFrame === 'Wooden White'
-                ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-5 py-3 flex flex-col'
-                : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-5 py-3 flex flex-col'
+                ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
+                : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
             }
           >
             <img src={Whiteframe} />
-            <span className="text-center text-sm">White</span>
+            <span className="text-center text-[12px]">White</span>
           </div>
         </div>
       ) : (
@@ -115,12 +115,12 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
               }}
               className={
                 frame.selectedFrame === 'Aluminium Metal'
-                  ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-5 py-3 flex flex-col'
-                  : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-5 py-3 flex flex-col'
+                  ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
+                  : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
               }
             >
               <img src={AluminiumMetal} />
-              <span className="text-center text-sm">Black</span>
+              <span className="text-center text-[12px]">Black</span>
             </div>
           </div>
         )

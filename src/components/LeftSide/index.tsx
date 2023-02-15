@@ -27,6 +27,7 @@ interface waveformProps {
   selectedTemplate: string;
   frame: IFrameProps;
   BackgroundFrame: string;
+  openDescripition: boolean;
 }
 
 const index: FC<waveformProps> = ({
@@ -40,9 +41,10 @@ const index: FC<waveformProps> = ({
   setColors,
   frame,
   BackgroundFrame,
+  openDescripition,
 }) => {
   return (
-    <div className="bg-[#fcfcfc] w-[56%] flex items-center justify-center flex-col gap-6">
+    <div className="bg-[#fcfcfc] w-[60%] flex items-center justify-center flex-col gap-6 2xl:w-[56%]">
       {selectedTemplate === 'template1' ? (
         <Template1
           activeAlignment={activeAlignment}
@@ -122,7 +124,9 @@ const index: FC<waveformProps> = ({
           activeAlignment={activeAlignment}
         />
       )}
-      <PosterFooter activeAlignment={activeAlignment} setActiveAlignment={setActiveAlignment} />
+      {openDescripition && (
+        <PosterFooter activeAlignment={activeAlignment} setActiveAlignment={setActiveAlignment} />
+      )}
     </div>
   );
 };

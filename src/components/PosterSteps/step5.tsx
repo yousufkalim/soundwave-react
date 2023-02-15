@@ -1,5 +1,7 @@
 /* eslint-disable array-callback-return */
 import React, { FC, useState } from 'react';
+import { Collapse } from '@mui/material';
+import Fade from 'react-reveal/Fade';
 import Tab from '../Tab/index';
 import PosterSizeBox from '../PosterSize/index';
 import { ReactComponent as BackArrow } from '../../assets/SimpleBackArrow.svg';
@@ -7,6 +9,7 @@ import { ReactComponent as ForwardArrow } from '../../assets/SimpleForwardArrow.
 import { ReactComponent as BoldBackArrow } from '../../assets/boldBackArrow.svg';
 import { ReactComponent as BoldForwardArrow } from '../../assets/boldForwardArrow.svg';
 import { IPosterSize } from '../../types/index';
+
 interface Step5Props {
   openSize: boolean;
   setOpenDescripition: (value: boolean) => void;
@@ -77,58 +80,60 @@ const step5: FC<Step5Props> = ({
   return (
     <>
       <Tab open={openSize} onClick={handleIconClick} heading={'Size'} active={activeStep >= 5} />
-      <div className={openSize ? 'block w-full' : 'hidden'}>
-        <div className=" flex items-center justify-between">
-          <div className="flex items-center justify-start gap-3">
-            <span
-              onClick={() => {
-                handleMeasurement('inch');
-              }}
-              className={
-                measurement === 'inch'
-                  ? 'text-sm border-b-[2px] text-[#47B45F] border-[#47B45F] pb-1 font-semibold'
-                  : 'text-sm border-b-[2px] border-gray-400 pb-1 font-semibold cursor-pointer'
-              }
-            >
-              Inch
-            </span>
-            <span
-              onClick={() => {
-                handleMeasurement('centimeter');
-              }}
-              className={
-                measurement === 'centimeter'
-                  ? 'text-sm border-b-[2px] text-[#47B45F] border-[#47B45F] pb-1 font-semibold'
-                  : 'text-sm border-b-[2px] border-gray-400 pb-1 font-semibold cursor-pointer'
-              }
-            >
-              Centimeter
-            </span>
+      <Collapse in={openSize} timeout={600} unmountOnExit>
+        <Fade when={openSize} duration={500}>
+          <div className=" flex items-center justify-between">
+            <div className="flex items-center justify-start gap-3">
+              <span
+                onClick={() => {
+                  handleMeasurement('inch');
+                }}
+                className={
+                  measurement === 'inch'
+                    ? 'text-[12px] border-b-[2px] text-[#47B45F] border-[#47B45F] pb-1 font-semibold'
+                    : 'text-[12px] border-b-[2px] border-gray-400 pb-1 font-semibold cursor-pointer'
+                }
+              >
+                Inch
+              </span>
+              <span
+                onClick={() => {
+                  handleMeasurement('centimeter');
+                }}
+                className={
+                  measurement === 'centimeter'
+                    ? 'text-[12px] border-b-[2px] text-[#47B45F] border-[#47B45F] pb-1 font-semibold'
+                    : 'text-[12px] border-b-[2px] border-gray-400 pb-1 font-semibold cursor-pointer'
+                }
+              >
+                Centimeter
+              </span>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <button className="text-[12px]" disabled={activeIndex === 0} onClick={handlePrev}>
+                {activeIndex === 0 ? <BackArrow /> : <BoldBackArrow />}
+              </button>
+              <button
+                className="text-[12px]"
+                disabled={activeIndex === frameSizeArr.length - 1}
+                onClick={handleNext}
+              >
+                {activeIndex === frameSizeArr.length - 1 ? <ForwardArrow /> : <BoldForwardArrow />}
+              </button>
+            </div>
           </div>
-          <div className="flex items-center justify-center gap-3">
-            <button className="text-sm" disabled={activeIndex === 0} onClick={handlePrev}>
-              {activeIndex === 0 ? <BackArrow /> : <BoldBackArrow />}
-            </button>
-            <button
-              className="text-sm"
-              disabled={activeIndex === frameSizeArr.length - 1}
-              onClick={handleNext}
-            >
-              {activeIndex === frameSizeArr.length - 1 ? <ForwardArrow /> : <BoldForwardArrow />}
-            </button>
+          <div className="overflow-x-scroll">
+            <PosterSizeBox
+              measurement={measurement}
+              posterSize={posterSize}
+              setPosterSize={setPosterSize}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+              frameSizeArr={frameSizeArr}
+            />
           </div>
-        </div>
-        <div className="overflow-x-scroll">
-          <PosterSizeBox
-            measurement={measurement}
-            posterSize={posterSize}
-            setPosterSize={setPosterSize}
-            activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
-            frameSizeArr={frameSizeArr}
-          />
-        </div>
-      </div>
+        </Fade>
+      </Collapse>
     </>
   );
 };
