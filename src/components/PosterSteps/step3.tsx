@@ -3,6 +3,9 @@ import Tab from '../Tab/index';
 import ThemeCustomizationBox from '../ThemeCustomization/index';
 import PosterTemplatesBox from '../PosterTemplates/index';
 import ThemeBtnBox from '../themeCustomizationBtnBox/index';
+import { Collapse } from '@mui/material';
+import Fade from 'react-reveal/Fade';
+
 interface Step3Props {
   openTheme: boolean;
   setOpenTheme: (value: boolean) => void;
@@ -68,33 +71,35 @@ const step3: FC<Step3Props> = ({
   return (
     <>
       <Tab onClick={handleIconClick} heading={'Theme'} open={openTheme} active={activeStep >= 3} />
-      <div className={openTheme ? 'block w-full' : 'hidden'}>
-        <ThemeBtnBox
-          selectedSection={selectedSection}
-          handleButtonClick={handleButtonClick}
-          btn1Text={'Templates'}
-          btn2Text={'Customization'}
-        />
-        {selectedSection === 'btn1' ? (
-          <PosterTemplatesBox
-            handleTemplateClick={handleTemplateClick}
-            selectedTemplate={selectedTemplate}
+      <Collapse in={openTheme} timeout={600} unmountOnExit>
+        <Fade when={openTheme} duration={500}>
+          <ThemeBtnBox
+            selectedSection={selectedSection}
+            handleButtonClick={handleButtonClick}
+            btn1Text={'Templates'}
+            btn2Text={'Customization'}
           />
-        ) : (
-          selectedSection === 'btn2' && (
-            <ThemeCustomizationBox
+          {selectedSection === 'btn1' ? (
+            <PosterTemplatesBox
+              handleTemplateClick={handleTemplateClick}
               selectedTemplate={selectedTemplate}
-              boxColor={boxColor}
-              posterColor={posterColor}
-              soundWaveColor={soundWaveColor}
-              songTitleColor={songTitleColor}
-              descriptionColor={descriptionColor}
-              soundWaveNameColor={soundWaveNameColor}
-              getSetColor={getSetColor}
             />
-          )
-        )}
-      </div>
+          ) : (
+            selectedSection === 'btn2' && (
+              <ThemeCustomizationBox
+                selectedTemplate={selectedTemplate}
+                boxColor={boxColor}
+                posterColor={posterColor}
+                soundWaveColor={soundWaveColor}
+                songTitleColor={songTitleColor}
+                descriptionColor={descriptionColor}
+                soundWaveNameColor={soundWaveNameColor}
+                getSetColor={getSetColor}
+              />
+            )
+          )}
+        </Fade>
+      </Collapse>
     </>
   );
 };

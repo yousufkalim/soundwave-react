@@ -188,6 +188,7 @@ const index: FC = () => {
             selectedTemplate={selectedTemplate}
             frame={frame}
             BackgroundFrame={BackgroundFrame}
+            openDescripition={openDescripition}
           />
           <RightSide
             // props for step # 1

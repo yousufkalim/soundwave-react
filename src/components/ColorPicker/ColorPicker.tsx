@@ -32,11 +32,11 @@ const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor })
 
   return (
     <>
-      <div className="flex items-center justify-between py-1 border-b-[1px] border-[#CCCCCC]">
-        <span className="text-sm">{title}</span>
+      <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+        <span className="text-[12px]">{title}</span>
         <div
           style={{ background: value }}
-          className="h-12 w-20 flex items-center justify-center border-[3px] border-[#E1E1E1] rounded-lg cursor-pointer"
+          className="h-10 w-16 flex items-center justify-center border-[3px] border-[#bebdbd] rounded-lg cursor-pointer"
           onClick={handleOpenColorPicker}
         >
           <ColorPickerIcon />

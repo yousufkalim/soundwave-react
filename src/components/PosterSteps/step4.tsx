@@ -4,7 +4,8 @@ import ThemeBtnBox from '../themeCustomizationBtnBox/index';
 import PosterFrame from '../PosterFrames/index';
 import PosterCanvas from '../PosterCanvas/index';
 import { IFrameProps } from '../../types/index';
-
+import { Collapse } from '@mui/material';
+import Fade from 'react-reveal/Fade';
 interface Step4Props {
   openStyles: boolean;
   setOpenDescripition: (value: boolean) => void;
@@ -64,25 +65,27 @@ const step4: FC<Step4Props> = ({
         heading={'Print Format'}
         active={activeStep >= 4}
       />
-      <div className={openStyles ? 'block w-full' : 'hidden'}>
-        <span className="text-sm">Select</span>
-        <ThemeBtnBox
-          selectedSection={selectedSection}
-          handleButtonClick={handleButtonClick}
-          btn1Text={'Poster'}
-          btn2Text={'Canvas'}
-        />
-        {selectedSection === 'btn1' ? (
-          <PosterFrame frame={frame} setFrame={setFrame} />
-        ) : (
-          selectedSection === 'btn2' && (
-            <PosterCanvas
-              selectedCanvas={selectedCanvas}
-              handleSelectedCanvas={handleSelectedCanvas}
-            />
-          )
-        )}
-      </div>
+      <Collapse in={openStyles} timeout={600} unmountOnExit>
+        <Fade when={openStyles} duration={500}>
+          <span className="text-[12px]">Select</span>
+          <ThemeBtnBox
+            selectedSection={selectedSection}
+            handleButtonClick={handleButtonClick}
+            btn1Text={'Poster'}
+            btn2Text={'Canvas'}
+          />
+          {selectedSection === 'btn1' ? (
+            <PosterFrame frame={frame} setFrame={setFrame} />
+          ) : (
+            selectedSection === 'btn2' && (
+              <PosterCanvas
+                selectedCanvas={selectedCanvas}
+                handleSelectedCanvas={handleSelectedCanvas}
+              />
+            )
+          )}
+        </Fade>
+      </Collapse>
     </>
   );
 };
