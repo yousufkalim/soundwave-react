@@ -77,13 +77,13 @@ const Template2: FC<Template2Props> = ({
     });
   }, []);
 
-  const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
-  const descriptionColor = colors.descriptionColor.includes('gradient')
-    ? colors.descriptionColor
-    : '';
-  const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
-    ? colors.soundWaveNameColor
-    : '';
+  // const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
+  // const descriptionColor = colors.descriptionColor.includes('gradient')
+  //   ? colors.descriptionColor
+  //   : '';
+  // const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
+  //   ? colors.soundWaveNameColor
+  //   : '';
 
   return (
     <div
@@ -95,15 +95,21 @@ const Template2: FC<Template2Props> = ({
         padding: frame.frameType !== 'No Frame' ? (BackgroundFrame ? '12px' : '0px') : '',
       }}
     >
-      <div className={`h-full pt-6 pl-8 pr-6`} style={{ background: colors.posterColor }}>
+      <div className={`h-full px-4 pt-4`} style={{ background: colors.posterColor }}>
         <Grid
           container
           spacing={1}
-          className={`h-[77%] px-1 py-3`}
-          style={{ background: colors.boxColor }}
+          className={`h-[77%] px-1 py-3 w-full overflow-hidden mt-4`}
+          style={{ background: colors.boxColor, width: '100%', marginLeft: '0', marginTop: '0' }}
         >
           {dataSets.map((item) => (
-            <Grid item xs={4} className="h-[4%]" key={item.trackId}>
+            <Grid
+              item
+              xs={4}
+              className="h-fit"
+              key={item.trackId}
+              style={{ paddingTop: '0.25rem' }}
+            >
               <Waveform
                 // barWidth={1}
                 peaks={item.levels}
@@ -112,52 +118,39 @@ const Template2: FC<Template2Props> = ({
                 pixelRatio={1}
                 progressColor={rgbaToHex(colors.soundWaveColor)}
               />
-              <div className="flex items-center justify-start gap-1 mt-3 pl-2">
-                <span
-                  style={{
-                    backgroundColor: colors.soundWaveNameColor,
-                    backgroundImage: soundWaveNameColor,
-                  }}
-                  className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
-                >
-                  &quot;{item.songName}&quot;
-                </span>
-                <span
-                  style={{
-                    backgroundColor: colors.soundWaveNameColor,
-                    backgroundImage: soundWaveNameColor,
-                  }}
-                  className="text-[8.5px] font-[Montserrat] template_album_name"
-                >
-                  {convertMilisecondToMinutes(item.time)}
-                </span>
+              <div
+                style={{
+                  color: colors.soundWaveNameColor,
+                }}
+                className="text-[8.5px] font-semibold font-[Montserrat] template_album_name pt-1"
+              >
+                &quot;{item.songName}&quot;
+                <span className="ml-2">{convertMilisecondToMinutes(item.time)}</span>
               </div>
             </Grid>
           ))}
         </Grid>
         <div
-          className={`break-words w-[90%] h-[23%] ${activeAlignment} text-center absolute bottom-6 right-6`}
+          className={`break-words w-full h-[23%] ${activeAlignment} text-center text-ellipsis-8 px-4 absolute right-0 bottom-4`}
         >
           <div className="text-center">
             <span
               className={`text-4xl font-extrabold font-proxima-nova template_album_name`}
               style={{
-                backgroundColor: colors.songTitleColor,
-                backgroundImage: titleColor,
+                color: colors.songTitleColor,
               }}
             >
               <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}</i>
             </span>
           </div>
-          <p
+          <div
             className={`text-[7px] bg-transparent tracking-tighter font-proxima-nova template_album_name`}
             style={{
-              backgroundColor: colors.descriptionColor,
-              backgroundImage: descriptionColor,
+              color: colors.descriptionColor,
             }}
           >
             {albumDescripition}
-          </p>
+          </div>
         </div>
       </div>
     </div>

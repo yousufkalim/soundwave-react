@@ -78,13 +78,13 @@ const Template1: FC<Template1Props> = ({
     });
   }, []);
 
-  const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
-  const descriptionColor = colors.descriptionColor.includes('gradient')
-    ? colors.descriptionColor
-    : '';
-  const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
-    ? colors.soundWaveNameColor
-    : '';
+  // const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
+  // const descriptionColor = colors.descriptionColor.includes('gradient')
+  //   ? colors.descriptionColor
+  //   : '';
+  // const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
+  //   ? colors.soundWaveNameColor
+  //   : '';
 
   return (
     <div
@@ -101,8 +101,7 @@ const Template1: FC<Template1Props> = ({
           <span
             className={`text-4xl font-extrabold font-[Montserrat] template_album_name`}
             style={{
-              backgroundColor: colors.songTitleColor,
-              backgroundImage: titleColor,
+              color: colors.songTitleColor,
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -110,63 +109,61 @@ const Template1: FC<Template1Props> = ({
           <span
             className={`text-md font-[Montserrat] template_album_name`}
             style={{
-              backgroundColor: colors.songTitleColor,
-              backgroundImage: titleColor,
+              color: colors.songTitleColor,
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
         </div>
-        <Grid
-          container
-          spacing={1}
-          className={`h-[70%] px-2 py-3`}
-          style={{ background: colors?.boxColor }}
-        >
-          {dataSets.map((item) => (
-            <Grid item xs={4} className="h-[4%]" key={item.trackId}>
-              <Waveform
-                // barWidth={1}
-                peaks={item.levels}
-                height={20}
-                color={rgbaToHex(colors.soundWaveColor)}
-                pixelRatio={1}
-                progressColor={rgbaToHex(colors.soundWaveColor)}
-                // progressGradientColors={['#ffffff', '#000000']}
-              />
-              <div className="flex items-center justify-start gap-1 mt-3 pl-2">
-                <span
-                  style={{
-                    backgroundColor: colors.soundWaveNameColor,
-                    backgroundImage: soundWaveNameColor,
-                  }}
-                  className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
-                >
-                  &quot;{item.songName}&quot;
-                </span>
-                <span
-                  style={{
-                    backgroundColor: colors.soundWaveNameColor,
-                    backgroundImage: soundWaveNameColor,
-                  }}
-                  className="text-[8.5px] font-[Montserrat] template_album_name"
-                >
-                  {convertMilisecondToMinutes(item.time)}
-                </span>
-              </div>
-            </Grid>
-          ))}
-        </Grid>
-        <div className={`break-words w-[93%] h-[23%] ${activeAlignment}`}>
-          <p
-            style={{
-              backgroundColor: colors.descriptionColor,
-              backgroundImage: descriptionColor,
-            }}
-            className={`text-[7px] template_album_name bg-transparent tracking-tighter font-[Montserrat]`}
+        <div className="h-full overflow-hidden w-full">
+          <Grid
+            container
+            spacing={1}
+            className={`h-[70%] px-2 py-3`}
+            style={{ background: colors?.boxColor }}
           >
-            {albumDescripition}
-          </p>
+            {dataSets.map((item) => (
+              <Grid item xs={4} className="h-[4%]" key={item.trackId}>
+                <Waveform
+                  // barWidth={1}
+                  peaks={item.levels}
+                  height={20}
+                  color={rgbaToHex(colors.soundWaveColor)}
+                  pixelRatio={1}
+                  progressColor={rgbaToHex(colors.soundWaveColor)}
+                  // progressGradientColors={['#ffffff', '#000000']}
+                />
+                <div className="flex items-center justify-start gap-1 mt-3 pl-2">
+                  <span
+                    style={{
+                      color: colors.soundWaveNameColor,
+                    }}
+                    className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
+                  >
+                    &quot;{item.songName}&quot;
+                  </span>
+                  <span
+                    style={{
+                      color: colors.soundWaveNameColor,
+                    }}
+                    className="text-[8.5px] font-[Montserrat] template_album_name"
+                  >
+                    {convertMilisecondToMinutes(item.time)}
+                  </span>
+                </div>
+              </Grid>
+            ))}
+          </Grid>
+          <div className={`break-words w-[93%] h-[23%] ${activeAlignment}`}>
+            <p
+              style={{
+                color: colors.descriptionColor,
+              }}
+              className={`text-[7px] template_album_name bg-transparent tracking-tighter font-[Montserrat] text-ellipsis-8`}
+            >
+              {albumDescripition}
+            </p>
+          </div>
         </div>
       </div>
     </div>

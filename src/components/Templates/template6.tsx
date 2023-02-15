@@ -67,20 +67,12 @@ const Template6: FC<Template6Props> = ({
     setColors({
       boxColor: 'transparent',
       posterColor: 'linear-gradient(180deg, rgb(233, 132, 209) 0%, rgb(233,132,73) 100%)',
-      soundWaveColor: '#fff',
+      soundWaveColor: 'rgba(255,255,255,1)',
       soundWaveNameColor: '#fff',
       songTitleColor: '#fff',
       descriptionColor: '#fff',
     });
   }, []);
-
-  const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
-  const descriptionColor = colors.descriptionColor.includes('gradient')
-    ? colors.descriptionColor
-    : '';
-  const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
-    ? colors.soundWaveNameColor
-    : '';
 
   return (
     <div
@@ -100,8 +92,7 @@ const Template6: FC<Template6Props> = ({
           <span
             className={`text-4xl font-extrabold font-[blacksword] template_album_name`}
             style={{
-              backgroundColor: colors.songTitleColor,
-              backgroundImage: titleColor,
+              color: colors.songTitleColor,
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -126,8 +117,7 @@ const Template6: FC<Template6Props> = ({
               <div className="flex items-center justify-start gap-1 mt-3 pl-2">
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveNameColor,
-                    backgroundImage: soundWaveNameColor,
+                    color: colors.soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
@@ -135,8 +125,7 @@ const Template6: FC<Template6Props> = ({
                 </span>
                 <span
                   style={{
-                    backgroundColor: colors.soundWaveNameColor,
-                    backgroundImage: soundWaveNameColor,
+                    color: colors.soundWaveNameColor,
                   }}
                   className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
@@ -148,8 +137,7 @@ const Template6: FC<Template6Props> = ({
         </Grid>
         <div
           style={{
-            backgroundColor: colors.descriptionColor,
-            backgroundImage: descriptionColor,
+            color: colors.descriptionColor,
           }}
           className={`break-words w-full h-[23%] ${activeAlignment} text-center mt-[-5px] template_album_name`}
         >
