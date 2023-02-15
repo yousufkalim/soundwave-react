@@ -1,9 +1,7 @@
 /* eslint-disable array-callback-return */
 import React, { FC, useEffect, useRef } from 'react';
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
+import { IPosterSize } from '../../types/index';
+
 interface PosterSizeProps {
   posterSize: IPosterSize;
   setPosterSize: ({ value, unit }: IPosterSize) => void;

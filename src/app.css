@@ -73,6 +73,10 @@ body {
   z-index: 10 !important;
 }
 
+.css-10drtbx-MuiButtonBase-root-MuiCheckbox-root{
+  padding: 0px !important;
+}
+
 .template_album_name {
   /* -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

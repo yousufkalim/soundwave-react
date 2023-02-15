@@ -13,22 +13,15 @@ import { ReactComponent as TitleIcon } from '../../assets/titleIcon.svg';
 import { ReactComponent as Cart } from '../../assets/cart.svg';
 import request from '../../api/request';
 import { toast } from 'react-toastify';
-interface DataSetProps {
-  songName: string;
-  trackId: string;
-  time: number;
-  levels: number[];
-}
-interface SelectedAlbumProps {
-  id: string;
-  label: string;
-  photo: string;
-  singerName: string;
-}
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
+import {
+  IPosterSize,
+  SelectedAlbumProps,
+  DataSetProps,
+  IFrameProps,
+  IResponsePoster,
+  IResponseCart,
+} from '../../types/index';
+
 interface RightSideProps {
   selected: string;
   setSelected: (value: string) => void;
@@ -74,31 +67,6 @@ interface RightSideProps {
   setActiveStep: (value: number) => void;
   selectedCanvas: string;
   setSelectedCanvas: (value: string) => void;
-}
-
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-
-interface IResponsePoster {
-  frame: IFrameProps;
-  size: IPosterSize;
-  albumName: string;
-  singerName: string;
-  price: number;
-  posterImage: string;
-  posterQuantity: number;
-  _id: string;
-}
-interface IResponseCart {
-  _id: string;
-  totalPoster: IResponsePoster[];
-  totalPrice: number;
-  shippingCost: number;
-  createdAt?: string;
-  updatedAt?: string;
-  __v?: number;
 }
 
 interface IResponseSuccess {
@@ -215,19 +183,19 @@ const RightSide: FC<RightSideProps> = ({
     }
   };
   return (
-    <div className="bg-white w-[44%] flex items-start justify-start mt-11 pl-20">
-      <div className="w-[60%]">
+    <div className="bg-white w-[40%] flex items-start justify-start mt-11 pl-20 2xl:w-[42%]">
+      <div className="w-[78%] 2xl:w-[65%]">
         <div className="w-full flex items-center justify-start">
           <TitleIcon className="mx-2" />
-          <span className="text-lg font-semibold tracking-tight text-black">Soundwave Poster</span>
+          <span className="text-sm font-semibold tracking-tight text-black">Soundwave Poster</span>
         </div>
-        <div className="w-full flex items-center justify-start mb-7">
-          <i className="text-[#454238] text-3xl tracking-tight font-semibold">
-            Let’s Start with your Content
+        <div className="w-full flex items-center justify-start mb-5">
+          <i className="text-black text-2xl tracking-tight font-semibold">
+            Let’s Start With Your Content
           </i>
         </div>
         <div className="mb-2">
-          <span className="text-[#454238] text-sm font-semibold ">Search an Album or Artist</span>
+          <span className="text-black text-sm font-semibold ">Search an Album or Artist</span>
         </div>
         <div className="flex flex-col gap-3">
           <Step1

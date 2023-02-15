@@ -15,14 +15,14 @@ const PosterCanvas: FC<PosterCanvasProps> = ({ selectedCanvas, handleSelectedCan
           }}
           className={
             selectedCanvas === '2-3 cm'
-              ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-5 py-4 flex flex-col'
-              : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-5 py-4 flex flex-col'
+              ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
+              : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
           }
         >
           <div className="border-[2px] border-black px-2 py-5">
-            <span className="text-[.7rem] font-semibold">2-3 CM</span>
+            <span className="text-[.6rem] font-semibold">2-3 CM</span>
           </div>
-          <span className="text-center text-[.8rem]">Thin</span>
+          <span className="text-center text-[12px]">Thin</span>
         </div>
         <div
           onClick={() => {
@@ -30,14 +30,14 @@ const PosterCanvas: FC<PosterCanvasProps> = ({ selectedCanvas, handleSelectedCan
           }}
           className={
             selectedCanvas === '4 cm'
-              ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-5 py-4 flex flex-col'
-              : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-5 py-4 flex flex-col'
+              ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
+              : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
           }
         >
           <div className="border-[2px] border-black px-3 py-5">
             <span className="text-[.7rem] font-semibold">4 CM</span>
           </div>
-          <span className="text-center text-[.8rem]">Think</span>
+          <span className="text-center text-[12px]">Thik</span>
         </div>
       </div>
     </>

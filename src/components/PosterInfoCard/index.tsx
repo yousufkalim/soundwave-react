@@ -1,17 +1,7 @@
 import React, { FC, useState } from 'react';
-// import PosterImage from '../../assets/TempImages/temp1.svg';
 import Counter from '../Counter/index';
 import { ReactComponent as RemoveIcon } from '../../assets/blackCrossCircle.svg';
-
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
+import { IPosterSize, IFrameProps } from '../../types/index';
 interface PosterInfoCardProps {
   frame: IFrameProps;
   size: IPosterSize;

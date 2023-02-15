@@ -11,54 +11,18 @@ import BlackWoodenFrame from '../../assets/PosterFrames/Black.svg';
 import WhiteWoodenFrame from '../../assets/PosterFrames/White.svg';
 import NuetralWoodenFrame from '../../assets/PosterFrames/Nuetral.svg';
 import MetalFrame from '../../assets/PosterFrames/Metal.svg';
-import { DataSetProps, SelectedAlbumProps } from '../../types/index';
+import {
+  DataSetProps,
+  SelectedAlbumProps,
+  IFrameProps,
+  IPosterSize,
+  IStateColors,
+  ICart,
+} from '../../types/index';
 
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
-
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-
-interface IStateColors {
-  boxColor: string;
-  posterColor: string;
-  soundWaveColor: string;
-  soundWaveNameColor: string;
-  songTitleColor: string;
-  descriptionColor: string;
-}
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-interface IPosterSize {
-  value: string;
-  unit: string;
-}
-interface IResponsePoster {
-  frame: IFrameProps;
-  size: IPosterSize;
-  albumName: string;
-  singerName: string;
-  totalPrice: number;
-  unitPrice: number;
-  posterImage: string;
-  posterQuantity: number;
-  _id: string;
-}
 interface IResponseCart {
   success: boolean;
   cart: ICart;
-}
-interface ICart {
-  _id: string;
-  totalPoster: IResponsePoster[];
-  totalPrice: number;
-  shippingCost: number;
 }
 
 const index: FC = () => {
@@ -224,6 +188,7 @@ const index: FC = () => {
             selectedTemplate={selectedTemplate}
             frame={frame}
             BackgroundFrame={BackgroundFrame}
+            openDescripition={openDescripition}
           />
           <RightSide
             // props for step # 1

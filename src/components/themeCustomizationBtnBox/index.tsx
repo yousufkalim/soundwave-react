@@ -18,8 +18,8 @@ const ThemeBtnBox: FC<ThemeBtnBoxProps> = ({
       <button
         className={
           selectedSection === 'btn1'
-            ? 'bg-black h-9 rounded-lg cursor-pointer text-white w-[42%] text-md font-semibold'
-            : 'bg-transparent h-9 rounded-lg cursor-pointer text-[#363535] w-[42%] text-md font-semibold'
+            ? 'bg-black py-[5px] rounded-lg cursor-pointer text-white w-[47%] text-sm font-semibold'
+            : 'bg-transparent py-[5px] rounded-lg cursor-pointer text-[#363535] w-[47%] text-sm font-semibold'
         }
         onClick={() => {
           handleButtonClick('btn1');
@@ -30,8 +30,8 @@ const ThemeBtnBox: FC<ThemeBtnBoxProps> = ({
       <button
         className={
           selectedSection === 'btn2'
-            ? 'bg-black h-9 rounded-lg cursor-pointer text-white w-[42%] text-md font-semibold'
-            : 'bg-transparent h-9 rounded-lg cursor-pointer text-[#363535] w-[42%] text-md font-semibold'
+            ? 'bg-black py-[5px] rounded-lg cursor-pointer text-white w-[47%] text-sm font-semibold'
+            : 'bg-transparent py-[5px] rounded-lg cursor-pointer text-[#363535] w-[47%] text-sm font-semibold'
         }
         onClick={() => {
           handleButtonClick('btn2');

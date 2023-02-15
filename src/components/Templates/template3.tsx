@@ -2,32 +2,14 @@ import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveform from 'react-audio-waveform';
 import { rgbaToHex } from '../../utils/common';
-
-interface DatasetProps {
-  songName: string;
-  trackId: string;
-  time: number;
-  levels: number[];
-}
-interface SelectedAlbumProps {
-  id: string;
-  label: string;
-  photo: string;
-  singerName: string;
-}
-
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
+import { DataSetProps, SelectedAlbumProps, IFrameProps, IStateColors } from '../../types/index';
 
 interface Template3Props {
   activeAlignment: string;
   selectedAlbum?: SelectedAlbumProps;
-
   albumDescripition: string;
-  dataSets: DatasetProps[];
-  colors: IColors;
+  dataSets: DataSetProps[];
+  colors: IStateColors;
   setColors: ({
     boxColor,
     posterColor,
@@ -35,18 +17,9 @@ interface Template3Props {
     songTitleColor,
     descriptionColor,
     soundWaveNameColor,
-  }: IColors) => void;
+  }: IStateColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
-}
-
-interface IColors {
-  boxColor: string;
-  posterColor: string;
-  soundWaveColor: string;
-  songTitleColor: string;
-  descriptionColor: string;
-  soundWaveNameColor: string;
 }
 
 const Template3: FC<Template3Props> = ({

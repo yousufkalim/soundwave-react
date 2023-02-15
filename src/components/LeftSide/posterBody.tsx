@@ -1,15 +1,9 @@
 import React, { FC } from 'react';
 import Waves from '../Waves';
-
-interface DatasetProps {
-  songName: string;
-  trackId: string;
-  time: number;
-  levels: number[];
-}
+import { DataSetProps, SelectedAlbumProps } from '../../types/index';
 
 interface waveformProps {
-  dataSets: DatasetProps[];
+  dataSets: DataSetProps[];
   albumDescripition: string;
   selectedAlbum?: SelectedAlbumProps;
   boxColor: string;
@@ -19,12 +13,7 @@ interface waveformProps {
   descriptionColor: string;
   activeAlignment: string;
 }
-interface SelectedAlbumProps {
-  id: string;
-  label: string;
-  photo: string;
-  singerName: string;
-}
+
 const PosterBody: FC<waveformProps> = ({
   dataSets,
   albumDescripition,

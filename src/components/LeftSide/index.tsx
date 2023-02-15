@@ -1,35 +1,21 @@
 import React, { FC } from 'react';
 import PosterFooter from './footer';
 import PosterBody from './posterBody';
-
 import Template1 from '../Templates/template1';
 import Template2 from '../Templates/template2';
 import Template3 from '../Templates/template3';
 import Template4 from '../Templates/template4';
 import Template5 from '../Templates/template5';
 import Template6 from '../Templates/template6';
+import { SelectedAlbumProps, DataSetProps, IStateColors, IFrameProps } from '../../types/index';
 
-import { SelectedAlbumProps, DataSetProps } from '../../types/index';
-interface IColors {
-  boxColor: string;
-  posterColor: string;
-  soundWaveColor: string;
-  songTitleColor: string;
-  descriptionColor: string;
-  soundWaveNameColor: string;
-}
-
-interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
 interface waveformProps {
   dataSets: DataSetProps[];
   albumDescripition: string;
   selectedAlbum?: SelectedAlbumProps;
   activeAlignment: string;
   setActiveAlignment: (value: string) => void;
-  colors: IColors;
+  colors: IStateColors;
   setColors: ({
     boxColor,
     posterColor,
@@ -37,62 +23,12 @@ interface waveformProps {
     songTitleColor,
     descriptionColor,
     soundWaveNameColor,
-  }: IColors) => void;
+  }: IStateColors) => void;
   selectedTemplate: string;
   frame: IFrameProps;
   BackgroundFrame: string;
+  openDescripition: boolean;
 }
-
-// const templatesArr = [
-//   {
-//     name: 'template1',
-//     boxColor: 'transparent',
-//     posterColor: '#000000',
-//     soundWaveColor: '#ffffff',
-//     songTitleColor: '#ffffff',
-//     descriptionColor: '#ffffff',
-//   },
-//   {
-//     name: 'template2',
-//     boxColor: 'transparent',
-//     posterColor: '#000000',
-//     soundWaveColor: '#ffffff',
-//     songTitleColor: '#ffffff',
-//     descriptionColor: '#ffffff',
-//   },
-//   {
-//     name: 'template3',
-//     boxColor: 'transparent',
-//     posterColor: '#000000',
-//     soundWaveColor: '#ffffff',
-//     songTitleColor: '#ffffff',
-//     descriptionColor: '#ffffff',
-//   },
-//   {
-//     name: 'template4',
-//     boxColor: 'transparent',
-//     posterColor: '#000000',
-//     soundWaveColor: '#ffffff',
-//     songTitleColor: '#ffffff',
-//     descriptionColor: '#ffffff',
-//   },
-//   {
-//     name: 'template5',
-//     boxColor: 'transparent',
-//     posterColor: '#000000',
-//     soundWaveColor: '#ffffff',
-//     songTitleColor: '#ffffff',
-//     descriptionColor: '#ffffff',
-//   },
-//   {
-//     name: 'template6',
-//     boxColor: 'transparent',
-//     posterColor: '#000000',
-//     soundWaveColor: '#ffffff',
-//     songTitleColor: '#ffffff',
-//     descriptionColor: '#ffffff',
-//   },
-// ];
 
 const index: FC<waveformProps> = ({
   dataSets,
@@ -105,11 +41,10 @@ const index: FC<waveformProps> = ({
   setColors,
   frame,
   BackgroundFrame,
+  openDescripition,
 }) => {
-  // const currentTemplate = templatesArr.find((item) => item.name === selectedTemplate);
-
   return (
-    <div className="bg-[#fcfcfc] w-[56%] flex items-center justify-center flex-col gap-6">
+    <div className="bg-[#fcfcfc] w-[60%] flex items-center justify-center flex-col gap-6 2xl:w-[56%]">
       {selectedTemplate === 'template1' ? (
         <Template1
           activeAlignment={activeAlignment}
@@ -189,7 +124,9 @@ const index: FC<waveformProps> = ({
           activeAlignment={activeAlignment}
         />
       )}
-      <PosterFooter activeAlignment={activeAlignment} setActiveAlignment={setActiveAlignment} />
+      {openDescripition && (
+        <PosterFooter activeAlignment={activeAlignment} setActiveAlignment={setActiveAlignment} />
+      )}
     </div>
   );
 };
