@@ -4,7 +4,7 @@ import { ReactComponent as DeleteIcon } from '../../assets/DeleteIcon.svg';
 import request from '../../api/request';
 import { toast } from 'react-toastify';
 import { IPosterSize, IFrameProps } from '../../types/index';
-
+import { mediaUrl } from '../../config';
 interface CartPosterDetailsProps {
   posterImage: string;
   albumName: string;
@@ -63,7 +63,7 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
   return (
     <div className="w-full flex justify-between border-[1px] rounded-lg p-3 my-3">
       <div className="w-[25%]">
-        <img src={`http://localhost:5000${posterImage}`} className="object-fill w-full" />
+        <img src={`${mediaUrl}${posterImage}`} className="object-fill w-full" />
       </div>
       <div className="w-[60%] flex flex-col items-start justify-center bg-white">
         <span className="text-lg font-semibold">
