@@ -2,6 +2,9 @@ import React, { FC, useState } from 'react';
 import Counter from '../Counter/index';
 import { ReactComponent as RemoveIcon } from '../../assets/blackCrossCircle.svg';
 import { IPosterSize, IFrameProps } from '../../types/index';
+// import { Slide } from 'react-toastify';
+import Slide from 'react-reveal/Slide';
+
 interface PosterInfoCardProps {
   frame: IFrameProps;
   size: IPosterSize;
@@ -12,7 +15,6 @@ interface PosterInfoCardProps {
   Quantity: number;
   posterId: string;
   unitPrice: number;
-
   handleRemovePoster: (value: string) => void;
   handleCartQuantity: (id: string, isAdd: boolean, unitPrice: number) => void;
 }
@@ -30,6 +32,8 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
   handleCartQuantity,
 }) => {
   const [counter, setCounter] = useState<number>(Quantity);
+  const [deleted, setDeleted] = useState<boolean>(true);
+
   const handleIncrement = (): void => {
     setCounter(counter + 1);
     handleCartQuantity(posterId, true, unitPrice);
@@ -45,45 +49,48 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
   };
 
   return (
-    <div className="bg-white w-[78%] h-[31%] flex flex-row rounded-lg outline outline-white hover:outline-2 hover:outline-black relative cursor-pointer">
-      <RemoveIcon
-        className=" absolute top-[-1rem] right-[-1rem] cursor-pointer"
-        onClick={() => {
-          handleRemovePoster(posterId);
-        }}
-      />
-      <div className="w-[26%] flex items-center justify-center">
-        <img src={`http://localhost:5000${posterImage}`} className="object-cover h-[85%]" />
-      </div>
-      <div className="w-[55%] flex flex-col items-start justify-center gap-2">
-        <span className="text-3xl font-semibold">
-          <i>{albumName}</i>
-        </span>
-        <span className="text-md font-light">{singerName}</span>
-        <div className="text-md font-light">
-          Size{' '}
-          <span className="font-semibold">
-            {size.value}
-            {size.unit}
-          </span>
-        </div>
-        <div className="text-md font-light">
-          Frame{' '}
-          <span className="font-semibold">
-            {frame.frameType} frame ({frame.selectedFrame})
-          </span>
-        </div>
-        <Counter
-          size="lg"
-          counter={counter}
-          handleDecrement={handleDecrement}
-          handleIncrement={handleIncrement}
+    <Slide left when={deleted} duration={200}>
+      <div className="bg-white w-[78%] h-[31%] flex flex-row rounded-lg outline outline-white hover:outline-2 hover:outline-black relative cursor-pointer">
+        <RemoveIcon
+          className=" absolute top-[-1rem] right-[-1rem] cursor-pointer"
+          onClick={() => {
+            handleRemovePoster(posterId);
+            setDeleted(false);
+          }}
         />
+        <div className="w-[26%] flex items-center justify-center">
+          <img src={`http://localhost:5000${posterImage}`} className="object-cover h-[85%]" />
+        </div>
+        <div className="w-[55%] flex flex-col items-start justify-center gap-2">
+          <span className="text-3xl font-semibold">
+            <i>{albumName}</i>
+          </span>
+          <span className="text-md font-light">{singerName}</span>
+          <div className="text-md font-light">
+            Size{' '}
+            <span className="font-semibold">
+              {size.value}
+              {size.unit}
+            </span>
+          </div>
+          <div className="text-md font-light">
+            Frame{' '}
+            <span className="font-semibold">
+              {frame.frameType} frame ({frame.selectedFrame})
+            </span>
+          </div>
+          <Counter
+            size="lg"
+            counter={counter}
+            handleDecrement={handleDecrement}
+            handleIncrement={handleIncrement}
+          />
+        </div>
+        <div className="flex items-end justify-start">
+          <i className="text-2xl font-semibold pb-3">${posterPrice}</i>
+        </div>
       </div>
-      <div className="flex items-end justify-start">
-        <i className="text-2xl font-semibold pb-3">${posterPrice}.00</i>
-      </div>
-    </div>
+    </Slide>
   );
 };
 

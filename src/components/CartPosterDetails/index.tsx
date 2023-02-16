@@ -41,8 +41,12 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
   };
 
   const handleDecrement = (): void => {
-    setCounter(counter - 1);
-    handleCartQuantity(id, false, unitPrice);
+    if (counter < 1) {
+      setCounter(1);
+    } else {
+      setCounter(counter - 1);
+      handleCartQuantity(id, false, unitPrice);
+    }
   };
 
   const deletePoster = (): void => {
@@ -57,7 +61,7 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
   };
 
   return (
-    <div className="flex justify-between w-full border-[1px] rounded-lg p-3 my-3">
+    <div className="w-full flex justify-between border-[1px] rounded-lg p-3 my-3">
       <div className="w-[25%]">
         <img src={`http://localhost:5000${posterImage}`} className="object-fill w-full" />
       </div>

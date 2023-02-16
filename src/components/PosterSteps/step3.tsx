@@ -23,6 +23,9 @@ interface Step3Props {
   setOpenSize: (value: boolean) => void;
   activeStep: number;
   setActiveStep: (value: number) => void;
+  selectedFont: string;
+  setSelectedFont: (value: string) => void;
+  setLoading: (value: boolean) => void;
 }
 const step3: FC<Step3Props> = ({
   openTheme,
@@ -41,6 +44,9 @@ const step3: FC<Step3Props> = ({
   activeStep,
   setActiveStep,
   getSetColor,
+  selectedFont,
+  setSelectedFont,
+  setLoading,
 }) => {
   // const ref = useRef<HTMLDivElement>(null);
   const [selectedSection, setSelectedSection] = useState<string>('btn1');
@@ -95,6 +101,9 @@ const step3: FC<Step3Props> = ({
                 descriptionColor={descriptionColor}
                 soundWaveNameColor={soundWaveNameColor}
                 getSetColor={getSetColor}
+                selectedFont={selectedFont}
+                setSelectedFont={setSelectedFont}
+                setLoading={setLoading}
               />
             )
           )}

@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner/Spinner';
 import { toast } from 'react-toastify';
 import { ICart } from '../../types/index';
+import Zoom from 'react-reveal/Zoom';
 
 interface IResponseSuccess {
   success: boolean;
@@ -17,6 +18,7 @@ interface IResponseSuccess {
 }
 const Checkout: FC = () => {
   const naviagte = useNavigate();
+
   const [cart, setCart] = useState<ICart>({
     _id: '',
     totalPoster: [],
@@ -44,14 +46,14 @@ const Checkout: FC = () => {
   const handleRemovePoster = (posterId: string): void => {
     const cartId = localStorage.getItem('cartId');
     if (posterId && cartId) {
-      setLoading(true);
+      // setLoading(true);
       request<IResponseSuccess>('patch', `/cart/deletePoster/${cartId}`, { posterId })
         .then(() => {
           getCartData(cartId);
           toast.success('Poster removed from cart');
         })
         .catch((err) => {
-          setLoading(false);
+          // setLoading(false);
           toast.error(err.response.data.message);
         });
     }
@@ -85,16 +87,16 @@ const Checkout: FC = () => {
   const updateCartQuantity = (id: string, updatedCart: ICart, isAdd: boolean): void => {
     const updatedPoster = updatedCart.totalPoster.find((item) => item._id === id);
     if (updatedPoster?._id) {
-      setLoading?.(true);
+      // setLoading?.(true);
       request('patch', `/cart/changePosterQuantity/${cart._id}`, {
         isAdd,
         posterId: updatedPoster?._id,
         unitPrice: updatedPoster?.unitPrice,
         quantity: updatedPoster.posterQuantity,
       })
-        .then((res) => {
+        .then(() => {
           setCart(updatedCart);
-          setLoading?.(false);
+          // setLoading?.(false);
         })
         .catch((err) => {
           toast.error(err.response.data.message);
@@ -112,8 +114,8 @@ const Checkout: FC = () => {
     cart?.totalPoster?.length > 0
       ? cart?.totalPoster.map((item) => (
           <PosterInfoCard
-            posterImage={item.posterImage}
             key={item._id}
+            posterImage={item.posterImage}
             albumName={item.albumName}
             singerName={item.singerName}
             size={item.size}
@@ -126,7 +128,11 @@ const Checkout: FC = () => {
             unitPrice={item.unitPrice}
           />
         ))
-      : cart?.totalPoster?.length === 0 && <NoFramePlaceholder />;
+      : cart?.totalPoster?.length === 0 && (
+          <Zoom opposite>
+            <NoFramePlaceholder />
+          </Zoom>
+        );
   return (
     <div className="relative">
       {loading && <Spinner />}
@@ -151,7 +157,7 @@ const Checkout: FC = () => {
             <div className="mb-2">
               <div className="text-[#454238] text-sm flex items-center justify-between my-3">
                 <span>Order value</span>
-                <i className="font-bold">${cart.totalPrice}.00</i>
+                <i className="font-bold">${cart.totalPrice}</i>
               </div>
               <div className="text-[#454238] text-sm flex items-center justify-between my-3">
                 <span>Shipping</span>
@@ -159,7 +165,7 @@ const Checkout: FC = () => {
               </div>
               <div className="text-[#454238] text-md font-bold flex items-center justify-between border-t-[1px] my-4 py-4">
                 <span>Sub Total</span>
-                <i>{`$ ${cart?.totalPrice ? cart.totalPrice + cart.shippingCost : '0'}.00`}</i>
+                <i>{`$ ${cart?.totalPrice ? cart.totalPrice + cart.shippingCost : '0'}`}</i>
               </div>
             </div>
             <p className="font-light text-sm my-4 text-[#454238]">

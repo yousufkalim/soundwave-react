@@ -19,7 +19,6 @@ import {
   IStateColors,
   ICart,
 } from '../../types/index';
-
 interface IResponseCart {
   success: boolean;
   cart: ICart;
@@ -65,14 +64,14 @@ const index: FC = () => {
     songTitleColor: '',
     descriptionColor: '',
   });
-
-  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
+  const [selectedFont, setSelectedFont] = useState<string | null>(null);
+  const [selectedTemplate, setSelectedTemplate] = useState<string>('template1');
   // states for step # 4
   const [frame, setFrame] = useState<IFrameProps>({
     frameType: 'No Frame',
     selectedFrame: 'Poster Only',
   });
-  const [selectedCanvas, setSelectedCanvas] = useState<string>('2-3 cm');
+  const [selectedCanvas, setSelectedCanvas] = useState<string>('');
   // states for step # 5
   const [posterSize, setPosterSize] = useState<IPosterSize>({ value: '12 X 18', unit: 'inch' });
   // state for add to cart button
@@ -189,6 +188,7 @@ const index: FC = () => {
             frame={frame}
             BackgroundFrame={BackgroundFrame}
             openDescripition={openDescripition}
+            selectedFont={selectedFont ?? ''}
           />
           <RightSide
             // props for step # 1
@@ -216,6 +216,8 @@ const index: FC = () => {
             getSetColor={getSetColor}
             selectedTemplate={selectedTemplate}
             setSelectedTemplate={setSelectedTemplate}
+            selectedFont={selectedFont ?? ''}
+            setSelectedFont={setSelectedFont}
             // props for step # 4
             setLoading={setLoading}
             frame={frame}
@@ -241,17 +243,20 @@ const index: FC = () => {
             setOpenSize={setOpenSize}
             activeStep={activeStep}
             setActiveStep={setActiveStep}
+            setOpen={setOpen}
           />
         </div>
+        {open && (
+          <CartModal
+            setLoading={setLoading}
+            open={open}
+            handleClose={handleClose}
+            cart={cart}
+            setCart={setCart}
+            getCartData={getCartData}
+          />
+        )}
       </div>
-      <CartModal
-        setLoading={setLoading}
-        open={open}
-        handleClose={handleClose}
-        cart={cart}
-        setCart={setCart}
-        getCartData={getCartData}
-      />
     </>
   );
 };

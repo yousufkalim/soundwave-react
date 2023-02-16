@@ -117,7 +117,7 @@ const Template3: FC<Template3Props> = ({
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
           </span>
           <span
-            className={`text-4xl font-[Aemstel-LineInside] absolute top-[7px] xl:left-[6.2rem] left-[3rem] template_album_name`}
+            className={`text-4xl font-[Aemstel-LineInside] absolute top-[7px] xl:left-[8.8rem] left-[3rem] template_album_name`}
             style={{
               color: colors.songTitleColor,
             }}
@@ -134,7 +134,7 @@ const Template3: FC<Template3Props> = ({
           <p className={`text-[7px] bg-transparent tracking-tighter mb-[1%]`}>
             {albumDescripition}
           </p>
-          <span className="text-[10px] border p-1 rounded-lg font-bold">
+          <span className="text-[10px] border p-1 rounded-lg font-bold text-white">
             {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
         </div>

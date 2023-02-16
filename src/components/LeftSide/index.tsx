@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 import PosterFooter from './footer';
-import PosterBody from './posterBody';
-import Template1 from '../Templates/template1';
-import Template2 from '../Templates/template2';
-import Template3 from '../Templates/template3';
+import Template1 from '../Templates/template2';
+import Template2 from '../Templates/template3';
+import Template3 from '../Templates/template1';
 import Template4 from '../Templates/template4';
 import Template5 from '../Templates/template5';
 import Template6 from '../Templates/template6';
@@ -28,6 +27,7 @@ interface waveformProps {
   frame: IFrameProps;
   BackgroundFrame: string;
   openDescripition: boolean;
+  selectedFont: string;
 }
 
 const index: FC<waveformProps> = ({
@@ -42,88 +42,93 @@ const index: FC<waveformProps> = ({
   frame,
   BackgroundFrame,
   openDescripition,
+  selectedFont,
 }) => {
+  const activeAlbum =
+    selectedTemplate === 'template1' ? (
+      <Template1
+        activeAlignment={activeAlignment}
+        selectedAlbum={selectedAlbum}
+        albumDescripition={albumDescripition}
+        dataSets={dataSets}
+        colors={colors}
+        setColors={setColors}
+        frame={frame}
+        BackgroundFrame={BackgroundFrame}
+        selectedFont={selectedFont}
+      />
+    ) : selectedTemplate === 'template2' ? (
+      <Template2
+        activeAlignment={activeAlignment}
+        selectedAlbum={selectedAlbum}
+        albumDescripition={albumDescripition}
+        dataSets={dataSets}
+        colors={colors}
+        setColors={setColors}
+        frame={frame}
+        BackgroundFrame={BackgroundFrame}
+      />
+    ) : selectedTemplate === 'template3' ? (
+      <Template3
+        activeAlignment={activeAlignment}
+        selectedAlbum={selectedAlbum}
+        albumDescripition={albumDescripition}
+        dataSets={dataSets}
+        colors={colors}
+        setColors={setColors}
+        frame={frame}
+        BackgroundFrame={BackgroundFrame}
+      />
+    ) : selectedTemplate === 'template4' ? (
+      <Template4
+        activeAlignment={activeAlignment}
+        selectedAlbum={selectedAlbum}
+        albumDescripition={albumDescripition}
+        dataSets={dataSets}
+        colors={colors}
+        setColors={setColors}
+        frame={frame}
+        BackgroundFrame={BackgroundFrame}
+      />
+    ) : selectedTemplate === 'template5' ? (
+      <Template5
+        activeAlignment={activeAlignment}
+        selectedAlbum={selectedAlbum}
+        albumDescripition={albumDescripition}
+        dataSets={dataSets}
+        colors={colors}
+        setColors={setColors}
+        frame={frame}
+        BackgroundFrame={BackgroundFrame}
+      />
+    ) : selectedTemplate === 'template6' ? (
+      <Template6
+        activeAlignment={activeAlignment}
+        selectedAlbum={selectedAlbum}
+        albumDescripition={albumDescripition}
+        dataSets={dataSets}
+        colors={colors}
+        setColors={setColors}
+        frame={frame}
+        BackgroundFrame={BackgroundFrame}
+      />
+    ) : (
+      <Template1
+        activeAlignment={activeAlignment}
+        selectedAlbum={selectedAlbum}
+        albumDescripition={albumDescripition}
+        dataSets={dataSets}
+        colors={colors}
+        setColors={setColors}
+        frame={frame}
+        BackgroundFrame={BackgroundFrame}
+        selectedFont={selectedFont}
+      />
+    );
+
   return (
     <div className="bg-[#fcfcfc] w-[60%] flex items-center justify-center flex-col gap-6 2xl:w-[56%]">
-      {selectedTemplate === 'template1' ? (
-        <Template1
-          activeAlignment={activeAlignment}
-          selectedAlbum={selectedAlbum}
-          albumDescripition={albumDescripition}
-          dataSets={dataSets}
-          colors={colors}
-          setColors={setColors}
-          frame={frame}
-          BackgroundFrame={BackgroundFrame}
-        />
-      ) : selectedTemplate === 'template2' ? (
-        <Template2
-          activeAlignment={activeAlignment}
-          selectedAlbum={selectedAlbum}
-          albumDescripition={albumDescripition}
-          dataSets={dataSets}
-          colors={colors}
-          setColors={setColors}
-          frame={frame}
-          BackgroundFrame={BackgroundFrame}
-        />
-      ) : selectedTemplate === 'template3' ? (
-        <Template3
-          activeAlignment={activeAlignment}
-          selectedAlbum={selectedAlbum}
-          albumDescripition={albumDescripition}
-          dataSets={dataSets}
-          colors={colors}
-          setColors={setColors}
-          frame={frame}
-          BackgroundFrame={BackgroundFrame}
-        />
-      ) : selectedTemplate === 'template4' ? (
-        <Template4
-          activeAlignment={activeAlignment}
-          selectedAlbum={selectedAlbum}
-          albumDescripition={albumDescripition}
-          dataSets={dataSets}
-          colors={colors}
-          setColors={setColors}
-          frame={frame}
-          BackgroundFrame={BackgroundFrame}
-        />
-      ) : selectedTemplate === 'template5' ? (
-        <Template5
-          activeAlignment={activeAlignment}
-          selectedAlbum={selectedAlbum}
-          albumDescripition={albumDescripition}
-          dataSets={dataSets}
-          colors={colors}
-          setColors={setColors}
-          frame={frame}
-          BackgroundFrame={BackgroundFrame}
-        />
-      ) : selectedTemplate === 'template6' ? (
-        <Template6
-          activeAlignment={activeAlignment}
-          selectedAlbum={selectedAlbum}
-          albumDescripition={albumDescripition}
-          dataSets={dataSets}
-          colors={colors}
-          setColors={setColors}
-          frame={frame}
-          BackgroundFrame={BackgroundFrame}
-        />
-      ) : (
-        <PosterBody
-          dataSets={dataSets}
-          albumDescripition={albumDescripition}
-          selectedAlbum={selectedAlbum}
-          boxColor={colors.boxColor}
-          posterColor={colors.posterColor}
-          soundWaveColor={colors.soundWaveColor}
-          songTitleColor={colors.songTitleColor}
-          descriptionColor={colors.descriptionColor}
-          activeAlignment={activeAlignment}
-        />
-      )}
+      {activeAlbum}
       {openDescripition && (
         <PosterFooter activeAlignment={activeAlignment} setActiveAlignment={setActiveAlignment} />
       )}
