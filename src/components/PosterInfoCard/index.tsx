@@ -2,9 +2,8 @@ import React, { FC, useState } from 'react';
 import Counter from '../Counter/index';
 import { ReactComponent as RemoveIcon } from '../../assets/blackCrossCircle.svg';
 import { IPosterSize, IFrameProps } from '../../types/index';
-// import { Slide } from 'react-toastify';
 import Slide from 'react-reveal/Slide';
-
+import { mediaUrl } from '../../config';
 interface PosterInfoCardProps {
   frame: IFrameProps;
   size: IPosterSize;
@@ -59,7 +58,7 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
           }}
         />
         <div className="w-[26%] flex items-center justify-center">
-          <img src={`http://localhost:5000${posterImage}`} className="object-cover h-[85%]" />
+          <img src={`${mediaUrl}${posterImage}`} className="object-cover h-[85%]" />
         </div>
         <div className="w-[55%] flex flex-col items-start justify-center gap-2">
           <span className="text-3xl font-semibold">
