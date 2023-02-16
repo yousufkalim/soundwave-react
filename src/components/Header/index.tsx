@@ -34,7 +34,7 @@ const index: FC<HeaderProps> = ({ HeaderTitle, cartItemsLength, setOpen }) => {
             Return to Store
           </button>
           {location.pathname !== '/cart' ? (
-            <Badge badgeContent={cartItemsLength} color="error">
+            <Badge badgeContent={cartItemsLength} color="error" className="z-2">
               <HeaderCart className="cursor-pointer" onClick={handleOpen} />
             </Badge>
           ) : (

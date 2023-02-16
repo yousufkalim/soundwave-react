@@ -20,6 +20,7 @@ interface Template2Props {
   }: IStateColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
+  selectedFont: string;
 }
 
 const Template2: FC<Template2Props> = ({
@@ -31,6 +32,7 @@ const Template2: FC<Template2Props> = ({
   frame,
   setColors,
   BackgroundFrame,
+  selectedFont,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -61,7 +63,7 @@ const Template2: FC<Template2Props> = ({
   return (
     <div
       id="custom-poster-template"
-      className={` w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] mt-[3%] relative `}
+      className={` w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] relative `}
       style={{
         background:
           frame.frameType !== 'No Frame' ? `url(${BackgroundFrame}) center no-repeat` : '',
@@ -94,6 +96,7 @@ const Template2: FC<Template2Props> = ({
               <div
                 style={{
                   color: colors.soundWaveNameColor,
+                  fontFamily: selectedFont,
                 }}
                 className="text-[8.5px] font-semibold font-[Montserrat] template_album_name pt-1"
               >
@@ -104,22 +107,24 @@ const Template2: FC<Template2Props> = ({
           ))}
         </Grid>
         <div
-          className={`break-words w-full h-[23%] ${activeAlignment} text-center text-ellipsis-8 px-4 absolute right-0 bottom-4`}
+          className={`break-words w-full h-[23%] text-center text-ellipsis-8 px-4 absolute right-0 bottom-4`}
         >
           <div className="text-center">
             <span
               className={`text-4xl font-extrabold font-proxima-nova template_album_name`}
               style={{
                 color: colors.songTitleColor,
+                fontFamily: selectedFont,
               }}
             >
               <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}</i>
             </span>
           </div>
           <div
-            className={`text-[7px] bg-transparent tracking-tighter font-proxima-nova template_album_name`}
+            className={`${activeAlignment} text-[7px] bg-transparent tracking-tighter font-proxima-nova template_album_name`}
             style={{
               color: colors.descriptionColor,
+              fontFamily: selectedFont,
             }}
           >
             {albumDescripition}

@@ -21,18 +21,6 @@ const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTem
           }}
           className={
             selectedTemplate === 'template1'
-              ? 'p-3 rounded-xl cursor-pointer border-black border-2'
-              : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
-          }
-        >
-          <img src={Template1} className="h-20 2xl:h-24" />
-        </div>
-        <div
-          onClick={() => {
-            handleTemplateClick('template2');
-          }}
-          className={
-            selectedTemplate === 'template2'
               ? 'p-3  rounded-xl cursor-pointer border-black border-2 '
               : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
           }
@@ -41,15 +29,27 @@ const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTem
         </div>
         <div
           onClick={() => {
-            handleTemplateClick('template3');
+            handleTemplateClick('template2');
           }}
           className={
-            selectedTemplate === 'template3'
+            selectedTemplate === 'template2'
               ? 'p-3 rounded-xl cursor-pointer border-black border-2 '
               : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
           }
         >
           <img src={Template3} className="h-20 2xl:h-24" />
+        </div>
+        <div
+          onClick={() => {
+            handleTemplateClick('template3');
+          }}
+          className={
+            selectedTemplate === 'template3'
+              ? 'p-3 rounded-xl cursor-pointer border-black border-2'
+              : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
+          }
+        >
+          <img src={Template1} className="h-20 2xl:h-24" />
         </div>
         <div
           onClick={() => {

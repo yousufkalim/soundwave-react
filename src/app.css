@@ -73,7 +73,7 @@ body {
   z-index: 10 !important;
 }
 
-.css-10drtbx-MuiButtonBase-root-MuiCheckbox-root{
+.css-10drtbx-MuiButtonBase-root-MuiCheckbox-root {
   padding: 0px !important;
 }
 
@@ -88,7 +88,7 @@ body {
   /* background-size: 100%;
   background-repeat: repeat; */
   white-space: break-spaces;
-  word-break: break-all;
+  word-break: break-word;
   /* white-space: brea; */
 }
 

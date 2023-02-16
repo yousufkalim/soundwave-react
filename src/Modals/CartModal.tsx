@@ -1,16 +1,16 @@
 /* eslint-disable array-callback-return */
 import React, { FC, useEffect } from 'react';
-import Modal from '@mui/material/Modal';
+// import Modal from '@mui/material/Modal';
 import { Box } from '@mui/system';
 import { ReactComponent as CrossIcon } from '../assets/CrossIcon.svg';
 import { ReactComponent as NoFramePlaceholder } from '../assets/NoFramePlaceholder.svg';
-
 import { ReactComponent as CartIcon } from '../assets/cart.svg';
 import CartPosterDetails from '../components/CartPosterDetails';
 import request from '../api/request';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ICart } from '../types/index';
+import Slide from 'react-reveal/Slide';
 
 interface CartModalProps {
   open: boolean;
@@ -20,39 +20,14 @@ interface CartModalProps {
   setCart: (cart: ICart) => void;
   getCartData: (value: string) => void;
 }
-// interface IFrameProps {
-//   frameType: string;
-//   selectedFrame: string;
-// }
-// interface IPosterSize {
-//   value: string;
-//   unit: string;
-// }
-// interface IResponsePoster {
-//   frame: IFrameProps;
-//   size: IPosterSize;
-//   albumName: string;
-//   singerName: string;
-//   totalPrice: number;
-//   unitPrice: number;
-//   posterImage: string;
-//   posterQuantity: number;
-//   _id: string;
-// }
-
-// interface ICart {
-//   _id: string;
-//   totalPoster: IResponsePoster[];
-//   totalPrice: number;
-//   shippingCost: number;
-// }
 
 const style = {
-  position: 'absolute' as const,
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  boxShadow: 24,
+  // position: 'absolute' as const,
+  // top: '0%',
+  // right: '0%',
+  // transform: 'translate(-50%, -50%)',
+  width: '100%',
+  height: '100vh',
   border: 'none',
   p: 4,
 };
@@ -148,50 +123,60 @@ const CartModal: FC<CartModalProps> = ({
       : cart?.totalPoster?.length === 0 && <NoFramePlaceholder className=" w-[80%]" />;
 
   return (
-    <Modal open={open} onClose={handleClose}>
-      <Box sx={style} className="bg-white w-[29%] outline-none h-[85%] overflow-hidden">
-        <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-[#454238]">
-            <i>Cart</i>
-          </span>
-          <CrossIcon onClick={handleClose} className="cursor-pointer w-5" />
-        </div>
-        <div
-          className={
-            cart?.totalPoster?.length === 0
-              ? 'h-[64%] overflow-scroll flex items-center justify-center'
-              : 'h-[64%] overflow-scroll '
-          }
-        >
-          {CartItems}
-        </div>
-        <div className="flex items-center justify-between text-sm py-2 font-semibold">
-          <span>Order value</span>
-          <span>$ {cart.totalPrice}</span>
-        </div>
-        <div className="flex items-center justify-between text-sm py-2 font-semibold">
-          <span>Shipping</span>
-          <span>${cart?.shippingCost}</span>
-        </div>
-        <div className="flex items-center justify-between text-sm py-3 border-t-[1px] font-semibold">
-          <span>Sub Total</span>
-          <span>{`$ ${cart?.totalPrice ? cart?.totalPrice + cart.shippingCost : '0'}.00`}</span>
-        </div>
+    <div
+      className="w-full h-full fixed top-0 bottom-0 right-0 left-0 z-50"
+      style={{ backgroundColor: 'rgba(0, 0, 0, .2)', backdropFilter: 'blur(5px)' }}
+    >
+      <div className="w-full h-full relative">
+        <div style={{ width: '29%', position: 'absolute', top: '0', right: '0' }}>
+          <Slide right duration={400}>
+            <Box sx={style} className="bg-white  outline-none overflow-hidden">
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-bold text-[#454238]">
+                  <i>Cart</i>
+                </span>
+                <CrossIcon onClick={handleClose} className="cursor-pointer w-5" />
+              </div>
+              <div
+                className={
+                  cart?.totalPoster?.length === 0
+                    ? 'h-[64%] overflow-scroll flex items-center justify-center'
+                    : 'h-[64%] overflow-scroll'
+                }
+              >
+                {CartItems}
+              </div>
+              <div className="flex items-center justify-between text-sm py-2 font-semibold">
+                <span>Order value</span>
+                <span>$ {cart.totalPrice}</span>
+              </div>
+              <div className="flex items-center justify-between text-sm py-2 font-semibold">
+                <span>Shipping</span>
+                <span>${cart?.shippingCost}</span>
+              </div>
+              <div className="flex items-center justify-between text-sm py-3 border-t-[1px] font-semibold">
+                <span>Sub Total</span>
+                <span>{`$ ${cart?.totalPrice ? cart?.totalPrice + cart.shippingCost : '0'}`}</span>
+              </div>
 
-        <div className="py-2 flex flex-col gap-2">
-          <button className="bg-black py-3 text-white text-sm rounded-lg font-semibold flex items-center justify-center">
-            <CartIcon />
-            &nbsp; &nbsp;CHECKOUT
-          </button>
-          <button
-            onClick={handleViewCartClick}
-            className="bg-white py-3 text-black text-sm rounded-lg font-semibold border-[1px] border-black"
-          >
-            View Cart
-          </button>
+              <div className="py-2 flex flex-col gap-2">
+                <button className="bg-black py-3 text-white text-sm rounded-lg font-semibold flex items-center justify-center">
+                  <CartIcon />
+                  &nbsp; &nbsp;CHECKOUT
+                </button>
+                <button
+                  onClick={handleViewCartClick}
+                  className="bg-white py-3 text-black text-sm rounded-lg font-semibold border-[1px] border-black"
+                >
+                  View Cart
+                </button>
+              </div>
+            </Box>
+            {/* </div> */}
+          </Slide>
         </div>
-      </Box>
-    </Modal>
+      </div>
+    </div>
   );
 };
 export default CartModal;
