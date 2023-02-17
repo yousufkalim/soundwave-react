@@ -20,9 +20,8 @@ interface Template6Props {
   }: IStateColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
+  selectedFont: string;
 }
-
-
 
 const Template6: FC<Template6Props> = ({
   activeAlignment,
@@ -33,6 +32,7 @@ const Template6: FC<Template6Props> = ({
   frame,
   setColors,
   BackgroundFrame,
+  selectedFont,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -71,6 +71,7 @@ const Template6: FC<Template6Props> = ({
             className={`text-4xl font-extrabold font-[blacksword] template_album_name`}
             style={{
               color: colors.songTitleColor,
+              fontFamily: selectedFont,
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -96,6 +97,7 @@ const Template6: FC<Template6Props> = ({
                 <span
                   style={{
                     color: colors.soundWaveNameColor,
+                    fontFamily: selectedFont,
                   }}
                   className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
@@ -104,6 +106,7 @@ const Template6: FC<Template6Props> = ({
                 <span
                   style={{
                     color: colors.soundWaveNameColor,
+                    fontFamily: selectedFont,
                   }}
                   className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
@@ -116,6 +119,7 @@ const Template6: FC<Template6Props> = ({
         <div
           style={{
             color: colors.descriptionColor,
+            fontFamily: selectedFont,
           }}
           className={`break-words w-full h-[23%] ${activeAlignment} text-center mt-[-5px] template_album_name`}
         >

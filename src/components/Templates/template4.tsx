@@ -21,8 +21,8 @@ interface Template4Props {
   }: IStateColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
+  selectedFont: string;
 }
-
 
 const Template4: FC<Template4Props> = ({
   activeAlignment,
@@ -33,6 +33,7 @@ const Template4: FC<Template4Props> = ({
   frame,
   setColors,
   BackgroundFrame,
+  selectedFont,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -82,6 +83,7 @@ const Template4: FC<Template4Props> = ({
                 <span
                   style={{
                     color: colors.soundWaveNameColor,
+                    fontFamily: selectedFont,
                   }}
                   className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
@@ -90,6 +92,7 @@ const Template4: FC<Template4Props> = ({
                 <span
                   style={{
                     color: colors.soundWaveNameColor,
+                    fontFamily: selectedFont,
                   }}
                   className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
@@ -104,6 +107,7 @@ const Template4: FC<Template4Props> = ({
           style={{
             color: colors.songTitleColor,
             bottom: '16%',
+            fontFamily: selectedFont,
           }}
         >
           <span className={`text-4xl font-extrabold font-[Morganite]`}>
@@ -117,6 +121,7 @@ const Template4: FC<Template4Props> = ({
           className={`w-[95%] h-[23%] ${activeAlignment} text-left pt-10 template_album_name overflow-hidden `}
           style={{
             color: colors.descriptionColor,
+            fontFamily: selectedFont,
           }}
         >
           <p className={`text-[7px] bg-transparent text-ellipsis-8 tracking-tighter`}>
