@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
-import Waveform from 'react-audio-waveform';
-import { rgbaToHex } from '../../utils/common';
+import Waveroom from '../WaveItem/index';
 import { DataSetProps, SelectedAlbumProps, IFrameProps, IStateColors } from '../../types/index';
 
 interface Template4Props {
@@ -35,13 +34,6 @@ const Template4: FC<Template4Props> = ({
   BackgroundFrame,
   selectedFont,
 }) => {
-  const convertMilisecondToMinutes = (duration: number): string => {
-    const minutes = duration / 60;
-    const minutesAsInt = Math.floor(minutes);
-    const seconds = Math.round((minutes - minutesAsInt) * 60);
-    return `${minutesAsInt}:${seconds}`;
-  };
-
   useEffect(() => {
     setColors({
       boxColor: '#000',
@@ -63,62 +55,45 @@ const Template4: FC<Template4Props> = ({
         padding: frame.frameType !== 'No Frame' ? (BackgroundFrame ? '12px' : '0px') : '',
       }}
     >
-      <div className={`h-full pt-6 pl-8 pr-6 `} style={{ background: colors.posterColor }}>
+      <div className={`h-full pt-6 pl-6 pr-4 `} style={{ background: colors.posterColor }}>
         <Grid
           container
           spacing={1}
           className={`h-[77%] px-1 py-3 border-2 border-white `}
           style={{ backgroundColor: colors.boxColor }}
         >
-          {dataSets.map((item) => (
-            <Grid item xs={4} className="h-[4%]" key={item.trackId}>
-              <Waveform // barWidth={1}
-                peaks={item.levels}
-                height={20}
-                color={rgbaToHex(colors.soundWaveColor)}
-                pixelRatio={1}
-                progressColor={rgbaToHex(colors.soundWaveColor)}
-              />
-              <div className="flex items-center justify-start gap-1 mt-3 pl-2">
-                <span
-                  style={{
-                    color: colors.soundWaveNameColor,
-                    fontFamily: selectedFont,
-                  }}
-                  className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
-                >
-                  &quot;{item.songName}&quot;
-                </span>
-                <span
-                  style={{
-                    color: colors.soundWaveNameColor,
-                    fontFamily: selectedFont,
-                  }}
-                  className="text-[8.5px] font-[Montserrat] template_album_name"
-                >
-                  {convertMilisecondToMinutes(item.time)}
-                </span>
-              </div>
-            </Grid>
-          ))}
+          {dataSets.map((item, index) => {
+            if (index < 18) {
+              return (
+                <Waveroom
+                  item={item}
+                  selectedFont={selectedFont}
+                  colors={colors}
+                  key={item.trackId}
+                />
+              );
+            } else {
+              return '';
+            }
+          })}
         </Grid>
         <div
-          className=" absolute left-10 flex flex-col bg-black px-2 template_album_name"
+          className=" absolute left-10 bg-black pl-[2px] template_album_name"
           style={{
             color: colors.songTitleColor,
-            bottom: '16%',
+            bottom: '17%',
             fontFamily: selectedFont,
           }}
         >
-          <span className={`text-4xl font-extrabold font-[Morganite]`}>
+          <div className={`text-[3rem] font-extrabold font-[Morganite]`}>
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
-          </span>
-          <span className="text-[10px] font-bold font-[Morganite]">
+          </div>
+          <div className="text-[1em] font-bold font-[Morganite] mt-[-1rem]">
             {selectedAlbum?.singerName ? selectedAlbum.singerName : 'SINGER NAME'}
-          </span>
+          </div>
         </div>
         <div
-          className={`w-[95%] h-[23%] ${activeAlignment} text-left pt-10 template_album_name overflow-hidden `}
+          className={`${activeAlignment} text-left pt-11 template_album_name overflow-hidden `}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,

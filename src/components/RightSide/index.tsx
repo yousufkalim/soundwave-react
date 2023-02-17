@@ -456,13 +456,15 @@ const RightSide: FC<RightSideProps> = ({
             setActiveStep={setActiveStep}
           />
           <button
+            style={{
+              display: selectedAlbum && selected !== selectedAlbum.label ? '' : 'none',
+            }}
             className={
               activeStep === 6
                 ? 'bg-black flex items-center justify-center py-3 2xl:py-4 rounded-xl cursor-pointer '
                 : 'bg-[#919B9B] flex items-center justify-center py-3 2xl:py-4 rounded-xl'
             }
             onClick={handleAddToCart}
-            // disabled={activeStep < 6}
           >
             <span className="text-white flex text-[.9rem] 2xl:text-[1rem]">
               <Cart />

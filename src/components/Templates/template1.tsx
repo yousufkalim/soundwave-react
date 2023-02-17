@@ -1,8 +1,7 @@
 /* eslint-disable one-var */
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
-import Waveform from 'react-audio-waveform';
-import { rgbaToHex } from '../../utils/common';
+import Waveroom from '../WaveItem/index';
 import { DataSetProps, SelectedAlbumProps, IFrameProps, IStateColors } from '../../types/index';
 
 interface Template1Props {
@@ -35,12 +34,12 @@ const Template1: FC<Template1Props> = ({
   BackgroundFrame,
   selectedFont,
 }) => {
-  const convertMilisecondToMinutes = (duration: number): string => {
-    const minutes = duration / 60;
-    const minutesAsInt = Math.floor(minutes);
-    const seconds = Math.round((minutes - minutesAsInt) * 60);
-    return `${minutesAsInt}:${seconds}`;
-  };
+  // const convertMilisecondToMinutes = (duration: number): string => {
+  //   const minutes = duration / 60;
+  //   const minutesAsInt = Math.floor(minutes);
+  //   const seconds = Math.round((minutes - minutesAsInt) * 60);
+  //   return `${minutesAsInt}:${seconds}`;
+  // };
 
   useEffect(() => {
     setColors({
@@ -99,39 +98,20 @@ const Template1: FC<Template1Props> = ({
             className={`h-[70%] px-2 py-3`}
             style={{ background: colors?.boxColor }}
           >
-            {dataSets.map((item) => (
-              <Grid item xs={4} className="h-[4%]" key={item.trackId}>
-                <Waveform
-                  // barWidth={1}
-                  peaks={item.levels}
-                  height={20}
-                  color={rgbaToHex(colors.soundWaveColor)}
-                  pixelRatio={1}
-                  progressColor={rgbaToHex(colors.soundWaveColor)}
-                  // progressGradientColors={['#ffffff', '#000000']}
-                />
-                <div className="flex items-center justify-start gap-1 mt-3 pl-2">
-                  <span
-                    style={{
-                      color: colors.soundWaveNameColor,
-                      fontFamily: selectedFont,
-                    }}
-                    className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
-                  >
-                    &quot;{item.songName}&quot;
-                  </span>
-                  <span
-                    style={{
-                      color: colors.soundWaveNameColor,
-                      fontFamily: selectedFont,
-                    }}
-                    className="text-[8.5px] font-[Montserrat] template_album_name"
-                  >
-                    {convertMilisecondToMinutes(item.time)}
-                  </span>
-                </div>
-              </Grid>
-            ))}
+            {dataSets.map((item, index) => {
+              if (index < 18) {
+                return (
+                  <Waveroom
+                    item={item}
+                    selectedFont={selectedFont}
+                    colors={colors}
+                    key={item.trackId}
+                  />
+                );
+              } else {
+                return '';
+              }
+            })}
           </Grid>
           <div className={`break-words w-[93%] h-[23%] ${activeAlignment}`}>
             <p

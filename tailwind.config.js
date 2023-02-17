@@ -12,6 +12,9 @@ module.exports = {
           main: '#16496f',
         },
       },
+      screens: {
+        '3xl': '1600px',
+      },
     },
     // screens: {
     //   '2xl': { max: '1535px' },

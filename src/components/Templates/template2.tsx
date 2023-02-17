@@ -1,9 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
-import Waveform from 'react-audio-waveform';
-import { rgbaToHex } from '../../utils/common';
 import { DataSetProps, SelectedAlbumProps, IFrameProps, IStateColors } from '../../types/index';
-
+import Waveroom from '../WaveItem/index';
 interface Template2Props {
   activeAlignment: string;
   selectedAlbum?: SelectedAlbumProps;
@@ -34,13 +32,6 @@ const Template2: FC<Template2Props> = ({
   BackgroundFrame,
   selectedFont,
 }) => {
-  const convertMilisecondToMinutes = (duration: number): string => {
-    const minutes = duration / 60;
-    const minutesAsInt = Math.floor(minutes);
-    const seconds = Math.round((minutes - minutesAsInt) * 60);
-    return `${minutesAsInt}:${seconds}`;
-  };
-
   useEffect(() => {
     setColors({
       boxColor: '#e28743',
@@ -71,44 +62,37 @@ const Template2: FC<Template2Props> = ({
         padding: frame.frameType !== 'No Frame' ? (BackgroundFrame ? '12px' : '0px') : '',
       }}
     >
-      <div className={`h-full px-4 pt-4`} style={{ background: colors.posterColor }}>
+      <div
+        className={`h-full pt-4`}
+        style={{
+          background: colors.posterColor,
+          paddingLeft: BackgroundFrame ? ' 12px' : '16px',
+          paddingRight: BackgroundFrame ? ' 12px' : '16px',
+        }}
+      >
         <Grid
           container
           spacing={1}
           className={`h-[77%] px-1 py-3 w-full overflow-hidden mt-4`}
           style={{ background: colors.boxColor, width: '100%', marginLeft: '0', marginTop: '0' }}
         >
-          {dataSets.map((item) => (
-            <Grid
-              item
-              xs={4}
-              className="h-fit"
-              key={item.trackId}
-              style={{ paddingTop: '0.25rem' }}
-            >
-              <Waveform
-                // barWidth={1}
-                peaks={item.levels}
-                height={20}
-                color={rgbaToHex(colors.soundWaveColor)}
-                pixelRatio={1}
-                progressColor={rgbaToHex(colors.soundWaveColor)}
-              />
-              <div
-                style={{
-                  color: colors.soundWaveNameColor,
-                  fontFamily: selectedFont,
-                }}
-                className="text-[8.5px] font-semibold font-[Montserrat] template_album_name pt-1"
-              >
-                &quot;{item.songName}&quot;
-                <span className="ml-2">{convertMilisecondToMinutes(item.time)}</span>
-              </div>
-            </Grid>
-          ))}
+          {dataSets.map((item, index) => {
+            if (index < 18) {
+              return (
+                <Waveroom
+                  item={item}
+                  selectedFont={selectedFont}
+                  colors={colors}
+                  key={item.trackId}
+                />
+              );
+            } else {
+              return '';
+            }
+          })}
         </Grid>
         <div
-          className={`break-words w-full h-[23%] text-center text-ellipsis-8 px-4 absolute right-0 bottom-4`}
+          className={`break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-6`}
         >
           <div className="text-center">
             <span
@@ -122,7 +106,7 @@ const Template2: FC<Template2Props> = ({
             </span>
           </div>
           <div
-            className={`${activeAlignment} text-[7px] bg-transparent tracking-tighter font-proxima-nova template_album_name`}
+            className={`${activeAlignment} text-[7px] bg-transparent tracking-tighter font-proxima-nova template_album_name mt-2`}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,

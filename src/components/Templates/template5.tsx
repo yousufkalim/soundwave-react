@@ -66,47 +66,48 @@ const Template5: FC<Template5Props> = ({
         className={`bg-gradient-to-b h-full pt-6 px-6 `}
         style={{ background: colors.posterColor }}
       >
-        <Grid
-          container
-          spacing={1}
-          className={`h-[77%] px-1 py-3 `}
-          // style={{ backgroundColor: '#e28743' }}
-        >
-          {dataSets.map((item) => (
-            <Grid item xs={4} className="h-[4%]" key={item.trackId}>
-              <Waveform
-                // barWidth={1}
-                peaks={item.levels}
-                height={20}
-                color={rgbaToHex(colors.soundWaveColor)}
-                pixelRatio={1}
-                progressColor={rgbaToHex(colors.soundWaveColor)}
-              />
-              <div className="flex items-center justify-start gap-1 mt-3 pl-2 ">
-                <span
-                  style={{
-                    color: colors.soundWaveNameColor,
-                    fontFamily: selectedFont,
-                  }}
-                  className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
-                >
-                  &quot;{item.songName}&quot;
-                </span>
-                <span
-                  style={{
-                    color: colors.soundWaveNameColor,
-                    fontFamily: selectedFont,
-                  }}
-                  className="text-[8.5px] font-[Montserrat] template_album_name"
-                >
-                  {convertMilisecondToMinutes(item.time)}
-                </span>
-              </div>
-            </Grid>
-          ))}
+        <Grid container spacing={1} className={`h-[75%]`}>
+          {dataSets.map((item, index) => {
+            if (index < 18) {
+              return (
+                <Grid item xs={4} className="h-[3.5%]" key={item.trackId}>
+                  <Waveform
+                    // barWidth={1}
+                    peaks={item.levels}
+                    height={20}
+                    color={rgbaToHex(colors.soundWaveColor)}
+                    pixelRatio={1}
+                    progressColor={rgbaToHex(colors.soundWaveColor)}
+                  />
+                  <div className="flex items-center justify-start gap-1 mt-3 pl-2 ">
+                    <span
+                      style={{
+                        color: colors.soundWaveNameColor,
+                        fontFamily: selectedFont,
+                      }}
+                      className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
+                    >
+                      &quot;{item.songName}&quot;
+                    </span>
+                    <span
+                      style={{
+                        color: colors.soundWaveNameColor,
+                        fontFamily: selectedFont,
+                      }}
+                      className="text-[8.5px] font-[Montserrat] template_album_name"
+                    >
+                      {convertMilisecondToMinutes(item.time)}
+                    </span>
+                  </div>
+                </Grid>
+              );
+            } else {
+              return '';
+            }
+          })}
         </Grid>
         <div
-          className={`flex flex-col break-words w-[89%] h-[23%] ${activeAlignment} text-center absolute bottom-6`}
+          className={`flex flex-col w-[90%] break-words ${activeAlignment} text-center absolute bottom-6`}
         >
           <span
             className={`text-4xl font-extrabold font-[blowbrush] tracking-wide template_album_name`}
@@ -127,7 +128,7 @@ const Template5: FC<Template5Props> = ({
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
           <p
-            className={`text-[7px] bg-transparent tracking-tighter template_album_name`}
+            className={`text-[7px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words`}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
