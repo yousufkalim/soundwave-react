@@ -10,7 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner/Spinner';
 import { toast } from 'react-toastify';
 import { ICart } from '../../types/index';
-import Zoom from 'react-reveal/Zoom';
+// import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
 
 interface IResponseSuccess {
   success: boolean;
@@ -26,6 +27,7 @@ const Checkout: FC = () => {
     shippingCost: 0,
   });
   const [loading, setLoading] = useState<boolean>(false);
+  const [termsCondition, setTermsCondition] = useState<boolean>(false);
   const getCartData = (cartId: string): void => {
     if (cartId) {
       setLoading(true);
@@ -109,6 +111,9 @@ const Checkout: FC = () => {
       getCartData(cartId);
     }
   }, []);
+  const handleTermsCondition = (): void => {
+    setTermsCondition(!termsCondition);
+  };
 
   const CartItems =
     cart?.totalPoster?.length > 0
@@ -129,20 +134,20 @@ const Checkout: FC = () => {
           />
         ))
       : cart?.totalPoster?.length === 0 && (
-          <Zoom opposite>
+          <Fade>
             <NoFramePlaceholder />
-          </Zoom>
+          </Fade>
         );
   return (
     <div className="relative">
       {loading && <Spinner />}
       <Header HeaderTitle="Checkout" />
-      <div className="flex h-[85vh]">
-        <div className="bg-[#fcfcfc] w-[56%] flex flex-col items-center justify-center gap-5 ">
+      <div className="flex flex-col md:flex-row md:h-[85vh]">
+        <div className="bg-[#fcfcfc] w-full md:w-[60%] 2xl:w-[56%] flex flex-col items-center justify-center gap-5 ">
           {CartItems}
         </div>
-        <div className="bg-white w-[44%] flex items-start justify-start mt-14 pl-20">
-          <div className="w-[60%]">
+        <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-20">
+          <div className="w-[78%] 2xl:w-[65%] mt-[6%]">
             <div className="w-full flex items-center justify-start mb-2">
               <TitleIcon className="mx-2" />
               <span className="text-md font-semibold tracking-tight text-black">
@@ -155,45 +160,49 @@ const Checkout: FC = () => {
               </i>
             </div>
             <div className="mb-2">
-              <div className="text-[#454238] text-sm flex items-center justify-between my-3">
+              <div className="text-[#323334] text-[12px] 2xl:text-[13px] flex items-center justify-between my-3">
                 <span>Order value</span>
-                <i className="font-bold">${cart.totalPrice}</i>
+                <span className="font-semibold">${cart.totalPrice}</span>
               </div>
-              <div className="text-[#454238] text-sm flex items-center justify-between my-3">
+              <div className="text-[#454238] text-[12px] 2xl:text-[13px] flex items-center justify-between my-3">
                 <span>Shipping</span>
-                <i className="font-bold">${cart.shippingCost}.00</i>
+                <span className="font-semibold">${cart.shippingCost}.00</span>
               </div>
               <div className="text-[#454238] text-md font-bold flex items-center justify-between border-t-[1px] my-4 py-4">
                 <span>Sub Total</span>
                 <i>{`$ ${cart?.totalPrice ? cart.totalPrice + cart.shippingCost : '0'}`}</i>
               </div>
             </div>
-            <p className="font-light text-sm my-4 text-[#454238]">
+            <p className="text-[12px] 2xl:text-[13px] my-4 text-[#A0A0A0]">
               Your personal data will be used to process your order, support your experience
               throughout this website, and for other purposes described in our
-              <span className="font-bold"> privacy policy.</span>
+              <span className="font-bold text-black"> privacy policy.</span>
             </p>
             <div className="my-3">
               <Checkbox
+                checked={termsCondition}
+                onClick={handleTermsCondition}
+                disabled={cart.totalPoster?.length === 0}
                 sx={{
-                  color: 'black',
+                  color: '#D1D1D6',
+                  padding: '0px',
                   '&.Mui-checked': {
-                    color: 'black',
+                    color: '#47B45F',
                   },
                 }}
               />
-              <span className="font-light text-sm text-[#454238]">
+              <span className="text-[12px] 2xl:text-[13px] text-[#A0A0A0] ml-2">
                 I have read and agree to the website
-                <span className="font-bold"> terms and conditions</span>
+                <span className="font-bold text-black"> terms and conditions</span>
               </span>
             </div>
             <div className="flex flex-col gap-3">
               <button
-                disabled={cart.totalPoster?.length === 0}
+                disabled={cart.totalPoster?.length === 0 && !termsCondition}
                 className={
-                  cart.totalPoster.length > 0
-                    ? 'bg-black flex items-center justify-center h-12 rounded-xl cursor-pointer text-white text-sm font-semibold'
-                    : 'bg-[#919B9B] flex items-center justify-center h-12 rounded-xl cursor-pointer text-white text-sm font-semibold'
+                  cart.totalPoster.length > 0 && termsCondition
+                    ? 'bg-black flex items-center justify-center h-12 rounded-xl cursor-pointer text-white text-[12px] 2xl:text-[13px] font-semibold'
+                    : 'bg-[#919B9B] flex items-center justify-center h-12 rounded-xl cursor-pointer text-white text-[12px] 2xl:text-[13px] font-semibold'
                 }
               >
                 <Cart className="w-4" />
@@ -202,7 +211,7 @@ const Checkout: FC = () => {
               <button
                 onClick={handleCreateAnotherPoster}
                 className={
-                  'flex items-center justify-center h-12 rounded-xl cursor-pointer text-black text-sm font-semibold border-[1px] border-black'
+                  'flex items-center justify-center h-12 rounded-xl cursor-pointer text-black text-[12px] 2xl:text-[13px] font-semibold border-[1px] border-black'
                 }
               >
                 {cart.totalPoster.length > 0 ? 'Create Another Poster' : 'Create A Poster'}

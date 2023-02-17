@@ -20,6 +20,7 @@ interface Template3Props {
   }: IStateColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
+  selectedFont: string;
 }
 
 const Template3: FC<Template3Props> = ({
@@ -31,6 +32,7 @@ const Template3: FC<Template3Props> = ({
   frame,
   setColors,
   BackgroundFrame,
+  selectedFont,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -89,6 +91,7 @@ const Template3: FC<Template3Props> = ({
                 <span
                   style={{
                     color: colors.soundWaveNameColor,
+                    fontFamily: selectedFont,
                   }}
                   className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
@@ -97,6 +100,7 @@ const Template3: FC<Template3Props> = ({
                 <span
                   style={{
                     color: colors.soundWaveNameColor,
+                    fontFamily: selectedFont,
                   }}
                   className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
@@ -112,6 +116,7 @@ const Template3: FC<Template3Props> = ({
             className={`text-4xl font-extrabold font-[Aemstel-Regular] template_album_name`}
             style={{
               color: colors.songTitleColor,
+              fontFamily: selectedFont,
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
@@ -120,6 +125,7 @@ const Template3: FC<Template3Props> = ({
             className={`text-4xl font-[Aemstel-LineInside] absolute top-[7px] xl:left-[8.8rem] left-[3rem] template_album_name`}
             style={{
               color: colors.songTitleColor,
+              fontFamily: selectedFont,
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -129,6 +135,7 @@ const Template3: FC<Template3Props> = ({
           className={`break-words w-[94%] h-[23%] ${activeAlignment} text-center mt-[-10px] template_album_name`}
           style={{
             color: colors.descriptionColor,
+            fontFamily: selectedFont,
           }}
         >
           <p className={`text-[7px] bg-transparent tracking-tighter mb-[1%]`}>

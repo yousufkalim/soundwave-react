@@ -360,7 +360,7 @@ const RightSide: FC<RightSideProps> = ({
     }
   };
   return (
-    <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-20 ">
+    <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-20">
       <div className="w-[78%] 2xl:w-[65%]">
         <div className="w-full flex items-center justify-start">
           <TitleIcon className="mx-2" />

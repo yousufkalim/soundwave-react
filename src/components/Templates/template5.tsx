@@ -20,8 +20,8 @@ interface Template5Props {
   }: IStateColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
+  selectedFont: string;
 }
-
 
 const Template5: FC<Template5Props> = ({
   activeAlignment,
@@ -32,6 +32,7 @@ const Template5: FC<Template5Props> = ({
   frame,
   setColors,
   BackgroundFrame,
+  selectedFont,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -85,6 +86,7 @@ const Template5: FC<Template5Props> = ({
                 <span
                   style={{
                     color: colors.soundWaveNameColor,
+                    fontFamily: selectedFont,
                   }}
                   className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                 >
@@ -93,6 +95,7 @@ const Template5: FC<Template5Props> = ({
                 <span
                   style={{
                     color: colors.soundWaveNameColor,
+                    fontFamily: selectedFont,
                   }}
                   className="text-[8.5px] font-[Montserrat] template_album_name"
                 >
@@ -109,6 +112,7 @@ const Template5: FC<Template5Props> = ({
             className={`text-4xl font-extrabold font-[blowbrush] tracking-wide template_album_name`}
             style={{
               color: colors.songTitleColor,
+              fontFamily: selectedFont,
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -117,6 +121,7 @@ const Template5: FC<Template5Props> = ({
             className="text-[10px] font-bold font-[Montserrat] template_album_name"
             style={{
               color: colors.songTitleColor,
+              fontFamily: selectedFont,
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
@@ -125,6 +130,7 @@ const Template5: FC<Template5Props> = ({
             className={`text-[7px] bg-transparent tracking-tighter template_album_name`}
             style={{
               color: colors.descriptionColor,
+              fontFamily: selectedFont,
             }}
           >
             {albumDescripition}

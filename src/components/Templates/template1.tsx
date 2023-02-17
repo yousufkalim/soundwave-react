@@ -21,8 +21,8 @@ interface Template1Props {
   }: IStateColors) => void;
   frame: IFrameProps;
   BackgroundFrame: string;
+  selectedFont: string;
 }
-
 
 const Template1: FC<Template1Props> = ({
   activeAlignment,
@@ -33,6 +33,7 @@ const Template1: FC<Template1Props> = ({
   setColors,
   frame,
   BackgroundFrame,
+  selectedFont,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -76,6 +77,7 @@ const Template1: FC<Template1Props> = ({
             className={`text-4xl font-extrabold font-[Montserrat] template_album_name`}
             style={{
               color: colors.songTitleColor,
+              fontFamily: selectedFont,
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -84,6 +86,7 @@ const Template1: FC<Template1Props> = ({
             className={`text-md font-[Montserrat] template_album_name`}
             style={{
               color: colors.songTitleColor,
+              fontFamily: selectedFont,
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
@@ -111,6 +114,7 @@ const Template1: FC<Template1Props> = ({
                   <span
                     style={{
                       color: colors.soundWaveNameColor,
+                      fontFamily: selectedFont,
                     }}
                     className="text-[8.5px] font-semibold font-[Montserrat] template_album_name"
                   >
@@ -119,6 +123,7 @@ const Template1: FC<Template1Props> = ({
                   <span
                     style={{
                       color: colors.soundWaveNameColor,
+                      fontFamily: selectedFont,
                     }}
                     className="text-[8.5px] font-[Montserrat] template_album_name"
                   >
@@ -132,6 +137,7 @@ const Template1: FC<Template1Props> = ({
             <p
               style={{
                 color: colors.descriptionColor,
+                fontFamily: selectedFont,
               }}
               className={`text-[7px] template_album_name bg-transparent tracking-tighter font-[Montserrat] text-ellipsis-8`}
             >
