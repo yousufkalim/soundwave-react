@@ -63,7 +63,14 @@ const Template3: FC<Template3Props> = ({
         padding: frame.frameType !== 'No Frame' ? (BackgroundFrame ? '12px' : '0px') : '',
       }}
     >
-      <div className={`h-full pt-6 pl-8 pr-6`} style={{ background: colors.posterColor }}>
+      <div
+        className={`h-full pt-4 `}
+        style={{
+          background: colors.posterColor,
+          paddingLeft: BackgroundFrame ? ' 28px' : '32px',
+          paddingRight: BackgroundFrame ? ' 20px' : '24px',
+        }}
+      >
         <Grid
           container
           spacing={1}
@@ -94,7 +101,8 @@ const Template3: FC<Template3Props> = ({
               fontFamily: selectedFont,
             }}
           >
-            {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
+            {' '}
+            . .{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
           </span>
           <span
             className={`text-4xl font-[Aemstel-LineInside] absolute top-[7px] xl:left-[30.5%] left-[3rem] template_album_name`}

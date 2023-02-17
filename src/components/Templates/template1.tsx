@@ -34,13 +34,6 @@ const Template1: FC<Template1Props> = ({
   BackgroundFrame,
   selectedFont,
 }) => {
-  // const convertMilisecondToMinutes = (duration: number): string => {
-  //   const minutes = duration / 60;
-  //   const minutesAsInt = Math.floor(minutes);
-  //   const seconds = Math.round((minutes - minutesAsInt) * 60);
-  //   return `${minutesAsInt}:${seconds}`;
-  // };
-
   useEffect(() => {
     setColors({
       boxColor: 'transparent',
