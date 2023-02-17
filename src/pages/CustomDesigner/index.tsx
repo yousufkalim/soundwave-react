@@ -175,7 +175,7 @@ const index: FC = () => {
           cartItemsLength={cartItemsLength}
           setOpen={setOpen}
         />
-        <div className="flex h-[85vh]">
+        <div className="flex flex-col md:flex-row md:h-[85vh]">
           <LeftSide
             dataSets={dataSets}
             albumDescripition={posterDescription}

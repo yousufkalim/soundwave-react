@@ -127,7 +127,7 @@ const index: FC<waveformProps> = ({
     );
 
   return (
-    <div className="bg-[#fcfcfc] w-[60%] flex items-center justify-center flex-col gap-6 2xl:w-[56%]">
+    <div className="bg-[#fcfcfc] w-full h-[90vh] md:h-[85vh] md:w-[60%] flex items-center justify-center flex-col gap-6 2xl:w-[56%]">
       {activeAlbum}
       {openDescripition && (
         <PosterFooter activeAlignment={activeAlignment} setActiveAlignment={setActiveAlignment} />
