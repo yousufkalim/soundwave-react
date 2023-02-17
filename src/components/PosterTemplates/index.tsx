@@ -14,18 +14,18 @@ interface PosterTemplatesProps {
 const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTemplateClick }) => {
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex items-center justify-start gap-3 2xl:gap-6">
+      <div className="flex items-center justify-start gap-3 xl:gap-2 3xl:gap-2">
         <div
           onClick={() => {
             handleTemplateClick('template1');
           }}
           className={
             selectedTemplate === 'template1'
-              ? 'p-3  rounded-xl cursor-pointer border-black border-2 '
+              ? 'p-3  rounded-xl cursor-pointer border-black border-2'
               : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
           }
         >
-          <img src={Template2} className="h-20 2xl:h-24" />
+          <img src={Template2} className="h-20 xl:h-21 2xl:h-24" />
         </div>
         <div
           onClick={() => {
@@ -33,11 +33,11 @@ const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTem
           }}
           className={
             selectedTemplate === 'template2'
-              ? 'p-3 rounded-xl cursor-pointer border-black border-2 '
+              ? 'p-3 rounded-xl cursor-pointer border-black border-2'
               : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
           }
         >
-          <img src={Template3} className="h-20 2xl:h-24" />
+          <img src={Template3} className="h-20 xl:h-21 2xl:h-24" />
         </div>
         <div
           onClick={() => {
@@ -49,7 +49,7 @@ const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTem
               : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
           }
         >
-          <img src={Template1} className="h-20 2xl:h-24" />
+          <img src={Template1} className="h-20 xl:h-21 2xl:h-24" />
         </div>
         <div
           onClick={() => {
@@ -61,10 +61,10 @@ const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTem
               : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
           }
         >
-          <img src={Template4} className="h-20 2xl:h-24" />
+          <img src={Template4} className="h-20 xl:h-21 2xl:h-24" />
         </div>
       </div>
-      <div className="flex items-center justify-start gap-3 2xl:gap-6">
+      <div className="flex items-center justify-start gap-3 xl:gap-2 3xl:gap-2">
         <div
           onClick={() => {
             handleTemplateClick('template5');
@@ -75,7 +75,7 @@ const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTem
               : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
           }
         >
-          <img src={Template5} className="h-20 2xl:h-24" />
+          <img src={Template5} className="h-20 xl:h-21 2xl:h-24" />
         </div>
         <div
           onClick={() => {
@@ -87,7 +87,7 @@ const PosterTemplates: FC<PosterTemplatesProps> = ({ selectedTemplate, handleTem
               : 'p-3 border-gray-300 border-2 rounded-xl cursor-pointer bg-white'
           }
         >
-          <img src={Template6} className="h-20 2xl:h-24" />
+          <img src={Template6} className="h-20 xl:h-21 2xl:h-24" />
         </div>
       </div>
     </div>
