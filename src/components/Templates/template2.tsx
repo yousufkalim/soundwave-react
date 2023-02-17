@@ -63,7 +63,8 @@ const Template2: FC<Template2Props> = ({
   return (
     <div
       id="custom-poster-template"
-      className={` w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] relative `}
+      // className={` w-[96%] h-[55%] sm:w-[80%] sm:h-[70%] shadow-lg shadow-[#BAB8B8] relative`}
+      className={` w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] relative`}
       style={{
         background:
           frame.frameType !== 'No Frame' ? `url(${BackgroundFrame}) center no-repeat` : '',

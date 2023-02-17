@@ -360,7 +360,7 @@ const RightSide: FC<RightSideProps> = ({
     }
   };
   return (
-    <div className="bg-white w-[40%] flex items-start justify-start mt-11 pl-20 2xl:w-[42%]">
+    <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-20 ">
       <div className="w-[78%] 2xl:w-[65%]">
         <div className="w-full flex items-center justify-start">
           <TitleIcon className="mx-2" />
@@ -372,9 +372,11 @@ const RightSide: FC<RightSideProps> = ({
           </i>
         </div>
         <div className="mb-2">
-          <span className="text-black text-sm font-semibold ">Search an Album or Artist</span>
+          <span className="text-black text-[13px] 2xl:text-[14px] font-semibold ">
+            Search an Album or Artist
+          </span>
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2 2xl:gap-3">
           <Step1
             handleDataSets={handleDataSets}
             selectedAlbum={selectedAlbum}
@@ -456,13 +458,13 @@ const RightSide: FC<RightSideProps> = ({
           <button
             className={
               activeStep === 6
-                ? 'bg-black flex items-center justify-center h-14 rounded-xl cursor-pointer'
-                : 'bg-[#919B9B] flex items-center justify-center h-14 rounded-xl'
+                ? 'bg-black flex items-center justify-center py-3 2xl:py-4 rounded-xl cursor-pointer '
+                : 'bg-[#919B9B] flex items-center justify-center py-3 2xl:py-4 rounded-xl'
             }
             onClick={handleAddToCart}
             // disabled={activeStep < 6}
           >
-            <span className="text-white flex">
+            <span className="text-white flex text-[.9rem] 2xl:text-[1rem]">
               <Cart />
               &nbsp;&nbsp;&nbsp;&nbsp;Add To Cart&nbsp;<b>${posterPrice}</b>
             </span>

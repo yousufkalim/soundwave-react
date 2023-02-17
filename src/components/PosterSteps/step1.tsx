@@ -138,15 +138,20 @@ const step1: FC<Step1Props> = ({
       <div>
         {selectedAlbum && selected === selectedAlbum.label ? (
           <div
-            className="flex items-center justify-start gap-3 cursor-pointer border-[1px] border-black w-full bg-[#F9F9F9] py-2 px-2 rounded-xl hover:bg-[#f0efef]"
+            className="flex items-center justify-start gap-3 cursor-pointer border-[1px] border-black w-full bg-[#F9F9F9] py-1 2xl:py-2 px-2 rounded-xl hover:bg-[#f0efef]"
             onClick={() => {
               setSelected('');
             }}
           >
-            <img src={selectedAlbum.photo} className="object-cover rounded-full w-12 h-12 ml-1" />
+            <img
+              src={selectedAlbum.photo}
+              className="object-cover rounded-full w-12 h-12 2xl:w-13 2xl:h-13 ml-1"
+            />
             <div className="flex items-start justify-center flex-col">
-              <i className="text-md font-semibold">{selectedAlbum.label}</i>
-              <span className="font-extralight text-sm">{selectedAlbum.singerName}</span>
+              <i className="text-[14px] 2xl:text-[15px] font-semibold">{selectedAlbum.label}</i>
+              <span className="font-extralight text-[13px] 2xl:text-[14px]">
+                {selectedAlbum.singerName}
+              </span>
             </div>
           </div>
         ) : (
