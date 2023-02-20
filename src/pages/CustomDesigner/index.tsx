@@ -64,7 +64,7 @@ const index: FC = () => {
     descriptionColor: '',
   });
   const [selectedFont, setSelectedFont] = useState<string | null>(null);
-  const [selectedTemplate, setSelectedTemplate] = useState<string>('template1');
+  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   // states for step # 4
   const [posterType, setPosterType] = useState<string>('No Frame');
   // const [selectedCanvas, setSelectedCanvas] = useState<string>('');
@@ -72,7 +72,7 @@ const index: FC = () => {
   const [posterSize, setPosterSize] = useState<IPosterSize>({ value: '12 X 18', unit: 'inch' });
   // state for add to cart button
   const [addToCart, setAddToCart] = useState<boolean>(true);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const handleDataSets = (value: DataSetProps[]) => {
     setDataSets(value);
@@ -92,14 +92,6 @@ const index: FC = () => {
     setActiveAlignment('text-left');
     setSelectedTemplate('');
     setSelected('');
-    setColors({
-      boxColor: '',
-      posterColor: '',
-      soundWaveColor: '',
-      soundWaveNameColor: '',
-      songTitleColor: '',
-      descriptionColor: '',
-    });
     // right side
     setPosterType('No Frame');
     setPosterSize({ value: '12 X 18', unit: 'inch' });

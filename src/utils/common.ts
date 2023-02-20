@@ -21,6 +21,7 @@ export const handleCheckout = (setLoading: (value: boolean) => void): void => {
         window.location.href = `${res.data.checkoutURL}`;
       })
       .catch(() => {
+        setLoading(false);
         toast.error('Something went wrong');
       });
   }

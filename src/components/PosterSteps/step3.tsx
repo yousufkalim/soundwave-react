@@ -49,7 +49,7 @@ const step3: FC<Step3Props> = ({
   setLoading,
 }) => {
   // const ref = useRef<HTMLDivElement>(null);
-  const [selectedSection, setSelectedSection] = useState<string>('btn1');
+  const [selectedSection, setSelectedSection] = useState<string>('Templates');
 
   const handleIconClick = (): void => {
     if (activeStep >= 3) {
@@ -85,13 +85,13 @@ const step3: FC<Step3Props> = ({
             btn1Text={'Templates'}
             btn2Text={'Customization'}
           />
-          {selectedSection === 'btn1' ? (
+          {selectedSection === 'Templates' ? (
             <PosterTemplatesBox
               handleTemplateClick={handleTemplateClick}
               selectedTemplate={selectedTemplate}
             />
           ) : (
-            selectedSection === 'btn2' && (
+            selectedSection === 'Customization' && (
               <ThemeCustomizationBox
                 selectedTemplate={selectedTemplate}
                 boxColor={boxColor}
