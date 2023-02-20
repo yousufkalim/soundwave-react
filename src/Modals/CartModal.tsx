@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ICart } from '../types/index';
 import Slide from 'react-reveal/Slide';
-
+import { handleCheckout } from '../utils/common';
 interface CartModalProps {
   open: boolean;
   handleClose: () => void;
@@ -80,7 +80,7 @@ const CartModal: FC<CartModalProps> = ({
   const updateCartQuantity = (id: string, updatedCart: ICart, isAdd: boolean): void => {
     const updatedPoster = updatedCart.totalPoster.find((item) => item._id === id);
     if (updatedPoster?._id) {
-      setLoading?.(true);
+      setLoading(true);
       request('patch', `/cart/changePosterQuantity/${cart._id}`, {
         isAdd,
         posterId: updatedPoster?._id,
@@ -89,7 +89,7 @@ const CartModal: FC<CartModalProps> = ({
       })
         .then(() => {
           setCart(updatedCart);
-          setLoading?.(false);
+          setLoading(false);
         })
         .catch((err) => {
           toast.error(err.response.data.message);
@@ -112,7 +112,7 @@ const CartModal: FC<CartModalProps> = ({
             singerName={item.singerName}
             size={item.size}
             unitPrice={item.unitPrice}
-            frame={item.frame}
+            posterType={item.posterType}
             totalPrice={item.totalPrice}
             posterQuantity={item.posterQuantity}
             cartId={cart._id}
@@ -121,7 +121,7 @@ const CartModal: FC<CartModalProps> = ({
           />
         ))
       : cart?.totalPoster?.length === 0 && <NoFramePlaceholder className=" w-[80%]" />;
-
+  const cartTotalPrice = cart?.totalPrice + cart.shippingCost;
   return (
     <div
       className="w-full h-full fixed top-0 bottom-0 right-0 left-0 z-50"
@@ -148,7 +148,7 @@ const CartModal: FC<CartModalProps> = ({
               </div>
               <div className="flex items-center justify-between text-sm py-2 font-semibold">
                 <span>Order value</span>
-                <span>$ {cart.totalPrice}</span>
+                <span>$ {cart.totalPrice.toFixed(2)}</span>
               </div>
               <div className="flex items-center justify-between text-sm py-2 font-semibold">
                 <span>Shipping</span>
@@ -156,11 +156,16 @@ const CartModal: FC<CartModalProps> = ({
               </div>
               <div className="flex items-center justify-between text-sm py-3 border-t-[1px] font-semibold">
                 <span>Sub Total</span>
-                <span>{`$ ${cart?.totalPrice ? cart?.totalPrice + cart.shippingCost : '0'}`}</span>
+                <span>{`$ ${cart?.totalPrice ? cartTotalPrice.toFixed(2) : '0'}`}</span>
               </div>
 
               <div className="py-2 flex flex-col gap-2">
-                <button className="bg-black py-3 text-white text-sm rounded-lg font-semibold flex items-center justify-center">
+                <button
+                  onClick={() => {
+                    handleCheckout(setLoading);
+                  }}
+                  className="bg-black py-3 text-white text-sm rounded-lg font-semibold flex items-center justify-center"
+                >
                   <CartIcon />
                   &nbsp; &nbsp;CHECKOUT
                 </button>

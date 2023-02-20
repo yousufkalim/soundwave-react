@@ -6,7 +6,7 @@ import Template3 from '../Templates/template1';
 import Template4 from '../Templates/template4';
 import Template5 from '../Templates/template5';
 import Template6 from '../Templates/template6';
-import { SelectedAlbumProps, DataSetProps, IStateColors, IFrameProps } from '../../types/index';
+import { SelectedAlbumProps, DataSetProps, IStateColors } from '../../types/index';
 
 interface waveformProps {
   dataSets: DataSetProps[];
@@ -24,7 +24,7 @@ interface waveformProps {
     soundWaveNameColor,
   }: IStateColors) => void;
   selectedTemplate: string;
-  frame: IFrameProps;
+  posterType: string;
   BackgroundFrame: string;
   openDescripition: boolean;
   selectedFont: string;
@@ -39,7 +39,7 @@ const index: FC<waveformProps> = ({
   setActiveAlignment,
   selectedTemplate,
   setColors,
-  frame,
+  posterType,
   BackgroundFrame,
   openDescripition,
   selectedFont,
@@ -53,7 +53,7 @@ const index: FC<waveformProps> = ({
         dataSets={dataSets}
         colors={colors}
         setColors={setColors}
-        frame={frame}
+        posterType={posterType}
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
       />
@@ -65,7 +65,7 @@ const index: FC<waveformProps> = ({
         dataSets={dataSets}
         colors={colors}
         setColors={setColors}
-        frame={frame}
+        posterType={posterType}
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
       />
@@ -77,7 +77,7 @@ const index: FC<waveformProps> = ({
         dataSets={dataSets}
         colors={colors}
         setColors={setColors}
-        frame={frame}
+        posterType={posterType}
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
       />
@@ -89,7 +89,7 @@ const index: FC<waveformProps> = ({
         dataSets={dataSets}
         colors={colors}
         setColors={setColors}
-        frame={frame}
+        posterType={posterType}
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
       />
@@ -101,7 +101,7 @@ const index: FC<waveformProps> = ({
         dataSets={dataSets}
         colors={colors}
         setColors={setColors}
-        frame={frame}
+        posterType={posterType}
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
       />
@@ -113,7 +113,7 @@ const index: FC<waveformProps> = ({
         dataSets={dataSets}
         colors={colors}
         setColors={setColors}
-        frame={frame}
+        posterType={posterType}
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
       />
@@ -125,7 +125,7 @@ const index: FC<waveformProps> = ({
         dataSets={dataSets}
         colors={colors}
         setColors={setColors}
-        frame={frame}
+        posterType={posterType}
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
       />

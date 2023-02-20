@@ -1,20 +1,20 @@
 import React, { FC } from 'react';
 
 interface PosterCanvasProps {
-  selectedCanvas: string;
+  posterType: string;
   handleSelectedCanvas: (value: string) => void;
 }
 
-const PosterCanvas: FC<PosterCanvasProps> = ({ selectedCanvas, handleSelectedCanvas }) => {
+const PosterCanvas: FC<PosterCanvasProps> = ({ posterType, handleSelectedCanvas }) => {
   return (
     <>
       <div className="flex items-center justify-start gap-4 my-2">
         <div
           onClick={() => {
-            handleSelectedCanvas('2-3 cm');
+            handleSelectedCanvas('Thin Canvas');
           }}
           className={
-            selectedCanvas === '2-3 cm'
+            posterType === 'Thin Canvas'
               ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
               : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
           }
@@ -26,10 +26,10 @@ const PosterCanvas: FC<PosterCanvasProps> = ({ selectedCanvas, handleSelectedCan
         </div>
         <div
           onClick={() => {
-            handleSelectedCanvas('4 cm');
+            handleSelectedCanvas('Thick Canvas');
           }}
           className={
-            selectedCanvas === '4 cm'
+            posterType === 'Thick Canvas'
               ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
               : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
           }

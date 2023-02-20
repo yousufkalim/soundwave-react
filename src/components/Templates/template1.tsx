@@ -2,7 +2,7 @@
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveroom from '../WaveItem/index';
-import { DataSetProps, SelectedAlbumProps, IFrameProps, IStateColors } from '../../types/index';
+import { DataSetProps, SelectedAlbumProps, IStateColors } from '../../types/index';
 
 interface Template1Props {
   activeAlignment: string;
@@ -18,7 +18,7 @@ interface Template1Props {
     descriptionColor,
     soundWaveNameColor,
   }: IStateColors) => void;
-  frame: IFrameProps;
+  posterType: string;
   BackgroundFrame: string;
   selectedFont: string;
 }
@@ -30,7 +30,7 @@ const Template1: FC<Template1Props> = ({
   dataSets,
   colors,
   setColors,
-  frame,
+  posterType,
   BackgroundFrame,
   selectedFont,
 }) => {
@@ -59,8 +59,15 @@ const Template1: FC<Template1Props> = ({
       className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] mt-[3%]`}
       style={{
         background:
-          frame.frameType !== 'No Frame' ? `url(${BackgroundFrame}) center no-repeat` : '',
-        padding: frame.frameType !== 'No Frame' ? (BackgroundFrame ? '12px' : '0px') : '',
+          posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
+            ? `url(${BackgroundFrame}) center no-repeat`
+            : '',
+        padding:
+          posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '12px'
+              : '0px'
+            : '',
       }}
     >
       <div className={`pt-6 pl-2 h-full`} style={{ background: colors.posterColor }}>

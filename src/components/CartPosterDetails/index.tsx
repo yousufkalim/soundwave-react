@@ -3,14 +3,14 @@ import Counter from '../Counter/index';
 import { ReactComponent as DeleteIcon } from '../../assets/DeleteIcon.svg';
 import request from '../../api/request';
 import { toast } from 'react-toastify';
-import { IPosterSize, IFrameProps } from '../../types/index';
+import { IPosterSize } from '../../types/index';
 import { mediaUrl } from '../../config';
 interface CartPosterDetailsProps {
   posterImage: string;
   albumName: string;
   singerName: string;
   size: IPosterSize;
-  frame: IFrameProps;
+  posterType: string;
   posterQuantity: number;
   id: string;
   unitPrice: number;
@@ -25,7 +25,7 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
   albumName,
   singerName,
   size,
-  frame,
+  posterType,
   id,
   posterQuantity,
   unitPrice,
@@ -75,7 +75,7 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
           <span className="text-sm font-semibold"> &quot;{size.value}&quot;</span>
         </span>
         <span className="text-sm font-light">
-          Frame <span className="text-sm font-semibold"> {frame.selectedFrame}</span>
+          Frame <span className="text-sm font-semibold"> {posterType}</span>
         </span>
         <div className="flex items-start justify-start gap-3">
           <Counter
@@ -83,7 +83,7 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
             handleDecrement={handleDecrement}
             handleIncrement={handleIncrement}
           />
-          <span className="text-sm font-semibold">$ {totalPrice}</span>
+          <span className="text-sm font-semibold">$ {totalPrice.toFixed(2)}</span>
         </div>
       </div>
       <div className="w-[5%] flex flex-col">

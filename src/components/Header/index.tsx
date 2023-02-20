@@ -21,6 +21,9 @@ const index: FC<HeaderProps> = ({ HeaderTitle, cartItemsLength, setOpen }) => {
   const handleLogoClick = (): void => {
     navigate('/');
   };
+  const handleReturnToStore = (): void => {
+    window.location.assign('https://www.walltonez.com/');
+  };
 
   return (
     <>
@@ -30,7 +33,10 @@ const index: FC<HeaderProps> = ({ HeaderTitle, cartItemsLength, setOpen }) => {
           <i>{HeaderTitle}</i>
         </span>
         <div className="flex items-center justify-center gap-4">
-          <button className="bg-white w-32 py-3 text-sm rounded-md font-medium">
+          <button
+            className="bg-white w-32 py-3 text-sm rounded-md font-medium"
+            onClick={handleReturnToStore}
+          >
             Return to Store
           </button>
           {location.pathname !== '/cart' ? (

@@ -17,7 +17,6 @@ import {
   IPosterSize,
   SelectedAlbumProps,
   DataSetProps,
-  IFrameProps,
   IResponsePoster,
   IResponseCart,
 } from '../../types/index';
@@ -51,8 +50,8 @@ interface RightSideProps {
   selectedTemplate: string;
   setSelectedTemplate: (value: string) => void;
   getSetColor: (currentColor: string, fieldName: string) => void;
-  frame: IFrameProps;
-  setFrame: ({ frameType, selectedFrame }: IFrameProps) => void;
+  posterType: string;
+  setPosterType: (value: string) => void;
   handleResetData: () => void;
   setLoading: (loading: boolean) => void;
   getCartData: (value: string) => void;
@@ -66,8 +65,8 @@ interface RightSideProps {
   setOpenSize: (value: boolean) => void;
   activeStep: number;
   setActiveStep: (value: number) => void;
-  selectedCanvas: string;
-  setSelectedCanvas: (value: string) => void;
+  // selectedCanvas: string;
+  // setSelectedCanvas: (value: string) => void;
   setOpen: (value: boolean) => void;
   selectedFont: string;
   setSelectedFont: (value: string) => void;
@@ -84,8 +83,7 @@ interface IBodyTotalPoster {
   unitPrice: number;
   totalPrice: number;
   size: IPosterSize;
-  frame: IFrameProps;
-  canvasSize: string;
+  posterType: string;
   albumName?: string;
   singerName?: string;
 }
@@ -94,23 +92,23 @@ interface IBody {
   cartId?: string;
 }
 
-interface posterSizePricingProps {
+interface IPosterSizePricingProps {
   price: number;
   inch: string;
   centimeter: string;
 }
 
-interface posterCanvasPricingProps {
+interface IPosterTypePricingProps {
   slimCanvasPrice: number;
   thickCanvasPrice: number;
+  withFramePrice: number;
   inch: string;
   centimeter: string;
 }
 
 interface pricingArrayProps {
-  posterSizePricing: posterSizePricingProps[];
-  posterFramePricing: posterSizePricingProps[];
-  posterCanvasPricing: posterCanvasPricingProps[];
+  posterSizePricing: IPosterSizePricingProps[];
+  posterTypePricing: IPosterTypePricingProps[];
 }
 
 const pricingArray: pricingArrayProps = {
@@ -146,72 +144,46 @@ const pricingArray: pricingArrayProps = {
       centimeter: '70 X 100',
     },
   ],
-  posterFramePricing: [
-    {
-      price: 39.99,
-      inch: '12 X 18',
-      centimeter: '30 X 45',
-    },
-    {
-      price: 49.99,
-      inch: '16 X 20',
-      centimeter: '40 X 50',
-    },
-    {
-      price: 64.99,
-      inch: '18 X 24',
-      centimeter: '45 X 60',
-    },
-    {
-      price: 99.99,
-      inch: '20 X 28',
-      centimeter: '50 X 70',
-    },
-    {
-      price: 109.99,
-      inch: '24 X 36',
-      centimeter: '60 X 90',
-    },
-    {
-      price: 134.99,
-      inch: '28 X 40',
-      centimeter: '70 X 100',
-    },
-  ],
-  posterCanvasPricing: [
+  posterTypePricing: [
     {
       slimCanvasPrice: 79.99,
       thickCanvasPrice: 89.99,
+      withFramePrice: 39.99,
       inch: '12 X 18',
       centimeter: '30 X 45',
     },
     {
       slimCanvasPrice: 89.99,
       thickCanvasPrice: 99.99,
+      withFramePrice: 49.99,
       inch: '16 X 20',
       centimeter: '40 X 50',
     },
     {
       slimCanvasPrice: 99.99,
       thickCanvasPrice: 109.99,
+      withFramePrice: 64.99,
       inch: '18 X 24',
       centimeter: '45 X 60',
     },
     {
       slimCanvasPrice: 129.99,
       thickCanvasPrice: 149.99,
+      withFramePrice: 99.99,
       inch: '20 X 28',
       centimeter: '50 X 70',
     },
     {
       slimCanvasPrice: 159.99,
       thickCanvasPrice: 199.99,
+      withFramePrice: 109.99,
       inch: '24 X 36',
       centimeter: '60 X 90',
     },
     {
       slimCanvasPrice: 199.99,
       thickCanvasPrice: 249.99,
+      withFramePrice: 134.99,
       inch: '28 X 40',
       centimeter: '70 X 100',
     },
@@ -245,8 +217,8 @@ const RightSide: FC<RightSideProps> = ({
   setAddToCart,
   selectedTemplate,
   setSelectedTemplate,
-  frame,
-  setFrame,
+  posterType,
+  setPosterType,
   handleResetData,
   setLoading,
   getCartData,
@@ -260,8 +232,6 @@ const RightSide: FC<RightSideProps> = ({
   setOpenSize,
   activeStep,
   setActiveStep,
-  selectedCanvas,
-  setSelectedCanvas,
   setOpen,
   selectedFont,
   setSelectedFont,
@@ -277,23 +247,9 @@ const RightSide: FC<RightSideProps> = ({
       return undefined;
     });
 
-    const posterFramePriceResult = pricingArray.posterFramePricing.find((item) => {
+    const posterFramePriceResult = pricingArray.posterTypePricing.find((item) => {
       const currentUnit = posterSize.unit === 'inch' ? item.inch : item.centimeter;
-      const cal =
-        posterSize.value === currentUnit &&
-        (frame.frameType === 'Wooden' || frame.frameType === 'Metal');
-      if (cal) {
-        return item;
-      }
-      return undefined;
-    });
-
-    const posterCanvasPriceResult = pricingArray.posterCanvasPricing.find((item) => {
-      const currentUnit = posterSize.unit === 'inch' ? item.inch : item.centimeter;
-      const cal =
-        posterSize.value === currentUnit &&
-        (selectedCanvas === '2-3 cm' || selectedCanvas === '4 cm');
-      if (cal) {
+      if (posterSize.value === currentUnit) {
         return item;
       }
       return undefined;
@@ -301,17 +257,27 @@ const RightSide: FC<RightSideProps> = ({
 
     const totalPrice =
       (posterSizePriceResult?.price ?? 0) +
-      (posterFramePriceResult?.price ?? 0) +
-      (selectedCanvas === '2-3 cm'
-        ? posterCanvasPriceResult?.slimCanvasPrice ?? 0
-        : posterCanvasPriceResult?.thickCanvasPrice ?? 0);
+      (posterType === 'Black Wooden Frame' ||
+      posterType === 'Nuteral Wooden Frame' ||
+      posterType === 'White Wooden Frame' ||
+      posterType === 'Black Metal Frame'
+        ? posterFramePriceResult?.withFramePrice ?? 0
+        : posterType === 'No Frame'
+        ? 0
+        : posterType === 'Thin Canvas'
+        ? posterFramePriceResult?.slimCanvasPrice ?? 0
+        : posterType === 'Thick Canvas'
+        ? posterFramePriceResult?.thickCanvasPrice ?? 0
+        : 0);
 
     setPosterPrice(+totalPrice.toFixed(2));
   };
 
   useEffect(() => {
     handleCalulatePosterPrice();
-  }, [posterSize, frame, selectedCanvas]);
+  }, [posterSize, posterType]);
+
+  console.log(posterType);
 
   const handleAddToCart = async () => {
     const element = document.getElementById('custom-poster-template') as HTMLElement;
@@ -333,8 +299,7 @@ const RightSide: FC<RightSideProps> = ({
           unitPrice: posterPrice,
           totalPrice: posterPrice,
           size: posterSize,
-          canvasSize: selectedCanvas,
-          frame,
+          posterType,
           albumName: selectedAlbum?.label,
           singerName: selectedAlbum?.singerName,
         },
@@ -438,10 +403,8 @@ const RightSide: FC<RightSideProps> = ({
             // steps active states
             activeStep={activeStep}
             setActiveStep={setActiveStep}
-            frame={frame}
-            setFrame={setFrame}
-            selectedCanvas={selectedCanvas}
-            setSelectedCanvas={setSelectedCanvas}
+            posterType={posterType}
+            setPosterType={setPosterType}
           />
           <Step5
             setOpenTheme={setOpenTheme}
@@ -457,7 +420,7 @@ const RightSide: FC<RightSideProps> = ({
           />
           <button
             style={{
-              display: selectedAlbum && selected !== selectedAlbum.label ? '' : 'none',
+              display: selected === '' ? 'none' : '',
             }}
             className={
               activeStep === 6
