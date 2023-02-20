@@ -6,6 +6,7 @@ import Template3 from '../Templates/template1';
 import Template4 from '../Templates/template4';
 import Template5 from '../Templates/template5';
 import Template6 from '../Templates/template6';
+import DefaultTemplate from '../Templates/defaultTemplate';
 import { SelectedAlbumProps, DataSetProps, IStateColors } from '../../types/index';
 
 interface waveformProps {
@@ -118,7 +119,7 @@ const index: FC<waveformProps> = ({
         selectedFont={selectedFont}
       />
     ) : (
-      <Template1
+      <DefaultTemplate
         activeAlignment={activeAlignment}
         selectedAlbum={selectedAlbum}
         albumDescripition={albumDescripition}

@@ -20,7 +20,7 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors }) => {
       <Waveform
         // barWidth={1}
         peaks={item.levels}
-        height={20}
+        height={18}
         color={rgbaToHex(colors.soundWaveColor)}
         pixelRatio={1}
         progressColor={rgbaToHex(colors.soundWaveColor)}

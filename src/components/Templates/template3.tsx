@@ -108,8 +108,7 @@ const Template3: FC<Template3Props> = ({
               fontFamily: selectedFont,
             }}
           >
-            {' '}
-            . .{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
+            {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
           </span>
           <span
             className={`text-4xl font-[Aemstel-LineInside] absolute top-[7px] xl:left-[30.5%] left-[3rem] template_album_name`}

@@ -280,6 +280,7 @@ const RightSide: FC<RightSideProps> = ({
   console.log(posterType);
 
   const handleAddToCart = async () => {
+    handleResetData();
     const element = document.getElementById('custom-poster-template') as HTMLElement;
     const canvas = await html2canvas(element, {
       logging: false,
@@ -316,7 +317,7 @@ const RightSide: FC<RightSideProps> = ({
       localStorage.setItem('cartId', cart._id);
       handleResetData();
       getCartData(cart._id);
-      setLoading(false);
+      // setLoading(false);
       setOpen(true);
       toast.success('Poster Added To Cart');
     } catch (err) {

@@ -76,6 +76,9 @@ body {
 .css-10drtbx-MuiButtonBase-root-MuiCheckbox-root {
   padding: 0px !important;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
 .template_album_name {
   /* -webkit-background-clip: text;

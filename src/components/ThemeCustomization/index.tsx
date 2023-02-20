@@ -47,7 +47,7 @@ const Theme: FC<ThemeProps> = ({
       title: 'Poster box colour',
       name: 'boxColor',
       value: boxColor,
-      enabled: selectedTemplate === 'template2' || selectedTemplate === 'template3',
+      enabled: selectedTemplate === 'template1' || selectedTemplate === 'template2',
     },
     {
       title: 'Background',

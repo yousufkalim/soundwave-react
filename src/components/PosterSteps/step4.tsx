@@ -28,7 +28,7 @@ const step4: FC<Step4Props> = ({
   posterType,
   setPosterType,
 }) => {
-  const [selectedSection, setSelectedSection] = useState<string>('poster');
+  const [selectedSection, setSelectedSection] = useState<string>('Poster');
   const [frame, setFrame] = useState<string>('No Frame');
 
   const handleButtonClick = (targetSection: string): void => {
@@ -70,7 +70,7 @@ const step4: FC<Step4Props> = ({
             btn1Text={'Poster'}
             btn2Text={'Canvas'}
           />
-          {selectedSection === 'poster' ? (
+          {selectedSection === 'Poster' ? (
             <PosterFrame
               selectedSection={selectedSection}
               posterType={posterType}
@@ -79,7 +79,7 @@ const step4: FC<Step4Props> = ({
               setFrame={setFrame}
             />
           ) : (
-            selectedSection === 'canvas' && (
+            selectedSection === 'Canvas' && (
               <PosterCanvas posterType={posterType} handleSelectedCanvas={handleSelectedCanvas} />
             )
           )}
