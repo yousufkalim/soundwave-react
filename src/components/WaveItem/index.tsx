@@ -25,7 +25,7 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors }) => {
         pixelRatio={1}
         progressColor={rgbaToHex(colors.soundWaveColor)}
       />
-      <div className="flex items-center justify-start gap-1 mt-[10px] pl-2">
+      <div className="flex items-center justify-start gap-1 mt-3 pl-2">
         <span
           style={{
             color: colors.soundWaveNameColor,

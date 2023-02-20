@@ -37,7 +37,7 @@ const PosterCanvas: FC<PosterCanvasProps> = ({ selectedCanvas, handleSelectedCan
           <div className="border-[2px] border-black px-3 py-5">
             <span className="text-[.7rem] font-semibold">4 CM</span>
           </div>
-          <span className="text-center text-[12px]">Thik</span>
+          <span className="text-center text-[12px]">Thick</span>
         </div>
       </div>
     </>
