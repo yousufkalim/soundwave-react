@@ -3,7 +3,6 @@ import Tab from '../Tab/index';
 import ThemeBtnBox from '../themeCustomizationBtnBox/index';
 import PosterFrame from '../PosterFrames/index';
 import PosterCanvas from '../PosterCanvas/index';
-import { IFrameProps } from '../../types/index';
 import { Collapse } from '@mui/material';
 import Fade from 'react-reveal/Fade';
 interface Step4Props {
@@ -14,10 +13,8 @@ interface Step4Props {
   setOpenSize: (value: boolean) => void;
   activeStep: number;
   setActiveStep: (value: number) => void;
-  frame: IFrameProps;
-  setFrame: ({ frameType, selectedFrame }: IFrameProps) => void;
-  selectedCanvas: string;
-  setSelectedCanvas: (value: string) => void;
+  posterType: string;
+  setPosterType: (value: string) => void;
 }
 
 const step4: FC<Step4Props> = ({
@@ -28,19 +25,18 @@ const step4: FC<Step4Props> = ({
   setOpenSize,
   activeStep,
   setActiveStep,
-  frame,
-  setFrame,
-  selectedCanvas,
-  setSelectedCanvas,
+  posterType,
+  setPosterType,
 }) => {
-  const [selectedSection, setSelectedSection] = useState<string>('btn1');
+  const [selectedSection, setSelectedSection] = useState<string>('poster');
+  const [frame, setFrame] = useState<string>('No Frame');
 
   const handleButtonClick = (targetSection: string): void => {
     setSelectedSection(targetSection);
   };
 
   const handleSelectedCanvas = (targetFrame: string): void => {
-    setSelectedCanvas(targetFrame);
+    setPosterType(targetFrame);
   };
 
   const handleIconClick = (): void => {
@@ -74,14 +70,17 @@ const step4: FC<Step4Props> = ({
             btn1Text={'Poster'}
             btn2Text={'Canvas'}
           />
-          {selectedSection === 'btn1' ? (
-            <PosterFrame frame={frame} setFrame={setFrame} />
+          {selectedSection === 'poster' ? (
+            <PosterFrame
+              selectedSection={selectedSection}
+              posterType={posterType}
+              setPosterType={setPosterType}
+              frame={frame}
+              setFrame={setFrame}
+            />
           ) : (
-            selectedSection === 'btn2' && (
-              <PosterCanvas
-                selectedCanvas={selectedCanvas}
-                handleSelectedCanvas={handleSelectedCanvas}
-              />
+            selectedSection === 'canvas' && (
+              <PosterCanvas posterType={posterType} handleSelectedCanvas={handleSelectedCanvas} />
             )
           )}
         </Fade>

@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveform from 'react-audio-waveform';
 import { rgbaToHex } from '../../utils/common';
-import { DataSetProps, SelectedAlbumProps, IFrameProps, IStateColors } from '../../types/index';
+import { DataSetProps, SelectedAlbumProps, IStateColors } from '../../types/index';
 
 interface Template5Props {
   activeAlignment: string;
@@ -18,7 +18,7 @@ interface Template5Props {
     descriptionColor,
     soundWaveNameColor,
   }: IStateColors) => void;
-  frame: IFrameProps;
+  posterType: string;
   BackgroundFrame: string;
   selectedFont: string;
 }
@@ -29,7 +29,7 @@ const Template5: FC<Template5Props> = ({
   albumDescripition,
   dataSets,
   colors,
-  frame,
+  posterType,
   setColors,
   BackgroundFrame,
   selectedFont,
@@ -58,8 +58,15 @@ const Template5: FC<Template5Props> = ({
       className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] mt-[3%] relative `}
       style={{
         background:
-          frame.frameType !== 'No Frame' ? `url(${BackgroundFrame}) center no-repeat` : '',
-        padding: frame.frameType !== 'No Frame' ? (BackgroundFrame ? '12px' : '0px') : '',
+          posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
+            ? `url(${BackgroundFrame}) center no-repeat`
+            : '',
+        padding:
+          posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '12px'
+              : '0px'
+            : '',
       }}
     >
       <div

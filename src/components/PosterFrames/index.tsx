@@ -5,20 +5,31 @@ import Whiteframe from '../../assets/woodenFrame/woodenWhite.svg';
 import AluminiumMetal from '../../assets/woodenFrame/aluminiumMetal.svg';
 import woodenFrameIcon from '../../assets/woodenFrameIcon.svg';
 import metalFrameIcon from '../../assets/metalFrameIcon.svg';
-import { IFrameProps } from '../../types/index';
 
 interface PosterFrameProps {
-  frame: IFrameProps;
-  setFrame: ({ frameType, selectedFrame }: IFrameProps) => void;
+  frame: string;
+  setFrame: (value: string) => void;
+  posterType: string;
+  setPosterType: (value: string) => void;
+  selectedSection: string;
 }
 
-const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
+const PosterFrame: FC<PosterFrameProps> = ({
+  frame,
+  setFrame,
+  posterType,
+  setPosterType,
+  selectedSection,
+}) => {
   const handleSelectedFrameType = (targetFrameType: string): void => {
-    setFrame({ ...frame, frameType: targetFrameType });
+    setFrame(targetFrameType);
+    if (selectedSection) {
+      setPosterType('No Frame');
+    }
   };
 
   const handleSelectedFrame = (targetFrame: string): void => {
-    setFrame({ ...frame, selectedFrame: targetFrame });
+    setPosterType(targetFrame);
   };
   return (
     <>
@@ -28,7 +39,7 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
             handleSelectedFrameType('No Frame');
           }}
           className={
-            frame.frameType === 'No Frame'
+            frame === 'No Frame'
               ? 'border-[3px] border-black w-[32%] flex items-center justify-center rounded-lg py-3 cursor-pointer'
               : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-3 cursor-pointer'
           }
@@ -40,7 +51,7 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
             handleSelectedFrameType('Wooden');
           }}
           className={
-            frame.frameType === 'Wooden'
+            frame === 'Wooden'
               ? 'border-[3px] border-black w-[32%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
               : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
           }
@@ -53,7 +64,7 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
             handleSelectedFrameType('Metal');
           }}
           className={
-            frame.frameType === 'Metal'
+            frame === 'Metal'
               ? 'border-[3px] border-black w-[32%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
               : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
           }
@@ -62,16 +73,17 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
           <span className="text-[12px]">Metal</span>
         </div>
       </div>
-      {frame.frameType === 'No Frame' ? (
+
+      {frame === 'No Frame' ? (
         ''
-      ) : frame.frameType === 'Wooden' ? (
+      ) : frame === 'Wooden' ? (
         <div className="flex items-center justify-start gap-5 my-2">
           <div
             onClick={() => {
-              handleSelectedFrame('Wooden Black');
+              handleSelectedFrame('Black Wooden Frame');
             }}
             className={
-              frame.selectedFrame === 'Wooden Black'
+              posterType === 'Black Wooden Frame'
                 ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
                 : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
             }
@@ -81,10 +93,10 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
           </div>
           <div
             onClick={() => {
-              handleSelectedFrame('Wooden Nuteral');
+              handleSelectedFrame('Nuteral Wooden Frame');
             }}
             className={
-              frame.selectedFrame === 'Wooden Nuteral'
+              posterType === 'Nuteral Wooden Frame'
                 ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
                 : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
             }
@@ -94,10 +106,10 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
           </div>
           <div
             onClick={() => {
-              handleSelectedFrame('Wooden White');
+              handleSelectedFrame('White Wooden Frame');
             }}
             className={
-              frame.selectedFrame === 'Wooden White'
+              posterType === 'White Wooden Frame'
                 ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
                 : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
             }
@@ -107,14 +119,14 @@ const PosterFrame: FC<PosterFrameProps> = ({ frame, setFrame }) => {
           </div>
         </div>
       ) : (
-        frame.frameType === 'Metal' && (
+        frame === 'Metal' && (
           <div className="flex items-center justify-start gap-4 my-2">
             <div
               onClick={() => {
-                handleSelectedFrame('Aluminium Metal');
+                handleSelectedFrame('Black Metal Frame');
               }}
               className={
-                frame.selectedFrame === 'Aluminium Metal'
+                posterType === 'Black Metal Frame'
                   ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
                   : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
               }

@@ -1,11 +1,11 @@
 import React, { FC, useState } from 'react';
 import Counter from '../Counter/index';
 import { ReactComponent as RemoveIcon } from '../../assets/blackCrossCircle.svg';
-import { IPosterSize, IFrameProps } from '../../types/index';
+import { IPosterSize } from '../../types/index';
 import Slide from 'react-reveal/Slide';
 import { mediaUrl } from '../../config';
 interface PosterInfoCardProps {
-  frame: IFrameProps;
+  posterType: string;
   size: IPosterSize;
   albumName: string;
   singerName: string;
@@ -22,7 +22,7 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
   albumName,
   singerName,
   size,
-  frame,
+  posterType,
   posterPrice,
   Quantity,
   posterId,
@@ -49,7 +49,7 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
 
   return (
     <Slide left when={deleted} duration={200}>
-      <div className="bg-white w-[78%] h-[31%] flex flex-row rounded-lg outline outline-white hover:outline-2 hover:outline-black relative cursor-pointer">
+      <div className="bg-white w-[78%] h-[28%] flex flex-row rounded-lg outline outline-white hover:outline-2 hover:outline-black relative cursor-pointer">
         <RemoveIcon
           className=" absolute top-[-1rem] right-[-1rem] cursor-pointer"
           onClick={() => {
@@ -58,10 +58,10 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
           }}
         />
         <div className="w-[26%] flex items-center justify-center">
-          <img src={`${mediaUrl}${posterImage}`} className="object-cover h-[85%]" />
+          <img src={`${mediaUrl}${posterImage}`} className="object-cover h-[78%]" />
         </div>
         <div className="w-[55%] flex flex-col items-start justify-center gap-2">
-          <span className="text-3xl font-semibold">
+          <span className="text-2xl font-semibold">
             <i>{albumName}</i>
           </span>
           <span className="text-md font-light">{singerName}</span>
@@ -73,10 +73,7 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
             </span>
           </div>
           <div className="text-md font-light">
-            Frame{' '}
-            <span className="font-semibold">
-              {frame.frameType} frame ({frame.selectedFrame})
-            </span>
+            Frame <span className="font-semibold">{posterType}</span>
           </div>
           <Counter
             size="lg"
@@ -86,7 +83,7 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
           />
         </div>
         <div className="flex items-end justify-start">
-          <i className="text-2xl font-semibold pb-3">${posterPrice}</i>
+          <i className="text-xl font-semibold pb-3">${posterPrice.toFixed(2)}</i>
         </div>
       </div>
     </Slide>

@@ -10,13 +10,14 @@ import { useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner/Spinner';
 import { toast } from 'react-toastify';
 import { ICart } from '../../types/index';
-// import Zoom from 'react-reveal/Zoom';
+import { handleCheckout } from '../../utils/common';
 import Fade from 'react-reveal/Fade';
 
 interface IResponseSuccess {
   success: boolean;
   cart: ICart;
 }
+
 const Checkout: FC = () => {
   const naviagte = useNavigate();
 
@@ -124,7 +125,7 @@ const Checkout: FC = () => {
             albumName={item.albumName}
             singerName={item.singerName}
             size={item.size}
-            frame={item.frame}
+            posterType={item.posterType}
             posterPrice={item?.totalPrice}
             Quantity={item.posterQuantity}
             posterId={item._id}
@@ -138,12 +139,13 @@ const Checkout: FC = () => {
             <NoFramePlaceholder />
           </Fade>
         );
+  const CartTotalPrice = cart.totalPrice + cart.shippingCost;
   return (
     <div className="relative">
       {loading && <Spinner />}
       <Header HeaderTitle="Checkout" />
-      <div className="flex flex-col md:flex-row md:h-[85vh]">
-        <div className="bg-[#fcfcfc] w-full md:w-[60%] 2xl:w-[56%] flex flex-col items-center justify-center gap-5 ">
+      <div className="flex flex-col md:flex-row md:h-[90vh] overflow-hidden">
+        <div className="bg-[#fcfcfc] w-full md:w-[60%] 2xl:w-[56%] flex flex-col items-center justify-center gap-5 overflow-scroll">
           {CartItems}
         </div>
         <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-20">
@@ -162,7 +164,7 @@ const Checkout: FC = () => {
             <div className="mb-2">
               <div className="text-[#323334] text-[12px] 2xl:text-[13px] flex items-center justify-between my-3">
                 <span>Order value</span>
-                <span className="font-semibold">${cart.totalPrice}</span>
+                <span className="font-semibold">${cart.totalPrice.toFixed(2)}</span>
               </div>
               <div className="text-[#454238] text-[12px] 2xl:text-[13px] flex items-center justify-between my-3">
                 <span>Shipping</span>
@@ -170,7 +172,7 @@ const Checkout: FC = () => {
               </div>
               <div className="text-[#454238] text-md font-bold flex items-center justify-between border-t-[1px] my-4 py-4">
                 <span>Sub Total</span>
-                <i>{`$ ${cart?.totalPrice ? cart.totalPrice + cart.shippingCost : '0'}`}</i>
+                <i>{`$ ${cart?.totalPrice ? CartTotalPrice.toFixed(2) : '0'}`}</i>
               </div>
             </div>
             <p className="text-[12px] 2xl:text-[13px] my-4 text-[#A0A0A0]">
@@ -198,6 +200,9 @@ const Checkout: FC = () => {
             </div>
             <div className="flex flex-col gap-3">
               <button
+                onClick={() => {
+                  handleCheckout(setLoading);
+                }}
                 disabled={cart.totalPoster?.length === 0 && !termsCondition}
                 className={
                   cart.totalPoster.length > 0 && termsCondition

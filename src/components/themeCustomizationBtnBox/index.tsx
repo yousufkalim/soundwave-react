@@ -17,24 +17,24 @@ const ThemeBtnBox: FC<ThemeBtnBoxProps> = ({
     <div className="flex items-center justify-between w-full my-3">
       <button
         className={
-          selectedSection === 'btn1'
+          selectedSection === 'poster'
             ? 'bg-black py-[5px] rounded-lg cursor-pointer text-white w-[47%] text-sm font-semibold'
             : 'bg-transparent py-[5px] rounded-lg cursor-pointer text-[#363535] w-[47%] text-sm font-semibold'
         }
         onClick={() => {
-          handleButtonClick('btn1');
+          handleButtonClick('poster');
         }}
       >
         {btn1Text}
       </button>
       <button
         className={
-          selectedSection === 'btn2'
+          selectedSection === 'canvas'
             ? 'bg-black py-[5px] rounded-lg cursor-pointer text-white w-[47%] text-sm font-semibold'
             : 'bg-transparent py-[5px] rounded-lg cursor-pointer text-[#363535] w-[47%] text-sm font-semibold'
         }
         onClick={() => {
-          handleButtonClick('btn2');
+          handleButtonClick('canvas');
         }}
       >
         {btn2Text}

@@ -11,17 +11,12 @@ export interface SelectedAlbumProps {
   singerName: string;
 }
 
-export interface IFrameProps {
-  frameType: string;
-  selectedFrame: string;
-}
-
 export interface IPosterSize {
   value: string;
   unit: string;
 }
 export interface IResponsePoster {
-  frame: IFrameProps;
+  posterType: string;
   size: IPosterSize;
   albumName: string;
   singerName: string;
@@ -230,4 +225,9 @@ export interface Artist {
   name: string;
   type: string;
   uri: string;
+}
+
+export interface ICheckoutResponce {
+  success: boolean;
+  checkoutURL: string;
 }
