@@ -132,8 +132,8 @@ const Template2: FC<Template2Props> = ({
             </span>
           </div>
           <div
-            className={`${activeAlignment} text-[6px] bg-transparent tracking-tighter font-proxima-nova template_album_name
-            md:text-[7px] 
+            className={`${activeAlignment} bg-transparent tracking-tighter font-proxima-nova template_album_name
+            text-[5px] md:text-[6px] lg:text-[7px] 
             xl:mt-0
             2xl:mt-2 
             `}

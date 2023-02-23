@@ -100,7 +100,7 @@ interface IBody {
   totalPoster: IBodyTotalPoster[];
   cartId?: string;
 }
-const steps = ['Search an Album or Artist', 'Descrition', 'Theme', 'Print Format', 'Size'];
+const steps = ['Search an Album or Artist', 'Description', 'Theme', 'Print Format', 'Size'];
 
 const RightSide: FC<RightSideProps> = ({
   selected,

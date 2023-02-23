@@ -120,7 +120,7 @@ const Template6: FC<Template6Props> = ({
           className={`${activeAlignment} mt-[2%] text-center overflow-hidden text-ellipsis-8 break-words template_album_name`}
         >
           <p
-            className={`text-[6px] md:text-[7px] bg-transparent tracking-tighter font-[Montserrat]`}
+            className={`text-[5px] md:text-[6px] lg:text-[7px] bg-transparent tracking-tighter font-[Montserrat]`}
           >
             {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </p>

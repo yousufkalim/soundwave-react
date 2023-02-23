@@ -143,7 +143,7 @@ const Template1: FC<Template1Props> = ({
                 color: colors.descriptionColor,
                 fontFamily: selectedFont,
               }}
-              className={`text-[6px] md:text-[7px] template_album_name bg-transparent tracking-tighter font-[Montserrat] text-ellipsis-8`}
+              className={`text-[5px] md:text-[6px] lg:text-[7px] template_album_name bg-transparent tracking-tighter font-[Montserrat] text-ellipsis-8`}
             >
               {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
             </p>
