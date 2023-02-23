@@ -7,8 +7,9 @@ interface WaveroomProps {
   item: DataSetProps;
   selectedFont: string;
   colors: IStateColors;
+  height: number;
 }
-const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors }) => {
+const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
     const minutesAsInt = Math.floor(minutes);
@@ -16,31 +17,42 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors }) => {
     return `${minutesAsInt}:${seconds}`;
   };
   return (
-    <Grid item xs={4} className="h-[4%]" key={item.trackId}>
-      <Waveform
-        // barWidth={1}
-        peaks={item.levels}
-        height={18}
-        color={rgbaToHex(colors.soundWaveColor)}
-        pixelRatio={1}
-        progressColor={rgbaToHex(colors.soundWaveColor)}
-      />
-      <div className="flex items-center justify-start gap-1 mt-3 pl-2">
+    <Grid item xs={4}>
+      <div className="flex items-center justify-center">
+        <div className="w-[85%]">
+          <Waveform
+            peaks={item.levels}
+            height={height}
+            color={rgbaToHex(colors.soundWaveColor)}
+            pixelRatio={1}
+            progressColor={rgbaToHex(colors.soundWaveColor)}
+          />
+        </div>
+      </div>
+      <div className="flex items-center justify-between mt-2 px-3">
         <span
+          className={`
+          w-[80%] text-[6px] tracking-tight font-semibold font-[Montserrat] template_album_name
+          xl:w-[80%] xl:text-[7px]
+          2xl:w-[82%] 2xl:text-[8px]
+        `}
           style={{
             color: colors.soundWaveNameColor,
             fontFamily: selectedFont,
           }}
-          className="text-[8px] font-semibold font-[Montserrat] template_album_name"
         >
           &quot;{item.songName}&quot;
         </span>
         <span
+          className={`
+          w-[20%] text-[6px] font-[Montserrat] template_album_name
+          xl:w-[20%] xl:text-[7px] 
+          2xl:w-[18%] 2xl:text-[8px] 
+          `}
           style={{
             color: colors.soundWaveNameColor,
             fontFamily: selectedFont,
           }}
-          className="text-[8px] font-[Montserrat] template_album_name"
         >
           {convertMilisecondToMinutes(item.time)}
         </span>

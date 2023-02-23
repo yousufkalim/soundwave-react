@@ -40,7 +40,6 @@ const Template: FC<ITemplateProps> = ({
   songTitleColor,
   descriptionColor,
 }) => {
-  console.log('Soundwave color ', soundWaveColor);
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
     const minutesAsInt = Math.floor(minutes);

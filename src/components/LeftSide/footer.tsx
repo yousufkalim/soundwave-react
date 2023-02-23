@@ -13,12 +13,24 @@ const Footer: FC<FooterProps> = ({ activeAlignment, setActiveAlignment }) => {
     setActiveAlignment(value);
   };
   return (
-    <div className="bg-white w-[48%] h-12 shadow-xl shadow-[#BAB8B8] flex items-center justify-between px-5">
+    <div
+      className={`
+      bg-white w-[73%] h-12 shadow-xl shadow-gray-600 flex items-center justify-between px-5
+      sm:w-[70%] 
+      xmd:w-[60%]
+      md:w-[78%]
+      lg:w-[71%]
+      xl:w-[67%]
+      sxl:w-[48%]
+      mxl:w-[52%]
+      2xl:w-[47%]
+      `}
+    >
       <div
         className={
           activeAlignment === 'text-left'
-            ? 'bg-[#d8d6d6] p-2 rounded-md cursor-pointer'
-            : 'hover:bg-[#f8f8f8] p-2 rounded-md cursor-pointer'
+            ? 'bg-[#d8d6d6] p-1 md:p-2 rounded-md cursor-pointer'
+            : 'hover:bg-[#f8f8f8] p-1 md:p-2 rounded-md cursor-pointer'
         }
         onClick={() => {
           handleActiveAlignment('text-left');
@@ -29,8 +41,8 @@ const Footer: FC<FooterProps> = ({ activeAlignment, setActiveAlignment }) => {
       <div
         className={
           activeAlignment === 'text-center'
-            ? 'bg-[#d8d6d6] p-2 rounded-md cursor-pointer'
-            : 'hover:bg-[#f8f8f8] p-2 rounded-md cursor-pointer'
+            ? 'bg-[#d8d6d6] p-1 md:p-2 rounded-md cursor-pointer'
+            : 'hover:bg-[#f8f8f8] p-1 md:p-2 rounded-md cursor-pointer'
         }
         onClick={() => {
           handleActiveAlignment('text-center');
@@ -41,8 +53,8 @@ const Footer: FC<FooterProps> = ({ activeAlignment, setActiveAlignment }) => {
       <div
         className={
           activeAlignment === 'text-right'
-            ? 'bg-[#d8d6d6] p-2 rounded-md cursor-pointer'
-            : 'hover:bg-[#f8f8f8] p-2 rounded-md cursor-pointer'
+            ? 'bg-[#d8d6d6] p-1 md:p-2 rounded-md cursor-pointer'
+            : 'hover:bg-[#f8f8f8] p-1 md:p-2 rounded-md cursor-pointer'
         }
         onClick={() => {
           handleActiveAlignment('text-right');

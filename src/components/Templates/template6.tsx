@@ -47,7 +47,17 @@ const Template6: FC<Template6Props> = ({
   return (
     <div
       id="custom-poster-template"
-      className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] mt-[3%] relative `}
+      className={`
+      w-[73%] h-[95%] shadow-xl shadow-gray-700 mt-[1%]
+      sm:w-[70%] sm:h-[98%]
+      xmd:w-[60%] xmd:h-[100%]
+      md:w-[78%] md:h-[66%] md:mt-[2%] 
+      lg:w-[71%] lg:h-[75%]
+      xl:w-[67%]
+      sxl:w-[52%] sxl:h-[90%]
+      mxl:w-[52%] mxl:h-[72%] 
+      2xl:w-[47%] 2xl:h-[86%]
+      `}
       style={{
         background:
           posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
@@ -62,12 +72,16 @@ const Template6: FC<Template6Props> = ({
       }}
     >
       <div
-        className={`bg-gradient-to-b h-full pt-6 pl-8 pr-6 `}
+        className={`bg-gradient-to-b h-full pt-6 pl-6 pr-4`}
         style={{ background: colors.posterColor }}
       >
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mb-[3%]">
           <span
-            className={`text-4xl font-extrabold font-[blacksword] template_album_name tracking-tighter`}
+            className={
+              selectedAlbum?.label && selectedAlbum?.label.length > 24
+                ? `text-md font-bold font-[blacksword] template_album_name tracking-tighter`
+                : `text-2xl font-extrabold font-[blacksword] template_album_name`
+            }
             style={{
               color: colors.songTitleColor,
               fontFamily: selectedFont,
@@ -79,13 +93,14 @@ const Template6: FC<Template6Props> = ({
         <Grid
           container
           spacing={1}
-          className={`h-[73%] px-1 py-2`}
+          className={`h-[75%] px-1 py-2`}
           // style={{ backgroundColor: '' }}
         >
           {dataSets.map((item, index) => {
-            if (index < 18) {
+            if (index < 30) {
               return (
                 <Waveroom
+                  height={index < 30 ? 15 : 18}
                   item={item}
                   selectedFont={selectedFont}
                   colors={colors}
@@ -102,10 +117,12 @@ const Template6: FC<Template6Props> = ({
             color: colors.descriptionColor,
             fontFamily: selectedFont,
           }}
-          className={`${activeAlignment} mt-[3%] text-center overflow-hidden text-ellipsis-8 break-words template_album_name`}
+          className={`${activeAlignment} mt-[2%] text-center overflow-hidden text-ellipsis-8 break-words template_album_name`}
         >
-          <p className={`text-[7px] bg-transparent tracking-tighter font-[Montserrat]`}>
-            {albumDescripition}
+          <p
+            className={`text-[6px] md:text-[7px] bg-transparent tracking-tighter font-[Montserrat]`}
+          >
+            {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </p>
         </div>
       </div>

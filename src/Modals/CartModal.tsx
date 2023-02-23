@@ -128,7 +128,10 @@ const CartModal: FC<CartModalProps> = ({
       style={{ backgroundColor: 'rgba(0, 0, 0, .2)', backdropFilter: 'blur(5px)' }}
     >
       <div className="w-full h-full relative">
-        <div style={{ width: '29%', position: 'absolute', top: '0', right: '0' }}>
+        <div
+          className="w-[100%] sm:w-[70%] md:w-[60%] lg:w-[29%] absolute top-0 right-0"
+          // style={{ width: '29%', position: 'absolute', top: '0', right: '0' }}
+        >
           <Slide right duration={400}>
             <Box sx={style} className="bg-white  outline-none overflow-hidden">
               <div className="flex items-center justify-between">

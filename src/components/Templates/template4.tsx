@@ -48,7 +48,17 @@ const Template4: FC<Template4Props> = ({
   return (
     <div
       id="custom-poster-template"
-      className={`w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] mt-[3%] relative `}
+      className={`
+      w-[73%] h-[95%] shadow-xl shadow-gray-700 mt-[1%] relative
+      sm:w-[70%] sm:h-[98%]
+      xmd:w-[60%] xmd:h-[100%]
+      md:w-[78%] md:h-[66%] md:mt-[2%] 
+      lg:w-[71%] lg:h-[75%]
+      xl:w-[67%]
+      sxl:w-[52%] sxl:h-[90%]
+      mxl:w-[52%] mxl:h-[72%] 
+      2xl:w-[47%] 2xl:h-[86%]
+      `}
       style={{
         background:
           posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
@@ -62,21 +72,22 @@ const Template4: FC<Template4Props> = ({
             : '',
       }}
     >
-      <div className={`h-full pt-6 pl-6 pr-4 `} style={{ background: colors.posterColor }}>
+      <div className={`h-full pt-8 pl-8 pr-6 `} style={{ background: colors.posterColor }}>
         <Grid
           container
           spacing={1}
-          className={`h-[77%] px-1 py-3 border-2 border-white `}
+          className={`h-[77%] px-1 py-3 border-2 border-white`}
           style={{ backgroundColor: colors.boxColor }}
         >
           {dataSets.map((item, index) => {
-            if (index < 18) {
+            if (index < 30) {
               return (
                 <Waveroom
                   item={item}
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
+                  height={index < 30 ? 15 : 18}
                 />
               );
             } else {
@@ -85,17 +96,29 @@ const Template4: FC<Template4Props> = ({
           })}
         </Grid>
         <div
-          className=" absolute left-10 bg-black pl-[2px] template_album_name"
+          className="absolute left-10 bg-black pl-[2px] template_album_name"
           style={{
             color: colors.songTitleColor,
-            bottom: '17%',
+            bottom: selectedAlbum?.label && selectedAlbum?.label.length > 24 ? '18%' : '17%',
             fontFamily: selectedFont,
           }}
         >
-          <div className={`text-[3rem] font-extrabold font-[Morganite]`}>
+          <div
+            className={
+              selectedAlbum?.label && selectedAlbum?.label.length > 24
+                ? `text-[2rem] font-extrabold font-[Morganite]`
+                : `text-[3rem] font-extrabold font-[Morganite]`
+            }
+          >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
           </div>
-          <div className="text-[1em] font-bold font-[Morganite] mt-[-1rem]">
+          <div
+            className={
+              selectedAlbum?.label && selectedAlbum?.label.length > 24
+                ? 'text-[.8em] font-bold font-[Morganite] mt-[-1rem]'
+                : 'text-[1em] font-bold font-[Morganite] mt-[-1rem]'
+            }
+          >
             {selectedAlbum?.singerName ? selectedAlbum.singerName : 'SINGER NAME'}
           </div>
         </div>
@@ -106,8 +129,10 @@ const Template4: FC<Template4Props> = ({
             fontFamily: selectedFont,
           }}
         >
-          <p className={`text-[7px] bg-transparent text-ellipsis-8 tracking-tighter`}>
-            {albumDescripition}
+          <p
+            className={`text-[6px] md:text-[7px]  bg-transparent text-ellipsis-8 tracking-tighter`}
+          >
+            {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </p>
         </div>
       </div>

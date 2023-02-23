@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/promise-function-async */
 import React, { useState, useEffect, FC } from 'react';
 import SearchInput from '../SearchInput/index';
 import request from '../../api/request';
@@ -11,6 +12,9 @@ import {
   Segment,
   albumProps,
   Item,
+  ArtistObjectProps,
+  // AlbumInnerObjectProps,
+  AlbumByArtistPromiseProps,
 } from '../../types/index';
 
 interface Step1Props {
@@ -29,12 +33,13 @@ const step1: FC<Step1Props> = ({
   handleDataSets,
   selectedAlbum,
   setSelectedAlbum,
-  activeStep,
   setActiveStep,
 }) => {
   // const [selected, setSelected] = useState<string>('');
   const [selectedAlbumId, setSelectedAlbumId] = useState<string>('');
   const [albumOptions, setAlbumOptions] = useState<listProps[]>([]);
+  const [list1, setList1] = useState<listProps[]>([]);
+  const [list2, setList2] = useState<listProps[]>([]);
 
   const onQurreyChange = (value: string): void => {
     setSelected(value);
@@ -45,18 +50,51 @@ const step1: FC<Step1Props> = ({
         'get',
         `https://api.spotify.com/v1/search/?type=album&q=${selected}&limit=10&album_type=album`,
       )
-        .then((res2) => {
-          const list: listProps[] = [];
-          // eslint-disable-next-line array-callback-return
-          res2.data.albums.items.map((album) => {
-            list.push({
+        .then((res) => {
+          const templist1: listProps[] = [];
+          res.data.albums.items.map((album) =>
+            templist1.push({
               label: album.name,
               id: album.id,
               singerName: album.artists[0].name,
               photo: album.images[2].url,
-            });
+            }),
+          );
+          setList1(templist1);
+        })
+        .catch((err) => {
+          console.error('---->', err);
+          toast.error(err.response.message);
+        });
+
+      request<ArtistObjectProps>(
+        'get',
+        `https://api.spotify.com/v1/search/?type=artist&q=${selected}&limit=10`,
+      )
+        .then((res) => {
+          res.data.artists.items.map((artist) => {
+            return request<AlbumByArtistPromiseProps>(
+              'get',
+              `https://api.spotify.com/v1/artists/${artist.id}/albums?album_type=album&limit=10`,
+            )
+              .then((res) => {
+                const templist2: listProps[] = [];
+
+                // eslint-disable-next-line array-callback-return
+                res.data.items.map((album) => {
+                  templist2.push({
+                    label: album.name,
+                    id: album.id,
+                    singerName: album.artists[0].name,
+                    photo: album.images[2].url,
+                  });
+                });
+                setList2(templist2);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           });
-          setAlbumOptions(list);
         })
         .catch((err) => {
           console.error('---->', err);
@@ -64,6 +102,14 @@ const step1: FC<Step1Props> = ({
         });
     }
   };
+  const handleDuplicateArray = (): void => {
+    const combinedArray = [...list1, ...list2];
+    const filtered = combinedArray.filter((item, index) => combinedArray.indexOf(item) === index);
+    setAlbumOptions(filtered);
+  };
+  useEffect(() => {
+    handleDuplicateArray();
+  }, [list1, list2]);
 
   const handleGetAlbumData = (): void => {
     if (selectedAlbumId !== '') {

@@ -1,6 +1,7 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import WebFont from 'webfontloader';
+import { fontFamilyArray } from '../../utils/data';
 // import Spinner from '../Spinner/Spinner';
 interface ThemeProps {
   boxColor: string;
@@ -16,15 +17,15 @@ interface ThemeProps {
   setLoading: (value: boolean) => void;
 }
 
-interface Font {
-  family: string;
-  category: string;
-  variants: string[];
-  subsets: string[];
-  version: string;
-  lastModified: string;
-  files: Record<string, string>;
-}
+// interface Font {
+//   family: string;
+//   category: string;
+//   variants: string[];
+//   subsets: string[];
+//   version: string;
+//   lastModified: string;
+//   files: Record<string, string>;
+// }
 
 const Theme: FC<ThemeProps> = ({
   getSetColor,
@@ -39,9 +40,6 @@ const Theme: FC<ThemeProps> = ({
   setSelectedFont,
   setLoading,
 }) => {
-  const [fontData, setFontData] = useState<Font[] | null>(null);
-  // const [loading, setLoading] = useState<boolean>(false);
-  // const [selectedFont, setSelectedFont] = useState<string | null>(null);
   const colorsArray = [
     {
       title: 'Poster box colour',
@@ -81,20 +79,20 @@ const Theme: FC<ThemeProps> = ({
     },
   ];
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    getFontData();
-  }, []);
+  // useEffect(() => {
+  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  // getFontData();
+  // }, []);
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const getFontData = async () => {
-    await fetch(
-      'https://www.googleapis.com/webfonts/v1/webfonts?key=GOOGLE_API_KEY_REDACTED',
-    )
-      .then(async (response) => await response.json())
-      .then((data: { items: Font[] }) => {
-        setFontData(data.items);
-      });
-  };
+  // const getFontData = async () => {
+  //   await fetch(
+  //     'https://www.googleapis.com/webfonts/v1/webfonts?key=GOOGLE_API_KEY_REDACTED',
+  //   )
+  //     .then(async (response) => await response.json())
+  //     .then((data: { items: Font[] }) => {
+  //       setFontData(data.items);
+  //     });
+  // };
 
   const handleSelectFont = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     setSelectedFont(event.target.value);
@@ -129,24 +127,21 @@ const Theme: FC<ThemeProps> = ({
           }
           return null;
         })}
-
         <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
           <span className="text-[12px]">Select Font</span>
           <select
+            style={{ fontFamily: selectedFont }}
             value={selectedFont ?? ''}
             onChange={handleSelectFont}
             className="border-[1px] border-[#CCCCCC] px-3 h-12 rounded-2xl outline-none text-[12px] font-medium"
           >
             <option value="">Select a font</option>
-            {fontData?.map((font: Font) => (
-              <option key={font.family} value={font.family}>
-                {font.family}
+            {fontFamilyArray?.map((font) => (
+              <option key={font} value={font}>
+                {font}
               </option>
             ))}
           </select>
-          {/* {selectedFont && (
-            <p style={{ fontFamily: selectedFont }}>This text will be displayed in.</p>
-          )} */}
         </div>
       </div>
     </div>
