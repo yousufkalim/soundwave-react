@@ -17,11 +17,20 @@ import {
   IPosterSize,
   SelectedAlbumProps,
   DataSetProps,
-  IResponsePoster,
+  // IResponsePoster,
   IResponseCart,
 } from '../../types/index';
 import PosterSize from '../PosterSize';
-
+import { PricingArray } from '../../utils/data';
+import Tab from '../Tab/index';
+import { Collapse } from '@mui/material';
+import Fade from 'react-reveal/Fade';
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepButton from '@mui/material/StepButton';
+// import Button from '@mui/material/Button';
+// import Typography from '@mui/material/Typography';
 interface RightSideProps {
   selected: string;
   setSelected: (value: string) => void;
@@ -91,104 +100,7 @@ interface IBody {
   totalPoster: IBodyTotalPoster[];
   cartId?: string;
 }
-
-interface IPosterSizePricingProps {
-  price: number;
-  inch: string;
-  centimeter: string;
-}
-
-interface IPosterTypePricingProps {
-  slimCanvasPrice: number;
-  thickCanvasPrice: number;
-  withFramePrice: number;
-  inch: string;
-  centimeter: string;
-}
-
-interface pricingArrayProps {
-  posterSizePricing: IPosterSizePricingProps[];
-  posterTypePricing: IPosterTypePricingProps[];
-}
-
-const pricingArray: pricingArrayProps = {
-  posterSizePricing: [
-    {
-      price: 59.99,
-      inch: '12 X 18',
-      centimeter: '30 X 45',
-    },
-    {
-      price: 69.99,
-      inch: '16 X 20',
-      centimeter: '40 X 50',
-    },
-    {
-      price: 74.99,
-      inch: '18 X 24',
-      centimeter: '45 X 60',
-    },
-    {
-      price: 79.99,
-      inch: '20 X 28',
-      centimeter: '50 X 70',
-    },
-    {
-      price: 89.99,
-      inch: '24 X 36',
-      centimeter: '60 X 90',
-    },
-    {
-      price: 114.99,
-      inch: '28 X 40',
-      centimeter: '70 X 100',
-    },
-  ],
-  posterTypePricing: [
-    {
-      slimCanvasPrice: 79.99,
-      thickCanvasPrice: 89.99,
-      withFramePrice: 39.99,
-      inch: '12 X 18',
-      centimeter: '30 X 45',
-    },
-    {
-      slimCanvasPrice: 89.99,
-      thickCanvasPrice: 99.99,
-      withFramePrice: 49.99,
-      inch: '16 X 20',
-      centimeter: '40 X 50',
-    },
-    {
-      slimCanvasPrice: 99.99,
-      thickCanvasPrice: 109.99,
-      withFramePrice: 64.99,
-      inch: '18 X 24',
-      centimeter: '45 X 60',
-    },
-    {
-      slimCanvasPrice: 129.99,
-      thickCanvasPrice: 149.99,
-      withFramePrice: 99.99,
-      inch: '20 X 28',
-      centimeter: '50 X 70',
-    },
-    {
-      slimCanvasPrice: 159.99,
-      thickCanvasPrice: 199.99,
-      withFramePrice: 109.99,
-      inch: '24 X 36',
-      centimeter: '60 X 90',
-    },
-    {
-      slimCanvasPrice: 199.99,
-      thickCanvasPrice: 249.99,
-      withFramePrice: 134.99,
-      inch: '28 X 40',
-      centimeter: '70 X 100',
-    },
-  ],
-};
+const steps = ['Search an Album or Artist', 'Descrition', 'Theme', 'Print Format', 'Size'];
 
 const RightSide: FC<RightSideProps> = ({
   selected,
@@ -237,9 +149,10 @@ const RightSide: FC<RightSideProps> = ({
   setSelectedFont,
 }) => {
   const [posterPrice, setPosterPrice] = useState<number>(0);
+  const [activeStepperStep, setActiveStepperStep] = useState<number>(0);
 
   const handleCalulatePosterPrice = (): void => {
-    const posterSizePriceResult = pricingArray.posterSizePricing.find((item) => {
+    const posterSizePriceResult = PricingArray.posterSizePricing.find((item) => {
       const currentUnit = posterSize.unit === 'inch' ? item.inch : item.centimeter;
       if (posterSize.value === currentUnit) {
         return item;
@@ -247,7 +160,7 @@ const RightSide: FC<RightSideProps> = ({
       return undefined;
     });
 
-    const posterFramePriceResult = pricingArray.posterTypePricing.find((item) => {
+    const posterFramePriceResult = PricingArray.posterTypePricing.find((item) => {
       const currentUnit = posterSize.unit === 'inch' ? item.inch : item.centimeter;
       if (posterSize.value === currentUnit) {
         return item;
@@ -276,8 +189,6 @@ const RightSide: FC<RightSideProps> = ({
   useEffect(() => {
     handleCalulatePosterPrice();
   }, [posterSize, posterType]);
-
-  console.log(posterType);
 
   const handleAddToCart = async () => {
     handleResetData();
@@ -325,9 +236,81 @@ const RightSide: FC<RightSideProps> = ({
       console.log('Add cart Error ');
     }
   };
+
+  const handleDescripitionTabClick = (): void => {
+    if (activeStep >= 2) {
+      setOpenDescripition(!openDescripition);
+      setOpenTheme(false);
+      setOpenStyles(false);
+      setOpenSize(false);
+      setActiveStep(3);
+    } else {
+      setOpenDescripition(false);
+      setOpenTheme(false);
+      setOpenStyles(false);
+      setOpenSize(false);
+    }
+  };
+  const handleThemeTabClick = (): void => {
+    if (activeStep >= 3) {
+      setOpenTheme(!openTheme);
+      setOpenDescripition(false);
+      setOpenStyles(false);
+      setOpenSize(false);
+      setActiveStep(4);
+    } else {
+      setOpenTheme(false);
+      setOpenDescripition(false);
+      setOpenStyles(false);
+      setOpenSize(false);
+    }
+  };
+  const handlePrintFormatTabClick = (): void => {
+    if (activeStep >= 4) {
+      setOpenStyles(!openStyles);
+      setOpenDescripition(false);
+      setOpenTheme(false);
+      setOpenSize(false);
+      setActiveStep(5);
+    } else {
+      setOpenStyles(false);
+      setOpenDescripition(false);
+      setOpenTheme(false);
+      setOpenSize(false);
+    }
+  };
+
+  const handleSizeTabClick = (): void => {
+    if (activeStep >= 5) {
+      setOpenSize(!openSize);
+      setOpenStyles(false);
+      setOpenDescripition(false);
+      setOpenTheme(false);
+      setActiveStep(6);
+    } else {
+      setOpenSize(false);
+      setOpenStyles(false);
+      setOpenDescripition(false);
+      setOpenTheme(false);
+    }
+  };
+
+  // stepper functions
+  const handleNext = (): void => {
+    setActiveStepperStep(activeStepperStep + 1);
+  };
+
+  const handleBack = (): void => {
+    setActiveStepperStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleStep = (step: number) => () => {
+    setActiveStepperStep(step);
+  };
+
   return (
-    <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-20">
-      <div className="w-[78%] 2xl:w-[65%]">
+    <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-5 lg:pl-10 sxl:pl-20">
+      <div className="w-[78%] md:w-[95%] lg:w-[88%] 2xl:w-[65%] sxl:w-[75%]">
         <div className="w-full flex items-center justify-start">
           <TitleIcon className="mx-2" />
           <span className="text-sm font-semibold tracking-tight text-black">Soundwave Poster</span>
@@ -337,12 +320,12 @@ const RightSide: FC<RightSideProps> = ({
             Let’s Start With Your Content
           </i>
         </div>
-        <div className="mb-2">
+        <div className="mb-2 hidden md:block">
           <span className="text-black text-[13px] 2xl:text-[14px] font-semibold ">
             Search an Album or Artist
           </span>
         </div>
-        <div className="flex flex-col gap-2 2xl:gap-3">
+        <div className="md:flex flex-col gap-2 2xl:gap-3 hidden">
           <Step1
             handleDataSets={handleDataSets}
             selectedAlbum={selectedAlbum}
@@ -353,72 +336,75 @@ const RightSide: FC<RightSideProps> = ({
             selected={selected}
             setSelected={setSelected}
           />
-          <Step2
-            openDescripition={openDescripition}
-            setOpenDescripition={setOpenDescripition}
-            setOpenTheme={setOpenTheme}
-            setOpenStyles={setOpenStyles}
-            selectedAlbum={selectedAlbum}
-            autoGeneratedAlbumDescripition={autoGeneratedAlbumDescripition}
-            setAutoGeneratedAlbumDescripition={setAutoGeneratedAlbumDescripition}
-            customAlbumDescripition={customAlbumDescripition}
-            setCustomAlbumDescripition={setCustomAlbumDescripition}
-            autoGeneratedDescription={autoGeneratedDescription}
-            setAutoGeneratedDescription={setAutoGeneratedDescription}
-            customDescription={customDescription}
-            setCustomDescription={setCustomDescription}
-            setOpenSize={setOpenSize}
-            // steps active states
-            activeStep={activeStep}
-            setActiveStep={setActiveStep}
+
+          <Tab
+            onClick={handleDescripitionTabClick}
+            heading={'Description'}
+            open={openDescripition}
+            active={activeStep >= 2}
           />
-          <Step3
-            openTheme={openTheme}
-            setOpenTheme={setOpenTheme}
-            setOpenDescripition={setOpenDescripition}
-            setOpenStyles={setOpenStyles}
-            boxColor={boxColor}
-            posterColor={posterColor}
-            soundWaveColor={soundWaveColor}
-            songTitleColor={songTitleColor}
-            descriptionColor={descriptionColor}
-            getSetColor={getSetColor}
-            selectedTemplate={selectedTemplate}
-            soundWaveNameColor={soundWaveNameColor}
-            setSelectedTemplate={setSelectedTemplate}
-            setOpenSize={setOpenSize}
-            // steps active states
-            activeStep={activeStep}
-            setActiveStep={setActiveStep}
-            // change font state
-            selectedFont={selectedFont}
-            setSelectedFont={setSelectedFont}
-            setLoading={setLoading}
+          <Collapse in={openDescripition} timeout={600} unmountOnExit>
+            <Fade when={openDescripition} duration={500}>
+              <Step2
+                selectedAlbum={selectedAlbum}
+                autoGeneratedAlbumDescripition={autoGeneratedAlbumDescripition}
+                setAutoGeneratedAlbumDescripition={setAutoGeneratedAlbumDescripition}
+                customAlbumDescripition={customAlbumDescripition}
+                setCustomAlbumDescripition={setCustomAlbumDescripition}
+                autoGeneratedDescription={autoGeneratedDescription}
+                setAutoGeneratedDescription={setAutoGeneratedDescription}
+                customDescription={customDescription}
+                setCustomDescription={setCustomDescription}
+              />
+            </Fade>
+          </Collapse>
+          <Tab
+            onClick={handleThemeTabClick}
+            heading={'Theme'}
+            open={openTheme}
+            active={activeStep >= 3}
           />
-          <Step4
-            openStyles={openStyles}
-            setOpenTheme={setOpenTheme}
-            setOpenDescripition={setOpenDescripition}
-            setOpenStyles={setOpenStyles}
-            setOpenSize={setOpenSize}
-            // steps active states
-            activeStep={activeStep}
-            setActiveStep={setActiveStep}
-            posterType={posterType}
-            setPosterType={setPosterType}
+          <Collapse in={openTheme} timeout={600} unmountOnExit>
+            <Fade when={openTheme} duration={500}>
+              <Step3
+                boxColor={boxColor}
+                posterColor={posterColor}
+                soundWaveColor={soundWaveColor}
+                songTitleColor={songTitleColor}
+                descriptionColor={descriptionColor}
+                getSetColor={getSetColor}
+                selectedTemplate={selectedTemplate}
+                soundWaveNameColor={soundWaveNameColor}
+                setSelectedTemplate={setSelectedTemplate}
+                selectedFont={selectedFont}
+                setSelectedFont={setSelectedFont}
+                setLoading={setLoading}
+              />
+            </Fade>
+          </Collapse>
+          <Tab
+            open={openStyles}
+            onClick={handlePrintFormatTabClick}
+            heading={'Print Format'}
+            active={activeStep >= 4}
           />
-          <Step5
-            setOpenTheme={setOpenTheme}
-            setOpenDescripition={setOpenDescripition}
-            posterSize={posterSize}
-            setPosterSize={setPosterSize}
-            openSize={openSize}
-            setOpenStyles={setOpenStyles}
-            setOpenSize={setOpenSize}
-            // steps active states
-            activeStep={activeStep}
-            setActiveStep={setActiveStep}
+          <Collapse in={openStyles} timeout={600} unmountOnExit>
+            <Fade when={openStyles} duration={500}>
+              <Step4 posterType={posterType} setPosterType={setPosterType} />
+            </Fade>
+          </Collapse>
+          <Tab
+            open={openSize}
+            onClick={handleSizeTabClick}
+            heading={'Size'}
+            active={activeStep >= 5}
           />
+          <Collapse in={openSize} timeout={600} unmountOnExit>
+            <Fade when={openSize} duration={500}>
+              <Step5 posterSize={posterSize} setPosterSize={setPosterSize} />
+            </Fade>
+          </Collapse>
+
           <button
             style={{
               display: selected === '' ? 'none' : '',
@@ -436,6 +422,111 @@ const RightSide: FC<RightSideProps> = ({
             </span>
           </button>
         </div>
+        <Box className="md:hidden mb-10">
+          <Stepper nonLinear activeStep={activeStepperStep}>
+            {steps.map((label, index) => (
+              <Step key={label}>
+                <StepButton color="inherit" onClick={handleStep(index)}>
+                  {activeStepperStep === index ? label : ''}
+                </StepButton>
+              </Step>
+            ))}
+          </Stepper>
+          <div>
+            <React.Fragment>
+              <div className="my-5">
+                {activeStepperStep === 0 ? (
+                  <Step1
+                    handleDataSets={handleDataSets}
+                    selectedAlbum={selectedAlbum}
+                    setSelectedAlbum={setSelectedAlbum}
+                    // steps active states
+                    activeStep={activeStep}
+                    setActiveStep={setActiveStep}
+                    selected={selected}
+                    setSelected={setSelected}
+                  />
+                ) : activeStepperStep === 1 ? (
+                  <Step2
+                    selectedAlbum={selectedAlbum}
+                    autoGeneratedAlbumDescripition={autoGeneratedAlbumDescripition}
+                    setAutoGeneratedAlbumDescripition={setAutoGeneratedAlbumDescripition}
+                    customAlbumDescripition={customAlbumDescripition}
+                    setCustomAlbumDescripition={setCustomAlbumDescripition}
+                    autoGeneratedDescription={autoGeneratedDescription}
+                    setAutoGeneratedDescription={setAutoGeneratedDescription}
+                    customDescription={customDescription}
+                    setCustomDescription={setCustomDescription}
+                  />
+                ) : activeStepperStep === 2 ? (
+                  <Step3
+                    boxColor={boxColor}
+                    posterColor={posterColor}
+                    soundWaveColor={soundWaveColor}
+                    songTitleColor={songTitleColor}
+                    descriptionColor={descriptionColor}
+                    getSetColor={getSetColor}
+                    selectedTemplate={selectedTemplate}
+                    soundWaveNameColor={soundWaveNameColor}
+                    setSelectedTemplate={setSelectedTemplate}
+                    selectedFont={selectedFont}
+                    setSelectedFont={setSelectedFont}
+                    setLoading={setLoading}
+                  />
+                ) : activeStepperStep === 3 ? (
+                  <Step4 posterType={posterType} setPosterType={setPosterType} />
+                ) : (
+                  activeStepperStep === 4 && (
+                    <>
+                      <Step5 posterSize={posterSize} setPosterSize={setPosterSize} />
+                    </>
+                  )
+                )}
+              </div>
+
+              <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                <button
+                  className={
+                    activeStepperStep === 0
+                      ? 'text-white bg-[#919B9B] px-6 py-2 rounded font-semibold'
+                      : 'text-white bg-black px-6 py-2 rounded font-semibold'
+                  }
+                  disabled={activeStepperStep === 0}
+                  onClick={handleBack}
+                >
+                  Back
+                </button>
+                <Box sx={{ flex: '1 1 auto' }} />
+                <button
+                  onClick={handleNext}
+                  className={
+                    activeStepperStep === 4
+                      ? 'text-white bg-[#919B9B] px-6 py-2 rounded font-semibold'
+                      : 'text-white bg-black px-6 py-2 rounded font-semibold'
+                  }
+                >
+                  Next
+                </button>
+              </Box>
+            </React.Fragment>
+          </div>
+          <div
+            className="w-full flex items-center justify-center my-5"
+            style={{ display: activeStepperStep !== 4 ? 'none' : '' }}
+          >
+            <button
+              className={
+                'bg-black flex items-center justify-center py-3 2xl:py-4 rounded-xl cursor-pointer w-full'
+              }
+              onClick={handleAddToCart}
+            >
+              <span className="text-white flex text-[.9rem] 2xl:text-[1rem]">
+                <Cart />
+                &nbsp;&nbsp;&nbsp;&nbsp;Add To Cart&nbsp;<b>${posterPrice}</b>
+              </span>
+            </button>
+          </div>
+        </Box>
       </div>
       {/* <img src={svgImage} /> */}
     </div>

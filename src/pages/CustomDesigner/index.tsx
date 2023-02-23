@@ -72,7 +72,7 @@ const index: FC = () => {
   const [posterSize, setPosterSize] = useState<IPosterSize>({ value: '12 X 18', unit: 'inch' });
   // state for add to cart button
   const [addToCart, setAddToCart] = useState<boolean>(true);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleDataSets = (value: DataSetProps[]) => {
     setDataSets(value);
@@ -140,7 +140,7 @@ const index: FC = () => {
       ? NuetralWoodenFrame
       : posterType === 'White Wooden Frame'
       ? WhiteWoodenFrame
-      : posterType === 'Aluminium Metal'
+      : posterType === 'Black Metal Frame'
       ? MetalFrame
       : '';
 

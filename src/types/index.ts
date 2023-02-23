@@ -47,7 +47,25 @@ export interface ICart {
   totalPrice: number;
   shippingCost: number;
 }
-// step 1 types
+
+export interface ArtistObjectProps {
+  artists: ArtistInnerObjectProps;
+}
+
+export interface ArtistInnerObjectProps {
+  items: itemsObjectProps[];
+}
+
+export interface itemsObjectProps {
+  href: string;
+  id: string;
+  name: string;
+  type: string;
+  uri: string;
+}
+
+///
+
 export interface AlbumsObjectProps {
   albums: AlbumInnerObjectProps;
 }
@@ -98,6 +116,16 @@ export interface PromiseProps {
   segments: Segment[];
   tatums: Bar[];
   track: Track;
+}
+
+export interface AlbumByArtistPromiseProps {
+  href: string;
+  items: albumObjectProps[];
+  limit: number;
+  next: string;
+  offset: number;
+  previous: any;
+  total: number;
 }
 export interface Track {
   analysis_channels: number;
@@ -230,4 +258,25 @@ export interface Artist {
 export interface ICheckoutResponce {
   success: boolean;
   checkoutURL: string;
+}
+
+
+
+export interface IPosterSizePricingProps {
+  price: number;
+  inch: string;
+  centimeter: string;
+}
+
+export interface IPosterTypePricingProps {
+  slimCanvasPrice: number;
+  thickCanvasPrice: number;
+  withFramePrice: number;
+  inch: string;
+  centimeter: string;
+}
+
+export interface pricingArrayProps {
+  posterSizePricing: IPosterSizePricingProps[];
+  posterTypePricing: IPosterTypePricingProps[];
 }

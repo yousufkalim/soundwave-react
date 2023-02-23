@@ -33,10 +33,10 @@ const SearchInput: React.FC<SearchInputProps> = ({
     const { value } = e.target;
     setQuery(value);
     onChange(value);
-    const updatedOptions: SelectedAlbumProps[] = !value
-      ? []
-      : [...options.filter((option) => option.label.toLowerCase().includes(value.toLowerCase()))];
-    setOptionsData(updatedOptions);
+    // const updatedOptions: SelectedAlbumProps[] = !value
+    //   ? []
+    //   : [...options.filter((option) => option.label.toLowerCase().includes(value.toLowerCase()))];
+    setOptionsData(options);
   };
 
   const handleClickOutSide = () => {
@@ -44,11 +44,11 @@ const SearchInput: React.FC<SearchInputProps> = ({
   };
   useOnClickOutside(autocomplete, handleClickOutSide);
 
-  const hilightSearchText = (text: string) => {
-    const pattern = new RegExp('(' + query + ')', 'gi');
-    const newText = text.replace(pattern, `<b>${query}</b>`);
-    return `${newText.charAt(3).toUpperCase()}${newText.substring(4)}`;
-  };
+  // const hilightSearchText = (text: string) => {
+  //   const pattern = new RegExp('(' + query + ')', 'gi');
+  //   const newText = text.replace(pattern, `<b>${query}</b>`);
+  //   return `${newText.charAt(3).toUpperCase()}${newText.substring(4)}`;
+  // };
 
   const selectedOptionData = (text: string) => {
     setQuery(text);
@@ -76,7 +76,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         <ul className="flex items-center justify-start flex-col mt-[.5rem] absolute bg-white w-full max-h-96 rounded top-11 z-[10] overflow-y-auto shadow-md">
           {optionsData.map((optionItem) => (
             <li
-              className="flex items-center justify-start gap-3 cursor-pointer border-none w-full text-left bg-white py-3 2xl:py-4 px-2 hover:bg-[#e2e2e2]"
+              className="flex items-center justify-start gap-3 cursor-pointer border-b-2 border-gray-100 w-full text-left bg-white py-3 2xl:py-4 px-2 hover:bg-[#e2e2e2]"
               onClick={() => {
                 selectedOptionData(optionItem.label);
                 setSelectedAlbumId(optionItem.id);
@@ -89,12 +89,13 @@ const SearchInput: React.FC<SearchInputProps> = ({
                 className="object-cover rounded-full w-12 h-12 ml-2 2xl:w-13 2xl:h-13"
               />
               <div>
-                <div
-                  className="overflow-hidden text-ellipsis whitespace-nowrap text-[14px] 2xl:text-[15px] font-semibold"
-                  dangerouslySetInnerHTML={{
-                    __html: hilightSearchText(optionItem.label),
+                <div className="overflow-hidden text-ellipsis whitespace-nowrap text-[14px] 2xl:text-[15px] font-semibold">
+                  {optionItem.label}
+                </div>
+                {/* dangerouslySetInnerHTML={{
+                    __html: hilightSearchText(),
                   }}
-                />
+                /> */}
 
                 <span className="text-[13px] 2xl:text-[14px]">{optionItem.singerName}</span>
               </div>

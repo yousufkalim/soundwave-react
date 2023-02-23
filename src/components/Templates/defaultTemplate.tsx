@@ -50,12 +50,21 @@ const Template2: FC<Template2Props> = ({
   // const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
   //   ? colors.soundWaveNameColor
   //   : '';
-
   return (
     <div
       id="custom-poster-template"
       // className={` w-[96%] h-[55%] sm:w-[80%] sm:h-[70%] shadow-lg shadow-[#BAB8B8] relative`}
-      className={` w-[48%] h-[80%] shadow-lg shadow-[#BAB8B8] relative`}
+      className={`
+      w-[73%] h-[95%] shadow-xl shadow-gray-700 mt-[1%] relative
+      sm:w-[70%] sm:h-[98%]
+      xmd:w-[60%] xmd:h-[100%]
+      md:w-[78%] md:h-[66%] md:mt-[2%] 
+      lg:w-[71%] lg:h-[75%]
+      xl:w-[67%]
+      sxl:w-[52%] sxl:h-[90%]
+      mxl:w-[52%] mxl:h-[72%] 
+      2xl:w-[47%] 2xl:h-[86%]
+      `}
       style={{
         background:
           posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
@@ -70,27 +79,28 @@ const Template2: FC<Template2Props> = ({
       }}
     >
       <div
-        className={`h-full pt-4`}
+        className={`h-full pt-6`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? ' 12px' : '16px',
-          paddingRight: BackgroundFrame ? ' 12px' : '16px',
+          paddingLeft: BackgroundFrame ? ' 24px' : '28px',
+          paddingRight: BackgroundFrame ? ' 22px' : '26px',
         }}
       >
         <Grid
           container
           spacing={1}
-          className={`h-[77%] px-1 py-3 w-full overflow-hidden mt-4`}
+          className={`h-[77%] px-1 py-3`}
           style={{ background: colors.boxColor, width: '100%', marginLeft: '0', marginTop: '0' }}
         >
           {dataSets.map((item, index) => {
-            if (index < 18) {
+            if (index < 30) {
               return (
                 <Waveroom
                   item={item}
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
+                  height={index < 30 ? 15 : 18}
                 />
               );
             } else {
@@ -99,11 +109,23 @@ const Template2: FC<Template2Props> = ({
           })}
         </Grid>
         <div
-          className={`break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-6`}
+          className={
+            selectedAlbum?.label && selectedAlbum?.label.length > 24
+              ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-2`
+              : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-4`
+          }
         >
-          <div className="text-left">
+          <div className="text-left pl-2">
             <span
-              className={`text-4xl font-semibold font-proxima-nova template_album_name`}
+              className={
+                selectedAlbum?.label && selectedAlbum?.label.length > 24
+                  ? `text-lg 
+                  md:text-xl 
+                  font-semibold font-proxima-nova template_album_name`
+                  : `text-3xl
+                  md:text-4xl
+                   sxl:text-3xl  font-semibold font-proxima-nova template_album_name`
+              }
               style={{
                 color: colors.songTitleColor,
                 fontFamily: selectedFont,
@@ -113,13 +135,18 @@ const Template2: FC<Template2Props> = ({
             </span>
           </div>
           <div
-            className={`${activeAlignment} text-[7px] bg-transparent tracking-tighter font-proxima-nova template_album_name mt-2`}
+            className={`
+            ${activeAlignment} text-[6px] bg-transparent tracking-tighter font-proxima-nova template_album_name 
+            md:text-[7px]
+            xl:mt-0
+            2xl:mt-2
+            `}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
             }}
           >
-            {albumDescripition}
+            {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </div>
         </div>
       </div>
