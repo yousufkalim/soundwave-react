@@ -130,7 +130,7 @@ const Template4: FC<Template4Props> = ({
           }}
         >
           <p
-            className={`text-[6px] md:text-[7px]  bg-transparent text-ellipsis-8 tracking-tighter`}
+            className={`text-[5px] md:text-[6px] lg:text-[7px]  bg-transparent text-ellipsis-8 tracking-tighter`}
           >
             {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </p>

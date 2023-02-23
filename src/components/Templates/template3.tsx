@@ -140,7 +140,7 @@ const Template3: FC<Template3Props> = ({
           }}
         >
           <p
-            className={`text-[6px] md:text-[7px] bg-transparent tracking-tighter mb-[1%] md:mb-[1%] text-ellipsis-8 break-words`}
+            className={`text-[5px] md:text-[6px] lg:text-[7px] bg-transparent tracking-tighter mb-[1%] md:mb-[1%] text-ellipsis-8 break-words`}
           >
             {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </p>

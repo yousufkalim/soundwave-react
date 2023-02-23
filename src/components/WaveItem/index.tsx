@@ -19,15 +19,13 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height }) => 
   return (
     <Grid item xs={4}>
       <div className="flex items-center justify-center">
-        <div className="w-[85%]">
-          <Waveform
-            peaks={item.levels}
-            height={height}
-            color={rgbaToHex(colors.soundWaveColor)}
-            pixelRatio={1}
-            progressColor={rgbaToHex(colors.soundWaveColor)}
-          />
-        </div>
+        <Waveform
+          peaks={item.levels}
+          height={height}
+          color={rgbaToHex(colors.soundWaveColor)}
+          pixelRatio={1}
+          progressColor={rgbaToHex(colors.soundWaveColor)}
+        />
       </div>
       <div className="flex items-center justify-between mt-2 px-3">
         <span
