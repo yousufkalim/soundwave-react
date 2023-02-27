@@ -30,7 +30,8 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height }) => 
       <div className="flex items-center justify-between mt-2 px-3">
         <span
           className={`
-          w-[80%] text-[6px] tracking-tight font-semibold font-[Montserrat] template_album_name
+          w-[80%] tracking-tight font-semibold font-[Montserrat] template_album_name text-[4px]
+          sm:text-[6px] 
           xl:w-[80%] xl:text-[7px]
           2xl:w-[82%] 2xl:text-[8px]
         `}
@@ -43,7 +44,8 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height }) => 
         </span>
         <span
           className={`
-          w-[20%] text-[6px] font-[Montserrat] template_album_name
+          w-[20%] font-[Montserrat] template_album_name text-[4px]
+          sm:text-[6px] 
           xl:w-[20%] xl:text-[7px] 
           2xl:w-[18%] 2xl:text-[8px] 
           `}

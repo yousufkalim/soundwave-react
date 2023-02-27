@@ -28,13 +28,13 @@ const index: FC<HeaderProps> = ({ HeaderTitle, cartItemsLength, setOpen }) => {
   return (
     <>
       <div className="w-full h-20 bg-black flex items-center justify-between px-4 md:px-20">
-        <Logo onClick={handleLogoClick} className="cursor-pointer" />
+        <Logo onClick={handleLogoClick} className="cursor-pointer w-[40%] sm:w-[20%]" />
         <span className="text-white font-bold hidden md:text-lg md:block">
           <i>{HeaderTitle}</i>
         </span>
         <div className="flex items-center justify-center gap-4">
           <button
-            className="bg-white w-32 py-3 text-sm rounded-md font-medium"
+            className="bg-white w-18 py-1 px-2 text-[10px] sm:w-32 sm:py-3 sm:text-sm rounded-md font-medium"
             onClick={handleReturnToStore}
           >
             Return to Store

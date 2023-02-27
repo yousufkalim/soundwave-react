@@ -56,7 +56,7 @@ const Template1: FC<Template1Props> = ({
   return (
     <div
       id="custom-poster-template"
-      className={`w-[73%] h-[95%] shadow-xl shadow-gray-700 mt-[1%]
+      className={`overflow-hidden w-[73%] h-[95%] shadow-xl shadow-gray-700 mt-[1%]
       sm:w-[70%] sm:h-[98%]
       xmd:w-[60%] xmd:h-[100%]
       md:w-[78%] md:h-[66%] md:mt-[2%] 
