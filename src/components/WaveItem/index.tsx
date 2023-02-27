@@ -8,8 +8,9 @@ interface WaveroomProps {
   selectedFont: string;
   colors: IStateColors;
   height: number;
+  songsAmount: number;
 }
-const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height }) => {
+const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songsAmount }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
     const minutesAsInt = Math.floor(minutes);
@@ -33,11 +34,12 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height }) => 
           w-[80%] tracking-tight font-semibold font-[Montserrat] template_album_name text-[4px]
           sm:text-[6px] 
           xl:w-[80%] xl:text-[7px]
-          2xl:w-[82%] 2xl:text-[8px]
+          2xl:w-[82%]
         `}
           style={{
             color: colors.soundWaveNameColor,
             fontFamily: selectedFont,
+            fontSize: songsAmount > 18 ? '5px' : '8px',
           }}
         >
           &quot;{item.songName}&quot;
@@ -52,6 +54,7 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height }) => 
           style={{
             color: colors.soundWaveNameColor,
             fontFamily: selectedFont,
+            fontSize: songsAmount ? '5px' : '8px',
           }}
         >
           {convertMilisecondToMinutes(item.time)}

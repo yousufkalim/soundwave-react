@@ -15,15 +15,15 @@ const Footer: FC<FooterProps> = ({ activeAlignment, setActiveAlignment }) => {
   return (
     <div
       className={`
-      bg-white w-[73%] h-12 shadow-xl shadow-gray-600 flex items-center justify-between px-5
-      sm:w-[70%] 
-      xmd:w-[60%]
-      md:w-[78%]
-      lg:w-[71%]
-      xl:w-[67%]
-      sxl:w-[48%]
-      mxl:w-[52%]
-      2xl:w-[47%]
+      bg-white h-12 shadow-xl shadow-gray-600 flex items-center justify-between px-5
+      w-[490px] scale-[70%]
+      xs:scale-[80%]
+      msm:scale-[85%]
+      sm:scale-[95%]
+      md:scale-[80%]
+      lg:scale-[90%]
+      sxl:scale-[95%]
+      2xl:scale-[100%]
       `}
     >
       <div

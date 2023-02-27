@@ -55,16 +55,24 @@ const Template2: FC<Template2Props> = ({
       id="custom-poster-template"
       // className={` w-[96%] h-[55%] sm:w-[80%] sm:h-[70%] shadow-lg shadow-[#BAB8B8] relative`}
       className={`
-      w-[73%] h-[95%] shadow-xl shadow-gray-700 mt-[1%] relative
-      sm:w-[70%] sm:h-[98%]
-      xmd:w-[60%] xmd:h-[100%]
-      md:w-[78%] md:h-[66%] md:mt-[2%] 
-      lg:w-[71%] lg:h-[75%]
-      xl:w-[67%]
-      sxl:w-[52%] sxl:h-[90%]
-      mxl:w-[52%] mxl:h-[72%] 
-      2xl:w-[47%] 2xl:h-[86%]
+      shadow-xl shadow-gray-700 overflow-hidden relative
+      w-[500px] h-[680px] scale-[70%]
+      xs:scale-[80%]
+      msm:scale-[85%]
+      sm:scale-[95%]
+      md:scale-[80%]
+      lg:scale-[90%]
+      sxl:scale-[95%]
+      2xl:scale-[100%]
       `}
+      // sm:scale-[80%]
+      // xmd:w-[60%] xmd:h-[100%]
+      // md:w-[78%] md:h-[66%] md:mt-[2%]
+      // lg:w-[71%] lg:h-[75%]
+      // xl:w-[67%]
+      // sxl:w-[52%] sxl:h-[90%]
+      // mxl:w-[52%] mxl:h-[72%]
+      // 2xl:w-[47%] 2xl:h-[86%]
       style={{
         background:
           posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
@@ -89,13 +97,14 @@ const Template2: FC<Template2Props> = ({
         <Grid
           container
           spacing={1}
-          className={`h-[77%] px-1 py-3`}
+          className={`h-[77%] px-1 py-3 overflow-hidden`}
           style={{ background: colors.boxColor, width: '100%', marginLeft: '0', marginTop: '0' }}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {
               return (
                 <Waveroom
+                  songsAmount={dataSets.length}
                   item={item}
                   selectedFont={selectedFont}
                   colors={colors}
@@ -111,8 +120,8 @@ const Template2: FC<Template2Props> = ({
         <div
           className={
             selectedAlbum?.label && selectedAlbum?.label.length > 24
-              ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-2`
-              : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-4`
+              ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[1%]`
+              : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
           }
         >
           <div className="text-left pl-2">

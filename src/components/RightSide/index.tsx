@@ -197,6 +197,7 @@ const RightSide: FC<RightSideProps> = ({
       logging: false,
       allowTaint: true,
       scale: 3,
+      useCORS: true,
     });
     const img = canvas.toDataURL();
     // setSvgImage(img);
