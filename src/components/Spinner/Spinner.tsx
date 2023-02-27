@@ -4,7 +4,7 @@ import Loading from '../../assets/1487.gif';
 const Spinner: FC = () => {
   return (
     <div
-      className="absolute h-screen w-full z-50"
+      className="absolute w-full h-full z-50"
       style={{ backgroundColor: 'rgba(0, 0, 0, .2)', backdropFilter: 'blur(5px)' }}
     >
       <div className="relative h-full w-full">

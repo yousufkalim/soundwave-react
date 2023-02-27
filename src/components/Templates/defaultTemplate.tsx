@@ -56,7 +56,7 @@ const Template2: FC<Template2Props> = ({
       // className={` w-[96%] h-[55%] sm:w-[80%] sm:h-[70%] shadow-lg shadow-[#BAB8B8] relative`}
       className={`
       shadow-xl shadow-gray-700 overflow-hidden relative
-      w-[500px] h-[680px] scale-[70%]
+      w-[480px] h-[680px] scale-[70%]
       xs:scale-[80%]
       msm:scale-[85%]
       sm:scale-[95%]
