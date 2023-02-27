@@ -49,7 +49,7 @@ const Template6: FC<Template6Props> = ({
       id="custom-poster-template"
       className={`
       shadow-xl shadow-gray-700 overflow-hidden relative
-      w-[500px] h-[680px] scale-[70%]
+      w-[480px] h-[680px] scale-[70%]
       xs:scale-[80%]
       msm:scale-[85%]
       sm:scale-[95%]
