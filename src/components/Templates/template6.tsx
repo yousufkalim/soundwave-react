@@ -48,15 +48,15 @@ const Template6: FC<Template6Props> = ({
     <div
       id="custom-poster-template"
       className={`
-      w-[73%] h-[95%] shadow-xl shadow-gray-700 mt-[1%]
-      sm:w-[70%] sm:h-[98%]
-      xmd:w-[60%] xmd:h-[100%]
-      md:w-[78%] md:h-[66%] md:mt-[2%] 
-      lg:w-[71%] lg:h-[75%]
-      xl:w-[67%]
-      sxl:w-[52%] sxl:h-[90%]
-      mxl:w-[52%] mxl:h-[72%] 
-      2xl:w-[47%] 2xl:h-[86%]
+      shadow-xl shadow-gray-700 overflow-hidden relative
+      w-[500px] h-[680px] scale-[70%]
+      xs:scale-[80%]
+      msm:scale-[85%]
+      sm:scale-[95%]
+      md:scale-[80%]
+      lg:scale-[90%]
+      sxl:scale-[95%]
+      2xl:scale-[100%]
       `}
       style={{
         background:
@@ -100,11 +100,12 @@ const Template6: FC<Template6Props> = ({
             if (index < 30) {
               return (
                 <Waveroom
-                  height={index < 30 ? 15 : 18}
+                  songsAmount={dataSets.length}
                   item={item}
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
+                  height={index < 30 ? 15 : 18}
                 />
               );
             } else {
