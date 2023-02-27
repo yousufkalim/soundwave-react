@@ -118,8 +118,9 @@ const Checkout: FC = () => {
 
   const CartItems =
     cart?.totalPoster?.length > 0
-      ? cart?.totalPoster.map((item) => (
+      ? cart?.totalPoster.map((item, index) => (
           <PosterInfoCard
+            index={index}
             key={item._id}
             posterImage={item.posterImage}
             albumName={item.albumName}
@@ -145,19 +146,19 @@ const Checkout: FC = () => {
       {loading && <Spinner />}
       <Header HeaderTitle="Checkout" />
       <div className="flex flex-col md:flex-row md:h-[90vh] overflow-hidden">
-        <div className="bg-[#fcfcfc] w-full md:w-[60%] 2xl:w-[56%] flex flex-col items-center justify-center gap-5 overflow-scroll">
+        <div className="bg-[#fcfcfc] w-full md:w-[60%] 2xl:w-[56%] flex flex-col items-center justify-center gap-5 overflow-scroll ">
           {CartItems}
         </div>
-        <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-20">
-          <div className="w-[78%] 2xl:w-[65%] mt-[6%]">
+        <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-10 lg:pl-20">
+          <div className="w-[85%] sm:w-[65%] md:w-[90%] lg:w-[80%] 2xl:w-[65%] mt-[6%]">
             <div className="w-full flex items-center justify-start mb-2">
               <TitleIcon className="mx-2" />
-              <span className="text-md font-semibold tracking-tight text-black">
+              <span className="md:text-sm text-md font-semibold tracking-tight text-black">
                 Soundwave Poster
               </span>
             </div>
             <div className="w-full flex items-center justify-start mb-7">
-              <i className="text-[#454238] text-3xl tracking-tight font-semibold">
+              <i className="text-[#454238] md:text-2xl text-3xl tracking-tight font-semibold">
                 Continue Shopping
               </i>
             </div>

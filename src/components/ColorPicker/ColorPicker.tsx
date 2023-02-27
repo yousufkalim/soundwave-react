@@ -45,7 +45,7 @@ const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor })
       {open && (
         <div
           ref={colorPickerRef}
-          className="absolute z-50 right-[18.5rem] bottom-[7rem] bg-gray-100 p-1 shadow-2xl shadow-[#BAB8B8] border-solid border-2 border-gray-300 rounded-lg"
+          className="absolute z-50 right-[2rem] sm:right-[18.5rem] bottom-[12rem] sm:bottom-[7rem] bg-gray-100 p-1 shadow-2xl shadow-[#BAB8B8] border-solid border-2 border-gray-300 rounded-lg"
         >
           <GradientPicker
             hideAdvancedSliders={true}

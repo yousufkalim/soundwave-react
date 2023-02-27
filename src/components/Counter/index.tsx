@@ -24,8 +24,11 @@ const PosterCounter: FC<PosterCounterProps> = ({
           : 'flex items-center justify-evenly border-[1px] w-16 rounded-md'
       }
     >
-      <button disabled={counter === 0} onClick={handleDecrement} className="cursor-pointer">
-        <Minus className={size === 'lg' ? 'w-5' : size === 'md' ? 'w-4' : 'w-3'} />
+      <button disabled={counter === 1} onClick={handleDecrement} className="cursor-pointer">
+        <Minus
+          className={size === 'lg' ? 'w-5' : size === 'md' ? 'w-4' : 'w-3'}
+          style={{ color: counter < 2 ? '#E1E1E1' : 'black' }}
+        />
       </button>
       <span
         className={size === 'lg' ? 'text-xl font-semibold' : size === 'md' ? 'text-lg' : 'text-md'}

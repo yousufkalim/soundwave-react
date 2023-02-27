@@ -16,6 +16,7 @@ interface PosterInfoCardProps {
   unitPrice: number;
   handleRemovePoster: (value: string) => void;
   handleCartQuantity: (id: string, isAdd: boolean, unitPrice: number) => void;
+  index: number;
 }
 const PosterInfoCard: FC<PosterInfoCardProps> = ({
   posterImage,
@@ -29,6 +30,7 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
   unitPrice,
   handleRemovePoster,
   handleCartQuantity,
+  index,
 }) => {
   const [counter, setCounter] = useState<number>(Quantity);
   const [deleted, setDeleted] = useState<boolean>(true);
@@ -49,30 +51,33 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
 
   return (
     <Slide left when={deleted} duration={200}>
-      <div className="bg-white w-[78%] h-[28%] flex flex-row rounded-lg outline outline-white hover:outline-2 hover:outline-black relative cursor-pointer">
+      <div
+        className="w-[90%] sm:w-[78%] h-[28%] flex flex-row rounded-lg outline outline-white hover:outline-2 hover:outline-black relative cursor-pointer"
+        style={{ marginTop: index === 0 ? '1.1rem' : '0' }}
+      >
         <RemoveIcon
-          className=" absolute top-[-1rem] right-[-1rem] cursor-pointer"
+          className="absolute top-[-1rem] right-[-1rem] cursor-pointer"
           onClick={() => {
             handleRemovePoster(posterId);
             setDeleted(false);
           }}
         />
         <div className="w-[26%] flex items-center justify-center">
-          <img src={`${mediaUrl}${posterImage}`} className="object-cover h-[78%]" />
+          <img src={`${mediaUrl}${posterImage}`} className="object-cover h-[70%] sm:h-[78%]" />
         </div>
-        <div className="w-[55%] flex flex-col items-start justify-center gap-2">
-          <span className="text-2xl font-semibold">
+        <div className="w-[55%] flex flex-col items-start justify-center gap-1 sm:gap-2">
+          <span className="text-xl sm:text-2xl font-semibold">
             <i>{albumName}</i>
           </span>
-          <span className="text-md font-light">{singerName}</span>
-          <div className="text-md font-light">
+          <span className="text-sm sm:text-md font-light">{singerName}</span>
+          <div className="text-sm sm:text-md font-light">
             Size{' '}
             <span className="font-semibold">
               {size.value}
               {size.unit}
             </span>
           </div>
-          <div className="text-md font-light">
+          <div className="text-sm sm:text-md font-light">
             Frame <span className="font-semibold">{posterType}</span>
           </div>
           <Counter
@@ -83,7 +88,7 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
           />
         </div>
         <div className="flex items-end justify-start">
-          <i className="text-xl font-semibold pb-3">${posterPrice.toFixed(2)}</i>
+          <i className="text-lg sm:text-xl font-semibold pb-3">${posterPrice.toFixed(2)}</i>
         </div>
       </div>
     </Slide>
