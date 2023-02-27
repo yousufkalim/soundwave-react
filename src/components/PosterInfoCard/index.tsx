@@ -65,20 +65,24 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
         <div className="w-[26%] flex items-center justify-center">
           <img src={`${mediaUrl}${posterImage}`} className="object-cover h-[70%] sm:h-[78%]" />
         </div>
-        <div className="w-[55%] flex flex-col items-start justify-center gap-1 sm:gap-2">
-          <span className="text-xl sm:text-2xl font-semibold">
-            <i>{albumName}</i>
-          </span>
-          <span className="text-sm sm:text-md font-light">{singerName}</span>
-          <div className="text-sm sm:text-md font-light">
-            Size{' '}
-            <span className="font-semibold">
-              {size.value}
-              {size.unit}
+        <div className="w-[55%] flex flex-col items-start justify-center gap-2 sm:gap-3">
+          <div className="flex flex-col items-start justify-center">
+            <span className="text-xl sm:text-2xl font-semibold">
+              <i>{albumName}</i>
             </span>
+            <span className="text-sm sm:text-md font-light">{singerName}</span>
           </div>
-          <div className="text-sm sm:text-md font-light">
-            Frame <span className="font-semibold">{posterType}</span>
+          <div className="flex flex-col items-start justify-center">
+            <div className="text-sm sm:text-md font-light">
+              Size{' '}
+              <span className="font-semibold">
+                {size.value}
+                {size.unit}
+              </span>
+            </div>
+            <div className="text-sm sm:text-md font-light">
+              Frame <span className="font-semibold">{posterType}</span>
+            </div>
           </div>
           <Counter
             size="lg"

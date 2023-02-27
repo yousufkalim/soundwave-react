@@ -65,18 +65,23 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
       <div className="w-[25%]">
         <img src={`${mediaUrl}${posterImage}`} className="object-fill w-full" />
       </div>
-      <div className="w-[60%] flex flex-col items-start justify-center bg-white">
-        <span className="text-lg font-semibold">
-          <i>{albumName}</i>
-        </span>
-        <span className="text-sm font-light">{singerName}</span>
-        <span className="text-sm font-light">
-          Size
-          <span className="text-sm font-semibold"> &quot;{size.value}&quot;</span>
-        </span>
-        <span className="text-sm font-light">
-          Frame <span className="text-sm font-semibold"> {posterType}</span>
-        </span>
+      <div className="w-[60%] flex flex-col items-start justify-center gap-2 bg-white">
+        <div className="flex flex-col items-start justify-center">
+          <span className="text-lg font-semibold">
+            <i>{albumName}</i>
+          </span>
+          <span className="text-sm font-light">{singerName}</span>
+        </div>
+        <div className="flex flex-col items-start justify-center">
+          <span className="text-sm font-light">
+            Size
+            <span className="text-sm font-semibold"> &quot;{size.value}&quot;</span>
+          </span>
+          <span className="text-sm font-light">
+            Frame <span className="text-sm font-semibold"> {posterType}</span>
+          </span>
+        </div>
+
         <div className="flex items-start justify-start gap-3">
           <Counter
             counter={posterQuantity}

@@ -501,6 +501,7 @@ const RightSide: FC<RightSideProps> = ({
                 <Box sx={{ flex: '1 1 auto' }} />
                 <button
                   onClick={handleNext}
+                  disabled={activeStepperStep === 4}
                   className={
                     activeStepperStep === 4
                       ? 'text-white bg-[#919B9B] px-6 py-2 rounded font-semibold'
