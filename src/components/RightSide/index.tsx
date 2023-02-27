@@ -223,19 +223,20 @@ const RightSide: FC<RightSideProps> = ({
       posterData.cartId = cartId;
     }
     setAddToCart(!addToCart);
-    try {
-      const data = await request<IResponseSuccess, IBody>('post', '/cart/add-poster', posterData);
-      const cart = data.data.cart;
-      localStorage.setItem('cartId', cart._id);
-      handleResetData();
-      getCartData(cart._id);
-      // setLoading(false);
-      setOpen(true);
-      toast.success('Poster Added To Cart');
-    } catch (err) {
-      setLoading(false);
-      console.log('Add cart Error ');
-    }
+
+    await request<IResponseSuccess, IBody>('post', '/cart/add-poster', posterData)
+      .then((res) => {
+        localStorage.setItem('cartId', res?.data?.cart?._id);
+        handleResetData();
+        getCartData(res?.data?.cart?._id);
+        setLoading(false);
+        setOpen(true);
+        toast.success('Poster Added To Cart');
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log('Add cart Error ', err);
+      });
   };
 
   const handleDescripitionTabClick = (): void => {
