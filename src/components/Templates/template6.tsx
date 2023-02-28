@@ -109,7 +109,7 @@ const Template6: FC<Template6Props> = ({
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
                 ? `text-md font-bold font-[blacksword] template_album_name tracking-tighter`
-                : `text-2xl font-extrabold font-[blacksword] template_album_name`
+                : `text-xl font-extrabold font-[blacksword] template_album_name tracking-tighter`
             }
             style={{
               color: colors.songTitleColor,
@@ -126,7 +126,7 @@ const Template6: FC<Template6Props> = ({
           // style={{ backgroundColor: '' }}
         >
           {dataSets.map((item, index) => {
-            if (index < 30) {
+            if (index < 24) {
               return (
                 <Waveroom
                   songsAmount={dataSets.length}
@@ -134,7 +134,7 @@ const Template6: FC<Template6Props> = ({
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
-                  height={index < 30 ? 15 : 18}
+                  height={index < 24 ? 15 : 18}
                 />
               );
             } else {
@@ -143,14 +143,14 @@ const Template6: FC<Template6Props> = ({
           })}
         </Grid>
         <div
+          className={`${activeAlignment} mt-[2%] text-center overflow-hidden text-ellipsis-8 break-words template_album_name`}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,
           }}
-          className={`${activeAlignment} mt-[2%] text-center overflow-hidden text-ellipsis-8 break-words template_album_name`}
         >
           <p
-            className={`text-[5px] md:text-[6px] lg:text-[7px] bg-transparent tracking-tighter font-[Montserrat]`}
+            className={`text-[5px] md:text-[6px] bg-transparent tracking-tighter font-[Montserrat]`}
           >
             {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </p>

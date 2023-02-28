@@ -108,7 +108,7 @@ const Template5: FC<Template5Props> = ({
       >
         <Grid container spacing={1} className={`h-[75%]`}>
           {dataSets.map((item, index) => {
-            if (index < 30) {
+            if (index < 24) {
               return (
                 <Waveroom
                   songsAmount={dataSets.length}
@@ -116,7 +116,7 @@ const Template5: FC<Template5Props> = ({
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
-                  height={index < 30 ? 15 : 18}
+                  height={index < 24 ? 15 : 18}
                 />
               );
             } else {
@@ -129,7 +129,7 @@ const Template5: FC<Template5Props> = ({
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
                 ? `text-2xl font-extrabold font-[blowbrush] tracking-wide template_album_name`
-                : `text-4xl font-extrabold font-[blowbrush] tracking-wide template_album_name`
+                : `text-2xl font-extrabold font-[blowbrush] tracking-wide template_album_name`
             }
             style={{
               color: colors.songTitleColor,
@@ -148,7 +148,7 @@ const Template5: FC<Template5Props> = ({
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
           <p
-            className={`text-[5px] md:text-[6px] lg:text-[7px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words`}
+            className={`text-[5px] md:text-[6px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words`}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,

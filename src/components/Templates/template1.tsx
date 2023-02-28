@@ -122,7 +122,7 @@ const Template1: FC<Template1Props> = ({
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
                 ? `text-xl font-extrabold font-[Montserrat] template_album_name`
-                : `text-4xl font-extrabold font-[Montserrat] template_album_name`
+                : `text-2xl font-extrabold font-[Montserrat] template_album_name`
             }
             style={{
               color: colors.songTitleColor,
@@ -149,11 +149,11 @@ const Template1: FC<Template1Props> = ({
           <Grid
             container
             spacing={1}
-            className={`h-[73%] py-3`}
+            className={`h-[73%] py-3 overflow-hidden`}
             style={{ background: colors?.boxColor }}
           >
             {dataSets.map((item, index) => {
-              if (index < 30) {
+              if (index < 24) {
                 return (
                   <Waveroom
                     songsAmount={dataSets.length}
@@ -161,7 +161,7 @@ const Template1: FC<Template1Props> = ({
                     selectedFont={selectedFont}
                     colors={colors}
                     key={item.trackId}
-                    height={index < 30 ? 15 : 18}
+                    height={index < 24 ? 15 : 18}
                   />
                 );
               } else {
@@ -169,13 +169,13 @@ const Template1: FC<Template1Props> = ({
               }
             })}
           </Grid>
-          <div className={`break-words h-[23%] ${activeAlignment} mt-[-10px]`}>
+          <div className={`break-words h-[23%] ${activeAlignment} mt-[4px]`}>
             <p
               style={{
                 color: colors.descriptionColor,
                 fontFamily: selectedFont,
               }}
-              className={`text-[5px] md:text-[6px] lg:text-[7px] template_album_name bg-transparent tracking-tighter font-[Montserrat] text-ellipsis-8`}
+              className={`text-[5px] md:text-[6px] template_album_name bg-transparent tracking-tighter font-[Montserrat] text-ellipsis-8`}
             >
               {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
             </p>

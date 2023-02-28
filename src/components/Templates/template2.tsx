@@ -123,7 +123,7 @@ const Template2: FC<Template2Props> = ({
           style={{ background: colors.boxColor, width: '100%', marginLeft: '0', marginTop: '0' }}
         >
           {dataSets.map((item, index) => {
-            if (index < 30) {
+            if (index < 24) {
               return (
                 <Waveroom
                   songsAmount={dataSets.length}
@@ -131,7 +131,7 @@ const Template2: FC<Template2Props> = ({
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
-                  height={index < 30 ? 15 : 18}
+                  height={index < 24 ? 15 : 18}
                 />
               );
             } else {
@@ -151,7 +151,7 @@ const Template2: FC<Template2Props> = ({
               className={
                 selectedAlbum?.label && selectedAlbum?.label.length > 24
                   ? `text-xl font-extrabold font-proxima-nova template_album_name`
-                  : `text-4xl font-extrabold font-proxima-nova template_album_name`
+                  : `text-2xl font-extrabold font-proxima-nova template_album_name`
               }
               style={{
                 color: colors.songTitleColor,
@@ -163,7 +163,7 @@ const Template2: FC<Template2Props> = ({
           </div>
           <div
             className={`${activeAlignment} bg-transparent tracking-tighter font-proxima-nova template_album_name
-            text-[5px] md:text-[6px] lg:text-[7px] 
+            text-[5px] md:text-[6px] 
             xl:mt-0
             2xl:mt-2 
             `}

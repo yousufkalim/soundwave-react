@@ -124,7 +124,7 @@ const Template3: FC<Template3Props> = ({
           style={{ background: colors?.boxColor }}
         >
           {dataSets.map((item, index) => {
-            if (index < 30) {
+            if (index < 24) {
               return (
                 <Waveroom
                   songsAmount={dataSets.length}
@@ -132,7 +132,7 @@ const Template3: FC<Template3Props> = ({
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
-                  height={index < 30 ? 15 : 18}
+                  height={index < 24 ? 15 : 18}
                 />
               );
             } else {
@@ -145,14 +145,14 @@ const Template3: FC<Template3Props> = ({
           className={
             selectedAlbum?.label && selectedAlbum?.label.length > 24
               ? 'text-center relative bottom-3 w-full'
-              : 'text-center relative bottom-6 w-full'
+              : 'text-center relative bottom-4 w-full'
           }
         >
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
                 ? `text-xl font-extrabold font-[Aemstel-Regular] template_album_name`
-                : `text-4xl font-extrabold font-[Aemstel-Regular] template_album_name`
+                : `text-2xl font-extrabold font-[Aemstel-Regular] template_album_name`
             }
             style={{
               color: colors.songTitleColor,
@@ -163,14 +163,14 @@ const Template3: FC<Template3Props> = ({
           </span>
         </div>
         <div
-          className={`text-center h-[23%] ${activeAlignment}  template_album_name mt-[-20px]`}
+          className={`text-center h-[23%] ${activeAlignment}  template_album_name mt-[-15px]`}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,
           }}
         >
           <p
-            className={`text-[5px] md:text-[6px] lg:text-[7px] bg-transparent tracking-tighter mb-[1%] md:mb-[1%] text-ellipsis-8 break-words`}
+            className={`text-[5px] md:text-[6px] bg-transparent tracking-tighter mb-[1%] md:mb-[1%] text-ellipsis-8 break-words`}
           >
             {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </p>

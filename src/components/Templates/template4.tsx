@@ -109,7 +109,7 @@ const Template4: FC<Template4Props> = ({
           style={{ backgroundColor: colors.boxColor }}
         >
           {dataSets.map((item, index) => {
-            if (index < 30) {
+            if (index < 24) {
               return (
                 <Waveroom
                   songsAmount={dataSets.length}
@@ -117,7 +117,7 @@ const Template4: FC<Template4Props> = ({
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
-                  height={index < 30 ? 15 : 18}
+                  height={index < 24 ? 15 : 18}
                 />
               );
             } else {
@@ -126,7 +126,7 @@ const Template4: FC<Template4Props> = ({
           })}
         </Grid>
         <div
-          className="absolute left-10 bg-black pl-[2px] template_album_name"
+          className="absolute left-7 bg-black pl-[2px] template_album_name"
           style={{
             color: colors.songTitleColor,
             bottom: selectedAlbum?.label && selectedAlbum?.label.length > 24 ? '18%' : '17%',
@@ -137,7 +137,7 @@ const Template4: FC<Template4Props> = ({
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
                 ? `text-[2rem] font-extrabold font-[Morganite]`
-                : `text-[3rem] font-extrabold font-[Morganite]`
+                : `text-[2rem] font-extrabold font-[Morganite]`
             }
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -160,7 +160,7 @@ const Template4: FC<Template4Props> = ({
           }}
         >
           <p
-            className={`text-[5px] md:text-[6px] lg:text-[7px]  bg-transparent text-ellipsis-8 tracking-tighter`}
+            className={`text-[5px] md:text-[6px]   bg-transparent text-ellipsis-8 tracking-tighter`}
           >
             {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </p>

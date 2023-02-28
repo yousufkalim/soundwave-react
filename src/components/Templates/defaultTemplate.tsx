@@ -55,9 +55,8 @@ const Template2: FC<Template2Props> = ({
   return (
     <div
       id="custom-poster-template"
-      // className={` w-[96%] h-[55%] sm:w-[80%] sm:h-[70%] shadow-lg shadow-[#BAB8B8] relative`}
       className={`
-      shadow-xl shadow-gray-700 overflow-hidden relative scale-[70%]
+      shadow-xl shadow-gray-700 overflow-hidden scale-[70%] relative
       xs:scale-[80%]
       msm:scale-[85%]
       sm:scale-[95%]
@@ -122,7 +121,7 @@ const Template2: FC<Template2Props> = ({
           style={{ background: colors.boxColor, width: '100%', marginLeft: '0', marginTop: '0' }}
         >
           {dataSets.map((item, index) => {
-            if (index < 30) {
+            if (index < 24) {
               return (
                 <Waveroom
                   songsAmount={dataSets.length}
@@ -130,7 +129,7 @@ const Template2: FC<Template2Props> = ({
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
-                  height={index < 30 ? 15 : 18}
+                  height={index < 24 ? 15 : 18}
                 />
               );
             } else {
@@ -149,12 +148,8 @@ const Template2: FC<Template2Props> = ({
             <span
               className={
                 selectedAlbum?.label && selectedAlbum?.label.length > 24
-                  ? `text-lg 
-                  md:text-xl 
-                  font-semibold font-proxima-nova template_album_name`
-                  : `text-3xl
-                  md:text-4xl
-                   sxl:text-3xl  font-semibold font-proxima-nova template_album_name`
+                  ? `text-lg font-semibold font-proxima-nova template_album_name`
+                  : `text-2xl md:text-2xl sxl:text-2xl font-semibold font-proxima-nova template_album_name`
               }
               style={{
                 color: colors.songTitleColor,
@@ -166,8 +161,8 @@ const Template2: FC<Template2Props> = ({
           </div>
           <div
             className={`
-            ${activeAlignment} text-[6px] bg-transparent tracking-tighter font-proxima-nova template_album_name 
-            md:text-[7px]
+            ${activeAlignment} text-[5px] bg-transparent tracking-tighter font-proxima-nova template_album_name 
+            md:text-[6px]
             xl:mt-0
             2xl:mt-2
             `}
