@@ -20,6 +20,7 @@ interface Template2Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
+  flag: boolean;
 }
 
 const Template2: FC<Template2Props> = ({
@@ -33,6 +34,7 @@ const Template2: FC<Template2Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
+  flag,
 }) => {
   useEffect(() => {
     setColors({
@@ -142,15 +144,19 @@ const Template2: FC<Template2Props> = ({
         <div
           className={
             selectedAlbum?.label && selectedAlbum?.label.length > 24
-              ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-2`
-              : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-4`
+              ? flag
+                ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[3%]`
+                : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
+              : flag
+              ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[4%]`
+              : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
           }
         >
           <div className="text-center">
             <span
               className={
                 selectedAlbum?.label && selectedAlbum?.label.length > 24
-                  ? `text-xl font-extrabold font-proxima-nova template_album_name`
+                  ? `text-lg font-extrabold font-proxima-nova template_album_name`
                   : `text-2xl font-extrabold font-proxima-nova template_album_name`
               }
               style={{
@@ -165,7 +171,7 @@ const Template2: FC<Template2Props> = ({
             className={`${activeAlignment} bg-transparent tracking-tighter font-proxima-nova template_album_name
             text-[5px] md:text-[6px] 
             xl:mt-0
-            2xl:mt-2 
+            2xl:mt-1
             `}
             style={{
               color: colors.descriptionColor,

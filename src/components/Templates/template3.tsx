@@ -22,6 +22,7 @@ interface Template3Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
+  flag: boolean;
 }
 
 const Template3: FC<Template3Props> = ({
@@ -35,6 +36,7 @@ const Template3: FC<Template3Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
+  flag,
 }) => {
   useEffect(() => {
     setColors({
@@ -144,14 +146,18 @@ const Template3: FC<Template3Props> = ({
         <div
           className={
             selectedAlbum?.label && selectedAlbum?.label.length > 24
-              ? 'text-center relative bottom-3 w-full'
-              : 'text-center relative bottom-4 w-full'
+              ? flag
+                ? 'text-center relative bottom-[6%] w-full'
+                : 'text-center relative bottom-[3%] w-full'
+              : flag
+              ? 'text-center relative bottom-[6%] w-full'
+              : 'text-center relative bottom-[3%] w-full'
           }
         >
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `text-xl font-extrabold font-[Aemstel-Regular] template_album_name`
+                ? `text-lg font-extrabold font-[Aemstel-Regular] template_album_name`
                 : `text-2xl font-extrabold font-[Aemstel-Regular] template_album_name`
             }
             style={{
@@ -170,7 +176,7 @@ const Template3: FC<Template3Props> = ({
           }}
         >
           <p
-            className={`text-[5px] md:text-[6px] bg-transparent tracking-tighter mb-[1%] md:mb-[1%] text-ellipsis-8 break-words`}
+            className={`text-[5.5px]  bg-transparent tracking-tighter mb-[1%] md:mb-[1%] text-ellipsis-8 break-words`}
           >
             {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
           </p>

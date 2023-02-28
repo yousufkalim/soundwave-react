@@ -20,6 +20,7 @@ interface Template2Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
+  flag: boolean;
 }
 
 const Template2: FC<Template2Props> = ({
@@ -33,6 +34,7 @@ const Template2: FC<Template2Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
+  flag,
 }) => {
   useEffect(() => {
     setColors({
@@ -140,7 +142,11 @@ const Template2: FC<Template2Props> = ({
         <div
           className={
             selectedAlbum?.label && selectedAlbum?.label.length > 24
-              ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[1%]`
+              ? flag
+                ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
+                : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[1%]`
+              : flag
+              ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[4%]`
               : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
           }
         >
