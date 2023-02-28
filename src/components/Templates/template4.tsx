@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import Waveroom from '../WaveItem/index';
-import { DataSetProps, SelectedAlbumProps, IStateColors } from '../../types/index';
+import { DataSetProps, SelectedAlbumProps, IStateColors, IPosterSize } from '../../types/index';
 
 interface Template4Props {
   activeAlignment: string;
@@ -21,6 +21,7 @@ interface Template4Props {
   posterType: string;
   BackgroundFrame: string;
   selectedFont: string;
+  posterSize: IPosterSize;
 }
 
 const Template4: FC<Template4Props> = ({
@@ -33,6 +34,7 @@ const Template4: FC<Template4Props> = ({
   setColors,
   BackgroundFrame,
   selectedFont,
+  posterSize,
 }) => {
   useEffect(() => {
     setColors({
@@ -49,8 +51,7 @@ const Template4: FC<Template4Props> = ({
     <div
       id="custom-poster-template"
       className={`
-      shadow-xl shadow-gray-700 overflow-hidden relative
-      w-[480px] h-[680px] scale-[70%]
+      shadow-xl shadow-gray-700 overflow-hidden relative scale-[70%]
       xs:scale-[80%]
       msm:scale-[85%]
       sm:scale-[95%]
@@ -70,6 +71,34 @@ const Template4: FC<Template4Props> = ({
               ? '12px'
               : '0px'
             : '',
+        height:
+          posterSize.value === '12 X 18'
+            ? '580px'
+            : posterSize.value === '16 X 20'
+            ? '610px'
+            : posterSize.value === '18 X 24'
+            ? '580px'
+            : posterSize.value === '20 X 28'
+            ? '676px'
+            : posterSize.value === '24 X 36'
+            ? '580px'
+            : posterSize.value === '28 X 40'
+            ? '611px'
+            : '680px',
+        width:
+          posterSize.value === '12 X 18'
+            ? '420px'
+            : posterSize.value === '16 X 20'
+            ? '450px'
+            : posterSize.value === '18 X 24'
+            ? '460px'
+            : posterSize.value === '20 X 28'
+            ? '440px'
+            : posterSize.value === '24 X 36'
+            ? '420px'
+            : posterSize.value === '28 X 40'
+            ? '457px'
+            : '480px',
       }}
     >
       <div className={`h-full pt-8 pl-8 pr-6 `} style={{ background: colors.posterColor }}>
