@@ -79,6 +79,7 @@ interface RightSideProps {
   setOpen: (value: boolean) => void;
   selectedFont: string;
   setSelectedFont: (value: string) => void;
+  setFlag: (value: boolean) => void;
 }
 
 interface IResponseSuccess {
@@ -147,6 +148,7 @@ const RightSide: FC<RightSideProps> = ({
   setOpen,
   selectedFont,
   setSelectedFont,
+  setFlag,
 }) => {
   const [posterPrice, setPosterPrice] = useState<number>(0);
   const [activeStepperStep, setActiveStepperStep] = useState<number>(0);
@@ -190,53 +192,55 @@ const RightSide: FC<RightSideProps> = ({
     handleCalulatePosterPrice();
   }, [posterSize, posterType]);
 
-  const handleAddToCart = async () => {
-    handleResetData();
-    const element = document.getElementById('custom-poster-template') as HTMLElement;
-    const canvas = await html2canvas(element, {
-      logging: false,
-      allowTaint: true,
-      scale: 3,
-      useCORS: true,
-    });
-    const img = canvas.toDataURL();
-    // setSvgImage(img);
-    const cartId = localStorage.getItem('cartId');
+  const handleAddToCart = () => {
     setLoading(true);
-
-    const posterData: IBody = {
-      totalPoster: [
-        {
-          posterImage: img,
-          posterQuantity: 1,
-          unitPrice: posterPrice,
-          totalPrice: posterPrice,
-          size: posterSize,
-          posterType,
-          albumName: selectedAlbum?.label,
-          singerName: selectedAlbum?.singerName,
-        },
-      ],
-    };
-
-    if (cartId) {
-      posterData.cartId = cartId;
-    }
-    setAddToCart(!addToCart);
-
-    await request<IResponseSuccess, IBody>('post', '/cart/add-poster', posterData)
-      .then((res) => {
-        localStorage.setItem('cartId', res?.data?.cart?._id);
-        handleResetData();
-        getCartData(res?.data?.cart?._id);
-        setLoading(false);
-        setOpen(true);
-        toast.success('Poster Added To Cart');
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log('Add cart Error ', err);
+    setFlag(true);
+    setTimeout(async () => {
+      const element = document.getElementById('custom-poster-template') as HTMLElement;
+      const canvas = await html2canvas(element, {
+        logging: false,
+        allowTaint: true,
+        scale: 3,
+        useCORS: true,
       });
+      const img = canvas.toDataURL();
+      // setSvgImage(img);
+      const cartId = localStorage.getItem('cartId');
+
+      const posterData: IBody = {
+        totalPoster: [
+          {
+            posterImage: img,
+            posterQuantity: 1,
+            unitPrice: posterPrice,
+            totalPrice: posterPrice,
+            size: posterSize,
+            posterType,
+            albumName: selectedAlbum?.label,
+            singerName: selectedAlbum?.singerName,
+          },
+        ],
+      };
+
+      if (cartId) {
+        posterData.cartId = cartId;
+      }
+      setAddToCart(!addToCart);
+
+      await request<IResponseSuccess, IBody>('post', '/cart/add-poster', posterData)
+        .then((res) => {
+          localStorage.setItem('cartId', res?.data?.cart?._id);
+          handleResetData();
+          getCartData(res?.data?.cart?._id);
+          setLoading(false);
+          setOpen(true);
+          toast.success('Poster Added To Cart');
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log('Add cart Error ', err);
+        });
+    }, 100);
   };
 
   const handleDescripitionTabClick = (): void => {

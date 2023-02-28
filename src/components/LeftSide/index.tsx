@@ -30,6 +30,7 @@ interface waveformProps {
   openDescripition: boolean;
   selectedFont: string;
   posterSize: IPosterSize;
+  flag: boolean;
 }
 
 const index: FC<waveformProps> = ({
@@ -46,6 +47,7 @@ const index: FC<waveformProps> = ({
   openDescripition,
   selectedFont,
   posterSize,
+  flag,
 }) => {
   const activeAlbum =
     selectedTemplate === 'template1' ? (
@@ -60,6 +62,7 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
+        flag={flag}
       />
     ) : selectedTemplate === 'template2' ? (
       <Template2
@@ -73,6 +76,7 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
+        flag={flag}
       />
     ) : selectedTemplate === 'template3' ? (
       <Template3
@@ -138,6 +142,7 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
+        flag={flag}
       />
     );
 

@@ -72,6 +72,7 @@ const index: FC = () => {
   // state for add to cart button
   const [addToCart, setAddToCart] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
+  const [flag, setFlag] = useState<boolean>(false);
 
   const handleDataSets = (value: DataSetProps[]) => {
     setDataSets(value);
@@ -104,6 +105,7 @@ const index: FC = () => {
     setOpenStyles(false);
     setOpenSize(false);
     setActiveStep(1);
+    setFlag(false);
   };
 
   const getCartData = (cartId: string): void => {
@@ -174,6 +176,7 @@ const index: FC = () => {
             openDescripition={openDescripition}
             selectedFont={selectedFont ?? ''}
             posterSize={posterSize}
+            flag={flag}
           />
           <RightSide
             // props for step # 1
@@ -227,6 +230,7 @@ const index: FC = () => {
             activeStep={activeStep}
             setActiveStep={setActiveStep}
             setOpen={setOpen}
+            setFlag={setFlag}
           />
         </div>
         {open && (
