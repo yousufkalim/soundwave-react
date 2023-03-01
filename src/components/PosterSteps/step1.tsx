@@ -181,7 +181,7 @@ const step1: FC<Step1Props> = ({
 
   return (
     <>
-      <div>
+      <div className="mb-1">
         {selectedAlbum && selected === selectedAlbum.label ? (
           <div
             className="flex items-center justify-start gap-3 cursor-pointer border-[1px] border-black w-full bg-[#F9F9F9] py-1 2xl:py-2 px-2 rounded-xl hover:bg-[#f0efef]"

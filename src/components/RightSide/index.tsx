@@ -344,7 +344,7 @@ const RightSide: FC<RightSideProps> = ({
             Search an Album or Artist
           </span>
         </div>
-        <div className="md:flex flex-col gap-2 2xl:gap-3 hidden">
+        <div className="md:flex flex-col gap-[.3rem] hidden">
           <Step1
             handleDataSets={handleDataSets}
             selectedAlbum={selectedAlbum}
@@ -361,7 +361,7 @@ const RightSide: FC<RightSideProps> = ({
             open={openDescripition}
             active={activeStep >= 2}
           />
-          <Collapse in={openDescripition} timeout={600} unmountOnExit>
+          <Collapse in={openDescripition} timeout={600}>
             <Fade when={openDescripition} duration={500}>
               <Step2
                 selectedAlbum={selectedAlbum}
@@ -382,7 +382,7 @@ const RightSide: FC<RightSideProps> = ({
             open={openTheme}
             active={activeStep >= 3}
           />
-          <Collapse in={openTheme} timeout={600} unmountOnExit>
+          <Collapse in={openTheme} timeout={600}>
             <Fade when={openTheme} duration={500}>
               <Step3
                 boxColor={boxColor}
@@ -406,7 +406,7 @@ const RightSide: FC<RightSideProps> = ({
             heading={'Print Format'}
             active={activeStep >= 4}
           />
-          <Collapse in={openStyles} timeout={600} unmountOnExit>
+          <Collapse in={openStyles} timeout={600}>
             <Fade when={openStyles} duration={500}>
               <Step4 posterType={posterType} setPosterType={setPosterType} />
             </Fade>
@@ -417,7 +417,7 @@ const RightSide: FC<RightSideProps> = ({
             heading={'Size'}
             active={activeStep >= 5}
           />
-          <Collapse in={openSize} timeout={600} unmountOnExit>
+          <Collapse in={openSize} timeout={600}>
             <Fade when={openSize} duration={500}>
               <Step5 posterSize={posterSize} setPosterSize={setPosterSize} />
             </Fade>
@@ -429,8 +429,8 @@ const RightSide: FC<RightSideProps> = ({
             }}
             className={
               activeStep === 6
-                ? 'bg-black flex items-center justify-center py-3 2xl:py-4 rounded-xl cursor-pointer '
-                : 'bg-[#919B9B] flex items-center justify-center py-3 2xl:py-4 rounded-xl'
+                ? 'bg-black flex items-center justify-center py-3 2xl:py-4 rounded-xl cursor-pointer mt-1'
+                : 'bg-[#919B9B] flex items-center justify-center py-3 2xl:py-4 rounded-xl mt-1'
             }
             onClick={handleAddToCart}
           >
