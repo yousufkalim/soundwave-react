@@ -143,8 +143,8 @@ const CartModal: FC<CartModalProps> = ({
               <div
                 className={
                   cart?.totalPoster?.length === 0
-                    ? 'h-[64%] overflow-scroll flex items-center justify-center'
-                    : 'h-[64%] overflow-scroll'
+                    ? 'h-[54%] sm:h-[64%] overflow-scroll flex items-center justify-center'
+                    : 'h-[54%] sm:h-[64%] overflow-scroll'
                 }
               >
                 {CartItems}
