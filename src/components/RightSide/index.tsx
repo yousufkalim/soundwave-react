@@ -20,7 +20,6 @@ import {
   // IResponsePoster,
   IResponseCart,
 } from '../../types/index';
-import PosterSize from '../PosterSize';
 import { PricingArray } from '../../utils/data';
 import Tab from '../Tab/index';
 import { Collapse } from '@mui/material';
@@ -29,8 +28,6 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
-// import Button from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
 interface RightSideProps {
   selected: string;
   setSelected: (value: string) => void;
@@ -55,7 +52,6 @@ interface RightSideProps {
   setPosterSize: ({ value, unit }: IPosterSize) => void;
   addToCart: boolean;
   setAddToCart: (value: boolean) => void;
-  // primaryColor: string;
   selectedTemplate: string;
   setSelectedTemplate: (value: string) => void;
   getSetColor: (currentColor: string, fieldName: string) => void;
@@ -74,8 +70,6 @@ interface RightSideProps {
   setOpenSize: (value: boolean) => void;
   activeStep: number;
   setActiveStep: (value: number) => void;
-  // selectedCanvas: string;
-  // setSelectedCanvas: (value: string) => void;
   setOpen: (value: boolean) => void;
   selectedFont: string;
   setSelectedFont: (value: string) => void;
@@ -204,7 +198,6 @@ const RightSide: FC<RightSideProps> = ({
         useCORS: true,
       });
       const img = canvas.toDataURL();
-      // setSvgImage(img);
       const cartId = localStorage.getItem('cartId');
 
       const posterData: IBody = {
@@ -309,19 +302,14 @@ const RightSide: FC<RightSideProps> = ({
   const handleBack = (): void => {
     setActiveStepperStep((prevActiveStep) => prevActiveStep - 1);
   };
-
-  const handleStep = (step: number) => () => {
-    setActiveStepperStep(step);
-  };
-
   return (
-    <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-5 lg:pl-10 sxl:pl-20">
+    <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start sm:mt-11 md:pl-5 lg:pl-10 sxl:pl-20">
       <div className="w-[78%] md:w-[95%] lg:w-[88%] 2xl:w-[65%] sxl:w-[75%]">
-        <div className="w-full flex items-center justify-start">
+        <div className="w-full hidden md:flex items-center justify-start">
           <TitleIcon className="mx-2" />
           <span className="text-sm font-semibold tracking-tight text-black">Soundwave Poster</span>
         </div>
-        <div className="w-full flex items-center justify-start mb-5">
+        <div className="w-full hidden md:flex md:items-center md:justify-start md:mb-5">
           <i className="text-black text-2xl tracking-tight font-semibold">
             Let’s Start With Your Content
           </i>
@@ -336,7 +324,6 @@ const RightSide: FC<RightSideProps> = ({
             handleDataSets={handleDataSets}
             selectedAlbum={selectedAlbum}
             setSelectedAlbum={setSelectedAlbum}
-            // steps active states
             activeStep={activeStep}
             setActiveStep={setActiveStep}
             selected={selected}
@@ -429,61 +416,76 @@ const RightSide: FC<RightSideProps> = ({
           </button>
         </div>
         <Box className="md:hidden mb-10">
-          <Stepper nonLinear activeStep={activeStepperStep}>
-            {steps.map((label, index) => (
+          <Stepper activeStep={activeStepperStep} alternativeLabel>
+            {steps.map((label) => (
               <Step key={label}>
-                <StepButton color="inherit" onClick={handleStep(index)}>
-                  {activeStepperStep === index ? label : ''}
-                </StepButton>
+                <StepButton color="inherit" disabled></StepButton>
               </Step>
             ))}
           </Stepper>
           <div>
             <React.Fragment>
-              <div className="my-5">
+              <div className="my-3">
                 {activeStepperStep === 0 ? (
-                  <Step1
-                    handleDataSets={handleDataSets}
-                    selectedAlbum={selectedAlbum}
-                    setSelectedAlbum={setSelectedAlbum}
-                    // steps active states
-                    activeStep={activeStep}
-                    setActiveStep={setActiveStep}
-                    selected={selected}
-                    setSelected={setSelected}
-                  />
+                  <>
+                    <div className="text-sm flex items-center justify-center my-2">
+                      Search an Album or Artist
+                    </div>
+                    <Step1
+                      handleDataSets={handleDataSets}
+                      selectedAlbum={selectedAlbum}
+                      setSelectedAlbum={setSelectedAlbum}
+                      // steps active states
+                      activeStep={activeStep}
+                      setActiveStep={setActiveStep}
+                      selected={selected}
+                      setSelected={setSelected}
+                    />
+                  </>
                 ) : activeStepperStep === 1 ? (
-                  <Step2
-                    selectedAlbum={selectedAlbum}
-                    autoGeneratedAlbumDescripition={autoGeneratedAlbumDescripition}
-                    setAutoGeneratedAlbumDescripition={setAutoGeneratedAlbumDescripition}
-                    customAlbumDescripition={customAlbumDescripition}
-                    setCustomAlbumDescripition={setCustomAlbumDescripition}
-                    autoGeneratedDescription={autoGeneratedDescription}
-                    setAutoGeneratedDescription={setAutoGeneratedDescription}
-                    customDescription={customDescription}
-                    setCustomDescription={setCustomDescription}
-                  />
+                  <>
+                    <div className="text-sm flex items-center justify-center my-2">Description</div>
+                    <Step2
+                      selectedAlbum={selectedAlbum}
+                      autoGeneratedAlbumDescripition={autoGeneratedAlbumDescripition}
+                      setAutoGeneratedAlbumDescripition={setAutoGeneratedAlbumDescripition}
+                      customAlbumDescripition={customAlbumDescripition}
+                      setCustomAlbumDescripition={setCustomAlbumDescripition}
+                      autoGeneratedDescription={autoGeneratedDescription}
+                      setAutoGeneratedDescription={setAutoGeneratedDescription}
+                      customDescription={customDescription}
+                      setCustomDescription={setCustomDescription}
+                    />
+                  </>
                 ) : activeStepperStep === 2 ? (
-                  <Step3
-                    boxColor={boxColor}
-                    posterColor={posterColor}
-                    soundWaveColor={soundWaveColor}
-                    songTitleColor={songTitleColor}
-                    descriptionColor={descriptionColor}
-                    getSetColor={getSetColor}
-                    selectedTemplate={selectedTemplate}
-                    soundWaveNameColor={soundWaveNameColor}
-                    setSelectedTemplate={setSelectedTemplate}
-                    selectedFont={selectedFont}
-                    setSelectedFont={setSelectedFont}
-                    setLoading={setLoading}
-                  />
+                  <>
+                    <div className="text-sm flex items-center justify-center my-2">Theme</div>
+                    <Step3
+                      boxColor={boxColor}
+                      posterColor={posterColor}
+                      soundWaveColor={soundWaveColor}
+                      songTitleColor={songTitleColor}
+                      descriptionColor={descriptionColor}
+                      getSetColor={getSetColor}
+                      selectedTemplate={selectedTemplate}
+                      soundWaveNameColor={soundWaveNameColor}
+                      setSelectedTemplate={setSelectedTemplate}
+                      selectedFont={selectedFont}
+                      setSelectedFont={setSelectedFont}
+                      setLoading={setLoading}
+                    />
+                  </>
                 ) : activeStepperStep === 3 ? (
-                  <Step4 posterType={posterType} setPosterType={setPosterType} />
+                  <>
+                    <div className="text-sm flex items-center justify-center my-2">
+                      Print Format
+                    </div>
+                    <Step4 posterType={posterType} setPosterType={setPosterType} />
+                  </>
                 ) : (
                   activeStepperStep === 4 && (
                     <>
+                      <div className="text-sm flex items-center justify-center my-2">Size</div>
                       <Step5 posterSize={posterSize} setPosterSize={setPosterSize} />
                     </>
                   )
@@ -535,7 +537,6 @@ const RightSide: FC<RightSideProps> = ({
           </div>
         </Box>
       </div>
-      {/* <img src={svgImage} /> */}
     </div>
   );
 };
