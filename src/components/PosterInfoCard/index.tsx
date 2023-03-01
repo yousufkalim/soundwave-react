@@ -56,31 +56,34 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
         style={{ marginTop: index === 0 ? '1.1rem' : '0' }}
       >
         <RemoveIcon
-          className="absolute top-[-1rem] right-[-1rem] cursor-pointer"
+          className="absolute top-[-1rem] right-[-1rem] cursor-pointer w-8 sm:w-12"
           onClick={() => {
             handleRemovePoster(posterId);
             setDeleted(false);
           }}
         />
         <div className="w-[26%] flex items-center justify-center">
-          <img src={`${mediaUrl}${posterImage}`} className="object-cover h-[70%] sm:h-[78%]" />
+          <img
+            src={`${mediaUrl}${posterImage}`}
+            className="object-cover h-[65%] sm:h-[70%] md:h-[78%]"
+          />
         </div>
         <div className="w-[55%] flex flex-col items-start justify-center gap-2 sm:gap-3">
           <div className="flex flex-col items-start justify-center">
-            <span className="text-xl sm:text-2xl font-semibold">
+            <span className="text-md sm:text-xl md:text-2xl font-semibold">
               <i>{albumName}</i>
             </span>
-            <span className="text-sm sm:text-md font-light">{singerName}</span>
+            <span className="text-[11px] sm:text-sm md:text-md font-light">{singerName}</span>
           </div>
           <div className="flex flex-col items-start justify-center">
-            <div className="text-sm sm:text-md font-light">
+            <div className="text-[11px] sm:text-sm md:text-md font-light">
               Size{' '}
               <span className="font-semibold">
                 {size.value}
                 {size.unit}
               </span>
             </div>
-            <div className="text-sm sm:text-md font-light">
+            <div className="text-[11px] sm:text-sm md:text-md font-light">
               Frame <span className="font-semibold">{posterType}</span>
             </div>
           </div>
@@ -92,7 +95,9 @@ const PosterInfoCard: FC<PosterInfoCardProps> = ({
           />
         </div>
         <div className="flex items-end justify-start">
-          <i className="text-lg sm:text-xl font-semibold pb-3">${posterPrice.toFixed(2)}</i>
+          <i className="text-md sm:text-lg md:text-xl font-semibold pb-3">
+            ${posterPrice.toFixed(2)}
+          </i>
         </div>
       </div>
     </Slide>

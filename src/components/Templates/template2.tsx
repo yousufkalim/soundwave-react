@@ -82,32 +82,32 @@ const Template2: FC<Template2Props> = ({
             : '',
         height:
           posterSize.value === '12 X 18'
-            ? '580px'
+            ? '630px'
             : posterSize.value === '16 X 20'
-            ? '610px'
+            ? '640px'
             : posterSize.value === '18 X 24'
-            ? '580px'
+            ? '650px'
             : posterSize.value === '20 X 28'
-            ? '676px'
+            ? '660px'
             : posterSize.value === '24 X 36'
-            ? '580px'
+            ? '670px'
             : posterSize.value === '28 X 40'
-            ? '611px'
+            ? '680px'
             : '680px',
         width:
           posterSize.value === '12 X 18'
-            ? '420px'
+            ? '430px'
             : posterSize.value === '16 X 20'
-            ? '450px'
-            : posterSize.value === '18 X 24'
-            ? '460px'
-            : posterSize.value === '20 X 28'
             ? '440px'
+            : posterSize.value === '18 X 24'
+            ? '450px'
+            : posterSize.value === '20 X 28'
+            ? '460px'
             : posterSize.value === '24 X 36'
-            ? '420px'
+            ? '470px'
             : posterSize.value === '28 X 40'
-            ? '457px'
-            : '480px',
+            ? '480px'
+            : '430px',
       }}
     >
       <div

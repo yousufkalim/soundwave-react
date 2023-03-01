@@ -40,11 +40,11 @@ const PosterFrame: FC<PosterFrameProps> = ({
           }}
           className={
             frame === 'No Frame'
-              ? 'border-[3px] border-black w-[32%] flex items-center justify-center rounded-lg py-3 cursor-pointer'
-              : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-3 cursor-pointer'
+              ? 'border-[3px] border-black w-[32%] flex items-center justify-center rounded-lg py-2 sm:py-3 cursor-pointer'
+              : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-2 sm:py-3 cursor-pointer'
           }
         >
-          <span className="text-[12px]">No Frame</span>
+          <span className="text-[10px] sm:text-[12px]">No Frame</span>
         </div>
         <div
           onClick={() => {
@@ -56,8 +56,8 @@ const PosterFrame: FC<PosterFrameProps> = ({
               : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
           }
         >
-          <img src={woodenFrameIcon} className="w-12" alt="" />
-          <span className="text-[12px]">Wooden</span>
+          <img src={woodenFrameIcon} className="w-9 sm:w-12" alt="" />
+          <span className="text-[10px] sm:text-[12px]">Wooden</span>
         </div>
         <div
           onClick={() => {
@@ -69,8 +69,8 @@ const PosterFrame: FC<PosterFrameProps> = ({
               : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
           }
         >
-          <img src={metalFrameIcon} className="w-12" alt="" />
-          <span className="text-[12px]">Metal</span>
+          <img src={metalFrameIcon} className="w-9 sm:w-12" alt="" />
+          <span className="text-[10px] sm:text-[12px]">Metal</span>
         </div>
       </div>
 
