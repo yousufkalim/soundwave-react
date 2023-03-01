@@ -17,16 +17,6 @@ interface ThemeProps {
   setLoading: (value: boolean) => void;
 }
 
-// interface Font {
-//   family: string;
-//   category: string;
-//   variants: string[];
-//   subsets: string[];
-//   version: string;
-//   lastModified: string;
-//   files: Record<string, string>;
-// }
-
 const Theme: FC<ThemeProps> = ({
   getSetColor,
   boxColor,
