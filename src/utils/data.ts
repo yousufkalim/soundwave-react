@@ -4,7 +4,6 @@ export const fontFamilyArray = [
   'Montserrat',
   'Aemstel-Regular',
   'blowbrush',
-  'Blacksword',
   'Morganite',
   'Julee',
   'Open Sans',
