@@ -52,7 +52,7 @@ const Template5: FC<Template5Props> = ({
     <div
       id="custom-poster-template"
       className={`
-      shadow-xl shadow-gray-700 overflow-hidden relative scale-[70%]
+      shadow-xl shadow-gray-700 overflow-hidden relative scale-[65%]
       xs:scale-[80%]
       msm:scale-[85%]
       sm:scale-[95%]
