@@ -58,7 +58,7 @@ const Template2: FC<Template2Props> = ({
     <div
       id="custom-poster-template"
       className={`
-      shadow-xl shadow-gray-700 overflow-hidden scale-[65%] relative
+      shadow-xl shadow-gray-700 overflow-hidden scale-[65%] absolute
       xs:scale-[80%]
       msm:scale-[85%]
       sm:scale-[95%]
