@@ -131,7 +131,7 @@ const Template2: FC<Template2Props> = ({
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
-                  height={index < 24 ? 15 : 18}
+                  height={dataSets.length <= 18 ? 18 : 15}
                 />
               );
             } else {

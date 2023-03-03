@@ -19,7 +19,7 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songs
   };
   return (
     <Grid item xs={4}>
-      <div className="flex items-center justify-center">
+      <div id={`wave-container-${height}`} className="flex items-center justify-center">
         <Waveform
           peaks={item.levels}
           height={height}

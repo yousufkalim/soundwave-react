@@ -76,8 +76,8 @@ body {
 .css-10drtbx-MuiButtonBase-root-MuiCheckbox-root {
   padding: 0px !important;
 }
-.css-4ff9q7.Mui-active{ 
-  color:black !important
+.css-4ff9q7.Mui-active {
+  color: black !important;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -117,4 +117,14 @@ body::-webkit-scrollbar {
   > div:nth-child(2) {
   display: none !important;
   visibility: hidden !important;
+}
+
+#wave-container-15 div:first-child canvas {
+  width: 115px !important;
+  height: 15px !important;
+}
+
+#wave-container-18 div:first-child canvas {
+  width: 115px !important;
+  height: 15px !important;
 }
