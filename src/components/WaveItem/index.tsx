@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import Waveform from 'react-audio-waveform';
-import { Grid } from '@mui/material';
 import { rgbaToHex } from '../../utils/common';
 import { DataSetProps, IStateColors } from '../../types/index';
 interface WaveroomProps {
@@ -14,12 +13,13 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songs
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
     const minutesAsInt = Math.floor(minutes);
-    const seconds = Math.round((minutes - minutesAsInt) * 60);
+    const temp = Math.round((minutes - minutesAsInt) * 60);
+    const seconds = temp < 10 ? `0${temp}` : temp;
     return `${minutesAsInt}:${seconds}`;
   };
   return (
-    <Grid item xs={4}>
-      <div id={`wave-container-${height}`} className="flex items-center justify-center">
+    <div className="w-[30%] flex flex-col justify-center items-center">
+      <div id={`wave-container-${height}`}>
         <Waveform
           peaks={item.levels}
           height={height}
@@ -28,39 +28,38 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songs
           progressColor={rgbaToHex(colors.soundWaveColor)}
         />
       </div>
-      <div className="flex items-center justify-between mt-2 px-3">
+      <div className="flex items-center justify-between mt-2 w-full">
         <span
           className={`
-          w-[80%] tracking-tight font-semibold font-[Montserrat] template_album_name text-[4px]
+          w-[82%] px-1 flex items-center justify-start tracking-tighter font-semibold font-[Montserrat] template_album_name text-[4px]
           sm:text-[6px] 
-          xl:w-[80%] xl:text-[7px]
-          2xl:w-[82%]
+          xl:text-[7px]
         `}
           style={{
             color: colors.soundWaveNameColor,
             fontFamily: selectedFont,
-            fontSize: songsAmount > 18 ? '5px' : '8px',
+            fontSize: songsAmount > 18 ? '5px' : '7px',
           }}
         >
           &quot;{item.songName}&quot;
         </span>
         <span
           className={`
-          w-[20%] font-[Montserrat] template_album_name text-[4px]
+          w-[18%] font-[Montserrat] template_album_name text-[4px] flex items-center justify-end
           sm:text-[6px] 
-          xl:w-[20%] xl:text-[7px] 
-          2xl:w-[18%] 2xl:text-[8px] 
+           xl:text-[7px] 
+          2xl:text-[8px] 
           `}
           style={{
             color: colors.soundWaveNameColor,
             fontFamily: selectedFont,
-            fontSize: songsAmount ? '5px' : '8px',
+            fontSize: songsAmount > 18 ? '5px' : '7px',
           }}
         >
           {convertMilisecondToMinutes(item.time)}
         </span>
       </div>
-    </Grid>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 /* eslint-disable one-var */
 import React, { FC, useEffect } from 'react';
-import { Grid } from '@mui/material';
 import Waveroom from '../WaveItem/index';
 import { DataSetProps, SelectedAlbumProps, IStateColors, IPosterSize } from '../../types/index';
 
@@ -58,8 +57,7 @@ const Template1: FC<Template1Props> = ({
   return (
     <div
       id="custom-poster-template"
-      className={`
-      shadow-xl shadow-gray-700 overflow-hidden relative scale-[65%]
+      className={`overflow-hidden absolute scale-[65%]
       xs:scale-[80%]
       msm:scale-[85%]
       sm:scale-[95%]
@@ -81,48 +79,50 @@ const Template1: FC<Template1Props> = ({
             : '',
         height:
           posterSize.value === '12 X 18'
-            ? '630px'
+            ? '610px'
             : posterSize.value === '16 X 20'
-            ? '640px'
+            ? '620px'
             : posterSize.value === '18 X 24'
-            ? '650px'
+            ? '630px'
             : posterSize.value === '20 X 28'
-            ? '660px'
+            ? '640px'
             : posterSize.value === '24 X 36'
-            ? '670px'
+            ? '650px'
             : posterSize.value === '28 X 40'
-            ? '680px'
-            : '680px',
+            ? '660px'
+            : '610px',
         width:
           posterSize.value === '12 X 18'
-            ? '430px'
-            : posterSize.value === '16 X 20'
             ? '440px'
-            : posterSize.value === '18 X 24'
+            : posterSize.value === '16 X 20'
             ? '450px'
-            : posterSize.value === '20 X 28'
+            : posterSize.value === '18 X 24'
             ? '460px'
-            : posterSize.value === '24 X 36'
+            : posterSize.value === '20 X 28'
             ? '470px'
-            : posterSize.value === '28 X 40'
+            : posterSize.value === '24 X 36'
             ? '480px'
-            : '430px',
+            : posterSize.value === '28 X 40'
+            ? '490px'
+            : '440px',
+        boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
     >
       <div
-        className={`pt-6 h-full`}
+        className={`h-full`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? '24px' : '28px',
-          paddingRight: BackgroundFrame ? '8px' : '12px',
+          paddingLeft: BackgroundFrame ? '16px' : '24px',
+          paddingRight: BackgroundFrame ? '16px' : '24px',
+          paddingTop: BackgroundFrame ? '16px' : '24px',
         }}
       >
-        <div className="flex items-center justify-center flex-col mb-[1%]">
+        <div className="flex items-center justify-center flex-col">
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `text-xl font-extrabold font-[Montserrat] template_album_name`
-                : `text-2xl font-extrabold font-[Montserrat] template_album_name`
+                ? `text-lg font-bold font-[Montserrat] template_album_name tracking-tighter`
+                : `text-2xl font-bold font-[Montserrat] template_album_name tracking-wide`
             }
             style={{
               color: colors.songTitleColor,
@@ -135,7 +135,7 @@ const Template1: FC<Template1Props> = ({
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
                 ? `text-sm font-[Montserrat] template_album_name`
-                : `text-md font-[Montserrat] template_album_name`
+                : `text-sm font-[Montserrat] template_album_name`
             }
             style={{
               color: colors.songTitleColor,
@@ -145,15 +145,13 @@ const Template1: FC<Template1Props> = ({
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
         </div>
-        <div className="h-full overflow-hidden pr-3">
-          <Grid
-            container
-            spacing={1}
-            className={`h-[73%] py-3 overflow-hidden`}
+        <div className="h-full overflow-hidden">
+          <div
+            className={`h-[75%] px-1 py-2 overflow-hidden flex flex-wrap justify-around items-center`}
             style={{ background: colors?.boxColor }}
           >
             {dataSets.map((item, index) => {
-              if (index < 24) {
+              if (index < 30) {
                 return (
                   <Waveroom
                     songsAmount={dataSets.length}
@@ -161,15 +159,15 @@ const Template1: FC<Template1Props> = ({
                     selectedFont={selectedFont}
                     colors={colors}
                     key={item.trackId}
-                    height={index < 24 ? 15 : 18}
+                    height={dataSets.length <= 18 ? 18 : 15}
                   />
                 );
               } else {
                 return '';
               }
             })}
-          </Grid>
-          <div className={`break-words h-[23%] ${activeAlignment} mt-[4px]`}>
+          </div>
+          <div className={`${activeAlignment} mt-[2%] text-center`}>
             <p
               style={{
                 color: colors.descriptionColor,
@@ -177,7 +175,10 @@ const Template1: FC<Template1Props> = ({
               }}
               className={`text-[5px] md:text-[6px] template_album_name bg-transparent tracking-tighter font-[Montserrat] text-ellipsis-8`}
             >
-              {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
+              <i>
+                <b className="text-[6px] md:text-[9px]">{albumDescripition.split(' ')[0]} </b>
+              </i>
+              {albumDescripition.split(' ').slice(1).join(' ')}
             </p>
           </div>
         </div>

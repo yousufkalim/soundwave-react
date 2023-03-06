@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from 'react';
-import { Grid } from '@mui/material';
 // import { rgbaToHex } from '../../utils/common';
 import { DataSetProps, SelectedAlbumProps, IStateColors, IPosterSize } from '../../types/index';
 import Waveroom from '../WaveItem/index';
@@ -60,8 +59,7 @@ const Template3: FC<Template3Props> = ({
   return (
     <div
       id="custom-poster-template"
-      className={`
-      shadow-xl shadow-gray-700 overflow-hidden relative scale-[65%]
+      className={`overflow-hidden absolute scale-[65%]
       xs:scale-[80%]
       msm:scale-[85%]
       sm:scale-[95%]
@@ -83,50 +81,50 @@ const Template3: FC<Template3Props> = ({
             : '',
         height:
           posterSize.value === '12 X 18'
-            ? '630px'
+            ? '610px'
             : posterSize.value === '16 X 20'
-            ? '640px'
+            ? '620px'
             : posterSize.value === '18 X 24'
-            ? '650px'
+            ? '630px'
             : posterSize.value === '20 X 28'
-            ? '660px'
+            ? '640px'
             : posterSize.value === '24 X 36'
-            ? '670px'
+            ? '650px'
             : posterSize.value === '28 X 40'
-            ? '680px'
-            : '680px',
+            ? '660px'
+            : '610px',
         width:
           posterSize.value === '12 X 18'
-            ? '430px'
-            : posterSize.value === '16 X 20'
             ? '440px'
-            : posterSize.value === '18 X 24'
+            : posterSize.value === '16 X 20'
             ? '450px'
-            : posterSize.value === '20 X 28'
+            : posterSize.value === '18 X 24'
             ? '460px'
-            : posterSize.value === '24 X 36'
+            : posterSize.value === '20 X 28'
             ? '470px'
-            : posterSize.value === '28 X 40'
+            : posterSize.value === '24 X 36'
             ? '480px'
-            : '430px',
+            : posterSize.value === '28 X 40'
+            ? '490px'
+            : '440px',
+        boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
     >
       <div
-        className={`h-full pt-8`}
+        className={`h-full`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? ' 28px' : '32px',
-          paddingRight: BackgroundFrame ? ' 20px' : '24px',
+          paddingLeft: BackgroundFrame ? '16px' : '24px',
+          paddingRight: BackgroundFrame ? '16px' : '24px',
+          paddingTop: BackgroundFrame ? '16px' : '24px',
         }}
       >
-        <Grid
-          container
-          spacing={1}
-          className={`h-[77%] px-1 py-3 bg-gradient-to-b`}
+        <div
+          className={`h-[77%] px-1 py-3 overflow-hidden flex flex-wrap justify-around items-center`}
           style={{ background: colors?.boxColor }}
         >
           {dataSets.map((item, index) => {
-            if (index < 24) {
+            if (index < 30) {
               return (
                 <Waveroom
                   songsAmount={dataSets.length}
@@ -134,55 +132,57 @@ const Template3: FC<Template3Props> = ({
                   selectedFont={selectedFont}
                   colors={colors}
                   key={item.trackId}
-                  height={index < 24 ? 15 : 18}
+                  height={dataSets.length <= 18 ? 18 : 15}
                 />
               );
             } else {
               return '';
             }
           })}
-        </Grid>
-
-        <div
-          className={
-            selectedAlbum?.label && selectedAlbum?.label.length > 24
-              ? flag
-                ? 'text-center relative bottom-[6%] w-full'
-                : 'text-center relative bottom-[3%] w-full'
-              : flag
-              ? 'text-center relative bottom-[6%] w-full'
-              : 'text-center relative bottom-[3%] w-full'
-          }
-        >
-          <span
-            className={
-              selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `text-lg font-extrabold font-[Aemstel-Regular] template_album_name`
-                : `text-2xl font-extrabold font-[Aemstel-Regular] template_album_name`
-            }
-            style={{
-              color: colors.songTitleColor,
-              fontFamily: selectedFont,
-            }}
-          >
-            {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
-          </span>
         </div>
         <div
-          className={`text-center h-[23%] ${activeAlignment}  template_album_name mt-[-15px]`}
+          className={
+            selectedAlbum?.label && selectedAlbum?.label.length > 15
+              ? flag
+                ? BackgroundFrame
+                  ? 'text-center relative bottom-[2.5%] text-lg  font-[Aemstel-Regular] template_album_name tracking-tighter'
+                  : 'text-center relative bottom-[2.5%] text-lg  font-[Aemstel-Regular] template_album_name tracking-tighter'
+                : BackgroundFrame
+                ? 'text-center relative bottom-[2.5%] text-lg  font-[Aemstel-Regular] template_album_name tracking-tighter'
+                : 'text-center relative bottom-[2.5%] text-lg  font-[Aemstel-Regular] template_album_name tracking-tighter'
+              : flag
+              ? BackgroundFrame
+                ? 'text-center relative bottom-[3%] text-2xl font-[Aemstel-Regular] template_album_name'
+                : 'text-center relative bottom-[3%] text-2xl font-[Aemstel-Regular] template_album_name'
+              : BackgroundFrame
+              ? 'text-center relative bottom-[3%] text-2xl font-[Aemstel-Regular] template_album_name'
+              : 'text-center relative bottom-[3%] text-2xl font-[Aemstel-Regular] template_album_name'
+          }
+          style={{
+            color: colors.songTitleColor,
+            fontFamily: selectedFont,
+          }}
+        >
+          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
+        </div>
+        <div
+          className={` bg-transparent tracking-tighter h-[23%] ${activeAlignment} text-[5px] md:text-[6px]`}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,
           }}
         >
-          <p
-            className={`text-[5.5px]  bg-transparent tracking-tighter mb-[1%] md:mb-[1%] text-ellipsis-8 break-words`}
-          >
-            {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
+          <p className={`mb-[2%] md:mb-[3.5%]`}>
+            <i>
+              <b className="text-[6px] md:text-[9px]">{albumDescripition.split(' ')[0]} </b>
+            </i>
+            {albumDescripition.split(' ').slice(1).join(' ')}
           </p>
-          <span className="text-[7px] md:text-[10px] border p-1 rounded-lg font-bold">
-            {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
-          </span>
+          <div className="text-center">
+            <span className="text-[7px] md:text-[9px] border p-1 rounded-lg font-bold">
+              {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
+            </span>
+          </div>
         </div>
       </div>
     </div>

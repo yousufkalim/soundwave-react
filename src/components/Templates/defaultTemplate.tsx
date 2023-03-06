@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from 'react';
-import { Grid } from '@mui/material';
 import { DataSetProps, SelectedAlbumProps, IStateColors, IPosterSize } from '../../types/index';
 import Waveroom from '../WaveItem/index';
 interface Template2Props {
@@ -54,11 +53,11 @@ const Template2: FC<Template2Props> = ({
   // const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
   //   ? colors.soundWaveNameColor
   //   : '';
+
   return (
     <div
       id="custom-poster-template"
-      className={`
-      shadow-xl shadow-gray-700 overflow-hidden scale-[65%] absolute
+      className={`overflow-hidden scale-[65%] absolute
       xs:scale-[80%]
       msm:scale-[85%]
       sm:scale-[95%]
@@ -80,50 +79,50 @@ const Template2: FC<Template2Props> = ({
             : '',
         height:
           posterSize.value === '12 X 18'
-            ? '630px'
+            ? '610px'
             : posterSize.value === '16 X 20'
-            ? '640px'
+            ? '620px'
             : posterSize.value === '18 X 24'
-            ? '650px'
+            ? '630px'
             : posterSize.value === '20 X 28'
-            ? '660px'
+            ? '640px'
             : posterSize.value === '24 X 36'
-            ? '670px'
+            ? '650px'
             : posterSize.value === '28 X 40'
-            ? '680px'
-            : '680px',
+            ? '660px'
+            : '610px',
         width:
           posterSize.value === '12 X 18'
-            ? '430px'
-            : posterSize.value === '16 X 20'
             ? '440px'
-            : posterSize.value === '18 X 24'
+            : posterSize.value === '16 X 20'
             ? '450px'
-            : posterSize.value === '20 X 28'
+            : posterSize.value === '18 X 24'
             ? '460px'
-            : posterSize.value === '24 X 36'
+            : posterSize.value === '20 X 28'
             ? '470px'
-            : posterSize.value === '28 X 40'
+            : posterSize.value === '24 X 36'
             ? '480px'
-            : '430px',
+            : posterSize.value === '28 X 40'
+            ? '490px'
+            : '440px',
+        boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.16)',
       }}
     >
       <div
-        className={`h-full pt-6`}
+        className={`h-full`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? ' 24px' : '28px',
-          paddingRight: BackgroundFrame ? ' 22px' : '26px',
+          paddingLeft: BackgroundFrame ? '16px' : '24px',
+          paddingRight: BackgroundFrame ? '16px' : '24px',
+          paddingTop: BackgroundFrame ? '16px' : '24px',
         }}
       >
-        <Grid
-          container
-          spacing={1}
-          className={`h-[77%] px-1 py-3 overflow-hidden`}
-          style={{ background: colors.boxColor, width: '100%', marginLeft: '0', marginTop: '0' }}
+        <div
+          className={`h-[77%] px-1 py-3 overflow-hidden flex flex-wrap justify-around items-center`}
+          style={{ background: colors.boxColor }}
         >
           {dataSets.map((item, index) => {
-            if (index < 24) {
+            if (index < 30) {
               return (
                 <Waveroom
                   songsAmount={dataSets.length}
@@ -138,22 +137,30 @@ const Template2: FC<Template2Props> = ({
               return '';
             }
           })}
-        </Grid>
+        </div>
         <div
           className={
-            selectedAlbum?.label && selectedAlbum?.label.length > 24
+            selectedAlbum?.label && selectedAlbum?.label.length > 15
               ? flag
-                ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
-                : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[1%]`
+                ? BackgroundFrame
+                  ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2.7%]`
+                  : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[1.5%]`
+                : BackgroundFrame
+                ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2.7%]`
+                : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[1.5%]`
               : flag
-              ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[4%]`
+              ? BackgroundFrame
+                ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[3%]`
+                : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
+              : BackgroundFrame
+              ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[3%]`
               : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
           }
         >
           <div className="text-left pl-2">
             <span
               className={
-                selectedAlbum?.label && selectedAlbum?.label.length > 24
+                selectedAlbum?.label && selectedAlbum?.label.length > 15
                   ? `text-lg font-semibold font-proxima-nova template_album_name`
                   : `text-2xl md:text-2xl sxl:text-2xl font-semibold font-proxima-nova template_album_name`
               }
@@ -167,17 +174,22 @@ const Template2: FC<Template2Props> = ({
           </div>
           <div
             className={`
-            ${activeAlignment} text-[5px] bg-transparent tracking-tighter font-proxima-nova template_album_name 
+            ${activeAlignment} text-[5px] bg-transparent font-proxima-nova tracking-tight
             md:text-[6px]
             xl:mt-0
-            2xl:mt-2
+            2xl:mt-4
             `}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
             }}
           >
-            {albumDescripition.split(/\s+/).slice(0, 150).join(' ')}.
+            <p>
+              <i>
+                <b className="text-[6px] md:text-[9px]">{albumDescripition.split(' ')[0]} </b>
+              </i>
+              {albumDescripition.split(' ').slice(1).join(' ')}
+            </p>
           </div>
         </div>
       </div>

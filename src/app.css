@@ -84,18 +84,7 @@ body::-webkit-scrollbar {
 }
 
 .template_album_name {
-  /* -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-background-clip: text;
-  -moz-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent; */
-  /* Set the background size and repeat properties. */
-  /* background-size: 100%;
-  background-repeat: repeat; */
-  white-space: break-spaces;
   word-break: break-word;
-  /* white-space: brea; */
 }
 
 .text-ellipsis-8 {
@@ -120,11 +109,11 @@ body::-webkit-scrollbar {
 }
 
 #wave-container-15 div:first-child canvas {
-  width: 115px !important;
-  height: 15px !important;
+  width: 117px !important;
+  height: 13px !important;
 }
 
 #wave-container-18 div:first-child canvas {
   width: 115px !important;
-  height: 15px !important;
+  height: 17px !important;
 }

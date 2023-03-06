@@ -31,7 +31,6 @@ const step3: FC<Step3Props> = ({
   setSelectedFont,
   setLoading,
 }) => {
-  // const ref = useRef<HTMLDivElement>(null);
   const [selectedSection, setSelectedSection] = useState<string>('Templates');
 
   const handleButtonClick = (targetSection: string): void => {
