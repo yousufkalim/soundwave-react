@@ -20,7 +20,6 @@ interface IResponseSuccess {
 
 const Checkout: FC = () => {
   const naviagte = useNavigate();
-
   const [cart, setCart] = useState<ICart>({
     _id: '',
     totalPoster: [],

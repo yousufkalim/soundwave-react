@@ -32,7 +32,7 @@ const Theme: FC<ThemeProps> = ({
 }) => {
   const colorsArray = [
     {
-      title: 'Poster box colour',
+      title: 'Box Color',
       name: 'boxColor',
       value: boxColor,
       enabled: selectedTemplate === 'template1' || selectedTemplate === 'template2',
