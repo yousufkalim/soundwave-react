@@ -519,8 +519,8 @@ const RightSide: FC<RightSideProps> = ({
                 <button
                   className={
                     activeStepperStep === 0
-                      ? 'text-white bg-[#3E3E3E] px-6 py-4 font-semibold w-[50%]'
-                      : 'text-white bg-black px-6 py-4 font-semibold w-[50%]'
+                      ? 'text-white bg-[#3E3E3E] px-6 py-[17px] font-semibold w-[50%] text-[.72rem]'
+                      : 'text-white bg-black px-6 py-[17px] font-semibold w-[50%] text-[.72rem]'
                   }
                   disabled={activeStepperStep === 0}
                   onClick={handleBack}
@@ -530,14 +530,14 @@ const RightSide: FC<RightSideProps> = ({
                 <button
                   onClick={activeStepperStep === 4 ? handleAddToCart : handleNext}
                   // disabled={activeStepperStep === 4}
-                  className={'text-white bg-black  font-semibold w-[50%]'}
+                  className={
+                    'text-white bg-black  font-semibold w-[50%] px-6 py-[17px] text-[.72rem]'
+                  }
                 >
                   {activeStepperStep === 4 ? (
-                    <span className="flex items-center justify-center text-[.9rem] px-6 py-[17px]">
-                      Add To Cart ${posterPrice}
-                    </span>
+                    <span className="text-center  text-[.72rem]">Add To Cart ${posterPrice}</span>
                   ) : (
-                    <span className="flex items-center justify-center gap-2 px-6 py-4">
+                    <span className="flex items-center justify-center gap-2 ">
                       Next <NextArrowBtn />
                     </span>
                   )}
