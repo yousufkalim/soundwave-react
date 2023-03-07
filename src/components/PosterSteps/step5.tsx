@@ -84,7 +84,7 @@ const step5: FC<Step5Props> = ({ posterSize, setPosterSize }) => {
           </button>
         </div>
       </div>
-      <div className="overflow-x-scroll">
+      <div className="overflow-x-scroll no-scrollbar">
         <PosterSizeBox
           measurement={measurement}
           posterSize={posterSize}

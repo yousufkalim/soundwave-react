@@ -82,7 +82,9 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 .template_album_name {
   word-break: break-word;
 }

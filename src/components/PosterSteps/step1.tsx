@@ -35,7 +35,6 @@ const step1: FC<Step1Props> = ({
   setSelectedAlbum,
   setActiveStep,
 }) => {
-  // const [selected, setSelected] = useState<string>('');
   const [selectedAlbumId, setSelectedAlbumId] = useState<string>('');
   const [albumOptions, setAlbumOptions] = useState<listProps[]>([]);
   const [list1, setList1] = useState<listProps[]>([]);
