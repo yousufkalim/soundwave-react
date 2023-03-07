@@ -424,6 +424,7 @@ const RightSide: FC<RightSideProps> = ({
           </Collapse>
 
           <button
+            disabled={activeStep !== 6}
             style={{
               display: selected === '' ? 'none' : '',
             }}

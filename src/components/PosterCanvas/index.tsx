@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+import thinCanvas from '../../assets/thinCanvas.svg';
+import thickCanvas from '../../assets/thickCanvas.svg';
 
 interface PosterCanvasProps {
   posterType: string;
@@ -8,21 +10,19 @@ interface PosterCanvasProps {
 const PosterCanvas: FC<PosterCanvasProps> = ({ posterType, handleSelectedCanvas }) => {
   return (
     <>
-      <div className="flex items-center justify-start gap-4 my-2">
+      <div className="flex items-center md:justify-start gap-4 my-2 xs:justify-center justify-center">
         <div
           onClick={() => {
             handleSelectedCanvas('Thin Canvas');
           }}
           className={
             posterType === 'Thin Canvas'
-              ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
-              : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
+              ? 'border-[3px] border-black w-[40%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
+              : 'border-[2px] w-[40%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
           }
         >
-          <div className="border-[2px] border-black px-2 py-5">
-            <span className="text-[.6rem] font-semibold">2-3 CM</span>
-          </div>
-          <span className="text-center text-[12px]">Thin</span>
+          <img src={thinCanvas} className="w-9 sm:w-12" alt="" />
+          <span className="text-[10px] sm:text-[12px]">{`Thin-wrap 0.75"`}</span>
         </div>
         <div
           onClick={() => {
@@ -30,14 +30,12 @@ const PosterCanvas: FC<PosterCanvasProps> = ({ posterType, handleSelectedCanvas 
           }}
           className={
             posterType === 'Thick Canvas'
-              ? 'border-black border-[3px] rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
-              : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
+              ? 'border-[3px] border-black w-[40%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
+              : 'border-[2px] w-[40%] flex items-center justify-center rounded-lg py-1 cursor-pointer'
           }
         >
-          <div className="border-[2px] border-black px-3 py-5">
-            <span className="text-[.7rem] font-semibold">4 CM</span>
-          </div>
-          <span className="text-center text-[12px]">Thick</span>
+          <img src={thickCanvas} className="w-9 sm:w-12" alt="" />
+          <span className="text-[10px] sm:text-[12px]">{`Thick-wrap 1.5"`}</span>
         </div>
       </div>
     </>
