@@ -51,7 +51,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
     // console.log('liRef ====>>>> ', liRef);
     console.log('Change value Effect');
 
-    liRef?.current?.scrollIntoView();
+    liRef?.current?.scrollIntoView({ behavior: 'smooth' });
   }, [liRef?.current]);
   // console.log(optionsData, 'optionsData');
 
@@ -90,7 +90,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       {isShow && (
         <ul
           ref={liRef}
-          className="flex items-center justify-start flex-col mt-[.5rem] absolute bg-white w-full max-h-96 rounded top-11 z-[10] overflow-y-auto shadow-md"
+          className="md:pb-0 pb-[3rem] xs:pb-[3rem] flex items-center justify-start flex-col mt-[.5rem] absolute bg-white w-full max-h-96 rounded top-11 z-[10] overflow-y-auto shadow-md"
         >
           {optionsData.map((optionItem) => (
             <li
