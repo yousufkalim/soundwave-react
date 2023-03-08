@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Blackframe from '../../assets/woodenFrame/woodenBlack.svg';
 import Neturalframe from '../../assets/woodenFrame/woodenNetural.svg';
 import Whiteframe from '../../assets/woodenFrame/woodenWhite.svg';
-import AluminiumMetal from '../../assets/woodenFrame/aluminiumMetal.svg';
+// import AluminiumMetal from '../../assets/woodenFrame/aluminiumMetal.svg';
 import woodenFrameIcon from '../../assets/woodenFrameIcon.svg';
 import metalFrameIcon from '../../assets/metalFrameIcon.svg';
 
@@ -131,7 +131,7 @@ const PosterFrame: FC<PosterFrameProps> = ({
                   : 'border-gray-300 border-2 rounded-lg cursor-pointer bg-white px-4 py-2 flex flex-col'
               }
             >
-              <img src={AluminiumMetal} />
+              <img src={Blackframe} />
               <span className="text-center text-[12px]">Black</span>
             </div>
           </div>
