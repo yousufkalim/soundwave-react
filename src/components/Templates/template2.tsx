@@ -81,7 +81,7 @@ const Template2: FC<Template2Props> = ({
             : posterSize.value === '20 X 28'
             ? '616px'
             : posterSize.value === '24 X 36'
-            ? '716px'
+            ? '636px'
             : posterSize.value === '28 X 40'
             ? '626px'
             : '611px',
