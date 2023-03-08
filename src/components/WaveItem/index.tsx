@@ -18,7 +18,13 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songs
     return `${minutesAsInt}:${seconds}`;
   };
   return (
-    <div className="w-[30%] flex flex-col justify-center items-center">
+    <div
+      className={
+        songsAmount <= 12
+          ? 'w-[50%] flex flex-col justify-center items-center'
+          : 'w-[30%] flex flex-col justify-center items-center'
+      }
+    >
       <div id={`wave-container-${height}`}>
         <Waveform
           peaks={item.levels}
@@ -28,13 +34,15 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songs
           progressColor={rgbaToHex(colors.soundWaveColor)}
         />
       </div>
-      <div className="flex items-center justify-between mt-2 w-full">
+      <div
+        className={
+          songsAmount <= 12
+            ? 'flex items-center justify-center mt-2 w-[65%]'
+            : 'flex items-center justify-between mt-2 w-full'
+        }
+      >
         <span
-          className={`
-          w-[82%] px-1 flex items-center justify-start tracking-tighter font-semibold font-[Montserrat] template_album_name text-[4px]
-          sm:text-[6px] 
-          xl:text-[7px]
-        `}
+          className={`w-[82%] px-1 flex items-center justify-start tracking-tighter font-semibold font-[Montserrat] template_album_name text-[4px] sm:text-[6px] xl:text-[7px]`}
           style={{
             color: colors.soundWaveNameColor,
             fontFamily: selectedFont,

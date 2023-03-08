@@ -73,31 +73,31 @@ const Template5: FC<Template5Props> = ({
             : '',
         height:
           posterSize.value === '12 X 18'
-            ? '610px'
+            ? '611px'
             : posterSize.value === '16 X 20'
-            ? '620px'
+            ? '550px'
             : posterSize.value === '18 X 24'
-            ? '630px'
+            ? '586px'
             : posterSize.value === '20 X 28'
-            ? '640px'
+            ? '616px'
             : posterSize.value === '24 X 36'
-            ? '650px'
+            ? '716px'
             : posterSize.value === '28 X 40'
-            ? '660px'
-            : '610px',
+            ? '626px'
+            : '611px',
         width:
           posterSize.value === '12 X 18'
             ? '440px'
             : posterSize.value === '16 X 20'
-            ? '450px'
+            ? '440px'
             : posterSize.value === '18 X 24'
-            ? '460px'
+            ? '440px'
             : posterSize.value === '20 X 28'
-            ? '470px'
+            ? '440px'
             : posterSize.value === '24 X 36'
-            ? '480px'
+            ? '440px'
             : posterSize.value === '28 X 40'
-            ? '490px'
+            ? '440px'
             : '440px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
@@ -155,7 +155,7 @@ const Template5: FC<Template5Props> = ({
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
           <p
-            className={`text-[5px] md:text-[6px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words mt-[1.5%] font-[Montserrat]`}
+            className={`text-[5px] md:text-[6px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words mt-[1.8%] font-[Montserrat]`}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
