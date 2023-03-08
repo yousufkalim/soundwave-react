@@ -64,7 +64,7 @@ const Template6: FC<Template6Props> = ({
       style={{
         background:
           posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
-            ? `url(${BackgroundFrame}) center no-repeat`
+            ? `${BackgroundFrame}`
             : '',
         padding:
           posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
