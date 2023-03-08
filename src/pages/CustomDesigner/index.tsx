@@ -7,10 +7,10 @@ import Spinner from '../../components/Spinner/Spinner';
 import { toast } from 'react-toastify';
 import request from '../../api/request';
 import CartModal from '../../Modals/CartModal';
-import BlackWoodenFrame from '../../assets/PosterFrames/Black.svg';
-import WhiteWoodenFrame from '../../assets/PosterFrames/White.svg';
-import NuetralWoodenFrame from '../../assets/PosterFrames/Nuetral.svg';
-import MetalFrame from '../../assets/PosterFrames/Metal.svg';
+// import BlackWoodenFrame from '../../assets/PosterFrames/Black.svg';
+// import WhiteWoodenFrame from '../../assets/PosterFrames/White.svg';
+// import NuetralWoodenFrame from '../../assets/PosterFrames/Nuetral.svg';
+// import MetalFrame from '../../assets/PosterFrames/Metal.svg';
 import {
   DataSetProps,
   SelectedAlbumProps,
@@ -136,13 +136,13 @@ const index: FC = () => {
 
   const BackgroundFrame =
     posterType === 'Black Wooden Frame'
-      ? BlackWoodenFrame
+      ? '#0a0705'
       : posterType === 'Nuteral Wooden Frame'
-      ? NuetralWoodenFrame
+      ? '#caab94'
       : posterType === 'White Wooden Frame'
-      ? WhiteWoodenFrame
+      ? '#C1C1C1'
       : posterType === 'Black Metal Frame'
-      ? MetalFrame
+      ? '#0a0705'
       : '';
 
   useEffect(() => {
