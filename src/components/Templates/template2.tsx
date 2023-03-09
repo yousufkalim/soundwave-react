@@ -112,7 +112,7 @@ const Template2: FC<Template2Props> = ({
         }}
       >
         <div
-          className={`h-[77%] px-1 py-3 overflow-hidden flex flex-wrap justify-around items-center`}
+          className={`h-[77%] px-1 py-3 overflow-hidden flex flex-wrap justify-around items-baseline`}
           style={{ background: colors.boxColor }}
         >
           {dataSets.map((item, index) => {

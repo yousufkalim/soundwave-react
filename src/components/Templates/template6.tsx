@@ -128,7 +128,7 @@ const Template6: FC<Template6Props> = ({
           </span>
         </div>
         <div
-          className={`h-[77%] px-1 py-2 overflow-hidden flex flex-wrap justify-between items-center`}
+          className={`h-[77%] px-1 py-2 overflow-hidden flex flex-wrap justify-between items-baseline`}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {

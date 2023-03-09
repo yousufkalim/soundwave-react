@@ -111,7 +111,7 @@ const Template4: FC<Template4Props> = ({
         }}
       >
         <div
-          className={`h-[80%] px-1 pt-2 pb-4 border-2 border-white overflow-hidden flex flex-wrap justify-around items-center`}
+          className={`h-[80%] px-1 pt-2 pb-4 border-2 border-white overflow-hidden flex flex-wrap justify-around items-baseline`}
           style={{ backgroundColor: colors.boxColor }}
         >
           {dataSets.map((item, index) => {

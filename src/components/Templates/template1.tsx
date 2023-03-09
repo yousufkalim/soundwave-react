@@ -147,7 +147,7 @@ const Template1: FC<Template1Props> = ({
         </div>
         <div className="h-full overflow-hidden">
           <div
-            className={`h-[75%] px-1 py-2 overflow-hidden flex flex-wrap justify-around items-center`}
+            className={`h-[75%] px-1 py-2 overflow-hidden flex flex-wrap justify-around items-baseline`}
             style={{ background: colors?.boxColor }}
           >
             {dataSets.map((item, index) => {
@@ -167,7 +167,7 @@ const Template1: FC<Template1Props> = ({
               }
             })}
           </div>
-          <div className={`${activeAlignment} mt-[2%] text-center`}>
+          <div className={`${activeAlignment} mt-[2%]`}>
             <p
               style={{
                 color: colors.descriptionColor,

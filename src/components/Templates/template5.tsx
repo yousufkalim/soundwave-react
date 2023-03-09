@@ -112,7 +112,7 @@ const Template5: FC<Template5Props> = ({
         }}
       >
         <div
-          className={`h-[77%] px-1 py-3 overflow-hidden flex flex-wrap justify-around items-center`}
+          className={`h-[77%] px-1 py-3 overflow-hidden flex flex-wrap justify-around items-baseline`}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {
@@ -131,7 +131,7 @@ const Template5: FC<Template5Props> = ({
             }
           })}
         </div>
-        <div className={`flex flex-col break-words ${activeAlignment} text-center`}>
+        <div className={`flex flex-col break-words  text-center`}>
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
@@ -155,7 +155,7 @@ const Template5: FC<Template5Props> = ({
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
           <p
-            className={`text-[5px] md:text-[6px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words mt-[1.8%] font-[Montserrat]`}
+            className={`${activeAlignment} text-[5px] md:text-[6px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words mt-[1.8%] font-[Montserrat]`}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
