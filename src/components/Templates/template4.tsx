@@ -132,7 +132,7 @@ const Template4: FC<Template4Props> = ({
           })}
         </div>
         <div
-          className="absolute left-8 bg-black pl-[3px] template_album_name h-[3rem]"
+          className="absolute left-8 bg-black text-center px-[3px] template_album_name h-[3rem]"
           style={{
             color: colors.songTitleColor,
             bottom:
@@ -149,8 +149,8 @@ const Template4: FC<Template4Props> = ({
           <div
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `text-[2.3rem] font-extrabold font-[Morganite]`
-                : `text-[2.3rem] font-extrabold font-[Morganite]`
+                ? `text-[2.3rem] italic font-semibold font-[Morganite]`
+                : `text-[2.3rem] italic font-semibold font-[Morganite]`
             }
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}

@@ -140,7 +140,7 @@ const index: FC = () => {
       : posterType === 'Nuteral Wooden Frame'
       ? '#caab94'
       : posterType === 'White Wooden Frame'
-      ? '#C1C1C1'
+      ? '#FFFFFF'
       : posterType === 'Black Metal Frame'
       ? '#0a0705'
       : '';

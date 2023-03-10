@@ -150,8 +150,8 @@ const Template2: FC<Template2Props> = ({
                 : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[1.5%]`
               : flag
               ? BackgroundFrame
-                ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[3%]`
-                : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
+                ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[4%]`
+                : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[4%]`
               : BackgroundFrame
               ? `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[3%]`
               : `break-words w-full h-[23%] text-ellipsis-8 px-6 absolute right-0 bottom-[2%]`
@@ -175,9 +175,7 @@ const Template2: FC<Template2Props> = ({
           <div
             className={`
             ${activeAlignment} text-[5px] bg-transparent font-proxima-nova tracking-tight
-            md:text-[6px]
-            xl:mt-0
-            2xl:mt-4
+            md:text-[6px] mt-4
             `}
             style={{
               color: colors.descriptionColor,

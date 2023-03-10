@@ -93,7 +93,6 @@ const PosterSize: FC<PosterSizeProps> = ({
       frameSizeCentimeter: '70 X 100',
     },
   ];
-  console.log(measurement, 'measurement');
   return (
     <div className="flex items-center justify-start gap-2 w-[45rem] font-[julee]">
       {FrameArray.map((item, index) => (
