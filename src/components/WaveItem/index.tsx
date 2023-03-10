@@ -44,7 +44,7 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songs
             className={`w-[82%] flex items-center justify-start tracking-tighter font-semibold font-[Montserrat] template_album_name text-[4px] sm:text-[6px] xl:text-[7px]`}
             style={{
               color: colors.soundWaveNameColor,
-              fontFamily: selectedFont,
+              // fontFamily: selectedFont,
               fontSize: songsAmount > 18 ? '5px' : '7px',
             }}
           >

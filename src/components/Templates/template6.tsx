@@ -46,7 +46,14 @@ const Template6: FC<Template6Props> = ({
   }, []);
 
   const capitalizeLabel = (label: string): string => {
-    return label.toLowerCase().replace(/(^|\s)\S/g, (match) => match.toUpperCase());
+    return label
+      .toLowerCase()
+      .replace(
+        /(\([^)]*\)|^)[^(]*?\b(\S)?/g,
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        (match, p1, p2) => `${p1}${p2 ? p2.toUpperCase() : ''}`,
+      )
+      .replace(/\b\w/g, (match) => match.toUpperCase());
   };
 
   return (

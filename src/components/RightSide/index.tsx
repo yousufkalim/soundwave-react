@@ -174,7 +174,7 @@ const RightSide: FC<RightSideProps> = ({
 
   const handleCalulatePosterPrice = (): void => {
     const posterSizePriceResult = PricingArray.posterSizePricing.find((item) => {
-      const currentUnit = posterSize.unit === 'inch' ? item.inch : item.centimeter;
+      const currentUnit = posterSize.unit === 'Centimeter' ? item.centimeter : item.inch;
       if (posterSize.value === currentUnit) {
         return item;
       }
@@ -182,13 +182,13 @@ const RightSide: FC<RightSideProps> = ({
     });
 
     const posterFramePriceResult = PricingArray.posterTypePricing.find((item) => {
-      const currentUnit = posterSize.unit === 'inch' ? item.inch : item.centimeter;
+      const currentUnit = posterSize.unit === 'Centimeter' ? item.centimeter : item.inch;
+
       if (posterSize.value === currentUnit) {
         return item;
       }
       return undefined;
     });
-
     const totalPrice =
       (posterSizePriceResult?.price ?? 0) +
       (posterType === 'Black Wooden Frame' ||
