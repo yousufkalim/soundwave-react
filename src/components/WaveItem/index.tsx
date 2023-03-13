@@ -8,8 +8,16 @@ interface WaveroomProps {
   colors: IStateColors;
   height: number;
   songsAmount: number;
+  posterRatio?: string;
 }
-const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songsAmount }) => {
+const Waveroom: FC<WaveroomProps> = ({
+  item,
+  selectedFont,
+  colors,
+  height,
+  songsAmount,
+  posterRatio,
+}) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
     const minutesAsInt = Math.floor(minutes);
@@ -25,7 +33,10 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songs
           : 'w-[30%] flex flex-col justify-center items-center'
       }
     >
-      <div className="w-min" id={`wave-container-${height}`}>
+      <div
+        className="w-min"
+        id={posterRatio ? `wave-container-${height}-${posterRatio}` : `wave-container-${height}`}
+      >
         <Waveform
           peaks={item.levels}
           height={height}
@@ -45,7 +56,30 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songs
             style={{
               color: colors.soundWaveNameColor,
               // fontFamily: selectedFont,
-              fontSize: songsAmount > 18 ? '5px' : '7px',
+              fontSize:
+                posterRatio === '1218'
+                  ? songsAmount > 18
+                    ? '12px'
+                    : '7px'
+                  : posterRatio === '1620'
+                  ? songsAmount > 18
+                    ? '14px'
+                    : '10px'
+                  : posterRatio === '1824'
+                  ? songsAmount > 18
+                    ? '16px'
+                    : '12px'
+                  : posterRatio === '2028'
+                  ? songsAmount > 18
+                    ? '18px'
+                    : '14px'
+                  : posterRatio === '2436'
+                  ? songsAmount > 18
+                    ? '20px'
+                    : '16px'
+                  : posterRatio === '2840' && songsAmount > 18
+                  ? '20px'
+                  : '16px',
             }}
           >
             &quot;{item.songName}&quot;
@@ -60,7 +94,7 @@ const Waveroom: FC<WaveroomProps> = ({ item, selectedFont, colors, height, songs
             style={{
               color: colors.soundWaveNameColor,
               fontFamily: selectedFont,
-              fontSize: songsAmount > 18 ? '5px' : '7px',
+              fontSize: songsAmount > 18 ? '7px' : '10px',
             }}
           >
             {convertMilisecondToMinutes(item.time)}
