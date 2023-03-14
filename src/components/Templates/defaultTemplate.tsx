@@ -53,7 +53,6 @@ const Template2: FC<Template2Props> = ({
   // const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
   //   ? colors.soundWaveNameColor
   //   : '';
-
   return (
     <div
       id="custom-poster-template"
@@ -69,7 +68,7 @@ const Template2: FC<Template2Props> = ({
           : posterSize.value === '24 X 36'
           ? `overflow-hidden scale-[17%] absolute xs:scale-[20%] msm:scale-[20%] sm:scale-[17%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[25%]`
           : posterSize.value === '28 X 40'
-          ? `overflow-hidden scale-[18%] absolute xs:scale-[20%] msm:scale-[20%] sm:scale-[20%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[25%]`
+          ? `overflow-hidden scale-[18%] absolute xs:scale-[20%] msm:scale-[20%] sm:scale-[20%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[23%]`
           : `overflow-hidden scale-[40%] absolute xs:scale-[40%] msm:scale-[40%] sm:scale-[40%] md:scale-[50%] lg:scale-[50%] sxl:scale-[55%] 2xl:scale-[55%]`
       }
       style={{
@@ -78,9 +77,47 @@ const Template2: FC<Template2Props> = ({
             ? `${BackgroundFrame}`
             : '',
         padding:
-          posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
+          posterSize.value === '12 X 18' &&
+          posterType !== 'No Frame' &&
+          posterType !== 'Thin Canvas' &&
+          posterType !== 'Thick Canvas'
             ? BackgroundFrame
               ? '12px'
+              : '0px'
+            : posterSize.value === '16 X 20' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '14px'
+              : '0px'
+            : posterSize.value === '18 X 24' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '16px'
+              : '0px'
+            : posterSize.value === '20 X 28' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '20px'
+              : '0px'
+            : posterSize.value === '24 X 36' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '26px'
+              : '0px'
+            : posterSize.value === '28 X 40' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '30px'
               : '0px'
             : '',
         height:
@@ -95,7 +132,7 @@ const Template2: FC<Template2Props> = ({
             : posterSize.value === '24 X 36'
             ? '2812px'
             : posterSize.value === '28 X 40'
-            ? '2868'
+            ? '2868px'
             : '611px',
         width:
           posterSize.value === '12 X 18'
@@ -109,8 +146,8 @@ const Template2: FC<Template2Props> = ({
             : posterSize.value === '24 X 36'
             ? '1728px'
             : posterSize.value === '28 X 40'
-            ? '2016'
-            : '440px',
+            ? '2016px'
+            : '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.16)',
       }}
     >
@@ -118,9 +155,9 @@ const Template2: FC<Template2Props> = ({
         className={`h-full`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? '16px' : '5%',
-          paddingRight: BackgroundFrame ? '16px' : '5%',
-          paddingTop: BackgroundFrame ? '16px' : '6%',
+          paddingLeft: BackgroundFrame ? '5%' : '5%',
+          paddingRight: BackgroundFrame ? '5%' : '5%',
+          paddingTop: BackgroundFrame ? '6%' : '6%',
         }}
       >
         <div
@@ -175,19 +212,44 @@ const Template2: FC<Template2Props> = ({
                 : `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[4%]`
               : BackgroundFrame
               ? `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[3%]`
-              : `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[1.2%]`
+              : `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[2.2%]`
           }
         >
           <div className="text-left pl-2">
             <span
               className={
                 selectedAlbum?.label && selectedAlbum?.label.length > 15
-                  ? `text-4xl font-semibold font-proxima-nova template_album_name`
-                  : `text-5xl md:text-5xl sxl:text-5xl font-semibold font-proxima-nova template_album_name`
+                  ? `font-semibold font-proxima-nova template_album_name`
+                  : `font-semibold font-proxima-nova template_album_name`
               }
               style={{
                 color: colors.songTitleColor,
                 fontFamily: selectedFont,
+                fontSize: selectedAlbum?.label
+                  ? posterSize.value === '12 X 18'
+                    ? selectedAlbum?.label.length > 15
+                      ? '2rem'
+                      : '3rem'
+                    : posterSize.value === '16 X 20'
+                    ? selectedAlbum?.label.length > 15
+                      ? '2.7rem'
+                      : '4rem'
+                    : posterSize.value === '18 X 24'
+                    ? selectedAlbum?.label.length > 15
+                      ? '3rem'
+                      : '4.5rem'
+                    : posterSize.value === '20 X 28'
+                    ? selectedAlbum?.label.length > 15
+                      ? '3.3rem'
+                      : '5rem'
+                    : posterSize.value === '24 X 36'
+                    ? selectedAlbum?.label.length > 15
+                      ? '4rem'
+                      : '7.5rem'
+                    : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
+                    ? '4.7rem'
+                    : '8rem'
+                  : '3rem',
               }}
             >
               <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album/Song Name'}</i>
@@ -196,16 +258,50 @@ const Template2: FC<Template2Props> = ({
           <div
             className={`
             ${activeAlignment} text-[10px] bg-transparent font-proxima-nova tracking-tight
-            md:text-[12px] mt-4
+            md:text-[9px] mt-4
             `}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
+              fontSize:
+                posterSize.value === '12 X 18'
+                  ? '9px'
+                  : posterSize.value === '16 X 20'
+                  ? '12px'
+                  : posterSize.value === '18 X 24'
+                  ? '14px'
+                  : posterSize.value === '20 X 28'
+                  ? '16px'
+                  : posterSize.value === '24 X 36'
+                  ? '20px'
+                  : posterSize.value === '28 X 40'
+                  ? '22px'
+                  : '10px',
             }}
           >
             <p className="break-all pr-[4%]">
               <i>
-                <b className="text-[13px] md:text-[15px]">{albumDescripition.split(' ')[0]} </b>
+                <b
+                  // className="text-[10px] md:text-[12px]"
+                  style={{
+                    fontSize:
+                      posterSize.value === '12 X 18'
+                        ? '11px'
+                        : posterSize.value === '16 X 20'
+                        ? '14px'
+                        : posterSize.value === '18 X 24'
+                        ? '16px'
+                        : posterSize.value === '20 X 28'
+                        ? '18px'
+                        : posterSize.value === '24 X 36'
+                        ? '22px'
+                        : posterSize.value === '28 X 40'
+                        ? '24px'
+                        : '10px',
+                  }}
+                >
+                  {albumDescripition.split(' ')[0]}{' '}
+                </b>
               </i>
               {albumDescripition.split(' ').slice(1).join(' ')}
             </p>
