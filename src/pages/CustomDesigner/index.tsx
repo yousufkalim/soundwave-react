@@ -86,6 +86,8 @@ const index: FC = () => {
     setColors((prevState) => ({ ...prevState, [fieldName]: currentColor }));
   };
 
+  const [BackgroundFrame, setBackgroundFrame] = useState<string>('');
+
   const handleResetData = (): void => {
     // left side
     setDataSets([]);
@@ -134,16 +136,20 @@ const index: FC = () => {
     setOpen(false);
   };
 
-  const BackgroundFrame =
+  const handleFramesChange = (): void => {
     posterType === 'Black Wooden Frame'
-      ? '#0a0705'
+      ? setBackgroundFrame('#0a0705')
       : posterType === 'Nuteral Wooden Frame'
-      ? '#caab94'
+      ? setBackgroundFrame('#caab94')
       : posterType === 'White Wooden Frame'
-      ? '#FFFFFF'
+      ? setBackgroundFrame('#FFFFFF')
       : posterType === 'Black Metal Frame'
-      ? '#0a0705'
-      : '';
+      ? setBackgroundFrame('#0a0705')
+      : setBackgroundFrame('');
+  };
+  useEffect(() => {
+    handleFramesChange();
+  }, [posterType]);
 
   useEffect(() => {
     const cartId = localStorage.getItem('cartId');
@@ -231,6 +237,7 @@ const index: FC = () => {
             setActiveStep={setActiveStep}
             setOpen={setOpen}
             setFlag={setFlag}
+            setBackgroundFrame={setBackgroundFrame}
           />
         </div>
         {open && (

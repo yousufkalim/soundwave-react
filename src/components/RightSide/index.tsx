@@ -99,6 +99,7 @@ interface RightSideProps {
   selectedFont: string;
   setSelectedFont: (value: string) => void;
   setFlag: (value: boolean) => void;
+  setBackgroundFrame: (value: string) => void;
 }
 
 interface IResponseSuccess {
@@ -168,6 +169,7 @@ const RightSide: FC<RightSideProps> = ({
   selectedFont,
   setSelectedFont,
   setFlag,
+  setBackgroundFrame,
 }) => {
   const [posterPrice, setPosterPrice] = useState<number>(0);
   const [activeStepperStep, setActiveStepperStep] = useState<number>(0);
@@ -212,15 +214,15 @@ const RightSide: FC<RightSideProps> = ({
   }, [posterSize, posterType]);
 
   const handleAddToCart = () => {
+    setBackgroundFrame('');
     setLoading(true);
     setFlag(true);
     setTimeout(async () => {
       const element = document.getElementById('custom-poster-template') as HTMLElement;
       const canvas = await html2canvas(element, {
         logging: false,
-        allowTaint: true,
-        scale: 3,
         useCORS: true,
+        allowTaint: true,
       });
       const img = canvas.toDataURL();
       const cartId = localStorage.getItem('cartId');

@@ -125,23 +125,23 @@ const Template3: FC<Template3Props> = ({
             : '',
         height:
           posterSize.value === '12 X 18'
-            ? '1200px'
+            ? '1298px'
             : posterSize.value === '16 X 20'
-            ? '1440px'
+            ? '1440.5px'
             : posterSize.value === '18 X 24'
-            ? '1673px'
+            ? '1728px'
             : posterSize.value === '20 X 28'
-            ? '2016px'
+            ? '2015px'
             : posterSize.value === '24 X 36'
-            ? '2812px'
+            ? '2592px'
             : posterSize.value === '28 X 40'
-            ? '2868px'
-            : '611px',
+            ? '2880px'
+            : '1298px',
         width:
           posterSize.value === '12 X 18'
             ? '864px'
             : posterSize.value === '16 X 20'
-            ? '1152px'
+            ? '1151.7px'
             : posterSize.value === '18 X 24'
             ? '1296px'
             : posterSize.value === '20 X 28'
@@ -149,8 +149,8 @@ const Template3: FC<Template3Props> = ({
             : posterSize.value === '24 X 36'
             ? '1728px'
             : posterSize.value === '28 X 40'
-            ? '2016px'
-            : '440px',
+            ? '2015.7px'
+            : '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
     >
