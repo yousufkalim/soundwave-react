@@ -279,7 +279,7 @@ const Template2: FC<Template2Props> = ({
                   : '10px',
             }}
           >
-            <p className="break-all pr-[4%]">
+            <p className="pr-[4%]">
               <i>
                 <b
                   // className="text-[10px] md:text-[12px]"
