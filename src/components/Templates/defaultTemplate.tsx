@@ -257,9 +257,7 @@ const Template2: FC<Template2Props> = ({
           </div>
           <div
             className={`
-            ${activeAlignment} text-[10px] bg-transparent font-proxima-nova tracking-tight
-            md:text-[9px] mt-4
-            `}
+            ${activeAlignment} bg-transparent font-proxima-nova tracking-tight mt-4`}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
