@@ -61,18 +61,18 @@ const Template3: FC<Template3Props> = ({
       id="custom-poster-template"
       className={
         posterSize.value === '12 X 18'
-          ? `overflow-hidden scale-[38%] absolute xs:scale-[40%] msm:scale-[40%] sm:scale-[40%] md:scale-[50%] lg:scale-[50%] sxl:scale-[55%] 2xl:scale-[55%]`
+          ? `overflow-hidden scale-[33%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
           : posterSize.value === '16 X 20'
-          ? `overflow-hidden scale-[28%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[40%] lg:scale-[45%] sxl:scale-[45%] 2xl:scale-[45%]`
+          ? `overflow-hidden scale-[23%] absolute xs:scale-[30%] msm:scale-[30%] sm:scale-[30%] md:scale-[35%] lg:scale-[40%] sxl:scale-[40%] 2xl:scale-[40%]`
           : posterSize.value === '18 X 24'
-          ? `overflow-hidden scale-[25%] absolute xs:scale-[30%] msm:scale-[30%] sm:scale-[30%] md:scale-[35%] lg:scale-[35%] sxl:scale-[35%] 2xl:scale-[40%]`
+          ? `overflow-hidden scale-[20%] absolute xs:scale-[25%] msm:scale-[25%] sm:scale-[25%] md:scale-[30%] lg:scale-[30%] sxl:scale-[30%] 2xl:scale-[35%]`
           : posterSize.value === '20 X 28'
-          ? `overflow-hidden scale-[23%] absolute xs:scale-[25%] msm:scale-[25%] sm:scale-[25%] md:scale-[30%] lg:scale-[30%] sxl:scale-[30%] 2xl:scale-[35%]`
+          ? `overflow-hidden scale-[18%] absolute xs:scale-[20%] msm:scale-[20%] sm:scale-[30%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[30%]`
           : posterSize.value === '24 X 36'
-          ? `overflow-hidden scale-[17%] absolute xs:scale-[20%] msm:scale-[20%] sm:scale-[17%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[25%]`
+          ? `overflow-hidden scale-[12%] absolute xs:scale-[15%] msm:scale-[15%] sm:scale-[12%] md:scale-[20%] lg:scale-[20%] sxl:scale-[20%] 2xl:scale-[22%]`
           : posterSize.value === '28 X 40'
-          ? `overflow-hidden scale-[18%] absolute xs:scale-[20%] msm:scale-[20%] sm:scale-[20%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[23%]`
-          : `overflow-hidden scale-[40%] absolute xs:scale-[40%] msm:scale-[40%] sm:scale-[40%] md:scale-[50%] lg:scale-[50%] sxl:scale-[55%] 2xl:scale-[55%]`
+          ? `overflow-hidden scale-[13%] absolute xs:scale-[15%] msm:scale-[15%] sm:scale-[15%] md:scale-[20%] lg:scale-[20%] sxl:scale-[20%] 2xl:scale-[20%]`
+          : `overflow-hidden scale-[33%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
       }
       style={{
         background:
@@ -256,13 +256,13 @@ const Template3: FC<Template3Props> = ({
             fontFamily: selectedFont,
             fontSize:
               posterSize.value === '12 X 18'
-                ? '12px'
-                : posterSize.value === '16 X 20'
                 ? '14px'
-                : posterSize.value === '18 X 24'
+                : posterSize.value === '16 X 20'
                 ? '16px'
-                : posterSize.value === '20 X 28'
+                : posterSize.value === '18 X 24'
                 ? '18px'
+                : posterSize.value === '20 X 28'
+                ? '20px'
                 : posterSize.value === '24 X 36'
                 ? '24px'
                 : posterSize.value === '28 X 40'
@@ -276,13 +276,13 @@ const Template3: FC<Template3Props> = ({
                 style={{
                   fontSize:
                     posterSize.value === '12 X 18'
-                      ? '14px'
-                      : posterSize.value === '16 X 20'
                       ? '16px'
-                      : posterSize.value === '18 X 24'
+                      : posterSize.value === '16 X 20'
                       ? '18px'
-                      : posterSize.value === '20 X 28'
+                      : posterSize.value === '18 X 24'
                       ? '20px'
+                      : posterSize.value === '20 X 28'
+                      ? '22px'
                       : posterSize.value === '24 X 36'
                       ? '26px'
                       : posterSize.value === '28 X 40'
