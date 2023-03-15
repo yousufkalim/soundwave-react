@@ -18,7 +18,7 @@ const Footer: FC<FooterProps> = ({ activeAlignment, setActiveAlignment, posterSi
       className={
         posterSize.value === '12 X 18'
           ? `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute bottom-1 scale-[33%] sm:bottom-[-1rem] xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
-          : posterSize.value === '2 X 20'
+          : posterSize.value === '16 X 20'
           ? `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-1rem] bottom-1 scale-[23%] xs:scale-[30%] msm:scale-[30%] sm:scale-[30%] md:scale-[35%] lg:scale-[40%] sxl:scale-[40%] 2xl:scale-[40%]`
           : posterSize.value === '18 X 24'
           ? `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-1rem] bottom-1 scale-[20%] xs:scale-[25%] msm:scale-[25%] sm:scale-[25%] md:scale-[30%] lg:scale-[30%] sxl:scale-[30%] 2xl:scale-[35%]`
