@@ -276,7 +276,7 @@ const Template1: FC<Template1Props> = ({
               }
             })}
           </div>
-          <div className={`${activeAlignment} mt-[2%] w-full`}>
+          <div className={`${activeAlignment} mt-[2%] absolute left-0 right-0 px-[5%] w-full`}>
             <p
               style={{
                 color: colors.descriptionColor,

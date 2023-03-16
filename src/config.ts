@@ -1,5 +1,5 @@
-let baseUrl = 'http://localhost:5000/api/v1';
-let mediaUrl = 'http://localhost:5000';
+let baseUrl = 'https://soundwave-api-dev.falconweb.app/api/v1';
+let mediaUrl = 'https://soundwave-api-dev.falconweb.app';
 
 // Update the baseUrl and mediaUrl on every environment
 switch (window.location.host) {
