@@ -155,7 +155,7 @@ const Template3: FC<Template3Props> = ({
       }}
     >
       <div
-        className={`h-full`}
+        className={`h-full w-full`}
         style={{
           background: colors.posterColor,
           paddingLeft: BackgroundFrame ? '16px' : '5%',
@@ -204,18 +204,18 @@ const Template3: FC<Template3Props> = ({
             selectedAlbum?.label && selectedAlbum?.label.length > 15
               ? flag
                 ? BackgroundFrame
-                  ? 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
-                  : 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
+                  ? 'text-center w-full left-0 right-0 px-[5%]  relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
+                  : 'text-center w-full left-0 right-0 px-[5%] relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
                 : BackgroundFrame
-                ? 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
-                : 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
+                ? 'text-center w-full left-0 right-0 px-[5%] relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
+                : 'text-center w-full left-0 right-0 px-[5%] relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
               : flag
               ? BackgroundFrame
-                ? 'text-center relative bottom-[3%] font-[Aemstel-Regular] template_album_name'
-                : 'text-center relative bottom-[3%] font-[Aemstel-Regular] template_album_name'
+                ? 'text-center w-full left-0 right-0 px-[5%] relative bottom-[3%] font-[Aemstel-Regular] template_album_name'
+                : 'text-center w-full left-0 right-0 px-[5%] relative bottom-[3%] font-[Aemstel-Regular] template_album_name'
               : BackgroundFrame
-              ? 'text-center relative bottom-[3%]  font-[Aemstel-Regular] template_album_name'
-              : 'text-center relative bottom-[3%]  font-[Aemstel-Regular] template_album_name'
+              ? 'text-center w-full left-0 right-0 px-[5%] relative bottom-[3%]  font-[Aemstel-Regular] template_album_name'
+              : 'text-center w-full left-0 right-0 px-[5%] relative bottom-[3%]  font-[Aemstel-Regular] template_album_name'
           }
           style={{
             color: colors.songTitleColor,
