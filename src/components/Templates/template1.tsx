@@ -153,7 +153,7 @@ const Template1: FC<Template1Props> = ({
       }}
     >
       <div
-        className={`h-full`}
+        className={`h-full w-full`}
         style={{
           background: colors.posterColor,
           paddingLeft: BackgroundFrame ? '16px' : '5%',
@@ -165,8 +165,8 @@ const Template1: FC<Template1Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-bold font-[Montserrat] template_album_name tracking-tighter`
-                : `font-bold font-[Montserrat] template_album_name tracking-wide`
+                ? `font-bold font-[Montserrat] w-full px[5%] left-0 right-0 template_album_name tracking-tighter`
+                : `font-bold font-[Montserrat] w-full px[5%] left-0 right-0 template_album_name tracking-wide`
             }
             style={{
               color: colors.songTitleColor,

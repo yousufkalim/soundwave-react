@@ -145,7 +145,7 @@ const Template4: FC<Template4Props> = ({
       }}
     >
       <div
-        className={`h-full`}
+        className={`h-full w-full`}
         style={{
           background: colors.posterColor,
           paddingLeft: BackgroundFrame ? '5%' : '5%',
@@ -190,7 +190,7 @@ const Template4: FC<Template4Props> = ({
           })}
         </div>
         <div
-          className="absolute bg-black text-center px-[3px] template_album_name"
+          className="absolute bg-black text-center px-[5%] w-full left-0 right-0 template_album_name"
           style={{
             left:
               posterSize.value === '12 X 18'

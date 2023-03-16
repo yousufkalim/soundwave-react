@@ -153,7 +153,7 @@ const Template2: FC<Template2Props> = ({
       }}
     >
       <div
-        className={`h-full`}
+        className={`h-full w-full`}
         style={{
           background: colors.posterColor,
           paddingLeft: BackgroundFrame ? '16px' : '5%',
@@ -202,18 +202,18 @@ const Template2: FC<Template2Props> = ({
             selectedAlbum?.label && selectedAlbum?.label.length > 15
               ? flag
                 ? BackgroundFrame
-                  ? `break-words w-auto h-[23%] text-ellipsis-8 pr-[5%] absolute bottom-[2.7%]`
-                  : `break-words w-auto h-[23%] text-ellipsis-8 pr-[5%] absolute bottom-[1.5%]`
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.7%]`
+                  : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.5%]`
                 : BackgroundFrame
-                ? `break-words w-auto h-[23%] text-ellipsis-8 pr-[5%] absolute bottom-[2.7%]`
-                : `break-words w-auto h-[23%] text-ellipsis-8 pr-[5%] absolute bottom-[1.5%]`
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.7%]`
+                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.5%]`
               : flag
               ? BackgroundFrame
-                ? `break-words w-auto h-[23%] text-ellipsis-8 pr-[5%] absolute bottom-[3%]`
-                : `break-words w-auto h-[23%] text-ellipsis-8 pr-[5%] absolute bottom-[2%]`
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[3%]`
+                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
               : BackgroundFrame
-              ? `break-words w-auto h-[23%] text-ellipsis-8 pr-[5%] absolute bottom-[3%]`
-              : `break-words w-auto h-[23%] text-ellipsis-8 pr-[5%] absolute bottom-[2%]`
+              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[3%]`
+              : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
           }
         >
           <div className="text-center">

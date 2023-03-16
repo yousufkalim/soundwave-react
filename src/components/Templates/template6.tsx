@@ -155,7 +155,7 @@ const Template6: FC<Template6Props> = ({
       }}
     >
       <div
-        className={`bg-gradient-to-b h-full`}
+        className={`bg-gradient-to-b h-full w-full`}
         style={{
           background: colors.posterColor,
           paddingLeft: BackgroundFrame ? '5%' : '5%',
@@ -167,8 +167,8 @@ const Template6: FC<Template6Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-bold font-[blacksword] template_album_name tracking-tight`
-                : `font-[blacksword] template_album_name tracking-wider`
+                ? `font-bold font-[blacksword] w-full left-0 right-0 px-[5%] template_album_name tracking-tight`
+                : `font-[blacksword] w-full left-0 right-0 px-[5%] template_album_name tracking-wider`
             }
             style={{
               color: colors.songTitleColor,
