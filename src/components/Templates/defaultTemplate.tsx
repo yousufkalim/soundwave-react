@@ -277,7 +277,7 @@ const Template2: FC<Template2Props> = ({
                   : '10px',
             }}
           >
-            <p>
+            <p id="description">
               <i>
                 <b
                   // className="text-[10px] md:text-[12px]"
