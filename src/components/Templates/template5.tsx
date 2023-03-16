@@ -189,12 +189,12 @@ const Template5: FC<Template5Props> = ({
             }
           })}
         </div>
-        <div className={`flex flex-col break-words  text-center`}>
+        <div className={`flex flex-col break-words w-full text-center`}>
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-extrabold w-full left-0 right-0 px-[5%] font-[A Aksentuasi] tracking-tighter template_album_name`
-                : `font-extrabold w-full left-0 right-0 px-[5%] font-[A Aksentuasi] tracking-wide template_album_name`
+                ? `font-extrabold font-[A Aksentuasi] tracking-tighter template_album_name`
+                : `font-extrabold font-[A Aksentuasi] tracking-wide template_album_name`
             }
             style={{
               color: colors.songTitleColor,

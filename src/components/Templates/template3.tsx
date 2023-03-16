@@ -250,7 +250,7 @@ const Template3: FC<Template3Props> = ({
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
         </div>
         <div
-          className={` bg-transparent tracking-tighter h-[23%] ${activeAlignment} text-[5px] md:text-[6px]`}
+          className={` bg-transparent tracking-tighter h-[23%] ${activeAlignment} text-[5px] md:text-[6px] w-full`}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,

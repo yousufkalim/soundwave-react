@@ -190,7 +190,7 @@ const Template4: FC<Template4Props> = ({
           })}
         </div>
         <div
-          className="absolute bg-black text-center px-[5%] w-full left-0 right-0 template_album_name"
+          className="absolute bg-black text-center px-3 template_album_name"
           style={{
             left:
               posterSize.value === '12 X 18'
