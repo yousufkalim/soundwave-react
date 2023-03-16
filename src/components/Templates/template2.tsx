@@ -298,7 +298,7 @@ const Template2: FC<Template2Props> = ({
                 }}
                 className="text-[6px] md:text-[9px]"
               >
-                {albumDescripition.split(' ')[0]}{' '}
+                {albumDescripition.split(' ')[0]}
               </b>
             </i>
             {albumDescripition.split(' ').slice(1).join(' ')}
