@@ -259,6 +259,7 @@ const Template2: FC<Template2Props> = ({
             className={`
             ${activeAlignment} bg-transparent font-proxima-nova tracking-tight mt-4`}
             style={{
+              width: '100%',
               color: colors.descriptionColor,
               fontFamily: selectedFont,
               fontSize:
@@ -277,7 +278,7 @@ const Template2: FC<Template2Props> = ({
                   : '10px',
             }}
           >
-            <p className="pr-[4%]">
+            <p className="pr-[4%] w-full">
               <i>
                 <b
                   // className="text-[10px] md:text-[12px]"
