@@ -17,7 +17,7 @@ const Footer: FC<FooterProps> = ({ activeAlignment, setActiveAlignment, posterSi
     <div
       className={
         posterSize.value === '12 X 18'
-          ? `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute bottom-1 scale-[33%] sm:bottom-[-1rem] xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
+          ? `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute bottom-1 scale-[30%] sm:bottom-[-1rem] xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
           : posterSize.value === '16 X 20'
           ? `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-1rem] bottom-1 scale-[23%] xs:scale-[30%] msm:scale-[30%] sm:scale-[30%] md:scale-[35%] lg:scale-[40%] sxl:scale-[40%] 2xl:scale-[40%]`
           : posterSize.value === '18 X 24'
@@ -28,7 +28,7 @@ const Footer: FC<FooterProps> = ({ activeAlignment, setActiveAlignment, posterSi
           ? `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-1rem] bottom-1 scale-[15%] xs:scale-[15%] msm:scale-[15%] sm:scale-[12%] md:scale-[20%] lg:scale-[20%] sxl:scale-[20%] 2xl:scale-[22%]`
           : posterSize.value === '28 X 40'
           ? `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-1rem] bottom-1 scale-[13%] xs:scale-[15%] msm:scale-[15%] sm:scale-[15%] md:scale-[20%] lg:scale-[20%] sxl:scale-[20%] 2xl:scale-[20%]`
-          : `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-1rem] bottom-1scale-[33%]  xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
+          : `bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-1rem] bottom-1 scale-[30%]  xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
       }
       style={{
         width:
