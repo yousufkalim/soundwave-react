@@ -152,7 +152,7 @@ const Template2: FC<Template2Props> = ({
       }}
     >
       <div
-        className={`h-full`}
+        className={`h-full w-full`}
         style={{
           background: colors.posterColor,
           paddingLeft: BackgroundFrame ? '5%' : '5%',
@@ -201,18 +201,18 @@ const Template2: FC<Template2Props> = ({
             selectedAlbum?.label && selectedAlbum?.label.length > 15
               ? flag
                 ? BackgroundFrame
-                  ? `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute  bottom-[2.7%]`
-                  : `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute  bottom-[1%]`
+                  ? `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute  bottom-[2.7%]`
+                  : `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute  bottom-[1%]`
                 : BackgroundFrame
-                ? `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[2.7%]`
-                : `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[1%]`
+                ? `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[2.7%]`
+                : `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[1%]`
               : flag
               ? BackgroundFrame
-                ? `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[4%]`
-                : `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[4%]`
+                ? `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[4%]`
+                : `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[4%]`
               : BackgroundFrame
-              ? `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[3%]`
-              : `break-words h-[23%] text-ellipsis-8 w-auto pr-0.5 absolute bottom-[2.2%]`
+              ? `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[3%]`
+              : `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[2.2%]`
           }
         >
           <div className="text-left pl-2">
@@ -259,7 +259,6 @@ const Template2: FC<Template2Props> = ({
             className={`
             ${activeAlignment} bg-transparent font-proxima-nova tracking-tight mt-4`}
             style={{
-              width: '100%',
               color: colors.descriptionColor,
               fontFamily: selectedFont,
               fontSize:
@@ -278,7 +277,7 @@ const Template2: FC<Template2Props> = ({
                   : '10px',
             }}
           >
-            <p className="pr-[4%] w-full">
+            <p>
               <i>
                 <b
                   // className="text-[10px] md:text-[12px]"
