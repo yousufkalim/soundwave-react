@@ -239,7 +239,7 @@ const Template6: FC<Template6Props> = ({
           })}
         </div>
         <div
-          className={`${activeAlignment} mt-[3%] w-full overflow-hidden text-ellipsis-8 break-words template_album_name`}
+          className={`${activeAlignment} mt-[3%] absolute left-0 right-0 px-[5%] w-full overflow-hidden text-ellipsis-8 break-words template_album_name`}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,

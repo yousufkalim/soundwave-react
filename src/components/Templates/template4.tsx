@@ -331,7 +331,7 @@ const Template4: FC<Template4Props> = ({
           </div>
         </div>
         <div
-          className={`${activeAlignment} text-left pt-[9%] template_album_name overflow-hidden `}
+          className={`${activeAlignment} text-left absolute left-0 right-0 px-[5%] w-full pt-[9%] template_album_name overflow-hidden `}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,
