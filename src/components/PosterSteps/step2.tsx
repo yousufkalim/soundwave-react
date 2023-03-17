@@ -136,6 +136,7 @@ const step2: FC<Step2Props> = ({
         onChange={(e) => {
           handleCustomAlbumDescripition(e.target.value);
         }}
+        // style={{ whiteSpace: 'pre-wrap' }}
         className="w-full border border-[#919B9B] text-black rounded-lg text-[12px] outline-none p-3"
       />
     </>

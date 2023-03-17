@@ -158,7 +158,7 @@ const Template5: FC<Template5Props> = ({
           className={`h-[77%] px-1 pb-3 pt-[5%] py-3 overflow-hidden flex flex-wrap justify-around`}
           style={{
             alignItems:
-              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
                 : 'center',
           }}

@@ -158,7 +158,7 @@ const Template4: FC<Template4Props> = ({
           style={{
             backgroundColor: colors.boxColor,
             alignItems:
-              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
                 : 'center',
           }}
@@ -264,72 +264,74 @@ const Template4: FC<Template4Props> = ({
         >
           <div
             style={{
+              fontFamily: selectedFont,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
                     ? '3rem'
-                    : '3rem'
+                    : '4rem'
                   : posterSize.value === '16 X 20'
                   ? selectedAlbum?.label.length > 24
                     ? '3.2rem'
-                    : '3.2rem'
+                    : '4.2rem'
                   : posterSize.value === '18 X 24'
                   ? selectedAlbum?.label.length > 24
                     ? '3.5rem'
-                    : '3.5rem'
+                    : '4.6rem'
                   : posterSize.value === '20 X 28'
                   ? selectedAlbum?.label.length > 24
                     ? '4rem'
-                    : '4rem'
+                    : '5.4rem'
                   : posterSize.value === '24 X 36'
                   ? selectedAlbum?.label.length > 24
                     ? '5rem'
-                    : '5rem'
+                    : '7rem'
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
                   ? '5.5rem'
-                  : '5.5rem'
+                  : '7.7rem'
                 : '3rem',
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `italic font-semibold font-[Morganite] `
-                : `italic font-semibold font-[Morganite]`
+                ? `italic md:font-semibold font-medium font-[Morganite] `
+                : `italic md:font-semibold font-medium font-[Morganite]`
             }
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
           </div>
           <div
             style={{
+              fontFamily: selectedFont,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
                     ? '1.7em'
-                    : '1.7em'
+                    : '1.1em'
                   : posterSize.value === '16 X 20'
                   ? selectedAlbum?.label.length > 24
                     ? '2em'
-                    : '2em'
+                    : '1.3em'
                   : posterSize.value === '18 X 24'
                   ? selectedAlbum?.label.length > 24
                     ? '2.3em'
-                    : '2.3em'
+                    : '1.6em'
                   : posterSize.value === '20 X 28'
                   ? selectedAlbum?.label.length > 24
                     ? '2.6em'
-                    : '2.6em'
+                    : '1.8em'
                   : posterSize.value === '24 X 36'
                   ? selectedAlbum?.label.length > 24
                     ? '3.5em'
-                    : '3.5em'
+                    : '2.3em'
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
                   ? '4em'
-                  : '4em'
+                  : '2.6rem'
                 : '.8em',
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? 'font-bold font-[Morganite] mt-[-1rem] text-center'
-                : 'font-bold font-[Morganite] mt-[-1rem] text-center'
+                ? 'md:font-bold font-medium font-[Morganite] mt-[-1rem] text-center'
+                : 'md:font-bold font-medium [Morganite] mt-[-1rem] text-center'
             }
           >
             {selectedAlbum?.singerName ? selectedAlbum.singerName : 'SINGER NAME'}
@@ -340,7 +342,6 @@ const Template4: FC<Template4Props> = ({
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,
-
             fontSize:
               posterSize.value === '12 X 18'
                 ? '14px'

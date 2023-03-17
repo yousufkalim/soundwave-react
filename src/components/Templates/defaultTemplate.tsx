@@ -165,7 +165,7 @@ const Template2: FC<Template2Props> = ({
           style={{
             background: colors.boxColor,
             alignItems:
-              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
                 : 'center',
           }}
@@ -284,7 +284,7 @@ const Template2: FC<Template2Props> = ({
                   : '10px',
             }}
           >
-            <p id="description">
+            <p id="description" style={{ whiteSpace: 'pre-wrap' }}>
               <i>
                 {/* <b
                   // className="text-[10px] md:text-[12px]"

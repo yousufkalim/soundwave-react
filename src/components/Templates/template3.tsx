@@ -168,7 +168,7 @@ const Template3: FC<Template3Props> = ({
           style={{
             background: colors?.boxColor,
             alignItems:
-              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
                 : 'center',
           }}
