@@ -45,7 +45,7 @@ const Template2: FC<Template2Props> = ({
       descriptionColor: 'rgba(0,0,0,1)',
     });
   }, []);
-
+  console.log(dataSets, 'dataSets');
   // const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
   // const descriptionColor = colors.descriptionColor.includes('gradient')
   //   ? colors.descriptionColor
@@ -162,7 +162,13 @@ const Template2: FC<Template2Props> = ({
       >
         <div
           className={`h-[77%] px-1 py-[5%] overflow-hidden flex flex-wrap justify-around items-baseline`}
-          style={{ background: colors.boxColor }}
+          style={{
+            background: colors.boxColor,
+            alignItems:
+              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? 'baseline'
+                : 'center',
+          }}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {
@@ -261,6 +267,7 @@ const Template2: FC<Template2Props> = ({
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
+              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.025em',
               fontSize:
                 posterSize.value === '12 X 18'
                   ? '14px'
@@ -279,7 +286,7 @@ const Template2: FC<Template2Props> = ({
           >
             <p id="description">
               <i>
-                <b
+                {/* <b
                   // className="text-[10px] md:text-[12px]"
                   style={{
                     fontSize:
@@ -299,9 +306,9 @@ const Template2: FC<Template2Props> = ({
                   }}
                 >
                   {albumDescripition.split(' ')[0]}{' '}
-                </b>
+                </b> */}
               </i>
-              {albumDescripition.split(' ').slice(1).join(' ')}
+              {albumDescripition}
             </p>
           </div>
         </div>

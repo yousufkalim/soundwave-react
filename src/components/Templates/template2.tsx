@@ -156,14 +156,20 @@ const Template2: FC<Template2Props> = ({
         className={`h-full w-full`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? '16px' : '5%',
-          paddingRight: BackgroundFrame ? '16px' : '5%',
-          paddingTop: BackgroundFrame ? '16px' : '6%',
+          paddingLeft: BackgroundFrame ? '5%' : '5%',
+          paddingRight: BackgroundFrame ? '5%' : '5%',
+          paddingTop: BackgroundFrame ? '6%' : '6%',
         }}
       >
         <div
-          className={`h-[77%] px-1 pb-3 pt-[5%] overflow-hidden flex flex-wrap justify-around items-baseline`}
-          style={{ background: colors.boxColor }}
+          className={`h-[77%] px-1 pb-3 pt-[5%] overflow-hidden flex flex-wrap justify-around`}
+          style={{
+            background: colors.boxColor,
+            alignItems:
+              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? 'baseline'
+                : 'center',
+          }}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {
@@ -205,8 +211,8 @@ const Template2: FC<Template2Props> = ({
                   ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.7%]`
                   : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.5%]`
                 : BackgroundFrame
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.7%]`
-                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.5%]`
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1%]`
+                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.5%]`
               : flag
               ? BackgroundFrame
                 ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[3%]`
@@ -225,30 +231,30 @@ const Template2: FC<Template2Props> = ({
               }
               style={{
                 color: colors.songTitleColor,
-                fontFamily: selectedFont,
+                fontFamily: selectedFont || 'proxima-nova',
                 fontSize: selectedAlbum?.label
                   ? posterSize.value === '12 X 18'
                     ? selectedAlbum?.label.length > 15
-                      ? '2.1rem'
+                      ? '1.6rem'
                       : '3rem'
                     : posterSize.value === '16 X 20'
                     ? selectedAlbum?.label.length > 15
-                      ? '2.6rem'
+                      ? '2.1rem'
                       : '4rem'
                     : posterSize.value === '18 X 24'
                     ? selectedAlbum?.label.length > 15
-                      ? '3rem'
+                      ? '2.4rem'
                       : '4.2rem'
                     : posterSize.value === '20 X 28'
                     ? selectedAlbum?.label.length > 15
-                      ? '3.5rem'
+                      ? '2.7rem'
                       : '5rem'
                     : posterSize.value === '24 X 36'
                     ? selectedAlbum?.label.length > 15
-                      ? '4.5rem'
+                      ? '3.2rem'
                       : '6rem'
                     : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
-                    ? '4.8rem'
+                    ? '3.7rem'
                     : '7rem'
                   : '3rem',
               }}
@@ -261,7 +267,8 @@ const Template2: FC<Template2Props> = ({
             `}
             style={{
               color: colors.descriptionColor,
-              fontFamily: selectedFont,
+              fontFamily: selectedFont || 'Montserrat',
+              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.025em',
               fontSize:
                 posterSize.value === '12 X 18'
                   ? '14px'
@@ -279,7 +286,7 @@ const Template2: FC<Template2Props> = ({
             }}
           >
             <i>
-              <b
+              {/* <b
                 style={{
                   fontSize:
                     posterSize.value === '12 X 18'
@@ -299,9 +306,9 @@ const Template2: FC<Template2Props> = ({
                 className="text-[6px] md:text-[9px]"
               >
                 {albumDescripition.split(' ')[0]}{' '}
-              </b>
+              </b> */}
             </i>
-            {albumDescripition.split(' ').slice(1).join(' ')}
+            {albumDescripition}
           </div>
         </div>
       </div>

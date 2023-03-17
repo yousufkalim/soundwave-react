@@ -154,8 +154,14 @@ const Template4: FC<Template4Props> = ({
         }}
       >
         <div
-          className={`h-[80%] px-1 pb-3 pt-[5%] border-2 border-white overflow-hidden flex flex-wrap justify-around items-baseline`}
-          style={{ backgroundColor: colors.boxColor }}
+          className={`h-[80%] px-1 pb-3 pt-[5%] border-2 border-white overflow-hidden flex flex-wrap justify-around`}
+          style={{
+            backgroundColor: colors.boxColor,
+            alignItems:
+              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? 'baseline'
+                : 'center',
+          }}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {
@@ -228,32 +234,31 @@ const Template4: FC<Template4Props> = ({
             //     : BackgroundFrame
             //     ? '17%'
             //     : '16%',
-            fontFamily: selectedFont,
             bottom:
               posterSize.value === '12 X 18'
                 ? BackgroundFrame
-                  ? '15.5%'
-                  : '15%'
+                  ? '14.8%'
+                  : '14.2%'
                 : posterSize.value === '16 X 20'
                 ? BackgroundFrame
-                  ? '15.5%'
-                  : '15%'
+                  ? '14.5%'
+                  : '14%'
                 : posterSize.value === '18 X 24'
                 ? BackgroundFrame
-                  ? '15.5%'
-                  : '15%'
+                  ? '14.7%'
+                  : '14.2%'
                 : posterSize.value === '20 X 28'
                 ? BackgroundFrame
-                  ? '15.5%'
-                  : '15%'
+                  ? '14.8%'
+                  : '14.3%'
                 : posterSize.value === '24 X 36'
                 ? BackgroundFrame
-                  ? '15.8%'
-                  : '15.3%'
+                  ? '14.6%'
+                  : '14%'
                 : posterSize.value === '28 X 40'
                 ? BackgroundFrame
-                  ? '15.3%'
-                  : '14.5%'
+                  ? '14.5%'
+                  : '13.9%'
                 : '16%',
           }}
         >
@@ -298,27 +303,27 @@ const Template4: FC<Template4Props> = ({
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
-                    ? '1em'
-                    : '1em'
+                    ? '1.7em'
+                    : '1.7em'
                   : posterSize.value === '16 X 20'
-                  ? selectedAlbum?.label.length > 24
-                    ? '1.3em'
-                    : '1.3em'
-                  : posterSize.value === '18 X 24'
-                  ? selectedAlbum?.label.length > 24
-                    ? '1.5em'
-                    : '1.5em'
-                  : posterSize.value === '20 X 28'
                   ? selectedAlbum?.label.length > 24
                     ? '2em'
                     : '2em'
-                  : posterSize.value === '24 X 36'
+                  : posterSize.value === '18 X 24'
+                  ? selectedAlbum?.label.length > 24
+                    ? '2.3em'
+                    : '2.3em'
+                  : posterSize.value === '20 X 28'
                   ? selectedAlbum?.label.length > 24
                     ? '2.6em'
                     : '2.6em'
+                  : posterSize.value === '24 X 36'
+                  ? selectedAlbum?.label.length > 24
+                    ? '3.5em'
+                    : '3.5em'
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
-                  ? '3em'
-                  : '3em'
+                  ? '4em'
+                  : '4em'
                 : '.8em',
             }}
             className={
@@ -335,6 +340,7 @@ const Template4: FC<Template4Props> = ({
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,
+
             fontSize:
               posterSize.value === '12 X 18'
                 ? '14px'
@@ -351,9 +357,14 @@ const Template4: FC<Template4Props> = ({
                 : '10px',
           }}
         >
-          <p className={`bg-transparent text-ellipsis-8 tracking-tighter`}>
+          <p
+            style={{
+              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
+            }}
+            className={`bg-transparent text-ellipsis-8 tracking-tighter`}
+          >
             <i>
-              <b
+              {/* <b
                 style={{
                   fontSize:
                     posterSize.value === '12 X 18'
@@ -373,9 +384,9 @@ const Template4: FC<Template4Props> = ({
                 className="text-[6px] md:text-[9px]"
               >
                 {albumDescripition.split(' ')[0]}{' '}
-              </b>
+              </b> */}
             </i>
-            {albumDescripition.split(' ').slice(1).join(' ')}
+            {albumDescripition}
           </p>
         </div>
       </div>

@@ -158,14 +158,20 @@ const Template3: FC<Template3Props> = ({
         className={`h-full w-full`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? '16px' : '5%',
-          paddingRight: BackgroundFrame ? '16px' : '5%',
-          paddingTop: BackgroundFrame ? '16px' : '6%',
+          paddingLeft: BackgroundFrame ? '5%' : '5%',
+          paddingRight: BackgroundFrame ? '5%' : '5%',
+          paddingTop: BackgroundFrame ? '6%' : '6%',
         }}
       >
         <div
-          className={`h-[77%] pb-3 pt-[5%] py-3 overflow-hidden flex flex-wrap justify-around items-baseline`}
-          style={{ background: colors?.boxColor }}
+          className={`h-[77%] pb-3 pt-[5%] py-3 overflow-hidden flex flex-wrap justify-around`}
+          style={{
+            background: colors?.boxColor,
+            alignItems:
+              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? 'baseline'
+                : 'center',
+          }}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {
@@ -207,8 +213,8 @@ const Template3: FC<Template3Props> = ({
                   ? 'text-center  relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
                   : 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
                 : BackgroundFrame
-                ? 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
-                : 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
+                ? 'text-center relative bottom-[1.8%] font-[Aemstel-Regular] template_album_name tracking-tighter'
+                : 'text-center relative bottom-[1.7%] font-[Aemstel-Regular] template_album_name tracking-tighter'
               : flag
               ? BackgroundFrame
                 ? 'text-center relative bottom-[3%] font-[Aemstel-Regular] template_album_name'
@@ -223,26 +229,26 @@ const Template3: FC<Template3Props> = ({
             fontSize: selectedAlbum?.label
               ? posterSize.value === '12 X 18'
                 ? selectedAlbum?.label.length > 15
-                  ? '2.1rem'
+                  ? '1.6rem'
                   : '3rem'
                 : posterSize.value === '16 X 20'
                 ? selectedAlbum?.label.length > 15
-                  ? '2.6rem'
+                  ? '2.1rem'
                   : '4rem'
                 : posterSize.value === '18 X 24'
                 ? selectedAlbum?.label.length > 15
-                  ? '3rem'
+                  ? '2.4rem'
                   : '4.2rem'
                 : posterSize.value === '20 X 28'
                 ? selectedAlbum?.label.length > 15
-                  ? '3.5rem'
+                  ? '2.6rem'
                   : '5rem'
                 : posterSize.value === '24 X 36'
                 ? selectedAlbum?.label.length > 15
-                  ? '4.5rem'
+                  ? '3.2rem'
                   : '6rem'
                 : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
-                ? '4.8rem'
+                ? '3.7rem'
                 : '7rem'
               : '3rem',
           }}
@@ -250,10 +256,11 @@ const Template3: FC<Template3Props> = ({
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
         </div>
         <div
-          className={` bg-transparent tracking-tighter h-[23%] ${activeAlignment} text-[5px] md:text-[6px] relative left-0 right-0 px-[5%] w-full`}
+          className={` bg-transparent tracking-tighter h-[23%] ${activeAlignment} text-[5px] md:text-[6px] relative left-0 right-0 w-full`}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,
+            letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
             fontSize:
               posterSize.value === '12 X 18'
                 ? '14px'
@@ -272,7 +279,7 @@ const Template3: FC<Template3Props> = ({
         >
           <p className={`mb-[3.5%]`}>
             <i>
-              <b
+              {/* <b
                 style={{
                   fontSize:
                     posterSize.value === '12 X 18'
@@ -292,26 +299,27 @@ const Template3: FC<Template3Props> = ({
                 className="text-[6px] md:text-[9px]"
               >
                 {albumDescripition.split(' ')[0]}{' '}
-              </b>
+              </b> */}
             </i>
-            {albumDescripition.split(' ').slice(1).join(' ')}
+            {albumDescripition}
           </p>
           <div className="text-center">
             <span
               style={{
+                fontFamily: selectedFont,
                 fontSize:
                   posterSize.value === '12 X 18'
-                    ? '0.675rem'
-                    : posterSize.value === '16 X 20'
                     ? '1rem'
+                    : posterSize.value === '16 X 20'
+                    ? '1.3rem'
                     : posterSize.value === '18 X 24'
-                    ? '1.2rem'
+                    ? '1.6rem'
                     : posterSize.value === '20 X 28'
-                    ? '1.4rem'
-                    : posterSize.value === '24 X 36'
                     ? '1.8rem'
+                    : posterSize.value === '24 X 36'
+                    ? '2.3rem'
                     : posterSize.value === '28 X 40'
-                    ? '2rem'
+                    ? '2.6rem'
                     : '3rem',
               }}
               className="border p-1 rounded-lg font-bold"

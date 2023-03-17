@@ -15,7 +15,26 @@
   font-family: 'Aemstel-Regular';
   src: url('../src/assets/fonts/Aemstel-Regular.otf');
 }
-
+@font-face {
+  font-family: 'Roustel';
+  src: url('../src/assets/fonts/Roustel.ttf');
+}
+@font-face {
+  font-family: 'AspectRatio';
+  src: url('../src/assets/fonts/AspectRatio.ttf');
+}
+@font-face {
+  font-family: 'BronovaBold';
+  src: url('../src/assets/fonts/BronovaBold.ttf');
+}
+@font-face {
+  font-family: 'EdensorFree';
+  src: url('../src/assets/fonts/Edensor-Free.otf');
+}
+@font-face {
+  font-family: 'FoxliteScript';
+  src: url('../src/assets/fonts/FoxliteScript.ttf');
+}
 @font-face {
   font-family: 'blowbrush';
   src: url('../src/assets/fonts/blowbrush.otf');
@@ -34,6 +53,10 @@
 @font-face {
   font-family: 'julee';
   src: url('../src/assets/fonts/Julee-Regular.ttf');
+}
+@font-face {
+  font-family: 'aAksentuasi';
+  src: url('../src/assets/fonts/aAksentuasi.otf');
 }
 
 * {

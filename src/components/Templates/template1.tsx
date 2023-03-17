@@ -156,9 +156,9 @@ const Template1: FC<Template1Props> = ({
         className={`h-full w-full`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? '16px' : '5%',
-          paddingRight: BackgroundFrame ? '16px' : '5%',
-          paddingTop: BackgroundFrame ? '16px' : '6%',
+          paddingLeft: BackgroundFrame ? '5%' : '5%',
+          paddingRight: BackgroundFrame ? '5%' : '5%',
+          paddingTop: BackgroundFrame ? '6%' : '6%',
         }}
       >
         <div className="flex items-center justify-center flex-col pb-[3%]">
@@ -174,27 +174,27 @@ const Template1: FC<Template1Props> = ({
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
-                    ? '2.1rem'
-                    : '3rem'
+                    ? '1.6rem'
+                    : '2.8rem'
                   : posterSize.value === '16 X 20'
                   ? selectedAlbum?.label.length > 24
-                    ? '2.6rem'
-                    : '4rem'
+                    ? '2.1rem'
+                    : '3.2rem'
                   : posterSize.value === '18 X 24'
                   ? selectedAlbum?.label.length > 24
-                    ? '3rem'
-                    : '4.2rem'
+                    ? '2.4rem'
+                    : '3.5rem'
                   : posterSize.value === '20 X 28'
                   ? selectedAlbum?.label.length > 24
-                    ? '3.5rem'
-                    : '5rem'
+                    ? '2.7rem'
+                    : '4rem'
                   : posterSize.value === '24 X 36'
                   ? selectedAlbum?.label.length > 24
-                    ? '4.5rem'
-                    : '6rem'
+                    ? '3.2rem'
+                    : '5rem'
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
-                  ? '4.8rem'
-                  : '7rem'
+                  ? '3.7rem'
+                  : '5.5rem'
                 : '3rem',
             }}
           >
@@ -241,8 +241,14 @@ const Template1: FC<Template1Props> = ({
         </div>
         <div className="h-full overflow-hidden">
           <div
-            className={`h-[75%] px-1 py-2 overflow-hidden flex flex-wrap justify-around items-baseline`}
-            style={{ background: colors?.boxColor }}
+            className={`h-[75%] px-1 py-2 overflow-hidden flex flex-wrap justify-around`}
+            style={{
+              background: colors?.boxColor,
+              alignItems:
+                dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                  ? 'baseline'
+                  : 'center',
+            }}
           >
             {dataSets.map((item, index) => {
               if (index < 30) {
@@ -281,6 +287,7 @@ const Template1: FC<Template1Props> = ({
               style={{
                 color: colors.descriptionColor,
                 fontFamily: selectedFont,
+                letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
                 fontSize:
                   posterSize.value === '12 X 18'
                     ? '14px'
@@ -299,7 +306,7 @@ const Template1: FC<Template1Props> = ({
               className={`template_album_name bg-transparent tracking-tighter font-[Montserrat] text-ellipsis-8`}
             >
               <i>
-                <b
+                {/* <b
                   style={{
                     fontSize:
                       posterSize.value === '12 X 18'
@@ -319,9 +326,9 @@ const Template1: FC<Template1Props> = ({
                   className="text-[13px] md:text-[15px]"
                 >
                   {albumDescripition.split(' ')[0]}{' '}
-                </b>
+                </b> */}
               </i>
-              {albumDescripition.split(' ').slice(1).join(' ')}
+              {albumDescripition}
             </p>
           </div>
         </div>

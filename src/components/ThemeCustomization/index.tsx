@@ -89,7 +89,7 @@ const Theme: FC<ThemeProps> = ({
   };
   useEffect(() => {
     if (selectedFont) {
-      setLoading(true);
+      // setLoading(true);
       WebFont.load({
         google: {
           families: [selectedFont],
