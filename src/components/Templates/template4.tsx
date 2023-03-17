@@ -264,6 +264,7 @@ const Template4: FC<Template4Props> = ({
         >
           <div
             style={{
+              fontFamily: selectedFont,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
@@ -300,6 +301,7 @@ const Template4: FC<Template4Props> = ({
           </div>
           <div
             style={{
+              fontFamily: selectedFont,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
@@ -340,7 +342,6 @@ const Template4: FC<Template4Props> = ({
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,
-
             fontSize:
               posterSize.value === '12 X 18'
                 ? '14px'

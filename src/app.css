@@ -105,8 +105,15 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+.custom_scroll {
+  padding-bottom: 2%;
+}
+.custom_scroll::-webkit-scrollbar {
+  height: 4px !important;
+}
+.custom_scroll::-webkit-scrollbar-thumb {
+  background: rgba(1, 1, 1, 0.4);
+  border-radius: 10px;
 }
 .template_album_name {
   word-break: break-word;
