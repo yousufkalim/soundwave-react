@@ -258,6 +258,7 @@ const Template3: FC<Template3Props> = ({
         <div
           className={` bg-transparent tracking-tighter h-[23%] ${activeAlignment} text-[5px] md:text-[6px] relative left-0 right-0 w-full`}
           style={{
+            whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
             fontFamily: selectedFont,
             letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',

@@ -285,6 +285,7 @@ const Template1: FC<Template1Props> = ({
           <div className={`${activeAlignment} mt-[2%] absolute left-0 right-0 px-[5%] w-full`}>
             <p
               style={{
+                whiteSpace: 'pre-wrap',
                 color: colors.descriptionColor,
                 fontFamily: selectedFont,
                 letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',

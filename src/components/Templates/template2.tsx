@@ -266,6 +266,7 @@ const Template2: FC<Template2Props> = ({
             className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%] mt-[5%] tracking-tight font-proxima-nova template_album_name 
             `}
             style={{
+              whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,
               fontFamily: selectedFont || 'Montserrat',
               letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.025em',

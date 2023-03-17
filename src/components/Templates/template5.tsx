@@ -271,6 +271,7 @@ const Template5: FC<Template5Props> = ({
           <p
             className={`${activeAlignment} relative text-[5px] md:text-[6px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words mt-[1.8%] font-[Montserrat]`}
             style={{
+              whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,
               fontFamily: selectedFont,
               letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
