@@ -360,6 +360,7 @@ const Template4: FC<Template4Props> = ({
         >
           <p
             style={{
+              whiteSpace: 'pre-wrap',
               letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
             }}
             className={`bg-transparent text-ellipsis-8 tracking-tighter`}

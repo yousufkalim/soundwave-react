@@ -267,6 +267,7 @@ const Template6: FC<Template6Props> = ({
         >
           <p
             style={{
+              whiteSpace: 'pre-wrap',
               fontFamily: selectedFont,
               letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
             }}
