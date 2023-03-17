@@ -207,7 +207,7 @@ const Template6: FC<Template6Props> = ({
           className={`h-[77%] px-1 py-2 overflow-hidden flex flex-wrap justify-around`}
           style={{
             alignItems:
-              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
                 : 'center',
           }}

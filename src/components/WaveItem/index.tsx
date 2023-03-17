@@ -47,8 +47,8 @@ const Waveroom: FC<WaveroomProps> = ({
         <div
           className={
             songsAmount <= 12
-              ? 'flex items-center justify-between mt-2'
-              : 'flex items-center justify-between mt-2'
+              ? 'flex items-baseline justify-between mt-2'
+              : 'flex items-basleline justify-between mt-2'
           }
         >
           <span

@@ -94,7 +94,7 @@ const PosterSize: FC<PosterSizeProps> = ({
     },
   ];
   return (
-    <div className="flex items-center justify-start gap-2 w-[45rem] font-[julee]">
+    <div className="flex items-center justify-start gap-2 w-[45rem] font-[Montserrat]">
       {FrameArray.map((item, index) => (
         <div
           ref={(c) => (itemRef.current[index] = c)}
