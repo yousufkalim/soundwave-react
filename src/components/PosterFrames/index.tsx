@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import Blackframe from '../../assets/woodenFrame/woodenBlack.svg';
-import Neturalframe from '../../assets/woodenFrame/woodenNetural.svg';
-import Whiteframe from '../../assets/woodenFrame/woodenWhite.svg';
+import Blackframe from '../../assets/woodenFrame/Blackframe.svg';
+import Neturalframe from '../../assets/woodenFrame/Neturalframe.svg';
+import Whiteframe from '../../assets/woodenFrame/Whiteframe.svg';
 // import AluminiumMetal from '../../assets/woodenFrame/aluminiumMetal.svg';
 import woodenFrameIcon from '../../assets/woodenFrameIcon.svg';
 import metalFrameIcon from '../../assets/metalFrameIcon.svg';

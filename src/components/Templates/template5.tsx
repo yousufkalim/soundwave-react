@@ -155,7 +155,13 @@ const Template5: FC<Template5Props> = ({
         }}
       >
         <div
-          className={`h-[77%] px-1 pb-3 pt-[5%] py-3 overflow-hidden flex flex-wrap justify-around items-baseline`}
+          className={`h-[77%] px-1 pb-3 pt-[5%] py-3 overflow-hidden flex flex-wrap justify-around`}
+          style={{
+            alignItems:
+              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? 'baseline'
+                : 'center',
+          }}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {
@@ -193,36 +199,36 @@ const Template5: FC<Template5Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-extrabold font-[A Aksentuasi] tracking-tighter template_album_name`
-                : `font-extrabold font-[A Aksentuasi] tracking-wide template_album_name`
+                ? `font-extrabold font-[aAksentuasi] tracking-tighter template_album_name`
+                : `font-extrabold font-[aAksentuasi] tracking-wide template_album_name`
             }
             style={{
               color: colors.songTitleColor,
               fontFamily: selectedFont,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
-                  ? selectedAlbum?.label.length > 24
-                    ? '1.8rem'
-                    : '2.5rem'
+                  ? selectedAlbum?.label.length > 15
+                    ? '1.6rem'
+                    : '3rem'
                   : posterSize.value === '16 X 20'
-                  ? selectedAlbum?.label.length > 24
-                    ? '2.5rem'
-                    : '3.2rem'
-                  : posterSize.value === '18 X 24'
-                  ? selectedAlbum?.label.length > 24
-                    ? '2.8rem'
-                    : '3.5rem'
-                  : posterSize.value === '20 X 28'
-                  ? selectedAlbum?.label.length > 24
-                    ? '3.2rem'
+                  ? selectedAlbum?.label.length > 15
+                    ? '2.1rem'
                     : '4rem'
-                  : posterSize.value === '24 X 36'
-                  ? selectedAlbum?.label.length > 24
-                    ? '3.8rem'
+                  : posterSize.value === '18 X 24'
+                  ? selectedAlbum?.label.length > 15
+                    ? '2.4rem'
+                    : '4.2rem'
+                  : posterSize.value === '20 X 28'
+                  ? selectedAlbum?.label.length > 15
+                    ? '2.6rem'
                     : '5rem'
-                  : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
-                  ? '4.5rem'
-                  : '5.5rem'
+                  : posterSize.value === '24 X 36'
+                  ? selectedAlbum?.label.length > 15
+                    ? '3.1rem'
+                    : '6rem'
+                  : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
+                  ? '3.7rem'
+                  : '7rem'
                 : '3rem',
             }}
           >
@@ -267,6 +273,7 @@ const Template5: FC<Template5Props> = ({
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
+              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
               fontSize:
                 posterSize.value === '12 X 18'
                   ? '14px'
@@ -284,7 +291,7 @@ const Template5: FC<Template5Props> = ({
             }}
           >
             <i>
-              <b
+              {/* <b
                 style={{
                   fontSize:
                     posterSize.value === '12 X 18'
@@ -304,9 +311,9 @@ const Template5: FC<Template5Props> = ({
                 className="text-[6px] md:text-[9px]"
               >
                 {albumDescripition.split(' ')[0]}{' '}
-              </b>
+              </b> */}
             </i>
-            {albumDescripition.split(' ').slice(1).join(' ')}
+            {albumDescripition}
           </p>
         </div>
       </div>

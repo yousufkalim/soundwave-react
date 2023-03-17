@@ -176,26 +176,26 @@ const Template6: FC<Template6Props> = ({
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
-                    ? '2.8rem'
+                    ? '2.1rem'
                     : '2.8rem'
                   : posterSize.value === '16 X 20'
                   ? selectedAlbum?.label.length > 24
-                    ? '3.2rem'
+                    ? '2.8rem'
                     : '3.2rem'
                   : posterSize.value === '18 X 24'
                   ? selectedAlbum?.label.length > 24
-                    ? '3.5rem'
+                    ? '3.1rem'
                     : '3.5rem'
                   : posterSize.value === '20 X 28'
                   ? selectedAlbum?.label.length > 24
-                    ? '4rem'
+                    ? '3.4rem'
                     : '4rem'
                   : posterSize.value === '24 X 36'
                   ? selectedAlbum?.label.length > 24
-                    ? '5rem'
+                    ? '4.1rem'
                     : '5rem'
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
-                  ? '5.5rem'
+                  ? '4.8rem'
                   : '5.5rem'
                 : '3rem',
             }}
@@ -204,7 +204,13 @@ const Template6: FC<Template6Props> = ({
           </span>
         </div>
         <div
-          className={`h-[77%] px-1 py-2 overflow-hidden flex flex-wrap justify-between items-baseline`}
+          className={`h-[77%] px-1 py-2 overflow-hidden flex flex-wrap justify-around`}
+          style={{
+            alignItems:
+              dataSets.length > 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? 'baseline'
+                : 'center',
+          }}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {
@@ -242,7 +248,7 @@ const Template6: FC<Template6Props> = ({
           className={`${activeAlignment} mt-[3%] absolute left-0 right-0 px-[5%] w-full overflow-hidden text-ellipsis-8 break-words template_album_name`}
           style={{
             color: colors.descriptionColor,
-            fontFamily: selectedFont,
+
             fontSize:
               posterSize.value === '12 X 18'
                 ? '14px'
@@ -259,9 +265,15 @@ const Template6: FC<Template6Props> = ({
                 : '10px',
           }}
         >
-          <p className={`bg-transparent tracking-tighter font-[Montserrat]`}>
+          <p
+            style={{
+              fontFamily: selectedFont,
+              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
+            }}
+            className={`bg-transparent tracking-tighter font-[Montserrat]`}
+          >
             <i>
-              <b
+              {/* <b
                 style={{
                   fontSize:
                     posterSize.value === '12 X 18'
@@ -281,9 +293,9 @@ const Template6: FC<Template6Props> = ({
                 className="text-[6px] md:text-[9px]"
               >
                 {albumDescripition.split(' ')[0]}{' '}
-              </b>
+              </b> */}
             </i>
-            {albumDescripition.split(' ').slice(1).join(' ')}
+            {albumDescripition}
           </p>
         </div>
       </div>

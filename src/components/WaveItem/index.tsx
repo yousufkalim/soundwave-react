@@ -93,7 +93,7 @@ const Waveroom: FC<WaveroomProps> = ({
           `}
             style={{
               color: colors.soundWaveNameColor,
-              fontFamily: selectedFont,
+              // fontFamily: selectedFont,
               fontSize:
                 posterRatio === '1218'
                   ? songsAmount > 18
