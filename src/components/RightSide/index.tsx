@@ -182,7 +182,6 @@ const RightSide: FC<RightSideProps> = ({
       }
       return undefined;
     });
-
     const posterFramePriceResult = PricingArray.posterTypePricing.find((item) => {
       const currentUnit = posterSize.unit === 'Centimeter' ? item.centimeter : item.inch;
 
@@ -192,23 +191,20 @@ const RightSide: FC<RightSideProps> = ({
       return undefined;
     });
     const totalPrice =
-      (posterSizePriceResult?.price ?? 0) +
-      (posterType === 'Black Wooden Frame' ||
+      posterType === 'Black Wooden Frame' ||
       posterType === 'Nuteral Wooden Frame' ||
       posterType === 'White Wooden Frame' ||
       posterType === 'Black Metal Frame'
         ? posterFramePriceResult?.withFramePrice ?? 0
         : posterType === 'No Frame'
-        ? 0
+        ? posterSizePriceResult?.price ?? 0
         : posterType === 'Thin Canvas'
         ? posterFramePriceResult?.slimCanvasPrice ?? 0
         : posterType === 'Thick Canvas'
         ? posterFramePriceResult?.thickCanvasPrice ?? 0
-        : 0);
-
+        : posterSizePriceResult?.price ?? 0;
     setPosterPrice(+totalPrice.toFixed(2));
   };
-
   useEffect(() => {
     handleCalulatePosterPrice();
   }, [posterSize, posterType]);
@@ -576,3 +572,6 @@ const RightSide: FC<RightSideProps> = ({
 };
 
 export default RightSide;
+function posterSizePriceResult(posterSizePriceResult: any, arg1: string) {
+  throw new Error('Function not implemented.');
+}
