@@ -165,8 +165,8 @@ const Template1: FC<Template1Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-bold font-[Montserrat] template_album_name tracking-tighter`
-                : `font-bold font-[Montserrat] template_album_name tracking-wide`
+                ? `font-bold font-[Proxima-italic] template_album_name tracking-tighter`
+                : `font-bold font-[Proxima-italic] template_album_name tracking-wide`
             }
             style={{
               color: colors.songTitleColor,
@@ -203,8 +203,8 @@ const Template1: FC<Template1Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `text-sm font-[Montserrat] template_album_name`
-                : `text-sm font-[Montserrat] template_album_name`
+                ? `text-sm font-[Proxima-italic] template_album_name`
+                : `text-sm font-[Proxima-italic] template_album_name`
             }
             style={{
               color: colors.songTitleColor,
@@ -287,7 +287,7 @@ const Template1: FC<Template1Props> = ({
               style={{
                 whiteSpace: 'pre-wrap',
                 color: colors.descriptionColor,
-                fontFamily: selectedFont,
+                fontFamily: selectedFont || 'Proxima-italic',
                 letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
                 fontSize:
                   posterSize.value === '12 X 18'

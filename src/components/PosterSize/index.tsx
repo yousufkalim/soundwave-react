@@ -113,7 +113,7 @@ const PosterSize: FC<PosterSizeProps> = ({
           <span>
             {measurement === 'inch' ? `${item.frameSizeInch}"` : `${item.frameSizeCentimeter}cm`}
           </span>
-          <span>{measurement === 'inch' ? 'Inch' : 'Centimeter'}</span>
+          <span>{measurement === 'inch' ? 'in' : 'cm'}</span>
         </div>
       ))}
     </div>

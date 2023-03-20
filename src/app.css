@@ -10,6 +10,10 @@
   font-family: 'Aemstel-LineInside';
   src: url('../src/assets/fonts/Aemstel-LineInside.otf');
 }
+@font-face {
+  font-family: 'Proxima-italic';
+  src: url('../src/assets/fonts/Proxima-nova-italic.otf');
+}
 
 @font-face {
   font-family: 'Aemstel-Regular';
@@ -109,7 +113,7 @@ body::-webkit-scrollbar {
   padding-bottom: 2%;
 }
 .custom_scroll::-webkit-scrollbar {
-  height: 4px !important;
+  height: 6px !important;
 }
 .custom_scroll::-webkit-scrollbar-thumb {
   background: rgba(1, 1, 1, 0.4);
@@ -118,7 +122,9 @@ body::-webkit-scrollbar {
 .template_album_name {
   word-break: break-word;
 }
-
+.cursor_grabbing {
+  cursor: grabbing;
+}
 .text-ellipsis-8 {
   text-overflow: ellipsis;
   display: -webkit-box;

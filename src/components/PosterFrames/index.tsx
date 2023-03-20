@@ -102,7 +102,7 @@ const PosterFrame: FC<PosterFrameProps> = ({
             }
           >
             <img src={Neturalframe} />
-            <span className="text-center text-[12px]">Netural</span>
+            <span className="text-center text-[12px]">Neutral</span>
           </div>
           <div
             onClick={() => {
