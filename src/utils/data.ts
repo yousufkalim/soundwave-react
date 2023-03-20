@@ -1,7 +1,7 @@
 import { pricingArrayProps } from '../types/index';
 
 export const fontFamilyArray = [
-  'proxima-nova',
+  'Proxima-italic',
   'Aemstel-Regular',
   'Montserrat',
   'Morganite',
