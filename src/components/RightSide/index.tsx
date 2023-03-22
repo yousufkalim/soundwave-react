@@ -190,29 +190,37 @@ const RightSide: FC<RightSideProps> = ({
       }
       return undefined;
     });
-    const totalPrice =
-      posterType === 'Black Wooden Frame' ||
-      posterType === 'Nuteral Wooden Frame' ||
-      posterType === 'White Wooden Frame' ||
-      posterType === 'Black Metal Frame'
-        ? posterFramePriceResult?.withFramePrice ?? 0
-        : posterType === 'No Frame'
-        ? posterSizePriceResult?.price ?? 0
-        : posterType === 'Thin Canvas'
-        ? posterFramePriceResult?.slimCanvasPrice ?? 0
-        : posterType === 'Thick Canvas'
-        ? posterFramePriceResult?.thickCanvasPrice ?? 0
-        : posterSizePriceResult?.price ?? 0;
-    setPosterPrice(+totalPrice.toFixed(2));
+
+    if (posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas') {
+      const totalPrice =
+        (posterSizePriceResult?.price ?? 0) +
+        (posterType === 'Black Wooden Frame' ||
+        posterType === 'Nuteral Wooden Frame' ||
+        posterType === 'White Wooden Frame' ||
+        posterType === 'Black Metal Frame'
+          ? posterFramePriceResult?.withFramePrice ?? 0
+          : posterType === 'No Frame'
+          ? 0
+          : 0);
+      setPosterPrice(+totalPrice.toFixed(2));
+    } else {
+      const totalPrice =
+        posterType === 'Thin Canvas'
+          ? posterFramePriceResult?.slimCanvasPrice ?? 0
+          : posterType === 'Thick Canvas'
+          ? posterFramePriceResult?.thickCanvasPrice ?? 0
+          : 0;
+      setPosterPrice(+totalPrice.toFixed(2));
+    }
   };
   useEffect(() => {
     handleCalulatePosterPrice();
   }, [posterSize, posterType]);
 
   const handleAddToCart = () => {
+    setFlag(true);
     setBackgroundFrame('');
     setLoading(true);
-    setFlag(true);
     setTimeout(async () => {
       const element = document.getElementById('custom-poster-template') as HTMLElement;
       const canvas = await html2canvas(element, {
