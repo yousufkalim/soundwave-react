@@ -64,11 +64,11 @@ const Template2: FC<Template2Props> = ({
           : posterSize.value === '18 X 24'
           ? `overflow-hidden scale-[20%] absolute xs:scale-[25%] msm:scale-[25%] sm:scale-[25%] md:scale-[30%] lg:scale-[30%] sxl:scale-[30%] 2xl:scale-[35%]`
           : posterSize.value === '20 X 28'
-          ? `overflow-hidden scale-[18%] absolute xs:scale-[20%] msm:scale-[20%] sm:scale-[30%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[30%]`
+          ? `overflow-hidden scale-[18%] absolute xs:scale-[20%] msm:scale-[22%] sm:scale-[25%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[30%]`
           : posterSize.value === '24 X 36'
-          ? `overflow-hidden scale-[15%] absolute xs:scale-[15%] msm:scale-[15%] sm:scale-[12%] md:scale-[20%] lg:scale-[20%] sxl:scale-[20%] 2xl:scale-[22%]`
+          ? `overflow-hidden scale-[15%] absolute xs:scale-[15%] msm:scale-[18%] sm:scale-[20%] md:scale-[22%] lg:scale-[22%] sxl:scale-[22%] 2xl:scale-[25%]`
           : posterSize.value === '28 X 40'
-          ? `overflow-hidden scale-[13%] absolute xs:scale-[15%] msm:scale-[15%] sm:scale-[15%] md:scale-[20%] lg:scale-[20%] sxl:scale-[20%] 2xl:scale-[20%]`
+          ? `overflow-hidden scale-[13%] absolute xs:scale-[15%] msm:scale-[15%] sm:scale-[18%] md:scale-[20%] lg:scale-[22%] sxl:scale-[22%] 2xl:scale-[22%]`
           : `overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
       }
       style={{
@@ -207,18 +207,18 @@ const Template2: FC<Template2Props> = ({
             selectedAlbum?.label && selectedAlbum?.label.length > 15
               ? flag
                 ? BackgroundFrame
-                  ? `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute  bottom-[2.7%]`
-                  : `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute  bottom-[1%]`
+                  ? `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute  bottom-[2.7%]`
+                  : `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute  bottom-[1%]`
                 : BackgroundFrame
-                ? `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[2.7%]`
-                : `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[1%]`
+                ? `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[2.7%]`
+                : `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[1%]`
               : flag
               ? BackgroundFrame
-                ? `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[4%]`
-                : `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[4%]`
+                ? `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[6%]`
+                : `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[4%]`
               : BackgroundFrame
-              ? `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[3%]`
-              : `break-words h-[23%] left-0 right-0 px-[5%]  text-ellipsis-8 w-full absolute bottom-[2.2%]`
+              ? `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[3%]`
+              : `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[2.2%]`
           }
         >
           <div className="text-left pl-2">
