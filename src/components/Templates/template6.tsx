@@ -167,8 +167,8 @@ const Template6: FC<Template6Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-bold font-[blacksword] template_album_name tracking-tight`
-                : `font-[blacksword] template_album_name tracking-wider`
+                ? `font-bold font-[Blacksword] template_album_name tracking-tight`
+                : `font-[Blacksword] template_album_name tracking-wider`
             }
             style={{
               color: colors.songTitleColor,

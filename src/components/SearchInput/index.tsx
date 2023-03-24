@@ -54,7 +54,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
     liRef?.current?.scrollIntoView({ behavior: 'smooth' });
   }, [liRef?.current]);
   // console.log(optionsData, 'optionsData');
-
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleInputChange = (e: { target: HTMLInputElement }) => {
     const { value } = e.target;

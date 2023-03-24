@@ -2,6 +2,10 @@ import React, { FC, useEffect } from 'react';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import WebFont from 'webfontloader';
 import { fontFamilyArray } from '../../utils/data';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
 // import Spinner from '../Spinner/Spinner';
 interface ThemeProps {
   boxColor: string;
@@ -84,7 +88,7 @@ const Theme: FC<ThemeProps> = ({
   //     });
   // };
 
-  const handleSelectFont = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+  const handleSelectFont = (event: SelectChangeEvent): void => {
     setSelectedFont(event.target.value);
   };
   useEffect(() => {
@@ -119,7 +123,23 @@ const Theme: FC<ThemeProps> = ({
         })}
         <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
           <span className="text-[12px]">Select Font</span>
-          <select
+          <FormControl sx={{ m: 1, minWidth: 230 }}>
+            <Select
+              value={selectedFont ?? ''}
+              onChange={handleSelectFont}
+              displayEmpty
+              style={{ fontFamily: selectedFont }}
+              inputProps={{ 'aria-label': 'Without label' }}
+            >
+              <MenuItem value="">Select Font</MenuItem>
+              {fontFamilyArray?.sort().map((font) => (
+                <MenuItem key={font} value={font} style={{ fontFamily: font }}>
+                  {font}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          {/* <select
             style={{ fontFamily: selectedFont }}
             value={selectedFont ?? ''}
             onChange={handleSelectFont}
@@ -127,11 +147,11 @@ const Theme: FC<ThemeProps> = ({
           >
             <option value="">Select a font</option>
             {fontFamilyArray?.map((font) => (
-              <option key={font} value={font}>
+              <option style={{ fontFamily: font }} key={font} value={font}>
                 {font}
               </option>
             ))}
-          </select>
+          </select> */}
         </div>
       </div>
     </div>

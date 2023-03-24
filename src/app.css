@@ -14,6 +14,10 @@
   font-family: 'Proxima-italic';
   src: url('../src/assets/fonts/Proxima-nova-italic.otf');
 }
+@font-face {
+  font-family: 'Montserrat-ExtraBold';
+  src: url('../src/assets/fonts/Montserrat-ExtraBold.otf');
+}
 
 @font-face {
   font-family: 'Aemstel-Regular';
@@ -45,7 +49,7 @@
 }
 
 @font-face {
-  font-family: 'blacksword';
+  font-family: 'Blacksword';
   src: url('../src/assets/fonts/Blacksword.otf');
 }
 
@@ -59,7 +63,7 @@
   src: url('../src/assets/fonts/Julee-Regular.ttf');
 }
 @font-face {
-  font-family: 'aAksentuasi';
+  font-family: 'AAksentuasi';
   src: url('../src/assets/fonts/aAksentuasi.otf');
 }
 
