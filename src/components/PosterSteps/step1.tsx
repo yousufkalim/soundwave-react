@@ -114,6 +114,7 @@ const step1: FC<Step1Props> = ({
     if (selectedAlbumId !== '') {
       request<albumProps>('get', `https://api.spotify.com/v1/albums/${selectedAlbumId}`)
         .then((res) => {
+          console.log(res, 'DASASDASDASDA');
           const dataSets: any = [];
           // eslint-disable-next-line @typescript-eslint/promise-function-async
           const promises = res?.data?.tracks?.items?.map((item: Item) => {

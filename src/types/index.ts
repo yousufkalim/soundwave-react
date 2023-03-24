@@ -260,8 +260,6 @@ export interface ICheckoutResponce {
   checkoutURL: string;
 }
 
-
-
 export interface IPosterSizePricingProps {
   price: number;
   inch: string;

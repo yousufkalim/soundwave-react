@@ -199,8 +199,8 @@ const Template5: FC<Template5Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-extrabold font-[aAksentuasi] tracking-tighter template_album_name`
-                : `font-extrabold font-[aAksentuasi] tracking-wide template_album_name`
+                ? `font-extrabold font-[AAksentuasi] tracking-tighter template_album_name`
+                : `font-extrabold font-[AAksentuasi] tracking-wide template_album_name`
             }
             style={{
               color: colors.songTitleColor,
