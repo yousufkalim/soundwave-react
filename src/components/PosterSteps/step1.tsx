@@ -37,7 +37,6 @@ const step1: FC<Step1Props> = ({
 }) => {
   const [selectedAlbumId, setSelectedAlbumId] = useState<string>('');
   const [albumOptions, setAlbumOptions] = useState<listProps[]>([]);
-  console.log('🚀 ~ file: step1.tsx:40 ~ albumOptions:', albumOptions);
   const [list1, setList1] = useState<listProps[]>([]);
   const [list2, setList2] = useState<listProps[]>([]);
 
@@ -79,7 +78,6 @@ const step1: FC<Step1Props> = ({
             )
               .then((res) => {
                 const templist2: listProps[] = [];
-                console.log(res.data.items, '<--- resss');
                 // eslint-disable-next-line array-callback-return
                 res.data.items.map((album) => {
                   templist2.push({
@@ -104,17 +102,9 @@ const step1: FC<Step1Props> = ({
   };
   const handleDuplicateArray = (): void => {
     const combinedArray = [...list1, ...list2];
-    const uniqueArray: listProps[] = [];
-
-    combinedArray.forEach((item1) => {
-      // Check if item1 is already in the uniqueArray
-      const isDuplicate = uniqueArray.some((item2) => item1.label === item2.label);
-
-      if (!isDuplicate) {
-        uniqueArray.push(item1);
-      }
+    const uniqueArray: listProps[] = combinedArray.filter((item, index) => {
+      return index === combinedArray.findIndex((_) => _.label === item.label);
     });
-
     setAlbumOptions(uniqueArray);
   };
 
