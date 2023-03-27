@@ -45,7 +45,6 @@ const Template2: FC<Template2Props> = ({
       descriptionColor: 'rgba(0,0,0,1)',
     });
   }, []);
-  console.log(dataSets, 'dataSets');
   // const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
   // const descriptionColor = colors.descriptionColor.includes('gradient')
   //   ? colors.descriptionColor

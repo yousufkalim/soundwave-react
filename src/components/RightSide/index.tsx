@@ -334,7 +334,6 @@ const RightSide: FC<RightSideProps> = ({
       setOpenDescripition(false);
     }
   };
-  console.log(activeStepperStep, 'activeStepperStep');
   const handleBack = (): void => {
     setActiveStepperStep((prevActiveStep) => prevActiveStep - 1);
   };
