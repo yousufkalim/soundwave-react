@@ -10,19 +10,46 @@
   font-family: 'Aemstel-LineInside';
   src: url('../src/assets/fonts/Aemstel-LineInside.otf');
 }
+@font-face {
+  font-family: 'Proxima-italic';
+  src: url('../src/assets/fonts/Proxima-nova-italic.otf');
+}
+@font-face {
+  font-family: 'Montserrat-ExtraBold';
+  src: url('../src/assets/fonts/Montserrat-ExtraBold.otf');
+}
 
 @font-face {
   font-family: 'Aemstel-Regular';
   src: url('../src/assets/fonts/Aemstel-Regular.otf');
 }
-
+@font-face {
+  font-family: 'Roustel';
+  src: url('../src/assets/fonts/Roustel.ttf');
+}
+@font-face {
+  font-family: 'AspectRatio';
+  src: url('../src/assets/fonts/AspectRatio.ttf');
+}
+@font-face {
+  font-family: 'BronovaBold';
+  src: url('../src/assets/fonts/BronovaBold.ttf');
+}
+@font-face {
+  font-family: 'EdensorFree';
+  src: url('../src/assets/fonts/Edensor-Free.otf');
+}
+@font-face {
+  font-family: 'FoxliteScript';
+  src: url('../src/assets/fonts/FoxliteScript.ttf');
+}
 @font-face {
   font-family: 'blowbrush';
   src: url('../src/assets/fonts/blowbrush.otf');
 }
 
 @font-face {
-  font-family: 'blacksword';
+  font-family: 'Blacksword';
   src: url('../src/assets/fonts/Blacksword.otf');
 }
 
@@ -34,6 +61,10 @@
 @font-face {
   font-family: 'julee';
   src: url('../src/assets/fonts/Julee-Regular.ttf');
+}
+@font-face {
+  font-family: 'AAksentuasi';
+  src: url('../src/assets/fonts/aAksentuasi.otf');
 }
 
 * {
@@ -82,13 +113,22 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+.custom_scroll {
+  padding-bottom: 2%;
+}
+.custom_scroll::-webkit-scrollbar {
+  height: 6px !important;
+}
+.custom_scroll::-webkit-scrollbar-thumb {
+  background: rgba(1, 1, 1, 0.4);
+  border-radius: 10px;
 }
 .template_album_name {
   word-break: break-word;
 }
-
+.cursor_grabbing {
+  cursor: grabbing;
+}
 .text-ellipsis-8 {
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -109,13 +149,79 @@ body::-webkit-scrollbar {
   display: none !important;
   visibility: hidden !important;
 }
-
+/* default ratio */
 #wave-container-15 div:first-child canvas {
-  width: 117px !important;
-  height: 13px !important;
+  width: 170px !important;
+  height: 30px !important;
 }
 
 #wave-container-18 div:first-child canvas {
-  width: 115px !important;
-  height: 17px !important;
+  width: 170px !important;
+  height: 30px !important;
+}
+
+/* 12 x 18 ratio */
+#wave-container-15-1218 div:first-child canvas {
+  width: 200px !important;
+  height: 30px !important;
+}
+
+#wave-container-18-1218 div:first-child canvas {
+  width: 200px !important;
+  height: 30px !important;
+}
+
+/* 16 x 20 ratio */
+#wave-container-15-1620 div:first-child canvas {
+  width: 270px !important;
+  height: 40px !important;
+}
+
+#wave-container-18-1620 div:first-child canvas {
+  width: 270px !important;
+  height: 40px !important;
+}
+
+/* 18 x 24 ratio */
+#wave-container-15-1824 div:first-child canvas {
+  width: 300px !important;
+  height: 50px !important;
+}
+
+#wave-container-18-1824 div:first-child canvas {
+  width: 300px !important;
+  height: 50px !important;
+}
+
+/* 20 x 28 ratio */
+#wave-container-15-2028 div:first-child canvas {
+  width: 350px !important;
+  height: 60px !important;
+}
+
+#wave-container-18-2028 div:first-child canvas {
+  width: 350px !important;
+  height: 60px !important;
+}
+
+/* 24 x 36 ratio */
+#wave-container-15-2436 div:first-child canvas {
+  width: 400px !important;
+  height: 80px !important;
+}
+
+#wave-container-18-2436 div:first-child canvas {
+  width: 400px !important;
+  height: 80px !important;
+}
+
+/* 28 x 40 ratio */
+#wave-container-15-2840 div:first-child canvas {
+  width: 470px !important;
+  height: 80px !important;
+}
+
+#wave-container-18-2840 div:first-child canvas {
+  width: 470px !important;
+  height: 90px !important;
 }

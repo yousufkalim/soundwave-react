@@ -93,27 +93,27 @@ const PosterSize: FC<PosterSizeProps> = ({
       frameSizeCentimeter: '70 X 100',
     },
   ];
-
-
   return (
-    <div className="flex items-center justify-start gap-2 w-[45rem] font-[julee]">
+    <div className="flex items-center justify-start gap-2 w-[45rem] font-[Montserrat]">
       {FrameArray.map((item, index) => (
         <div
           ref={(c) => (itemRef.current[index] = c)}
           key={index}
           onClick={() => {
             handleSelectPosterSize(
-              measurement === 'inch' ? item.frameSizeInch : item.frameSizeCentimeter,
+              measurement === 'Centimeter' ? item.frameSizeCentimeter : item.frameSizeInch,
             );
           }}
           className={
-            posterSize.value === item.frameSizeInch ? item.activeClass : item.notActiveClass
+            posterSize.value === item.frameSizeInch || posterSize.value === item.frameSizeCentimeter
+              ? item.activeClass
+              : item.notActiveClass
           }
         >
           <span>
-            {measurement === 'inch' ? `${item.frameSizeInch}"` : `${item.frameSizeCentimeter}cm`}
+            {measurement === 'inch' ? `${item.frameSizeInch}"` : `${item.frameSizeCentimeter}`}
           </span>
-          <span>{measurement === 'inch' ? 'Inch' : 'Centimeter'}</span>
+          <span>{measurement === 'inch' ? 'in' : 'cm'}</span>
         </div>
       ))}
     </div>

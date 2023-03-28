@@ -6,6 +6,7 @@ import { ReactComponent as ForwardArrow } from '../../assets/SimpleForwardArrow.
 import { ReactComponent as BoldBackArrow } from '../../assets/boldBackArrow.svg';
 import { ReactComponent as BoldForwardArrow } from '../../assets/boldForwardArrow.svg';
 import { IPosterSize } from '../../types/index';
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 interface Step5Props {
   posterSize: IPosterSize;
@@ -84,16 +85,18 @@ const step5: FC<Step5Props> = ({ posterSize, setPosterSize }) => {
           </button>
         </div>
       </div>
-      <div className="overflow-x-scroll no-scrollbar">
-        <PosterSizeBox
-          measurement={measurement}
-          posterSize={posterSize}
-          setPosterSize={setPosterSize}
-          activeIndex={activeIndex}
-          setActiveIndex={setActiveIndex}
-          frameSizeArr={frameSizeArr}
-        />
-      </div>
+      <ScrollContainer horizontal draggingClassName="cursor_grabbing">
+        <div id="poster_box_div" className="cursor-grab custom_scroll">
+          <PosterSizeBox
+            measurement={measurement}
+            posterSize={posterSize}
+            setPosterSize={setPosterSize}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+            frameSizeArr={frameSizeArr}
+          />
+        </div>
+      </ScrollContainer>
     </>
   );
 };

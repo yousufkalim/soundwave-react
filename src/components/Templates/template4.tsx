@@ -49,70 +49,119 @@ const Template4: FC<Template4Props> = ({
   return (
     <div
       id="custom-poster-template"
-      className={`
-       overflow-hidden absolute scale-[65%]
-      xs:scale-[80%]
-      msm:scale-[85%]
-      sm:scale-[95%]
-      md:scale-[80%]
-      lg:scale-[90%]
-      sxl:scale-[95%]
-      2xl:scale-[100%]
-      `}
+      className={
+        posterSize.value === '12 X 18'
+          ? `overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
+          : posterSize.value === '16 X 20'
+          ? `overflow-hidden scale-[23%] absolute xs:scale-[30%] msm:scale-[30%] sm:scale-[30%] md:scale-[35%] lg:scale-[40%] sxl:scale-[40%] 2xl:scale-[40%]`
+          : posterSize.value === '18 X 24'
+          ? `overflow-hidden scale-[20%] absolute xs:scale-[25%] msm:scale-[25%] sm:scale-[25%] md:scale-[30%] lg:scale-[30%] sxl:scale-[30%] 2xl:scale-[35%]`
+          : posterSize.value === '20 X 28'
+          ? `overflow-hidden scale-[18%] absolute xs:scale-[20%] msm:scale-[22%] sm:scale-[25%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[30%]`
+          : posterSize.value === '24 X 36'
+          ? `overflow-hidden scale-[15%] absolute xs:scale-[15%] msm:scale-[18%] sm:scale-[20%] md:scale-[22%] lg:scale-[22%] sxl:scale-[22%] 2xl:scale-[25%]`
+          : posterSize.value === '28 X 40'
+          ? `overflow-hidden scale-[13%] absolute xs:scale-[15%] msm:scale-[15%] sm:scale-[18%] md:scale-[20%] lg:scale-[22%] sxl:scale-[22%] 2xl:scale-[22%]`
+          : `overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
+      }
       style={{
         background:
           posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
-            ? `url(${BackgroundFrame}) center no-repeat`
+            ? `${BackgroundFrame}`
             : '',
         padding:
-          posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
+          posterSize.value === '12 X 18' &&
+          posterType !== 'No Frame' &&
+          posterType !== 'Thin Canvas' &&
+          posterType !== 'Thick Canvas'
             ? BackgroundFrame
               ? '12px'
+              : '0px'
+            : posterSize.value === '16 X 20' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '14px'
+              : '0px'
+            : posterSize.value === '18 X 24' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '16px'
+              : '0px'
+            : posterSize.value === '20 X 28' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '20px'
+              : '0px'
+            : posterSize.value === '24 X 36' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '26px'
+              : '0px'
+            : posterSize.value === '28 X 40' &&
+              posterType !== 'No Frame' &&
+              posterType !== 'Thin Canvas' &&
+              posterType !== 'Thick Canvas'
+            ? BackgroundFrame
+              ? '30px'
               : '0px'
             : '',
         height:
           posterSize.value === '12 X 18'
-            ? '611px'
+            ? '1298px'
             : posterSize.value === '16 X 20'
-            ? '550px'
+            ? '1440.5px'
             : posterSize.value === '18 X 24'
-            ? '586px'
+            ? '1728px'
             : posterSize.value === '20 X 28'
-            ? '616px'
+            ? '2015px'
             : posterSize.value === '24 X 36'
-            ? '636px'
+            ? '2592px'
             : posterSize.value === '28 X 40'
-            ? '626px'
-            : '611px',
+            ? '2880px'
+            : '1298px',
         width:
           posterSize.value === '12 X 18'
-            ? '440px'
+            ? '864px'
             : posterSize.value === '16 X 20'
-            ? '440px'
+            ? '1151.7px'
             : posterSize.value === '18 X 24'
-            ? '440px'
+            ? '1296px'
             : posterSize.value === '20 X 28'
-            ? '440px'
+            ? '1440px'
             : posterSize.value === '24 X 36'
-            ? '440px'
+            ? '1728px'
             : posterSize.value === '28 X 40'
-            ? '440px'
-            : '440px',
+            ? '2015.7px'
+            : '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
     >
       <div
-        className={`h-full`}
+        className={`h-full w-full`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? '16px' : '24px',
-          paddingRight: BackgroundFrame ? '16px' : '24px',
-          paddingTop: BackgroundFrame ? '16px' : '24px',
+          paddingLeft: BackgroundFrame ? '5%' : '5%',
+          paddingRight: BackgroundFrame ? '5%' : '5%',
+          paddingTop: BackgroundFrame ? '6%' : '6%',
         }}
       >
         <div
-          className={`h-[80%] px-1 pt-2 pb-4 border-2 border-white overflow-hidden flex flex-wrap justify-around items-center`}
-          style={{ backgroundColor: colors.boxColor }}
+          className={`h-[80%] px-1 pb-3 pt-[5%] border-2 border-white overflow-hidden flex flex-wrap justify-around`}
+          style={{
+            backgroundColor: colors.boxColor,
+            alignItems:
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? 'baseline'
+                : 'center',
+          }}
         >
           {dataSets.map((item, index) => {
             if (index < 30) {
@@ -124,6 +173,21 @@ const Template4: FC<Template4Props> = ({
                   colors={colors}
                   key={item.trackId}
                   height={dataSets.length <= 18 ? 18 : 15}
+                  posterRatio={
+                    posterSize.value === '12 X 18'
+                      ? '1218'
+                      : posterSize.value === '16 X 20'
+                      ? '1620'
+                      : posterSize.value === '18 X 24'
+                      ? '1824'
+                      : posterSize.value === '20 X 28'
+                      ? '2028'
+                      : posterSize.value === '24 X 36'
+                      ? '2436'
+                      : posterSize.value === '28 X 40'
+                      ? '2840'
+                      : '1218'
+                  }
                 />
               );
             } else {
@@ -132,51 +196,199 @@ const Template4: FC<Template4Props> = ({
           })}
         </div>
         <div
-          className="absolute left-8 bg-black pl-[3px] template_album_name h-[3rem]"
+          className="absolute bg-black text-center px-[5px] template_album_name"
           style={{
-            color: colors.songTitleColor,
-            bottom:
-              selectedAlbum?.label && selectedAlbum?.label.length > 24
+            left:
+              posterSize.value === '12 X 18'
                 ? BackgroundFrame
-                  ? '17%'
-                  : '15.5%'
-                : BackgroundFrame
-                ? '17%'
-                : '15.5%',
-            fontFamily: selectedFont,
+                  ? '4rem'
+                  : '3.5rem'
+                : posterSize.value === '16 X 20'
+                ? BackgroundFrame
+                  ? '5rem'
+                  : '4.5rem'
+                : posterSize.value === '18 X 24'
+                ? BackgroundFrame
+                  ? '5.5rem'
+                  : '5rem'
+                : posterSize.value === '20 X 28'
+                ? BackgroundFrame
+                  ? '6.5rem'
+                  : '5.5rem'
+                : posterSize.value === '24 X 36'
+                ? BackgroundFrame
+                  ? '7.8rem'
+                  : '6.7rem'
+                : posterSize.value === '28 X 40'
+                ? BackgroundFrame
+                  ? '9rem'
+                  : '7.5rem'
+                : '3rem',
+
+            color: colors.songTitleColor,
+            // bottom:
+            //   selectedAlbum?.label && selectedAlbum?.label.length > 24
+            //     ? BackgroundFrame
+            //       ? '17%'
+            //       : '16%'
+            //     : BackgroundFrame
+            //     ? '17%'
+            //     : '16%',
+            bottom:
+              posterSize.value === '12 X 18'
+                ? BackgroundFrame
+                  ? '14.8%'
+                  : '14.3%'
+                : posterSize.value === '16 X 20'
+                ? BackgroundFrame
+                  ? '14.7%'
+                  : '14.1%'
+                : posterSize.value === '18 X 24'
+                ? BackgroundFrame
+                  ? '14.8%'
+                  : '14.2%'
+                : posterSize.value === '20 X 28'
+                ? BackgroundFrame
+                  ? '14.8%'
+                  : '14.2%'
+                : posterSize.value === '24 X 36'
+                ? BackgroundFrame
+                  ? '14.7%'
+                  : '14.1%'
+                : posterSize.value === '28 X 40'
+                ? BackgroundFrame
+                  ? '14.6%'
+                  : '14%'
+                : '16%',
           }}
         >
           <div
+            style={{
+              fontFamily: selectedFont,
+              fontSize: selectedAlbum?.label
+                ? posterSize.value === '12 X 18'
+                  ? selectedAlbum?.label.length > 24
+                    ? '3rem'
+                    : '4rem'
+                  : posterSize.value === '16 X 20'
+                  ? selectedAlbum?.label.length > 24
+                    ? '3.2rem'
+                    : '4.2rem'
+                  : posterSize.value === '18 X 24'
+                  ? selectedAlbum?.label.length > 24
+                    ? '3.5rem'
+                    : '4.6rem'
+                  : posterSize.value === '20 X 28'
+                  ? selectedAlbum?.label.length > 24
+                    ? '4rem'
+                    : '5.4rem'
+                  : posterSize.value === '24 X 36'
+                  ? selectedAlbum?.label.length > 24
+                    ? '5rem'
+                    : '7rem'
+                  : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
+                  ? '5.5rem'
+                  : '7.7rem'
+                : '3rem',
+            }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `text-[2.3rem] font-extrabold font-[Morganite]`
-                : `text-[2.3rem] font-extrabold font-[Morganite]`
+                ? `italic md:font-semibold font-medium font-[Morganite] `
+                : `italic md:font-semibold font-medium font-[Morganite]`
             }
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
           </div>
           <div
+            style={{
+              fontFamily: selectedFont,
+              fontSize: selectedAlbum?.label
+                ? posterSize.value === '12 X 18'
+                  ? selectedAlbum?.label.length > 24
+                    ? '1.7em'
+                    : '1.1em'
+                  : posterSize.value === '16 X 20'
+                  ? selectedAlbum?.label.length > 24
+                    ? '2em'
+                    : '1.3em'
+                  : posterSize.value === '18 X 24'
+                  ? selectedAlbum?.label.length > 24
+                    ? '2.3em'
+                    : '1.6em'
+                  : posterSize.value === '20 X 28'
+                  ? selectedAlbum?.label.length > 24
+                    ? '2.6em'
+                    : '1.8em'
+                  : posterSize.value === '24 X 36'
+                  ? selectedAlbum?.label.length > 24
+                    ? '3.5em'
+                    : '2.3em'
+                  : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
+                  ? '4em'
+                  : '2.6rem'
+                : '.8em',
+            }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? 'text-[.8em] font-bold font-[Morganite] mt-[-1rem] text-center'
-                : 'text-[1em] font-bold font-[Morganite] mt-[-1rem] text-center'
+                ? 'md:font-bold font-medium font-[Morganite] mt-[-1rem] text-center'
+                : 'md:font-bold font-medium [Morganite] mt-[-1rem] text-center'
             }
           >
             {selectedAlbum?.singerName ? selectedAlbum.singerName : 'SINGER NAME'}
           </div>
         </div>
         <div
-          className={`${activeAlignment} text-left pt-10 template_album_name overflow-hidden `}
+          className={`${activeAlignment} text-left absolute left-0 right-0 px-[5%] w-full pt-[9%] template_album_name overflow-hidden `}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont,
+            fontSize:
+              posterSize.value === '12 X 18'
+                ? '14px'
+                : posterSize.value === '16 X 20'
+                ? '16px'
+                : posterSize.value === '18 X 24'
+                ? '18px'
+                : posterSize.value === '20 X 28'
+                ? '20px'
+                : posterSize.value === '24 X 36'
+                ? '24px'
+                : posterSize.value === '28 X 40'
+                ? '26px'
+                : '10px',
           }}
         >
-          <p className={`text-[5px] md:text-[6px] bg-transparent text-ellipsis-8 tracking-tighter`}>
+          <p
+            style={{
+              whiteSpace: 'pre-wrap',
+              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
+            }}
+            className={`bg-transparent text-ellipsis-8 tracking-tighter`}
+          >
             <i>
-              <b className="text-[6px] md:text-[9px]">{albumDescripition.split(' ')[0]} </b>
+              {/* <b
+                style={{
+                  fontSize:
+                    posterSize.value === '12 X 18'
+                      ? '16px'
+                      : posterSize.value === '16 X 20'
+                      ? '18px'
+                      : posterSize.value === '18 X 24'
+                      ? '20px'
+                      : posterSize.value === '20 X 28'
+                      ? '22px'
+                      : posterSize.value === '24 X 36'
+                      ? '26px'
+                      : posterSize.value === '28 X 40'
+                      ? '28px'
+                      : '10px',
+                }}
+                className="text-[6px] md:text-[9px]"
+              >
+                {albumDescripition.split(' ')[0]}{' '}
+              </b> */}
             </i>
-            {albumDescripition.split(' ').slice(1).join(' ')}
+            {albumDescripition}
           </p>
         </div>
       </div>

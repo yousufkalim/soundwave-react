@@ -99,6 +99,7 @@ interface RightSideProps {
   selectedFont: string;
   setSelectedFont: (value: string) => void;
   setFlag: (value: boolean) => void;
+  setBackgroundFrame: (value: string) => void;
 }
 
 interface IResponseSuccess {
@@ -168,59 +169,64 @@ const RightSide: FC<RightSideProps> = ({
   selectedFont,
   setSelectedFont,
   setFlag,
+  setBackgroundFrame,
 }) => {
   const [posterPrice, setPosterPrice] = useState<number>(0);
   const [activeStepperStep, setActiveStepperStep] = useState<number>(0);
 
   const handleCalulatePosterPrice = (): void => {
     const posterSizePriceResult = PricingArray.posterSizePricing.find((item) => {
-      const currentUnit = posterSize.unit === 'inch' ? item.inch : item.centimeter;
+      const currentUnit = posterSize.unit === 'Centimeter' ? item.centimeter : item.inch;
       if (posterSize.value === currentUnit) {
         return item;
       }
       return undefined;
     });
-
     const posterFramePriceResult = PricingArray.posterTypePricing.find((item) => {
-      const currentUnit = posterSize.unit === 'inch' ? item.inch : item.centimeter;
+      const currentUnit = posterSize.unit === 'Centimeter' ? item.centimeter : item.inch;
+
       if (posterSize.value === currentUnit) {
         return item;
       }
       return undefined;
     });
 
-    const totalPrice =
-      (posterSizePriceResult?.price ?? 0) +
-      (posterType === 'Black Wooden Frame' ||
-      posterType === 'Nuteral Wooden Frame' ||
-      posterType === 'White Wooden Frame' ||
-      posterType === 'Black Metal Frame'
-        ? posterFramePriceResult?.withFramePrice ?? 0
-        : posterType === 'No Frame'
-        ? 0
-        : posterType === 'Thin Canvas'
-        ? posterFramePriceResult?.slimCanvasPrice ?? 0
-        : posterType === 'Thick Canvas'
-        ? posterFramePriceResult?.thickCanvasPrice ?? 0
-        : 0);
-
-    setPosterPrice(+totalPrice.toFixed(2));
+    if (posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas') {
+      const totalPrice =
+        (posterSizePriceResult?.price ?? 0) +
+        (posterType === 'Black Wooden Frame' ||
+        posterType === 'Nuteral Wooden Frame' ||
+        posterType === 'White Wooden Frame' ||
+        posterType === 'Black Metal Frame'
+          ? posterFramePriceResult?.withFramePrice ?? 0
+          : posterType === 'No Frame'
+          ? 0
+          : 0);
+      setPosterPrice(+totalPrice.toFixed(2));
+    } else {
+      const totalPrice =
+        posterType === 'Thin Canvas'
+          ? posterFramePriceResult?.slimCanvasPrice ?? 0
+          : posterType === 'Thick Canvas'
+          ? posterFramePriceResult?.thickCanvasPrice ?? 0
+          : 0;
+      setPosterPrice(+totalPrice.toFixed(2));
+    }
   };
-
   useEffect(() => {
     handleCalulatePosterPrice();
   }, [posterSize, posterType]);
 
   const handleAddToCart = () => {
-    setLoading(true);
     setFlag(true);
+    setBackgroundFrame('');
+    setLoading(true);
     setTimeout(async () => {
       const element = document.getElementById('custom-poster-template') as HTMLElement;
       const canvas = await html2canvas(element, {
         logging: false,
-        allowTaint: true,
-        scale: 3,
         useCORS: true,
+        allowTaint: true,
       });
       const img = canvas.toDataURL();
       const cartId = localStorage.getItem('cartId');
@@ -322,8 +328,12 @@ const RightSide: FC<RightSideProps> = ({
   // stepper functions
   const handleNext = (): void => {
     setActiveStepperStep(activeStepperStep + 1);
+    if (activeStepperStep === 0) {
+      setOpenDescripition(!openDescripition);
+    } else {
+      setOpenDescripition(false);
+    }
   };
-
   const handleBack = (): void => {
     setActiveStepperStep((prevActiveStep) => prevActiveStep - 1);
   };
@@ -569,3 +579,6 @@ const RightSide: FC<RightSideProps> = ({
 };
 
 export default RightSide;
+function posterSizePriceResult(posterSizePriceResult: any, arg1: string) {
+  throw new Error('Function not implemented.');
+}

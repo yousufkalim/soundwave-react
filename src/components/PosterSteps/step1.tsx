@@ -78,7 +78,6 @@ const step1: FC<Step1Props> = ({
             )
               .then((res) => {
                 const templist2: listProps[] = [];
-
                 // eslint-disable-next-line array-callback-return
                 res.data.items.map((album) => {
                   templist2.push({
@@ -103,9 +102,12 @@ const step1: FC<Step1Props> = ({
   };
   const handleDuplicateArray = (): void => {
     const combinedArray = [...list1, ...list2];
-    const filtered = combinedArray.filter((item, index) => combinedArray.indexOf(item) === index);
-    setAlbumOptions(filtered);
+    const uniqueArray: listProps[] = combinedArray.filter((item, index) => {
+      return index === combinedArray.findIndex((_) => _.label === item.label);
+    });
+    setAlbumOptions(uniqueArray);
   };
+
   useEffect(() => {
     handleDuplicateArray();
   }, [list1, list2]);

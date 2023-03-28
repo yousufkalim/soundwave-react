@@ -47,22 +47,14 @@ const SearchInput: React.FC<SearchInputProps> = ({
   const liRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    // console.log('USeEffect runs ');
-    // console.log('liRef ====>>>> ', liRef);
-    console.log('Change value Effect');
-
     liRef?.current?.scrollIntoView({ behavior: 'smooth' });
   }, [liRef?.current]);
-  // console.log(optionsData, 'optionsData');
-
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   const handleInputChange = (e: { target: HTMLInputElement }) => {
     const { value } = e.target;
     // setQuery(value);
-    console.log('Change value');
     onChange(value);
     // const updatedOptions: SelectedAlbumProps[] = !value
-    //   ? []
     //   : [...options.filter((option) => option.label.toLowerCase().includes(value.toLowerCase()))];
     setOptionsData(options);
   };
@@ -73,8 +65,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
   useOnClickOutside(autocomplete, handleClickOutSide);
 
-  // console.log(liRef, 'liRef');
-  // console.log(value, 'query');
   return (
     <div ref={autocomplete} className={'relative w-full'}>
       <div className="border-[1px] border-[#454238] p-[1px] rounded-xl">
