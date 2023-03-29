@@ -262,7 +262,7 @@ const Template2: FC<Template2Props> = ({
                     : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
                     ? `${+fontSize.albumNameSize + 75}px`
                     : `${+fontSize.albumNameSize + 128}px`
-                  : '32px',
+                  : '48px',
               }}
             >
               <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album/Song Name'}</i>

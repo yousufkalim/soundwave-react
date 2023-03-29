@@ -205,7 +205,7 @@ const Template6: FC<Template6Props> = ({
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
                   ? `${+fontSize.albumNameSize + 77}px`
                   : `${+fontSize.albumNameSize + 88}px`
-                : `${+fontSize.albumNameSize + 48}px`,
+                : `48px`,
             }}
           >
             {selectedAlbum?.label ? capitalizeLabel(selectedAlbum?.label) : 'ALBUM NAME'}

@@ -296,7 +296,7 @@ const Template4: FC<Template4Props> = ({
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
                   ? `${+fontSize?.albumNameSize + 88}px`
                   : `${+fontSize?.albumNameSize + 123}px`
-                : '48px',
+                : '64px',
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
@@ -333,7 +333,7 @@ const Template4: FC<Template4Props> = ({
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
                   ? `${+fontSize?.singerNameSize + 64}px`
                   : `${+fontSize?.singerNameSize + 41}px`
-                : `${+fontSize?.singerNameSize + 13}px`,
+                : '18px',
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
