@@ -1,6 +1,12 @@
 import React, { FC, useEffect } from 'react';
 import Waveroom from '../WaveItem';
-import { DataSetProps, SelectedAlbumProps, IStateColors, IPosterSize } from '../../types/index';
+import {
+  DataSetProps,
+  SelectedAlbumProps,
+  IStateColors,
+  IFontSize,
+  IPosterSize,
+} from '../../types/index';
 
 interface Template6Props {
   activeAlignment: string;
@@ -20,6 +26,7 @@ interface Template6Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
+  fontSize: IFontSize;
 }
 
 const Template6: FC<Template6Props> = ({
@@ -33,6 +40,7 @@ const Template6: FC<Template6Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
+  fontSize,
 }) => {
   useEffect(() => {
     setColors({
@@ -163,7 +171,7 @@ const Template6: FC<Template6Props> = ({
           paddingTop: BackgroundFrame ? '6%' : '6%',
         }}
       >
-        <div className="flex pb-[5%] items-center justify-center">
+        <div className="flex pb-[4%] items-center justify-center">
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
@@ -176,35 +184,35 @@ const Template6: FC<Template6Props> = ({
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
-                    ? '2.1rem'
-                    : '2.8rem'
+                    ? `${+fontSize.albumNameSize + 34}px`
+                    : `${+fontSize.albumNameSize + 45}px`
                   : posterSize.value === '16 X 20'
                   ? selectedAlbum?.label.length > 24
-                    ? '2.8rem'
-                    : '3.2rem'
+                    ? `${+fontSize.albumNameSize + 45}px`
+                    : `${+fontSize.albumNameSize + 51}px`
                   : posterSize.value === '18 X 24'
                   ? selectedAlbum?.label.length > 24
-                    ? '3.1rem'
-                    : '3.5rem'
+                    ? `${+fontSize.albumNameSize + 50}px`
+                    : `${+fontSize.albumNameSize + 56}px`
                   : posterSize.value === '20 X 28'
                   ? selectedAlbum?.label.length > 24
-                    ? '3.4rem'
-                    : '4rem'
+                    ? `${+fontSize.albumNameSize + 54}px`
+                    : `${+fontSize.albumNameSize + 64}px`
                   : posterSize.value === '24 X 36'
                   ? selectedAlbum?.label.length > 24
-                    ? '4.1rem'
-                    : '5rem'
+                    ? `${+fontSize.albumNameSize + 65}px`
+                    : `${+fontSize.albumNameSize + 80}px`
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
-                  ? '4.8rem'
-                  : '5.5rem'
-                : '3rem',
+                  ? `${+fontSize.albumNameSize + 77}px`
+                  : `${+fontSize.albumNameSize + 88}px`
+                : `${+fontSize.albumNameSize + 48}px`,
             }}
           >
             {selectedAlbum?.label ? capitalizeLabel(selectedAlbum?.label) : 'ALBUM NAME'}
           </span>
         </div>
         <div
-          className={`h-[77%] px-1 py-2 overflow-hidden flex flex-wrap justify-around`}
+          className={`h-[77%] px-1 overflow-hidden flex flex-wrap justify-around`}
           style={{
             alignItems:
               dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
@@ -245,24 +253,24 @@ const Template6: FC<Template6Props> = ({
           })}
         </div>
         <div
-          className={`${activeAlignment} mt-[3%] absolute left-0 right-0 px-[5%] w-full overflow-hidden text-ellipsis-8 break-words template_album_name`}
+          className={`${activeAlignment} px-[1%] w-full overflow-hidden text-ellipsis-8 break-words template_album_name`}
           style={{
             color: colors.descriptionColor,
 
             fontSize:
               posterSize.value === '12 X 18'
-                ? '14px'
+                ? `${+fontSize?.descriptionSize + 14}px`
                 : posterSize.value === '16 X 20'
-                ? '16px'
+                ? `${+fontSize?.descriptionSize + 16}px`
                 : posterSize.value === '18 X 24'
-                ? '18px'
+                ? `${+fontSize?.descriptionSize + 18}px`
                 : posterSize.value === '20 X 28'
-                ? '20px'
+                ? `${+fontSize?.descriptionSize + 20}px`
                 : posterSize.value === '24 X 36'
-                ? '24px'
+                ? `${+fontSize?.descriptionSize + 24}px`
                 : posterSize.value === '28 X 40'
-                ? '26px'
-                : '10px',
+                ? `${+fontSize?.descriptionSize + 26}px`
+                : '14px',
           }}
         >
           <p
@@ -273,29 +281,6 @@ const Template6: FC<Template6Props> = ({
             }}
             className={`bg-transparent tracking-tighter font-[Montserrat]`}
           >
-            <i>
-              {/* <b
-                style={{
-                  fontSize:
-                    posterSize.value === '12 X 18'
-                      ? '16px'
-                      : posterSize.value === '16 X 20'
-                      ? '18px'
-                      : posterSize.value === '18 X 24'
-                      ? '20px'
-                      : posterSize.value === '20 X 28'
-                      ? '22px'
-                      : posterSize.value === '24 X 36'
-                      ? '26px'
-                      : posterSize.value === '28 X 40'
-                      ? '28px'
-                      : '10px',
-                }}
-                className="text-[6px] md:text-[9px]"
-              >
-                {albumDescripition.split(' ')[0]}{' '}
-              </b> */}
-            </i>
             {albumDescripition}
           </p>
         </div>

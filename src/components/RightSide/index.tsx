@@ -17,7 +17,7 @@ import {
   IPosterSize,
   SelectedAlbumProps,
   DataSetProps,
-  // IResponsePoster,
+  IFontSize,
   IResponseCart,
 } from '../../types/index';
 import { PricingArray } from '../../utils/data';
@@ -31,6 +31,7 @@ import StepButton from '@mui/material/StepButton';
 import { styled } from '@mui/material/styles';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import { ReactComponent as NextArrowBtn } from '../../assets/nextArrowBtn.svg';
+
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
     top: 10,
@@ -100,6 +101,9 @@ interface RightSideProps {
   setSelectedFont: (value: string) => void;
   setFlag: (value: boolean) => void;
   setBackgroundFrame: (value: string) => void;
+
+  fontSize: IFontSize;
+  setFontSize: ({ descriptionSize, singerNameSize, albumNameSize }: IFontSize) => void;
 }
 
 interface IResponseSuccess {
@@ -170,6 +174,8 @@ const RightSide: FC<RightSideProps> = ({
   setSelectedFont,
   setFlag,
   setBackgroundFrame,
+  fontSize,
+  setFontSize,
 }) => {
   const [posterPrice, setPosterPrice] = useState<number>(0);
   const [activeStepperStep, setActiveStepperStep] = useState<number>(0);
@@ -213,6 +219,7 @@ const RightSide: FC<RightSideProps> = ({
       setPosterPrice(+totalPrice.toFixed(2));
     }
   };
+
   useEffect(() => {
     handleCalulatePosterPrice();
   }, [posterSize, posterType]);
@@ -281,6 +288,7 @@ const RightSide: FC<RightSideProps> = ({
       setOpenSize(false);
     }
   };
+
   const handleThemeTabClick = (): void => {
     if (activeStep >= 3) {
       setOpenTheme(!openTheme);
@@ -295,6 +303,7 @@ const RightSide: FC<RightSideProps> = ({
       setOpenSize(false);
     }
   };
+
   const handlePrintFormatTabClick = (): void => {
     if (activeStep >= 4) {
       setOpenStyles(!openStyles);
@@ -324,7 +333,6 @@ const RightSide: FC<RightSideProps> = ({
       setOpenTheme(false);
     }
   };
-
   // stepper functions
   const handleNext = (): void => {
     setActiveStepperStep(activeStepperStep + 1);
@@ -364,7 +372,6 @@ const RightSide: FC<RightSideProps> = ({
             selected={selected}
             setSelected={setSelected}
           />
-
           <Tab
             onClick={handleDescripitionTabClick}
             heading={'Description'}
@@ -407,6 +414,9 @@ const RightSide: FC<RightSideProps> = ({
                 selectedFont={selectedFont}
                 setSelectedFont={setSelectedFont}
                 setLoading={setLoading}
+                fontSize={fontSize}
+                setFontSize={setFontSize}
+                posterSize={posterSize}
               />
             </Fade>
           </Collapse>
@@ -475,7 +485,6 @@ const RightSide: FC<RightSideProps> = ({
                       handleDataSets={handleDataSets}
                       selectedAlbum={selectedAlbum}
                       setSelectedAlbum={setSelectedAlbum}
-                      // steps active states
                       activeStep={activeStep}
                       setActiveStep={setActiveStep}
                       selected={selected}
@@ -511,6 +520,9 @@ const RightSide: FC<RightSideProps> = ({
                       selectedFont={selectedFont}
                       setSelectedFont={setSelectedFont}
                       setLoading={setLoading}
+                      fontSize={fontSize}
+                      setFontSize={setFontSize}
+                      posterSize={posterSize}
                     />
                   </>
                 ) : activeStepperStep === 3 ? (
@@ -540,7 +552,6 @@ const RightSide: FC<RightSideProps> = ({
                 </button>
                 <button
                   onClick={activeStepperStep === 4 ? handleAddToCart : handleNext}
-                  // disabled={activeStepperStep === 4}
                   className={
                     'text-white bg-black  font-semibold w-[50%] px-6 py-[17px] text-[.72rem]'
                   }
@@ -556,22 +567,6 @@ const RightSide: FC<RightSideProps> = ({
               </Box>
             </React.Fragment>
           </div>
-          {/* <div
-            className="w-full flex items-center justify-center my-5"
-            style={{ display: activeStepperStep !== 4 ? 'none' : '' }}
-          >
-            <button
-              className={
-                'bg-black flex items-center justify-center py-3 2xl:py-4 rounded-xl cursor-pointer w-full'
-              }
-              onClick={handleAddToCart}
-            >
-              <span className="text-white flex text-[.9rem] 2xl:text-[1rem]">
-                <Cart />
-                &nbsp;&nbsp;&nbsp;&nbsp;Add To Cart&nbsp;<b>${posterPrice}</b>
-              </span>
-            </button>
-          </div> */}
         </Box>
       </div>
     </div>
