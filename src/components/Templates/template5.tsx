@@ -237,7 +237,7 @@ const Template5: FC<Template5Props> = ({
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
                   ? `${+fontSize.albumNameSize + 59}px`
                   : `${+fontSize.albumNameSize + 112}px`
-                : `${+fontSize.albumNameSize + 48}px`,
+                : `48px`,
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -271,7 +271,7 @@ const Template5: FC<Template5Props> = ({
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
                   ? `${+fontSize?.singerNameSize + 40}px`
                   : `${+fontSize?.singerNameSize + 40}px`
-                : `${+fontSize?.singerNameSize + 13}px`,
+                : `16px`,
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
