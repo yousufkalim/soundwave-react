@@ -225,3 +225,12 @@ body::-webkit-scrollbar {
   width: 470px !important;
   height: 90px !important;
 }
+
+/* All browsers */
+input[type='range'] {
+  accent-color: #0a79c9 !important;
+  background-color: #ddd !important;
+  height: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}

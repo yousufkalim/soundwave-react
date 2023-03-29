@@ -278,3 +278,9 @@ export interface pricingArrayProps {
   posterSizePricing: IPosterSizePricingProps[];
   posterTypePricing: IPosterTypePricingProps[];
 }
+
+export interface IFontSize {
+  descriptionSize: string;
+  singerNameSize: string;
+  albumNameSize: string;
+}

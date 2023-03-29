@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import ThemeCustomizationBox from '../ThemeCustomization/index';
 import PosterTemplatesBox from '../PosterTemplates/index';
 import ThemeBtnBox from '../themeCustomizationBtnBox/index';
-
+import { IFontSize, IPosterSize } from '../../types/index';
 interface Step3Props {
   boxColor: string;
   posterColor: string;
@@ -16,6 +16,9 @@ interface Step3Props {
   selectedFont: string;
   setSelectedFont: (value: string) => void;
   setLoading: (value: boolean) => void;
+  fontSize: IFontSize;
+  setFontSize: ({ descriptionSize, singerNameSize, albumNameSize }: IFontSize) => void;
+  posterSize: IPosterSize;
 }
 const step3: FC<Step3Props> = ({
   boxColor,
@@ -30,6 +33,9 @@ const step3: FC<Step3Props> = ({
   selectedFont,
   setSelectedFont,
   setLoading,
+  fontSize,
+  setFontSize,
+  posterSize,
 }) => {
   const [selectedSection, setSelectedSection] = useState<string>('Templates');
 
@@ -68,6 +74,9 @@ const step3: FC<Step3Props> = ({
             selectedFont={selectedFont}
             setSelectedFont={setSelectedFont}
             setLoading={setLoading}
+            fontSize={fontSize}
+            setFontSize={setFontSize}
+            posterSize={posterSize}
           />
         )
       )}

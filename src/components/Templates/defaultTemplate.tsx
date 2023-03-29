@@ -1,5 +1,11 @@
 import React, { FC, useEffect } from 'react';
-import { DataSetProps, SelectedAlbumProps, IStateColors, IPosterSize } from '../../types/index';
+import {
+  DataSetProps,
+  SelectedAlbumProps,
+  IStateColors,
+  IPosterSize,
+  IFontSize,
+} from '../../types/index';
 import Waveroom from '../WaveItem/index';
 interface Template2Props {
   activeAlignment: string;
@@ -20,6 +26,7 @@ interface Template2Props {
   selectedFont: string;
   posterSize: IPosterSize;
   flag: boolean;
+  fontSize: IFontSize;
 }
 
 const Template2: FC<Template2Props> = ({
@@ -34,6 +41,7 @@ const Template2: FC<Template2Props> = ({
   selectedFont,
   posterSize,
   flag,
+  fontSize,
 }) => {
   useEffect(() => {
     setColors({
@@ -233,80 +241,56 @@ const Template2: FC<Template2Props> = ({
                 fontSize: selectedAlbum?.label
                   ? posterSize.value === '12 X 18'
                     ? selectedAlbum?.label.length > 15
-                      ? '2rem'
-                      : '3rem'
+                      ? `${+fontSize.albumNameSize + 32}px`
+                      : `${+fontSize.albumNameSize + 48}px`
                     : posterSize.value === '16 X 20'
                     ? selectedAlbum?.label.length > 15
-                      ? '2.7rem'
-                      : '4rem'
+                      ? `${+fontSize.albumNameSize + 43}px`
+                      : `${+fontSize.albumNameSize + 64}px`
                     : posterSize.value === '18 X 24'
                     ? selectedAlbum?.label.length > 15
-                      ? '3rem'
-                      : '4.5rem'
+                      ? `${+fontSize.albumNameSize + 48}px`
+                      : `${+fontSize.albumNameSize + 72}px`
                     : posterSize.value === '20 X 28'
                     ? selectedAlbum?.label.length > 15
-                      ? '3.3rem'
-                      : '5rem'
+                      ? `${+fontSize.albumNameSize + 52}px`
+                      : `${+fontSize.albumNameSize + 80}px`
                     : posterSize.value === '24 X 36'
                     ? selectedAlbum?.label.length > 15
-                      ? '4rem'
-                      : '7.5rem'
+                      ? `${+fontSize.albumNameSize + 64}px`
+                      : `${+fontSize.albumNameSize + 120}px`
                     : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
-                    ? '4.7rem'
-                    : '8rem'
-                  : '3rem',
+                    ? `${+fontSize.albumNameSize + 75}px`
+                    : `${+fontSize.albumNameSize + 128}px`
+                  : '32px',
               }}
             >
               <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album/Song Name'}</i>
             </span>
           </div>
           <div
-            className={`
-            ${activeAlignment} bg-transparent font-proxima-nova tracking-tight mt-4`}
+            className={`${activeAlignment} bg-transparent font-proxima-nova tracking-tight mt-4`}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
               letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.025em',
               fontSize:
                 posterSize.value === '12 X 18'
-                  ? '14px'
+                  ? `${+fontSize?.descriptionSize + 14}px`
                   : posterSize.value === '16 X 20'
-                  ? '16px'
+                  ? `${+fontSize?.descriptionSize + 16}px`
                   : posterSize.value === '18 X 24'
-                  ? '18px'
+                  ? `${+fontSize?.descriptionSize + 18}px`
                   : posterSize.value === '20 X 28'
-                  ? '20px'
+                  ? `${+fontSize?.descriptionSize + 20}px`
                   : posterSize.value === '24 X 36'
-                  ? '24px'
+                  ? `${+fontSize?.descriptionSize + 24}px`
                   : posterSize.value === '28 X 40'
-                  ? '26px'
-                  : '10px',
+                  ? `${+fontSize?.descriptionSize + 26}px`
+                  : '14px',
             }}
           >
             <p id="description" style={{ whiteSpace: 'pre-wrap' }}>
-              <i>
-                {/* <b
-                  // className="text-[10px] md:text-[12px]"
-                  style={{
-                    fontSize:
-                      posterSize.value === '12 X 18'
-                        ? '16px'
-                        : posterSize.value === '16 X 20'
-                        ? '18px'
-                        : posterSize.value === '18 X 24'
-                        ? '20px'
-                        : posterSize.value === '20 X 28'
-                        ? '22px'
-                        : posterSize.value === '24 X 36'
-                        ? '26px'
-                        : posterSize.value === '28 X 40'
-                        ? '28px'
-                        : '10px',
-                  }}
-                >
-                  {albumDescripition.split(' ')[0]}{' '}
-                </b> */}
-              </i>
               {albumDescripition}
             </p>
           </div>

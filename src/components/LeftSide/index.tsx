@@ -7,7 +7,13 @@ import Template4 from '../Templates/template4';
 import Template5 from '../Templates/template5';
 import Template6 from '../Templates/template6';
 import DefaultTemplate from '../Templates/defaultTemplate';
-import { SelectedAlbumProps, DataSetProps, IStateColors, IPosterSize } from '../../types/index';
+import {
+  SelectedAlbumProps,
+  DataSetProps,
+  IStateColors,
+  IPosterSize,
+  IFontSize,
+} from '../../types/index';
 
 interface waveformProps {
   dataSets: DataSetProps[];
@@ -31,6 +37,7 @@ interface waveformProps {
   selectedFont: string;
   posterSize: IPosterSize;
   flag: boolean;
+  fontSize: IFontSize;
 }
 
 const index: FC<waveformProps> = ({
@@ -48,6 +55,7 @@ const index: FC<waveformProps> = ({
   selectedFont,
   posterSize,
   flag,
+  fontSize,
 }) => {
   const activeAlbum =
     selectedTemplate === 'template1' ? (
@@ -63,6 +71,7 @@ const index: FC<waveformProps> = ({
         selectedFont={selectedFont}
         posterSize={posterSize}
         flag={flag}
+        fontSize={fontSize}
       />
     ) : selectedTemplate === 'template2' ? (
       <Template2
@@ -77,6 +86,7 @@ const index: FC<waveformProps> = ({
         selectedFont={selectedFont}
         posterSize={posterSize}
         flag={flag}
+        fontSize={fontSize}
       />
     ) : selectedTemplate === 'template3' ? (
       <Template3
@@ -90,6 +100,7 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
+        fontSize={fontSize}
       />
     ) : selectedTemplate === 'template4' ? (
       <Template4
@@ -103,6 +114,7 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
+        fontSize={fontSize}
       />
     ) : selectedTemplate === 'template5' ? (
       <Template5
@@ -116,6 +128,7 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
+        fontSize={fontSize}
       />
     ) : selectedTemplate === 'template6' ? (
       <Template6
@@ -129,6 +142,7 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
+        fontSize={fontSize}
       />
     ) : (
       <DefaultTemplate
@@ -143,6 +157,7 @@ const index: FC<waveformProps> = ({
         selectedFont={selectedFont}
         posterSize={posterSize}
         flag={flag}
+        fontSize={fontSize}
       />
     );
 
