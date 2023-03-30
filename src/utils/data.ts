@@ -17,32 +17,6 @@ export const fontFamilyArray = [
   'BronovaBold',
   'EdensorFree',
   'FoxliteScript',
-  // 'blowbrush',
-  // 'Open Sans',
-  // 'Alegreya',
-  // 'Anek Latin',
-  // 'Lato',
-  // 'Poppins',
-  // 'Oswald',
-  // 'Raleway',
-  // 'Jost',
-  // 'Source Sans Pro',
-  // 'Prompt',
-  // 'Pacifico',
-  // 'Heebo',
-  // 'Lobster',
-  // 'Cabin',
-  // 'Great Vibes',
-  // 'Zilla Slab',
-  // 'Abril Fatface',
-  // 'Roboto Slab',
-  // 'Shadows Into Light',
-  // 'Amatic SC',
-  // 'Sue Ellen Francisco',
-  // 'Architects Daughter',
-  // 'Squada One',
-  // 'Comfortaa',
-  // 'Playfair Display',
 ];
 
 export const PricingArray: pricingArrayProps = {
@@ -122,4 +96,62 @@ export const PricingArray: pricingArrayProps = {
       centimeter: '70 X 100',
     },
   ],
+};
+
+interface PosterSize {
+  withFrame: string;
+  withoutFrame: string;
+}
+
+export const posterSizes: Record<string, PosterSize> = {
+  '12 X 18': { withFrame: '4rem', withoutFrame: '3.5rem' },
+  '16 X 20': { withFrame: '5rem', withoutFrame: '4.5rem' },
+  '18 X 24': { withFrame: '5.5rem', withoutFrame: '5rem' },
+  '20 X 28': { withFrame: '6.5rem', withoutFrame: '5.5rem' },
+  '24 X 36': { withFrame: '7.8rem', withoutFrame: '6.7rem' },
+  '28 X 40': { withFrame: '9rem', withoutFrame: '7.5rem' },
+};
+
+export const sizeScales: Record<string, string[]> = {
+  '12 X 18': ['30%', '35%', '35%', '35%', '45%', '45%', '50%', '50%'],
+  '16 X 20': ['23%', '30%', '30%', '30%', '35%', '40%', '40%', '40%'],
+  '18 X 24': ['20%', '25%', '25%', '25%', '30%', '30%', '30%', '35%'],
+  '20 X 28': ['18%', '20%', '22%', '25%', '25%', '25%', '25%', '30%'],
+  '24 X 36': ['15%', '15%', '18%', '20%', '22%', '22%', '22%', '25%'],
+  '28 X 40': ['13%', '15%', '15%', '18%', '20%', '22%', '22%', '22%'],
+};
+
+export const posterSizeToBorderWidth: Record<string, string> = {
+  '12 X 18': '12px',
+  '16 X 20': '14px',
+  '18 X 24': '16px',
+  '20 X 28': '20px',
+  '24 X 36': '26px',
+  '28 X 40': '30px',
+};
+export const sizeValues: Record<string, string> = {
+  '12 X 18': '1218',
+  '16 X 20': '1620',
+  '18 X 24': '1824',
+  '20 X 28': '2028',
+  '24 X 36': '2436',
+  '28 X 40': '2840',
+};
+
+export const posterHeigth: Record<string, string> = {
+  '12 X 18': '1298px',
+  '16 X 20': '1440.5px',
+  '18 X 24': '1728px',
+  '20 X 28': '2015px',
+  '24 X 36': '2592px',
+  '28 X 40': '2880px',
+};
+
+export const posterWidth: Record<string, string> = {
+  '12 X 18': '864px',
+  '16 X 20': '1151.7px',
+  '18 X 24': '1296px',
+  '20 X 28': '1440px',
+  '24 X 36': '1728px',
+  '28 X 40': '2015.7px',
 };

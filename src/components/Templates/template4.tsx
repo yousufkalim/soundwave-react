@@ -8,63 +8,14 @@ import {
   IFontSize,
 } from '../../types/index';
 
-interface PosterSize {
-  withFrame: string;
-  withoutFrame: string;
-}
-
-const posterSizes: Record<string, PosterSize> = {
-  '12 X 18': { withFrame: '4rem', withoutFrame: '3.5rem' },
-  '16 X 20': { withFrame: '5rem', withoutFrame: '4.5rem' },
-  '18 X 24': { withFrame: '5.5rem', withoutFrame: '5rem' },
-  '20 X 28': { withFrame: '6.5rem', withoutFrame: '5.5rem' },
-  '24 X 36': { withFrame: '7.8rem', withoutFrame: '6.7rem' },
-  '28 X 40': { withFrame: '9rem', withoutFrame: '7.5rem' },
-};
-
-const sizeScales: Record<string, string[]> = {
-  '12 X 18': ['30%', '35%', '35%', '35%', '45%', '45%', '50%', '50%'],
-  '16 X 20': ['23%', '30%', '30%', '30%', '35%', '40%', '40%', '40%'],
-  '18 X 24': ['20%', '25%', '25%', '25%', '30%', '30%', '30%', '35%'],
-  '20 X 28': ['18%', '20%', '22%', '25%', '25%', '25%', '25%', '30%'],
-  '24 X 36': ['15%', '15%', '18%', '20%', '22%', '22%', '22%', '25%'],
-  '28 X 40': ['13%', '15%', '15%', '18%', '20%', '22%', '22%', '22%'],
-};
-
-const posterSizeToBorderWidth: Record<string, string> = {
-  '12 X 18': '12px',
-  '16 X 20': '14px',
-  '18 X 24': '16px',
-  '20 X 28': '20px',
-  '24 X 36': '26px',
-  '28 X 40': '30px',
-};
-const sizeValues: Record<string, string> = {
-  '12 X 18': '1218',
-  '16 X 20': '1620',
-  '18 X 24': '1824',
-  '20 X 28': '2028',
-  '24 X 36': '2436',
-  '28 X 40': '2840',
-};
-
-const posterHeigth: Record<string, string> = {
-  '12 X 18': '1298px',
-  '16 X 20': '1440.5px',
-  '18 X 24': '1728px',
-  '20 X 28': '2015px',
-  '24 X 36': '2592px',
-  '28 X 40': '2880px',
-};
-
-const posterWidth: Record<string, string> = {
-  '12 X 18': '864px',
-  '16 X 20': '1151.7px',
-  '18 X 24': '1296px',
-  '20 X 28': '1440px',
-  '24 X 36': '1728px',
-  '28 X 40': '2015.7px',
-};
+import {
+  posterSizes,
+  sizeScales,
+  posterSizeToBorderWidth,
+  sizeValues,
+  posterHeigth,
+  posterWidth,
+} from '../../utils/data';
 
 interface Template4Props {
   activeAlignment: string;
@@ -113,6 +64,7 @@ const Template4: FC<Template4Props> = ({
 
   const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
   const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
+  // for padding
   const leftSpacingSize = posterSizes[posterSize?.value] || posterSizes['12 X 18'];
   const leftSpacing = BackgroundFrame ? leftSpacingSize.withFrame : leftSpacingSize.withoutFrame;
 
@@ -121,12 +73,12 @@ const Template4: FC<Template4Props> = ({
     posterType !== 'Thin Canvas' &&
     posterType !== 'Thick Canvas' &&
     posterSizeToBorderWidth[posterSize.value];
-
+  // for frame padding
   const borderPadding =
     posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
       ? posterSizeToBorderWidth[posterSize.value] || '0px'
       : '';
-
+  // for description
   const descriptionFontSize: Record<string, number> = {
     '12 X 18': +fontSize?.descriptionSize + 14,
     '16 X 20': +fontSize?.descriptionSize + 16,
