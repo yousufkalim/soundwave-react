@@ -216,7 +216,7 @@ const Template4: FC<Template4Props> = ({
                     ? selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 23}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 30}px`
+                      ? `${+fontSize?.albumNameSize + 23}px`
                       : `${+fontSize?.albumNameSize + 48}px`
                     : selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 37}px`
@@ -228,7 +228,7 @@ const Template4: FC<Template4Props> = ({
                     ? selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 30}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 36}px`
+                      ? `${+fontSize?.albumNameSize + 29}px`
                       : `${+fontSize?.albumNameSize + 51}px`
                     : selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 40}px`
@@ -240,7 +240,7 @@ const Template4: FC<Template4Props> = ({
                     ? selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 35}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 40}px` // completed
+                      ? `${+fontSize?.albumNameSize + 33}px` // completed
                       : `${+fontSize?.albumNameSize + 56}px`
                     : selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 45}px`
@@ -252,7 +252,7 @@ const Template4: FC<Template4Props> = ({
                     ? selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 40}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 45}px` // completed
+                      ? `${+fontSize?.albumNameSize + 38}px` // completed
                       : `${+fontSize?.albumNameSize + 64}px`
                     : selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 48}px`
@@ -264,7 +264,7 @@ const Template4: FC<Template4Props> = ({
                     ? selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 48}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 53}px`
+                      ? `${+fontSize?.albumNameSize + 46}px`
                       : `${+fontSize?.albumNameSize + 80}px`
                     : selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 60}px`
@@ -275,7 +275,7 @@ const Template4: FC<Template4Props> = ({
                   ? selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 50}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 60}px`
+                    ? `${+fontSize?.albumNameSize + 53}px`
                     : `${+fontSize?.albumNameSize + 88}px`
                   : selectedFontFamily === 'Blacksword'
                   ? `${+fontSize?.albumNameSize + 68}px`
