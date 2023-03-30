@@ -10,13 +10,12 @@ import {
 
 import {
   posterSizes,
-  sizeScales,
+  // sizeScales,
   posterSizeToBorderWidth,
   sizeValues,
   posterHeigth,
   posterWidth,
 } from '../../utils/data';
-
 
 interface Template4Props {
   activeAlignment: string;
@@ -62,7 +61,6 @@ const Template4: FC<Template4Props> = ({
       descriptionColor: '#fff',
     });
   }, []);
-
 
   // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
   // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
