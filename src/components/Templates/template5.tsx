@@ -8,6 +8,13 @@ import {
   IFontSize,
   IPosterSize,
 } from '../../types/index';
+import {
+  // sizeScales,
+  posterSizeToBorderWidth,
+  sizeValues,
+  posterHeigth,
+  posterWidth,
+} from '../../utils/data';
 
 interface Template5Props {
   activeAlignment: string;
@@ -53,7 +60,25 @@ const Template5: FC<Template5Props> = ({
       descriptionColor: '#fff',
     });
   }, []);
-  console.log('colors.posterColor', colors?.posterColor);
+  const descriptionFontSize: Record<string, number> = {
+    '12 X 18': +fontSize?.descriptionSize + 14,
+    '16 X 20': +fontSize?.descriptionSize + 16,
+    '18 X 24': +fontSize?.descriptionSize + 18,
+    '20 X 28': +fontSize?.descriptionSize + 20,
+    '24 X 36': +fontSize?.descriptionSize + 24,
+    '28 X 40': +fontSize?.descriptionSize + 26,
+  };
+  // for frame padding
+  const borderPadding =
+    posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
+      ? posterSizeToBorderWidth[posterSize.value] || '0px'
+      : '';
+  // for background frame
+  const borderWidth =
+    posterType !== 'No Frame' &&
+    posterType !== 'Thin Canvas' &&
+    posterType !== 'Thick Canvas' &&
+    posterSizeToBorderWidth[posterSize.value];
 
   return (
     <div
@@ -74,82 +99,10 @@ const Template5: FC<Template5Props> = ({
           : `overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
       }
       style={{
-        background:
-          posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
-            ? `${BackgroundFrame}`
-            : '',
-        padding:
-          posterSize.value === '12 X 18' &&
-          posterType !== 'No Frame' &&
-          posterType !== 'Thin Canvas' &&
-          posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '12px'
-              : '0px'
-            : posterSize.value === '16 X 20' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '14px'
-              : '0px'
-            : posterSize.value === '18 X 24' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '16px'
-              : '0px'
-            : posterSize.value === '20 X 28' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '20px'
-              : '0px'
-            : posterSize.value === '24 X 36' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '26px'
-              : '0px'
-            : posterSize.value === '28 X 40' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '30px'
-              : '0px'
-            : '',
-        height:
-          posterSize.value === '12 X 18'
-            ? '1298px'
-            : posterSize.value === '16 X 20'
-            ? '1440.5px'
-            : posterSize.value === '18 X 24'
-            ? '1728px'
-            : posterSize.value === '20 X 28'
-            ? '2015px'
-            : posterSize.value === '24 X 36'
-            ? '2592px'
-            : posterSize.value === '28 X 40'
-            ? '2880px'
-            : '1298px',
-        width:
-          posterSize.value === '12 X 18'
-            ? '864px'
-            : posterSize.value === '16 X 20'
-            ? '1151.7px'
-            : posterSize.value === '18 X 24'
-            ? '1296px'
-            : posterSize.value === '20 X 28'
-            ? '1440px'
-            : posterSize.value === '24 X 36'
-            ? '1728px'
-            : posterSize.value === '28 X 40'
-            ? '2015.7px'
-            : '864px',
+        background: borderWidth ? BackgroundFrame : '',
+        padding: borderPadding,
+        height: posterHeigth[posterSize.value] || '1298px',
+        width: posterWidth[posterSize.value] || '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
     >
@@ -181,21 +134,7 @@ const Template5: FC<Template5Props> = ({
                   colors={colors}
                   key={item.trackId}
                   height={dataSets.length <= 18 ? 18 : 15}
-                  posterRatio={
-                    posterSize.value === '12 X 18'
-                      ? '1218'
-                      : posterSize.value === '16 X 20'
-                      ? '1620'
-                      : posterSize.value === '18 X 24'
-                      ? '1824'
-                      : posterSize.value === '20 X 28'
-                      ? '2028'
-                      : posterSize.value === '24 X 36'
-                      ? '2436'
-                      : posterSize.value === '28 X 40'
-                      ? '2840'
-                      : '1218'
-                  }
+                  posterRatio={sizeValues[posterSize.value] || '1218'}
                 />
               );
             } else {
@@ -207,8 +146,8 @@ const Template5: FC<Template5Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-extrabold font-[AAksentuasi] template_album_name`
-                : `font-extrabold font-[AAksentuasi] template_album_name`
+                ? `font-extrabold font-[AAksentuasi] tracking-tighter template_album_name`
+                : `font-extrabold font-[AAksentuasi] tracking-wide template_album_name`
             }
             style={{
               color: colors.songTitleColor,
@@ -237,7 +176,7 @@ const Template5: FC<Template5Props> = ({
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
                   ? `${+fontSize.albumNameSize + 59}px`
                   : `${+fontSize.albumNameSize + 112}px`
-                : `48px`,
+                : `${+fontSize.albumNameSize + 48}px`,
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -271,32 +210,19 @@ const Template5: FC<Template5Props> = ({
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
                   ? `${+fontSize?.singerNameSize + 40}px`
                   : `${+fontSize?.singerNameSize + 40}px`
-                : `16px`,
+                : `${+fontSize?.singerNameSize + 13}px`,
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
           <p
-            className={`${activeAlignment} relative bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words mt-[1.8%] font-[Montserrat]`}
+            className={`${activeAlignment} relative text-[5px] md:text-[6px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words mt-[1.8%] font-[Montserrat]`}
             style={{
               whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,
               fontFamily: selectedFont,
               letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
-              fontSize:
-                posterSize.value === '12 X 18'
-                  ? `${+fontSize?.descriptionSize + 14}px`
-                  : posterSize.value === '16 X 20'
-                  ? `${+fontSize?.descriptionSize + 16}px`
-                  : posterSize.value === '18 X 24'
-                  ? `${+fontSize?.descriptionSize + 18}px`
-                  : posterSize.value === '20 X 28'
-                  ? `${+fontSize?.descriptionSize + 20}px`
-                  : posterSize.value === '24 X 36'
-                  ? `${+fontSize?.descriptionSize + 24}px`
-                  : posterSize.value === '28 X 40'
-                  ? `${+fontSize?.descriptionSize + 26}px`
-                  : '14px',
+              fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
           >
             {albumDescripition}

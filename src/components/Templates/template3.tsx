@@ -8,6 +8,13 @@ import {
   IFontSize,
 } from '../../types/index';
 import Waveroom from '../WaveItem/index';
+import {
+  // sizeScales,
+  posterSizeToBorderWidth,
+  sizeValues,
+  posterHeigth,
+  posterWidth,
+} from '../../utils/data';
 
 interface Template3Props {
   activeAlignment: string;
@@ -56,17 +63,34 @@ const Template3: FC<Template3Props> = ({
     });
   }, []);
 
-  // const titleColor = colors.songTitleColor.includes('gradient') ? colors.songTitleColor : '';
-  // const descriptionColor = colors.descriptionColor.includes('gradient')
-  //   ? colors.descriptionColor
-  //   : '';
-  // const soundWaveNameColor = colors.soundWaveNameColor.includes('gradient')
-  //   ? colors.soundWaveNameColor
-  //   : '';
+  const descriptionFontSize: Record<string, number> = {
+    '12 X 18': +fontSize?.descriptionSize + 14,
+    '16 X 20': +fontSize?.descriptionSize + 16,
+    '18 X 24': +fontSize?.descriptionSize + 18,
+    '20 X 28': +fontSize?.descriptionSize + 20,
+    '24 X 36': +fontSize?.descriptionSize + 24,
+    '28 X 40': +fontSize?.descriptionSize + 26,
+  };
+  // for frame padding
+  const borderPadding =
+    posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
+      ? posterSizeToBorderWidth[posterSize.value] || '0px'
+      : '';
+  // for background frame
+  const borderWidth =
+    posterType !== 'No Frame' &&
+    posterType !== 'Thin Canvas' &&
+    posterType !== 'Thick Canvas' &&
+    posterSizeToBorderWidth[posterSize.value];
+
+  // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
+  // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
 
   return (
     <div
       id="custom-poster-template"
+      // className={`overflow-hidden scale-[${sizeScaling[0]}] absolute xs:scale-[${scaleXs}] msm:scale-[${scaleMsm}] sm:scale-[${scaleSm}] md:scale-[${scaleMd}] lg:scale-[${scaleLg}] sxl:scale-[${scaleSxl}] 2xl:scale-[${scale2xl}]`}
+
       className={
         posterSize.value === '12 X 18'
           ? `overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
@@ -83,82 +107,10 @@ const Template3: FC<Template3Props> = ({
           : `overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
       }
       style={{
-        background:
-          posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
-            ? `${BackgroundFrame}`
-            : '',
-        padding:
-          posterSize.value === '12 X 18' &&
-          posterType !== 'No Frame' &&
-          posterType !== 'Thin Canvas' &&
-          posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '12px'
-              : '0px'
-            : posterSize.value === '16 X 20' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '14px'
-              : '0px'
-            : posterSize.value === '18 X 24' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '16px'
-              : '0px'
-            : posterSize.value === '20 X 28' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '20px'
-              : '0px'
-            : posterSize.value === '24 X 36' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '26px'
-              : '0px'
-            : posterSize.value === '28 X 40' &&
-              posterType !== 'No Frame' &&
-              posterType !== 'Thin Canvas' &&
-              posterType !== 'Thick Canvas'
-            ? BackgroundFrame
-              ? '30px'
-              : '0px'
-            : '',
-        height:
-          posterSize.value === '12 X 18'
-            ? '1298px'
-            : posterSize.value === '16 X 20'
-            ? '1440.5px'
-            : posterSize.value === '18 X 24'
-            ? '1728px'
-            : posterSize.value === '20 X 28'
-            ? '2015px'
-            : posterSize.value === '24 X 36'
-            ? '2592px'
-            : posterSize.value === '28 X 40'
-            ? '2880px'
-            : '1298px',
-        width:
-          posterSize.value === '12 X 18'
-            ? '864px'
-            : posterSize.value === '16 X 20'
-            ? '1151.7px'
-            : posterSize.value === '18 X 24'
-            ? '1296px'
-            : posterSize.value === '20 X 28'
-            ? '1440px'
-            : posterSize.value === '24 X 36'
-            ? '1728px'
-            : posterSize.value === '28 X 40'
-            ? '2015.7px'
-            : '864px',
+        background: borderWidth ? BackgroundFrame : '',
+        padding: borderPadding,
+        height: posterHeigth[posterSize.value] || '1298px',
+        width: posterWidth[posterSize.value] || '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
     >
@@ -166,9 +118,7 @@ const Template3: FC<Template3Props> = ({
         className={`h-full w-full`}
         style={{
           background: colors.posterColor,
-          paddingLeft: BackgroundFrame ? '5%' : '5%',
-          paddingRight: BackgroundFrame ? '5%' : '5%',
-          paddingTop: BackgroundFrame ? '6%' : '6%',
+          padding: '6% 5% 0% 5%',
         }}
       >
         <div
@@ -191,21 +141,7 @@ const Template3: FC<Template3Props> = ({
                   colors={colors}
                   key={item.trackId}
                   height={dataSets.length <= 18 ? 18 : 15}
-                  posterRatio={
-                    posterSize.value === '12 X 18'
-                      ? '1218'
-                      : posterSize.value === '16 X 20'
-                      ? '1620'
-                      : posterSize.value === '18 X 24'
-                      ? '1824'
-                      : posterSize.value === '20 X 28'
-                      ? '2028'
-                      : posterSize.value === '24 X 36'
-                      ? '2436'
-                      : posterSize.value === '28 X 40'
-                      ? '2840'
-                      : '1218'
-                  }
+                  posterRatio={sizeValues[posterSize.value] || '1218'}
                 />
               );
             } else {
@@ -270,20 +206,7 @@ const Template3: FC<Template3Props> = ({
             color: colors.descriptionColor,
             fontFamily: selectedFont,
             letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
-            fontSize:
-              posterSize.value === '12 X 18'
-                ? `${+fontSize?.descriptionSize + 14}px`
-                : posterSize.value === '16 X 20'
-                ? `${+fontSize?.descriptionSize + 16}px`
-                : posterSize.value === '18 X 24'
-                ? `${+fontSize?.descriptionSize + 18}px`
-                : posterSize.value === '20 X 28'
-                ? `${+fontSize?.descriptionSize + 20}px`
-                : posterSize.value === '24 X 36'
-                ? `${+fontSize?.descriptionSize + 24}px`
-                : posterSize.value === '28 X 40'
-                ? `${+fontSize?.descriptionSize + 26}px`
-                : '14px',
+            fontSize: descriptionFontSize[posterSize.value] ?? '14px',
           }}
         >
           <p className={`mb-[3.5%]`}>{albumDescripition}</p>
