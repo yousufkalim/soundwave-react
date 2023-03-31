@@ -149,7 +149,7 @@ const Template4: FC<Template4Props> = ({
           })}
         </div>
         <div
-          className="absolute template_album_name flex items-center justify-center flex-col"
+          className="absolute template_album_name flex items-center justify-center flex-col max-w-[85%]"
           style={{
             left: leftSpacing,
             color: colors.songTitleColor,
@@ -157,50 +157,50 @@ const Template4: FC<Template4Props> = ({
               posterSize.value === '12 X 18'
                 ? BackgroundFrame
                   ? selectedFontFamily !== 'Morganite'
-                    ? '16.4%' // changed
+                    ? '16.7%' // changed
                     : '14.8%' // changed
                   : selectedFontFamily !== 'Morganite'
-                  ? '15.7%' // changed
+                  ? '16.2%' // changed
                   : '14.3%' // changed
                 : posterSize.value === '16 X 20'
                 ? BackgroundFrame
                   ? selectedFontFamily !== 'Morganite'
-                    ? '15.7%' // changed
+                    ? '16%' // changed
                     : '14.7%' // changed
                   : selectedFontFamily !== 'Morganite'
-                  ? '15.2%' // changed
+                  ? '15.5%' // changed
                   : '14.1%' // changed
                 : posterSize.value === '18 X 24'
                 ? BackgroundFrame
                   ? selectedFontFamily !== 'Morganite'
-                    ? '15.9%' // changed
+                    ? '16.1%' // changed
                     : '14.8%' // changed
                   : selectedFontFamily !== 'Morganite'
-                  ? '15.3%' // changed
+                  ? '15.5%' // changed
                   : '14.2%' // changed
                 : posterSize.value === '20 X 28'
                 ? BackgroundFrame
                   ? selectedFontFamily !== 'Morganite'
-                    ? '15.9%'
+                    ? '16.1%'
                     : '14.8%'
                   : selectedFontFamily !== 'Morganite'
-                  ? '15.3%'
+                  ? '15.5%'
                   : '14.2%'
                 : posterSize.value === '24 X 36'
                 ? BackgroundFrame
                   ? selectedFontFamily !== 'Morganite'
-                    ? '15.9%'
+                    ? '16%'
                     : '14.7%'
                   : selectedFontFamily !== 'Morganite'
-                  ? '15.2%'
+                  ? '15.4%'
                   : '14.1%'
                 : posterSize.value === '28 X 40'
                 ? BackgroundFrame
                   ? selectedFontFamily !== 'Morganite'
-                    ? '15.6%'
+                    ? '15.8%'
                     : '14.6%'
                   : selectedFontFamily !== 'Morganite'
-                  ? '15%'
+                  ? '15.1%'
                   : '14%'
                 : '16%',
           }}
@@ -219,7 +219,7 @@ const Template4: FC<Template4Props> = ({
                     : selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 37}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 48}px`
+                    ? `${+fontSize?.albumNameSize + 43}px`
                     : `${+fontSize?.albumNameSize + 64}px`
                   : posterSize.value === '16 X 20'
                   ? selectedAlbum?.label.length > 24
@@ -231,7 +231,7 @@ const Template4: FC<Template4Props> = ({
                     : selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 40}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 48}px`
+                    ? `${+fontSize?.albumNameSize + 54}px`
                     : `${+fontSize?.albumNameSize + 67}px`
                   : posterSize.value === '18 X 24'
                   ? selectedAlbum?.label.length > 24
@@ -267,7 +267,7 @@ const Template4: FC<Template4Props> = ({
                     : selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 60}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 112}px`
+                    ? `${+fontSize?.albumNameSize + 90}px`
                     : `${+fontSize?.albumNameSize + 112}px`
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
                   ? selectedFontFamily === 'Blacksword'
@@ -278,7 +278,7 @@ const Template4: FC<Template4Props> = ({
                   : selectedFontFamily === 'Blacksword'
                   ? `${+fontSize?.albumNameSize + 68}px`
                   : selectedFontFamily !== 'Morganite'
-                  ? `${+fontSize?.albumNameSize + 123}px`
+                  ? `${+fontSize?.albumNameSize + 105}px`
                   : `${+fontSize?.albumNameSize + 123}px`
                 : '64px',
             }}
