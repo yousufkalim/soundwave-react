@@ -153,17 +153,95 @@ const Template2: FC<Template2Props> = ({
             selectedAlbum?.label && selectedAlbum?.label.length > 15
               ? flag
                 ? BackgroundFrame
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.7%]`
-                  : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.5%]`
+                  ? // more than 15 charaters and with background frame and flag
+                    posterSize.value === '12 X 18'
+                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    : posterSize.value === '16 X 20'
+                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    : posterSize.value === '18 X 24'
+                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    : posterSize.value === '20 X 28'
+                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    : posterSize.value === '24 X 36'
+                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    : posterSize.value === '28 X 40'
+                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                  : // more than 15 charaters and with no background frame and flag
+                  posterSize.value === '12 X 18'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.6%]`
+                  : posterSize.value === '16 X 20'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+                  : posterSize.value === '18 X 24'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+                  : posterSize.value === '20 X 28'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.9%]`
+                  : posterSize.value === '24 X 36'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.6%]`
+                  : posterSize.value === '28 X 40'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.7%]`
+                  : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.6%]`
                 : BackgroundFrame
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1%]`
-                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.5%]`
+                ? // more than 15 charaters and with background frame
+                  posterSize.value === '12 X 18'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.154%]`
+                  : posterSize.value === '16 X 20'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.25%]`
+                  : posterSize.value === '18 X 24'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.25%]`
+                  : posterSize.value === '20 X 28'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.154%]`
+                  : posterSize.value === '24 X 36'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.16%]`
+                  : posterSize.value === '28 X 40'
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.23%]`
+                  : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.154%]`
+                : // more than 15 charaters and no background frame
+                posterSize.value === '12 X 18'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.65%]`
+                : posterSize.value === '16 X 20'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.7%]`
+                : posterSize.value === '18 X 24'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.7%]`
+                : posterSize.value === '20 X 28'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.63%]`
+                : posterSize.value === '24 X 36'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.63%]`
+                : posterSize.value === '28 X 40'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.67%]`
+                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.65%]`
               : flag
               ? BackgroundFrame
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[3%]`
-                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[5%]`
+                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[4.5%]`
               : BackgroundFrame
-              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[3%]`
+              ? // less than 15 charaters and with background frame
+                posterSize.value === '12 X 18'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.5%]`
+                : posterSize.value === '16 X 20'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[3%]`
+                : posterSize.value === '18 X 24'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.5%]`
+                : posterSize.value === '20 X 28'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                : posterSize.value === '24 X 36'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.5%]`
+                : posterSize.value === '28 X 40'
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.7%]`
+                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.5%]`
+              : // less than 15 charaters and no background frame
+              posterSize.value === '12 X 18'
+              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+              : posterSize.value === '16 X 20'
+              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.45%]`
+              : posterSize.value === '18 X 24'
+              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+              : posterSize.value === '20 X 28'
+              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.2%]`
+              : posterSize.value === '24 X 36'
+              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.1%]`
+              : posterSize.value === '28 X 40'
+              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.1%]`
               : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
           }
         >

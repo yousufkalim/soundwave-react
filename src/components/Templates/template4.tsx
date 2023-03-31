@@ -284,8 +284,8 @@ const Template4: FC<Template4Props> = ({
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `md:font-semibold bg-black px-2`
-                : `md:font-semibold bg-black px-2`
+                ? `bg-black px-2`
+                : `bg-black px-2`
             }
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -321,8 +321,8 @@ const Template4: FC<Template4Props> = ({
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? 'md:font-bold mt-[-1rem] text-center'
-                : 'md:font-bold mt-[-1rem] text-center'
+                ? 'mt-[-1rem] text-center'
+                : 'mt-[-1rem] text-center'
             }
           >
             {selectedAlbum?.singerName ? selectedAlbum.singerName : 'SINGER NAME'}
