@@ -168,8 +168,12 @@ const Template6: FC<Template6Props> = ({
           </span>
         </div>
         <div
-          className={`h-[77%] px-1 overflow-hidden flex flex-wrap justify-around`}
+          className={`h-[77%] px-1 py-2 overflow-hidden flex flex-wrap justify-around`}
           style={{
+            paddingTop:
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? '5%'
+                : '0.5rem',
             alignItems:
               dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
@@ -205,9 +209,9 @@ const Template6: FC<Template6Props> = ({
             style={{
               whiteSpace: 'pre-wrap',
               fontFamily: selectedFont,
-              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
+              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
             }}
-            className={`bg-transparent tracking-tighter font-[Montserrat]`}
+            className={`bg-transparent font-[Montserrat]`}
           >
             {albumDescripition}
           </p>

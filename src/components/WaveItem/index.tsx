@@ -29,8 +29,8 @@ const Waveroom: FC<WaveroomProps> = ({
     <div
       className={
         songsAmount <= 12
-          ? 'w-[50%] flex flex-col justify-center items-center'
-          : 'w-[30%] flex flex-col justify-center items-center'
+          ? 'w-[50%] z-10	 flex flex-col justify-center items-center'
+          : 'w-[30%] z-10	 flex flex-col justify-center items-center'
       }
     >
       <div

@@ -40,6 +40,10 @@
   src: url('../src/assets/fonts/Edensor-Free.otf');
 }
 @font-face {
+  font-family: 'Edensor';
+  src: url('../src/assets/fonts/EdensorBold.ttf');
+}
+@font-face {
   font-family: 'FoxliteScript';
   src: url('../src/assets/fonts/FoxliteScript.ttf');
 }
@@ -63,7 +67,7 @@
   src: url('../src/assets/fonts/Julee-Regular.ttf');
 }
 @font-face {
-  font-family: 'AAksentuasi';
+  font-family: 'Aksentuasi';
   src: url('../src/assets/fonts/aAksentuasi.otf');
 }
 

@@ -124,6 +124,10 @@ const Template4: FC<Template4Props> = ({
           className={`h-[80%] px-1 py-2 border-2 border-white overflow-hidden flex flex-wrap justify-around`}
           style={{
             backgroundColor: colors.boxColor,
+            paddingTop:
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? '5%'
+                : '0.5rem',
             alignItems:
               dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
@@ -207,6 +211,7 @@ const Template4: FC<Template4Props> = ({
         >
           <div
             style={{
+              letterSpacing: selectedFontFamily === 'Morganite' ? '0.5px' : 'normal',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
@@ -288,7 +293,7 @@ const Template4: FC<Template4Props> = ({
                 : `bg-black px-2`
             }
           >
-            {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
+            <p>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}</p>
           </div>
           <div
             style={{
@@ -318,6 +323,7 @@ const Template4: FC<Template4Props> = ({
                   ? `${+fontSize?.singerNameSize + 64}px`
                   : `${+fontSize?.singerNameSize + 41}px`
                 : '18px',
+              letterSpacing: selectedFontFamily === 'Morganite' ? '0.5px' : 'normal',
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
@@ -339,9 +345,9 @@ const Template4: FC<Template4Props> = ({
           <p
             style={{
               whiteSpace: 'pre-wrap',
-              letterSpacing: selectedFontFamily === 'Morganite' ? '0' : '-0.05em',
+              letterSpacing: selectedFontFamily === 'Morganite' ? '0.5px' : 'normal',
             }}
-            className={`bg-transparent text-ellipsis-8 tracking-tighter`}
+            className={`bg-transparent text-ellipsis-8`}
           >
             {albumDescripition}
           </p>

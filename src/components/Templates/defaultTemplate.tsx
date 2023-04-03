@@ -117,9 +117,13 @@ const Template2: FC<Template2Props> = ({
         }}
       >
         <div
-          className={`h-[77%] px-1 py-[5%] overflow-hidden flex flex-wrap justify-around items-baseline`}
+          className={`h-[77%] px-1 py-[2] overflow-hidden flex flex-wrap justify-around items-baseline`}
           style={{
             background: colors.boxColor,
+            paddingTop:
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? '5%'
+                : '0.5rem',
             alignItems:
               dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
@@ -171,6 +175,7 @@ const Template2: FC<Template2Props> = ({
                   : `font-semibold font-proxima-nova template_album_name`
               }
               style={{
+                letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
                 color: colors.songTitleColor,
                 fontFamily: selectedFont,
                 fontSize: selectedAlbum?.label
@@ -204,11 +209,11 @@ const Template2: FC<Template2Props> = ({
             </span>
           </div>
           <div
-            className={`${activeAlignment} bg-transparent font-proxima-nova tracking-tight mt-4`}
+            className={`${activeAlignment} bg-transparent font-proxima-nova mt-4`}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
-              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.025em',
+              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
               fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
           >

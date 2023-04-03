@@ -116,8 +116,12 @@ const Template5: FC<Template5Props> = ({
         }}
       >
         <div
-          className={`h-[77%] px-1 pb-3 pt-[5%] py-3 overflow-hidden flex flex-wrap justify-around`}
+          className={`h-[77%] px-1 py-2 overflow-hidden flex flex-wrap justify-around`}
           style={{
+            paddingTop:
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? '5%'
+                : '0.5rem',
             alignItems:
               dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
@@ -146,8 +150,8 @@ const Template5: FC<Template5Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-extrabold font-[AAksentuasi] tracking-tighter template_album_name`
-                : `font-extrabold font-[AAksentuasi] tracking-wide template_album_name`
+                ? `font-extrabold font-[Aksentuasi] tracking-tighter template_album_name`
+                : `font-extrabold font-[Aksentuasi] tracking-wide template_album_name`
             }
             style={{
               color: colors.songTitleColor,
@@ -177,6 +181,7 @@ const Template5: FC<Template5Props> = ({
                   ? `${+fontSize.albumNameSize + 59}px`
                   : `${+fontSize.albumNameSize + 112}px`
                 : `${+fontSize.albumNameSize + 48}px`,
+              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -211,17 +216,18 @@ const Template5: FC<Template5Props> = ({
                   ? `${+fontSize?.singerNameSize + 40}px`
                   : `${+fontSize?.singerNameSize + 40}px`
                 : `${+fontSize?.singerNameSize + 13}px`,
+              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
           <p
-            className={`${activeAlignment} relative text-[5px] md:text-[6px] bg-transparent tracking-tighter template_album_name text-ellipsis-8 break-words mt-[1.8%] font-[Montserrat]`}
+            className={`${activeAlignment} relative text-[5px] md:text-[6px] bg-transparent template_album_name text-ellipsis-8 break-words mt-[1.8%] font-[Montserrat]`}
             style={{
               whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,
               fontFamily: selectedFont,
-              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
+              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
               fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
           >
