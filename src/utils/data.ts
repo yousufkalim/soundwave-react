@@ -12,10 +12,10 @@ export const fontFamilyArray = [
   'Josefin Slab',
   'Julee',
   'Roustel',
-  'AAksentuasi',
+  'Aksentuasi',
   'AspectRatio',
   'BronovaBold',
-  'EdensorFree',
+  'Edensor',
   'FoxliteScript',
 ];
 

@@ -121,8 +121,8 @@ const Template1: FC<Template1Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-bold font-[Proxima-italic] template_album_name tracking-tighter`
-                : `font-bold font-[Proxima-italic] template_album_name tracking-wide`
+                ? `font-bold template_album_name tracking-tighter`
+                : `font-bold template_album_name tracking-wide`
             }
             style={{
               color: colors.songTitleColor,
@@ -152,6 +152,7 @@ const Template1: FC<Template1Props> = ({
                   ? `${+fontSize.albumNameSize + 60}px`
                   : `${+fontSize.albumNameSize + 88}px`
                 : '44px',
+              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -159,8 +160,8 @@ const Template1: FC<Template1Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `text-sm font-[Proxima-italic] template_album_name`
-                : `text-sm font-[Proxima-italic] template_album_name`
+                ? `text-sm template_album_name`
+                : `text-sm template_album_name`
             }
             style={{
               color: colors.songTitleColor,
@@ -190,6 +191,7 @@ const Template1: FC<Template1Props> = ({
                   ? `${+fontSize?.singerNameSize + 32}px`
                   : `${+fontSize?.singerNameSize + 32}px`
                 : '14px',
+              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
@@ -200,6 +202,10 @@ const Template1: FC<Template1Props> = ({
             className={`h-[75%] px-1 py-2 overflow-hidden flex flex-wrap justify-around`}
             style={{
               background: colors?.boxColor,
+              paddingTop:
+                dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                  ? '5%'
+                  : '0.5rem',
               alignItems:
                 dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                   ? 'baseline'
@@ -229,11 +235,11 @@ const Template1: FC<Template1Props> = ({
               style={{
                 whiteSpace: 'pre-wrap',
                 color: colors.descriptionColor,
-                fontFamily: selectedFont || 'Proxima-italic',
-                letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
+                fontFamily: selectedFont || 'Montserrat',
+                letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
                 fontSize: descriptionFontSize[posterSize.value] ?? '14px',
               }}
-              className={`template_album_name bg-transparent tracking-tighter font-[Montserrat] text-ellipsis-8`}
+              className={`template_album_name bg-transparent font-[Montserrat] text-ellipsis-8`}
             >
               {albumDescripition}
             </p>

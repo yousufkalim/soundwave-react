@@ -121,9 +121,13 @@ const Template2: FC<Template2Props> = ({
         }}
       >
         <div
-          className={`h-[77%] px-1 pb-3 pt-[5%] overflow-hidden flex flex-wrap justify-around`}
+          className={`h-[77%] px-1 pb-3 py-[2] overflow-hidden flex flex-wrap justify-around`}
           style={{
             background: colors.boxColor,
+            paddingTop:
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? '5%'
+                : '0.5rem',
             alignItems:
               dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
@@ -280,19 +284,20 @@ const Template2: FC<Template2Props> = ({
                     ? `${+fontSize.albumNameSize + 59}px`
                     : `${+fontSize.albumNameSize + 112}px`
                   : '48px',
+                letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
               }}
             >
               <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}</i>
             </span>
           </div>
           <div
-            className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%] mt-[5%] tracking-tight font-proxima-nova template_album_name 
+            className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%] mt-[5%] template_album_name 
             `}
             style={{
               whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,
-              fontFamily: selectedFont || 'Montserrat',
-              letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.025em',
+              fontFamily: selectedFont || 'Proxima-italic',
+              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
               fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
           >

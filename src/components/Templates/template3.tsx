@@ -122,9 +122,13 @@ const Template3: FC<Template3Props> = ({
         }}
       >
         <div
-          className={`h-[77%] pb-3 pt-[5%] py-3 overflow-hidden flex flex-wrap justify-around`}
+          className={`h-[77%] pb-3 py-[2] py-3 overflow-hidden flex flex-wrap justify-around`}
           style={{
             background: colors?.boxColor,
+            paddingTop:
+              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                ? '5%'
+                : '0.5rem',
             alignItems:
               dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? 'baseline'
@@ -195,17 +199,18 @@ const Template3: FC<Template3Props> = ({
                 ? `${+fontSize.albumNameSize + 59}px`
                 : `${+fontSize.albumNameSize + 112}px`
               : '48px',
+            letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
           }}
         >
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
         </div>
         <div
-          className={`bg-transparent tracking-tighter h-[23%] ${activeAlignment} text-[5px] md:text-[6px] relative left-0 right-0 w-full`}
+          className={`bg-transparent h-[23%] ${activeAlignment} text-[5px] md:text-[6px] relative left-0 right-0 w-full`}
           style={{
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
             fontFamily: selectedFont,
-            letterSpacing: selectedFont === 'Morganite' ? '0' : '-0.05em',
+            letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
           }}
         >
@@ -228,6 +233,7 @@ const Template3: FC<Template3Props> = ({
                     : posterSize.value === '28 X 40'
                     ? `${+fontSize?.singerNameSize + 41}px`
                     : '16px',
+                letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
               }}
               className="border p-1 rounded-lg font-bold"
             >

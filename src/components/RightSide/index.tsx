@@ -188,6 +188,7 @@ const RightSide: FC<RightSideProps> = ({
       }
       return undefined;
     });
+
     const posterFramePriceResult = PricingArray.posterTypePricing.find((item) => {
       const currentUnit = posterSize.unit === 'Centimeter' ? item.centimeter : item.inch;
 
@@ -208,7 +209,10 @@ const RightSide: FC<RightSideProps> = ({
           : posterType === 'No Frame'
           ? 0
           : 0);
-      setPosterPrice(+totalPrice.toFixed(2));
+      const roundedValue = Math.round(+totalPrice * 100) / 100;
+      const decimalPart = roundedValue - Math.floor(roundedValue);
+      const res = +decimalPart.toFixed(2) === 0.98 ? +roundedValue + 0.01 : +roundedValue;
+      setPosterPrice(+res.toFixed(2));
     } else {
       const totalPrice =
         posterType === 'Thin Canvas'
@@ -216,6 +220,7 @@ const RightSide: FC<RightSideProps> = ({
           : posterType === 'Thick Canvas'
           ? posterFramePriceResult?.thickCanvasPrice ?? 0
           : 0;
+
       setPosterPrice(+totalPrice.toFixed(2));
     }
   };
@@ -574,6 +579,3 @@ const RightSide: FC<RightSideProps> = ({
 };
 
 export default RightSide;
-function posterSizePriceResult(posterSizePriceResult: any, arg1: string) {
-  throw new Error('Function not implemented.');
-}
