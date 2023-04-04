@@ -258,7 +258,7 @@ const Template2: FC<Template2Props> = ({
               }
               style={{
                 color: colors.songTitleColor,
-                fontFamily: selectedFont || 'proxima-nova',
+                fontFamily: selectedFont || 'Proxima-italic',
                 fontSize: selectedAlbum?.label
                   ? posterSize.value === '12 X 18'
                     ? selectedAlbum?.label.length > 15
