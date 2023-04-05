@@ -338,7 +338,7 @@ const Template4: FC<Template4Props> = ({
           className={`${activeAlignment} text-left absolute left-0 right-0 px-[5%] w-full pt-[9%] template_album_name overflow-hidden `}
           style={{
             color: colors.descriptionColor,
-            fontFamily: selectedFontFamily,
+            fontFamily: selectedFont || 'Montserrat',
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
           }}
         >
