@@ -62,6 +62,8 @@ const Template2: FC<Template2Props> = ({
     });
   }, []);
 
+  const selectedFontFamily = selectedFont || 'proxima-nova';
+
   // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
   // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
   const borderWidth =
@@ -76,7 +78,7 @@ const Template2: FC<Template2Props> = ({
     '18 X 24': +fontSize?.descriptionSize + 18,
     '20 X 28': +fontSize?.descriptionSize + 20,
     '24 X 36': +fontSize?.descriptionSize + 24,
-    '28 X 40': +fontSize?.descriptionSize + 26,
+    '28 X 40': +fontSize?.descriptionSize + 28,
   };
   const borderPadding =
     posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
@@ -181,28 +183,76 @@ const Template2: FC<Template2Props> = ({
                 fontSize: selectedAlbum?.label
                   ? posterSize.value === '12 X 18'
                     ? selectedAlbum?.label.length > 15
-                      ? `${+fontSize.albumNameSize + 32}px`
-                      : `${+fontSize.albumNameSize + 48}px`
+                      ? selectedFontFamily === 'Blacksword'
+                        ? `${+fontSize?.albumNameSize + 25}px`
+                        : selectedFontFamily !== 'Morganite'
+                        ? `${+fontSize?.albumNameSize + 32}px`
+                        : `${+fontSize?.albumNameSize + 33}px`
+                      : selectedFontFamily === 'Blacksword'
+                      ? `${+fontSize?.albumNameSize + 45}px`
+                      : selectedFontFamily !== 'Morganite'
+                      ? `${+fontSize?.albumNameSize + 48}px`
+                      : `${+fontSize?.albumNameSize + 58}px`
                     : posterSize.value === '16 X 20'
                     ? selectedAlbum?.label.length > 15
-                      ? `${+fontSize.albumNameSize + 43}px`
-                      : `${+fontSize.albumNameSize + 64}px`
+                      ? selectedFontFamily === 'Blacksword'
+                        ? `${+fontSize?.albumNameSize + 35}px`
+                        : selectedFontFamily !== 'Morganite'
+                        ? `${+fontSize?.albumNameSize + 43}px`
+                        : `${+fontSize?.albumNameSize + 42}px`
+                      : selectedFontFamily === 'Blacksword'
+                      ? `${+fontSize?.albumNameSize + 60}px`
+                      : selectedFontFamily !== 'Morganite'
+                      ? `${+fontSize?.albumNameSize + 64}px`
+                      : `${+fontSize?.albumNameSize + 78}px`
                     : posterSize.value === '18 X 24'
                     ? selectedAlbum?.label.length > 15
-                      ? `${+fontSize.albumNameSize + 48}px`
-                      : `${+fontSize.albumNameSize + 72}px`
+                      ? selectedFontFamily === 'Blacksword'
+                        ? `${+fontSize?.albumNameSize + 40}px`
+                        : selectedFontFamily !== 'Morganite'
+                        ? `${+fontSize?.albumNameSize + 48}px` // completed
+                        : `${+fontSize?.albumNameSize + 48}px`
+                      : selectedFontFamily === 'Blacksword'
+                      ? `${+fontSize?.albumNameSize + 62}px`
+                      : selectedFontFamily !== 'Morganite'
+                      ? `${+fontSize?.albumNameSize + 72}px` // completed
+                      : `${+fontSize?.albumNameSize + 82}px`
                     : posterSize.value === '20 X 28'
                     ? selectedAlbum?.label.length > 15
-                      ? `${+fontSize.albumNameSize + 52}px`
-                      : `${+fontSize.albumNameSize + 80}px`
+                      ? selectedFontFamily === 'Blacksword'
+                        ? `${+fontSize?.albumNameSize + 45}px`
+                        : selectedFontFamily !== 'Morganite'
+                        ? `${+fontSize?.albumNameSize + 52}px` // completed
+                        : `${+fontSize?.albumNameSize + 53}px`
+                      : selectedFontFamily === 'Blacksword'
+                      ? `${+fontSize?.albumNameSize + 75}px`
+                      : selectedFontFamily !== 'Morganite'
+                      ? `${+fontSize?.albumNameSize + 80}px` // completed
+                      : `${+fontSize?.albumNameSize + 98}px`
                     : posterSize.value === '24 X 36'
                     ? selectedAlbum?.label.length > 15
-                      ? `${+fontSize.albumNameSize + 64}px`
-                      : `${+fontSize.albumNameSize + 120}px`
+                      ? selectedFontFamily === 'Blacksword'
+                        ? `${+fontSize?.albumNameSize + 50}px`
+                        : selectedFontFamily !== 'Morganite'
+                        ? `${+fontSize?.albumNameSize + 64}px`
+                        : `${+fontSize?.albumNameSize + 65}px`
+                      : selectedFontFamily === 'Blacksword'
+                      ? `${+fontSize?.albumNameSize + 90}px`
+                      : selectedFontFamily !== 'Morganite'
+                      ? `${+fontSize?.albumNameSize + 120}px`
+                      : `${+fontSize?.albumNameSize + 120}px`
                     : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
-                    ? `${+fontSize.albumNameSize + 75}px`
-                    : `${+fontSize.albumNameSize + 128}px`
-                  : '48px',
+                    ? selectedFontFamily === 'Blacksword'
+                      ? `${+fontSize?.albumNameSize + 58}px`
+                      : selectedFontFamily !== 'Morganite'
+                      ? `${+fontSize?.albumNameSize + 75}px`
+                      : `${+fontSize?.albumNameSize + 75}px`
+                    : selectedFontFamily === 'Blacksword'
+                    ? `${+fontSize?.albumNameSize + 100}px`
+                    : selectedFontFamily !== 'Morganite'
+                    ? `${+fontSize?.albumNameSize + 120}px`
+                    : `${+fontSize?.albumNameSize + 135}px`
+                  : '64px',
               }}
             >
               <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album/Song Name'}</i>

@@ -77,7 +77,7 @@ const Template6: FC<Template6Props> = ({
     '18 X 24': +fontSize?.descriptionSize + 18,
     '20 X 28': +fontSize?.descriptionSize + 20,
     '24 X 36': +fontSize?.descriptionSize + 24,
-    '28 X 40': +fontSize?.descriptionSize + 26,
+    '28 X 40': +fontSize?.descriptionSize + 28,
   };
   // for frame padding
   const borderPadding =

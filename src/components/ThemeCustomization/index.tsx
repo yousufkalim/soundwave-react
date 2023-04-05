@@ -188,7 +188,7 @@ const Theme: FC<ThemeProps> = ({
               : posterSize.value === '24 X 36'
               ? `${+fontSize?.descriptionSize + 24}px`
               : posterSize.value === '28 X 40'
-              ? `${+fontSize?.descriptionSize + 26}px`
+              ? `${+fontSize?.descriptionSize + 28}px`
               : '14px'}
             )
           </span>
