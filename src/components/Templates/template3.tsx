@@ -248,7 +248,7 @@ const Template3: FC<Template3Props> = ({
                 ? `${+fontSize?.albumNameSize + 100}px`
                 : `${+fontSize?.albumNameSize + 135}px`
               : '64px',
-            letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+            letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
           }}
         >
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
@@ -259,7 +259,7 @@ const Template3: FC<Template3Props> = ({
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
             fontFamily: selectedFont,
-            letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+            letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
           }}
         >
@@ -267,6 +267,7 @@ const Template3: FC<Template3Props> = ({
           <div className="text-center">
             <span
               style={{
+                color: colors.songTitleColor,
                 fontFamily: selectedFont,
                 fontSize:
                   posterSize.value === '12 X 18'
@@ -282,7 +283,7 @@ const Template3: FC<Template3Props> = ({
                     : posterSize.value === '28 X 40'
                     ? `${+fontSize?.singerNameSize + 41}px`
                     : '16px',
-                letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
               }}
               className="border p-1 rounded-lg font-bold"
             >

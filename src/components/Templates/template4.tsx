@@ -123,7 +123,7 @@ const Template4: FC<Template4Props> = ({
         <div
           className={`h-[80%] px-1 py-2 border-2 border-white overflow-hidden flex flex-wrap justify-around`}
           style={{
-            backgroundColor: colors.boxColor,
+            backgroundColor: colors.posterColor,
             paddingTop:
               dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? '5%'
@@ -211,7 +211,8 @@ const Template4: FC<Template4Props> = ({
         >
           <div
             style={{
-              letterSpacing: selectedFontFamily === 'Morganite' ? '0.5px' : 'normal',
+              backgroundColor: colors.posterColor || 'black',
+              letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
@@ -287,11 +288,7 @@ const Template4: FC<Template4Props> = ({
                   : `${+fontSize?.albumNameSize + 123}px`
                 : '64px',
             }}
-            className={
-              selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `bg-black px-2`
-                : `bg-black px-2`
-            }
+            className={selectedAlbum?.label && selectedAlbum?.label.length > 24 ? `px-2` : `px-2`}
           >
             <p>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}</p>
           </div>
@@ -323,7 +320,7 @@ const Template4: FC<Template4Props> = ({
                   ? `${+fontSize?.singerNameSize + 64}px`
                   : `${+fontSize?.singerNameSize + 41}px`
                 : '18px',
-              letterSpacing: selectedFontFamily === 'Morganite' ? '0.5px' : 'normal',
+              letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
@@ -338,14 +335,14 @@ const Template4: FC<Template4Props> = ({
           className={`${activeAlignment} text-left absolute left-0 right-0 px-[5%] w-full pt-[9%] template_album_name overflow-hidden `}
           style={{
             color: colors.descriptionColor,
-            fontFamily: selectedFontFamily,
+            fontFamily: selectedFont || 'Montserrat',
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
           }}
         >
           <p
             style={{
               whiteSpace: 'pre-wrap',
-              letterSpacing: selectedFontFamily === 'Morganite' ? '0.5px' : 'normal',
+              letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
             }}
             className={`bg-transparent text-ellipsis-8`}
           >

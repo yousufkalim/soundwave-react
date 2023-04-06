@@ -121,7 +121,7 @@ const Template6: FC<Template6Props> = ({
       }}
     >
       <div
-        className={`bg-gradient-to-b h-full w-full`}
+        className={`h-full w-full`}
         style={{
           background: colors.posterColor,
           padding: '6% 5% 0% 5%',
@@ -209,7 +209,7 @@ const Template6: FC<Template6Props> = ({
             style={{
               whiteSpace: 'pre-wrap',
               fontFamily: selectedFont,
-              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
             className={`bg-transparent font-[Montserrat]`}
           >

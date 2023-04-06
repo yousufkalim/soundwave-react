@@ -177,7 +177,7 @@ const Template2: FC<Template2Props> = ({
                   : `font-semibold font-proxima-nova template_album_name`
               }
               style={{
-                letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
                 color: colors.songTitleColor,
                 fontFamily: selectedFont,
                 fontSize: selectedAlbum?.label
@@ -263,7 +263,7 @@ const Template2: FC<Template2Props> = ({
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
-              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
               fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
           >
