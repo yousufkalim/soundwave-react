@@ -333,7 +333,7 @@ const Template2: FC<Template2Props> = ({
                     ? `${+fontSize?.albumNameSize + 112}px`
                     : `${+fontSize?.albumNameSize + 135}px`
                   : '64px',
-                letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
               }}
             >
               <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}</i>
@@ -345,8 +345,8 @@ const Template2: FC<Template2Props> = ({
             style={{
               whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,
-              fontFamily: selectedFont || 'Proxima-italic',
-              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+              fontFamily: selectedFont || 'Montserrat',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
               fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
           >

@@ -23,7 +23,7 @@ const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor })
   useOnClickOutside(colorPickerRef, handleClickOutSide);
 
   const handleOpenColorPicker = (): void => {
-    setOpen(!open);
+    setOpen(true);
   };
 
   const handleChangeColor = (color: string): void => {
@@ -32,7 +32,7 @@ const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor })
 
   return (
     <>
-      <div className="flex items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
+      <div className="flex relative items-center justify-between py-2 border-b-[1px] border-[#CCCCCC]">
         <span className="text-[12px]">{title}</span>
         <div
           style={{ background: value }}
@@ -41,31 +41,31 @@ const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor })
         >
           <ColorPickerIcon />
         </div>
+        {open && (
+          <div
+            ref={colorPickerRef}
+            className="absolute w-auto z-50 top-[0.5rem] sm:right-[5rem] right-[4.5rem] bg-gray-100 p-1 shadow-2xl shadow-[#BAB8B8] border-solid border-2 border-gray-300 rounded-lg"
+          >
+            <GradientPicker
+              hideAdvancedSliders={true}
+              hideColorGuide={true}
+              hideControls={false}
+              hideInputType={true}
+              hidePresets={false}
+              hideOpacity={true}
+              hideEyeDrop={true}
+              hideInputs={true}
+              hideHue={false}
+              value={value}
+              onChange={handleChangeColor}
+              width={270}
+              height={120}
+              direction="vertical"
+              gradient={'linear-gradient(90deg, #ff0000 0%, #0000ff 100%)'}
+            />
+          </div>
+        )}
       </div>
-      {open && (
-        <div
-          ref={colorPickerRef}
-          className="absolute z-50 right-[2rem] sm:right-[18.5rem] bottom-[12rem] sm:bottom-[7rem] bg-gray-100 p-1 shadow-2xl shadow-[#BAB8B8] border-solid border-2 border-gray-300 rounded-lg"
-        >
-          <GradientPicker
-            hideAdvancedSliders={true}
-            hideColorGuide={true}
-            hideControls={false}
-            hideInputType={true}
-            hidePresets={false}
-            hideOpacity={true}
-            hideEyeDrop={true}
-            hideInputs={true}
-            hideHue={false}
-            value={value}
-            onChange={handleChangeColor}
-            width={270}
-            height={120}
-            direction="vertical"
-            gradient={'linear-gradient(90deg, #ff0000 0%, #0000ff 100%)'}
-          />
-        </div>
-      )}
     </>
   );
 };

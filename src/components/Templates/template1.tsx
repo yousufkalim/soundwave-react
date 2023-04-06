@@ -202,7 +202,7 @@ const Template1: FC<Template1Props> = ({
                   ? `${+fontSize?.albumNameSize + 105}px`
                   : `${+fontSize?.albumNameSize + 123}px`
                 : '64px',
-              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -241,7 +241,7 @@ const Template1: FC<Template1Props> = ({
                   ? `${+fontSize?.singerNameSize + 32}px`
                   : `${+fontSize?.singerNameSize + 32}px`
                 : '14px',
-              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
@@ -286,7 +286,7 @@ const Template1: FC<Template1Props> = ({
                 whiteSpace: 'pre-wrap',
                 color: colors.descriptionColor,
                 fontFamily: selectedFont || 'Montserrat',
-                letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
                 fontSize: descriptionFontSize[posterSize.value] ?? '14px',
               }}
               className={`template_album_name bg-transparent font-[Montserrat] text-ellipsis-8`}

@@ -481,7 +481,7 @@ const RightSide: FC<RightSideProps> = ({
               </Step>
             ))}
           </Stepper>
-          <div>
+          <div className="pt-[5%]">
             <React.Fragment>
               <div className="my-3 mb-20">
                 {activeStepperStep === 0 ? (

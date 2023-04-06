@@ -53,7 +53,7 @@ const Template5: FC<Template5Props> = ({
   useEffect(() => {
     setColors({
       boxColor: 'transparent',
-      posterColor: 'linear-gradient(180deg, rgb(255,255,255) 60%,  rgb(0, 0, 0) 100%',
+      posterColor: 'linear-gradient(180deg,rgb(255,255,255) 60%, rgb(0, 0, 0) 100%)',
       soundWaveColor: 'rgba(0,0,0,1)',
       soundWaveNameColor: '#000',
       songTitleColor: '#fff',
@@ -109,7 +109,7 @@ const Template5: FC<Template5Props> = ({
       }}
     >
       <div
-        className={`bg-gradient-to-b h-full w-full`}
+        className={`h-full w-full`}
         style={{
           background: colors.posterColor,
           paddingLeft: BackgroundFrame ? '5%' : '5%',
@@ -231,7 +231,7 @@ const Template5: FC<Template5Props> = ({
                   ? `${+fontSize?.albumNameSize + 105}px`
                   : `${+fontSize?.albumNameSize + 123}px`
                 : '64px',
-              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -266,7 +266,7 @@ const Template5: FC<Template5Props> = ({
                   ? `${+fontSize?.singerNameSize + 40}px`
                   : `${+fontSize?.singerNameSize + 40}px`
                 : `${+fontSize?.singerNameSize + 13}px`,
-              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
@@ -277,7 +277,7 @@ const Template5: FC<Template5Props> = ({
               whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,
               fontFamily: selectedFont,
-              letterSpacing: selectedFont === 'Morganite' ? '0.5px' : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
               fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
           >

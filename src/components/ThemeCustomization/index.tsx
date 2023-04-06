@@ -55,7 +55,7 @@ const Theme: FC<ThemeProps> = ({
       enabled: true,
     },
     {
-      title: 'Soundwave Name Color',
+      title: 'Song Titles',
       name: 'soundWaveNameColor',
       value: soundWaveNameColor,
       enabled: true,
@@ -67,7 +67,7 @@ const Theme: FC<ThemeProps> = ({
       enabled: true,
     },
     {
-      title: 'Song Title',
+      title: 'Album Title/Artist',
       name: 'songTitleColor',
       value: songTitleColor,
       enabled: true,
@@ -148,7 +148,7 @@ const Theme: FC<ThemeProps> = ({
         </div>
         <div className="flex items-center justify-between py-5 border-b-[1px] border-[#CCCCCC]">
           <span className="text-[12px]">
-            Album-Name Font Size (
+            Title Font Size (
             {posterSize.value === '12 X 18'
               ? `${+fontSize.albumNameSize + 48}px`
               : posterSize.value === '16 X 20'
@@ -208,7 +208,7 @@ const Theme: FC<ThemeProps> = ({
         selectedTemplate === 'template5' ? (
           <div className="flex items-center justify-between py-5">
             <span className="text-[12px]">
-              Singer-Name Font Size (
+              Artist Font Size (
               {posterSize.value === '12 X 18'
                 ? `${+fontSize?.singerNameSize + 14}px`
                 : posterSize.value === '16 X 20'
