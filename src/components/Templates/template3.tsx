@@ -285,7 +285,7 @@ const Template3: FC<Template3Props> = ({
                     : '16px',
                 letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
               }}
-              className="border p-1 rounded-lg font-bold"
+              className="border p-1 rounded-lg font-bold relative"
             >
               {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
             </span>

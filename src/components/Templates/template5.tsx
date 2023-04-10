@@ -152,8 +152,8 @@ const Template5: FC<Template5Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-extrabold font-[Aksentuasi] tracking-tighter template_album_name`
-                : `font-extrabold font-[Aksentuasi] tracking-wide template_album_name`
+                ? `font-extrabold relative font-[Aksentuasi] tracking-tighter template_album_name`
+                : `font-extrabold relative font-[Aksentuasi] tracking-wide template_album_name`
             }
             style={{
               color: colors.songTitleColor,
@@ -237,7 +237,7 @@ const Template5: FC<Template5Props> = ({
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
           </span>
           <span
-            className="font-bold font-[Montserrat] template_album_name"
+            className="font-bold font-[Montserrat] template_album_name relative"
             style={{
               color: colors.songTitleColor,
               fontFamily: selectedFont,

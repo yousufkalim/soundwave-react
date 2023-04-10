@@ -173,8 +173,8 @@ const Template2: FC<Template2Props> = ({
             <span
               className={
                 selectedAlbum?.label && selectedAlbum?.label.length > 15
-                  ? `font-semibold font-proxima-nova template_album_name`
-                  : `font-semibold font-proxima-nova template_album_name`
+                  ? `font-semibold relative font-proxima-nova template_album_name`
+                  : `font-semibold relative font-proxima-nova template_album_name`
               }
               style={{
                 letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
@@ -259,7 +259,7 @@ const Template2: FC<Template2Props> = ({
             </span>
           </div>
           <div
-            className={`${activeAlignment} bg-transparent font-proxima-nova mt-4`}
+            className={`${activeAlignment} bg-transparent font-proxima-nova mt-4 relative`}
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,

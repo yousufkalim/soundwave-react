@@ -167,7 +167,7 @@ const Theme: FC<ThemeProps> = ({
           <FontChanger
             id="albumName"
             name="albumName"
-            min="0"
+            min="-13"
             max="13"
             step="0.1"
             value={fontSize?.albumNameSize}
@@ -195,7 +195,7 @@ const Theme: FC<ThemeProps> = ({
           <FontChanger
             id="description"
             name="description"
-            min="0"
+            min="-8"
             max="8"
             step="0.1"
             value={fontSize?.descriptionSize}
@@ -227,7 +227,7 @@ const Theme: FC<ThemeProps> = ({
             <FontChanger
               id="singerName"
               name="singerName"
-              min="0"
+              min="-8"
               max="9"
               step="0.1"
               value={fontSize?.singerNameSize}

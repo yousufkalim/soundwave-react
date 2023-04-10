@@ -48,8 +48,8 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
   useEffect(() => {
     liRef?.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [liRef?.current]);
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  }, [options]);
+  console.log(liRef.current, 'liRef?.current');
   const handleInputChange = (e: { target: HTMLInputElement }) => {
     const { value } = e.target;
     // setQuery(value);
@@ -80,7 +80,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       {isShow && (
         <ul
           ref={liRef}
-          className="md:pb-0 pb-[3rem] xs:pb-[3rem] flex items-center justify-start flex-col mt-[.5rem] absolute bg-white w-full max-h-96 rounded top-11 z-[10] overflow-y-auto shadow-md"
+          className="md:pb-0 pb-[3rem] xs:pb-[3rem] flex items-center justify-start flex-col mt-[.5rem] absolute bg-white w-full md:max-h-96 rounded top-11 z-[10] overflow-y-auto shadow-md"
         >
           {optionsData.map((optionItem) => (
             <li
