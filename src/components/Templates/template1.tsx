@@ -210,8 +210,8 @@ const Template1: FC<Template1Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `text-sm template_album_name`
-                : `text-sm template_album_name`
+                ? `text-sm template_album_name relative`
+                : `text-sm template_album_name relative`
             }
             style={{
               color: colors.songTitleColor,

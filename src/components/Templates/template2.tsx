@@ -254,8 +254,8 @@ const Template2: FC<Template2Props> = ({
             <span
               className={
                 selectedAlbum?.label && selectedAlbum?.label.length > 15
-                  ? `font-semibold font-proxima-nova template_album_name tracking-tighter`
-                  : `font-semibold font-proxima-nova template_album_name tracking-wide`
+                  ? `font-semibold relative font-proxima-nova template_album_name tracking-tighter`
+                  : `font-semibold relative font-proxima-nova template_album_name tracking-wide`
               }
               style={{
                 color: colors.songTitleColor,

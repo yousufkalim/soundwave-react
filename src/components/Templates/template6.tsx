@@ -199,7 +199,7 @@ const Template6: FC<Template6Props> = ({
           })}
         </div>
         <div
-          className={`${activeAlignment} px-[1%] w-full overflow-hidden text-ellipsis-8 break-words template_album_name`}
+          className={`${activeAlignment} px-[1%] w-full overflow-hidden text-ellipsis-8 break-words relative template_album_name`}
           style={{
             color: colors.descriptionColor,
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
