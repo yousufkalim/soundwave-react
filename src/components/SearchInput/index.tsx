@@ -47,9 +47,14 @@ const SearchInput: React.FC<SearchInputProps> = ({
   const liRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    liRef?.current?.scrollIntoView({ behavior: 'smooth' });
+    const timer = setTimeout(() => {
+      liRef?.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 700);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [options]);
-  console.log(liRef.current, 'liRef?.current');
+
   const handleInputChange = (e: { target: HTMLInputElement }) => {
     const { value } = e.target;
     // setQuery(value);
