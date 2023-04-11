@@ -229,6 +229,12 @@ const RightSide: FC<RightSideProps> = ({
     handleCalulatePosterPrice();
   }, [posterSize, posterType]);
 
+  useEffect(() => {
+    if (activeStepperStep === 2) {
+      window.scrollTo({ top: 50, behavior: 'smooth' });
+    }
+  }, [activeStepperStep]);
+
   const handleAddToCart = () => {
     setFlag(true);
     setBackgroundFrame('');
@@ -352,7 +358,13 @@ const RightSide: FC<RightSideProps> = ({
   };
   return (
     <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start sm:mt-11 md:pl-5 lg:pl-10 sxl:pl-20">
-      <div className=" w-full sm:w-[78%] md:h-auto md:w-[95%] lg:w-[88%] 2xl:w-[65%] sxl:w-[75%] h-[220px] overflow-auto">
+      <div
+        style={{
+          height: activeStepperStep >= 2 ? '220px' : 'auto',
+          overflow: activeStepperStep >= 2 ? 'auto' : 'unset',
+        }}
+        className=" w-full sm:w-[78%] md:h-auto md:w-[95%] lg:w-[88%] 2xl:w-[65%] sxl:w-[75%]"
+      >
         <div className="w-full hidden md:flex items-center justify-start">
           <TitleIcon className="mx-2" />
           <span className="text-sm font-semibold tracking-tight text-black">Soundwave Poster</span>
