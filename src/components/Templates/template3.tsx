@@ -284,6 +284,16 @@ const Template3: FC<Template3Props> = ({
                     ? `${+fontSize?.singerNameSize + 41}px`
                     : '16px',
                 letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+                borderWidth:
+                  posterSize.value === '18 X 24'
+                    ? '1.5px'
+                    : posterSize.value === '20 X 28'
+                    ? '1.5px'
+                    : posterSize.value === '24 X 36'
+                    ? '2px'
+                    : posterSize.value === '28 X 40'
+                    ? '2px'
+                    : '1px',
               }}
               className="border p-1 rounded-lg font-bold relative"
             >

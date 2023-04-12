@@ -60,15 +60,9 @@ const Template6: FC<Template6Props> = ({
     });
   }, []);
 
-  const capitalizeLabel = (label: string): string => {
-    return label
-      .toLowerCase()
-      .replace(
-        /(\([^)]*\)|^)[^(]*?\b(\S)?/g,
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        (match, p1, p2) => `${p1}${p2 ? p2.toUpperCase() : ''}`,
-      )
-      .replace(/\b\w/g, (match) => match.toUpperCase());
+  const capitalizeAfterSpaceOrParenthesis = (str: string): string => {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    return str.replace(/(\s+|\()(\w)/g, (match, p1, p2) => `${p1}${p2.toUpperCase()}`);
   };
 
   const descriptionFontSize: Record<string, number> = {
@@ -135,6 +129,7 @@ const Template6: FC<Template6Props> = ({
                 : `font-[Blacksword] template_album_name tracking-wider`
             }
             style={{
+              textTransform: 'capitalize',
               color: colors.songTitleColor,
               fontFamily: selectedFont,
               fontSize: selectedAlbum?.label
@@ -164,7 +159,9 @@ const Template6: FC<Template6Props> = ({
                 : `48px`,
             }}
           >
-            {selectedAlbum?.label ? capitalizeLabel(selectedAlbum?.label) : 'ALBUM NAME'}
+            {selectedAlbum?.label
+              ? capitalizeAfterSpaceOrParenthesis(selectedAlbum?.label)
+              : 'ALBUM NAME'}
           </span>
         </div>
         <div
