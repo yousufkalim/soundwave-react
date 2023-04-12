@@ -140,6 +140,9 @@ body::-webkit-scrollbar {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+#hide_Scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 .rbgcp-wrapper
   > div
