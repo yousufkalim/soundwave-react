@@ -359,7 +359,7 @@ const RightSide: FC<RightSideProps> = ({
   return (
     <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start sm:mt-11 md:pl-5 lg:pl-10 sxl:pl-20">
       <div
-        // id="hide_Scrollbar"
+        id="hide_Scrollbar"
         style={{
           height: activeStepperStep >= 2 ? '220px' : 'auto',
         }}

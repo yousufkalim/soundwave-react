@@ -84,7 +84,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       </div>
       {isShow && (
         <ul
-          // id="hide_Scrollbar"
+          id="hide_Scrollbar"
           ref={liRef}
           className="md:pb-0 pb-[3rem] xs:pb-[3rem] flex items-center justify-start flex-col mt-[.5rem] absolute bg-white w-full md:max-h-96 rounded top-11 z-[10] overflow-y-auto shadow-md overflow-x-hidden"
         >
