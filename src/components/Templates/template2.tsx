@@ -189,31 +189,31 @@ const Template2: FC<Template2Props> = ({
                 : BackgroundFrame
                 ? // more than 15 charaters and with background frame
                   posterSize.value === '12 X 18'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.154%]`
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.164%]`
                   : posterSize.value === '16 X 20'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.25%]`
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.09%]`
                   : posterSize.value === '18 X 24'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.25%]`
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.05%]`
                   : posterSize.value === '20 X 28'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.154%]`
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.054%]`
                   : posterSize.value === '24 X 36'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.16%]`
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.04%]`
                   : posterSize.value === '28 X 40'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.23%]`
+                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.06%]`
                   : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.154%]`
                 : // more than 15 charaters and no background frame
                 posterSize.value === '12 X 18'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.65%]`
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.69%]`
                 : posterSize.value === '16 X 20'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.7%]`
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.5%]`
                 : posterSize.value === '18 X 24'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.7%]`
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.55%]`
                 : posterSize.value === '20 X 28'
                 ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.63%]`
                 : posterSize.value === '24 X 36'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.63%]`
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.5%]`
                 : posterSize.value === '28 X 40'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.67%]`
+                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.5%]`
                 : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.65%]`
               : flag
               ? BackgroundFrame
@@ -266,7 +266,7 @@ const Template2: FC<Template2Props> = ({
                       ? selectedFontFamily === 'Blacksword'
                         ? `${+fontSize?.albumNameSize + 25}px`
                         : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 25}px`
+                        ? `${+fontSize?.albumNameSize + 28}px` //
                         : `${+fontSize?.albumNameSize + 33}px`
                       : selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 45}px`
@@ -290,24 +290,24 @@ const Template2: FC<Template2Props> = ({
                       ? selectedFontFamily === 'Blacksword'
                         ? `${+fontSize?.albumNameSize + 40}px`
                         : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 38}px` // completed
+                        ? `${+fontSize?.albumNameSize + 38}px`
                         : `${+fontSize?.albumNameSize + 48}px`
                       : selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 62}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 67}px` // completed
+                      ? `${+fontSize?.albumNameSize + 67}px`
                       : `${+fontSize?.albumNameSize + 82}px`
                     : posterSize.value === '20 X 28'
                     ? selectedAlbum?.label.length > 15
                       ? selectedFontFamily === 'Blacksword'
                         ? `${+fontSize?.albumNameSize + 45}px`
                         : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 43}px` // completed
+                        ? `${+fontSize?.albumNameSize + 43}px`
                         : `${+fontSize?.albumNameSize + 53}px`
                       : selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 75}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 80}px` // completed
+                      ? `${+fontSize?.albumNameSize + 80}px`
                       : `${+fontSize?.albumNameSize + 98}px`
                     : posterSize.value === '24 X 36'
                     ? selectedAlbum?.label.length > 15
