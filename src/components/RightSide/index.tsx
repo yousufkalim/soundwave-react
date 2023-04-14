@@ -362,8 +362,9 @@ const RightSide: FC<RightSideProps> = ({
         id="hide_Scrollbar"
         style={{
           height: activeStepperStep >= 2 ? '220px' : 'auto',
+          overflow: activeStepperStep !== 0 ? 'auto' : '',
         }}
-        className=" w-full sm:w-[78%] md:h-auto md:w-[95%] lg:w-[88%] 2xl:w-[65%] sxl:w-[75%] overflow-auto md:overflow-hidden"
+        className=" w-full sm:w-[78%] md:h-auto md:w-[95%] lg:w-[88%] 2xl:w-[65%] sxl:w-[75%] md:overflow-hidden"
       >
         <div className="w-full hidden md:flex items-center justify-start">
           <TitleIcon className="mx-2" />
