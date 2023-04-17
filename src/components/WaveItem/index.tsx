@@ -29,8 +29,8 @@ const Waveroom: FC<WaveroomProps> = ({
     <div
       className={
         songsAmount <= 12
-          ? 'w-[50%] z-10	 flex flex-col justify-center items-center'
-          : 'w-[30%] z-10	 flex flex-col justify-center items-center'
+          ? 'w-[50%] z-10 flex flex-col justify-center items-center'
+          : 'w-[30%] z-10 flex flex-col justify-center items-center'
       }
     >
       <div
@@ -52,7 +52,7 @@ const Waveroom: FC<WaveroomProps> = ({
           }
         >
           <span
-            className={`w-[82%] flex items-center justify-start tracking-tighter font-semibold font-[Montserrat] template_album_name text-[4px] sm:text-[6px] xl:text-[7px]`}
+            className={`w-[82%] flex items-center justify-start tracking-tighter font-semibold font-[Montserrat] break-words text-[4px] sm:text-[6px] xl:text-[7px]`}
             style={{
               color: colors.soundWaveNameColor,
               // fontFamily: selectedFont,
@@ -86,7 +86,7 @@ const Waveroom: FC<WaveroomProps> = ({
           </span>
           <span
             className={`
-          w-[18%] font-[Montserrat] template_album_name text-[4px] flex items-center justify-end
+          w-[18%] font-[Montserrat] break-words text-[4px] flex items-center justify-end
           sm:text-[6px] 
            xl:text-[7px] 
           2xl:text-[8px] 

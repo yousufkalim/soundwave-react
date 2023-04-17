@@ -125,8 +125,8 @@ const Template6: FC<Template6Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-bold font-[Blacksword] template_album_name tracking-tight`
-                : `font-[Blacksword] template_album_name tracking-wider`
+                ? `font-bold font-[Blacksword] break-words tracking-tight`
+                : `font-[Blacksword] break-words tracking-wider`
             }
             style={{
               textTransform: 'capitalize',
@@ -196,7 +196,7 @@ const Template6: FC<Template6Props> = ({
           })}
         </div>
         <div
-          className={`${activeAlignment} px-[1%] w-full overflow-hidden text-ellipsis-8 break-words relative template_album_name`}
+          className={`${activeAlignment} px-[1%] w-full overflow-hidden text-ellipsis-8 break-words relative `}
           style={{
             color: colors.descriptionColor,
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',

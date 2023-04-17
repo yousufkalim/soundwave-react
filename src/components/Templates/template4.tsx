@@ -153,7 +153,7 @@ const Template4: FC<Template4Props> = ({
           })}
         </div>
         <div
-          className="absolute template_album_name flex items-center justify-center flex-col max-w-[85%]"
+          className="absolute break-words flex items-center justify-center flex-col max-w-[85%]"
           style={{
             left: leftSpacing,
             color: colors.songTitleColor,
@@ -332,7 +332,7 @@ const Template4: FC<Template4Props> = ({
           </div>
         </div>
         <div
-          className={`${activeAlignment} text-left absolute left-0 right-0 px-[5%] w-full pt-[9%] template_album_name overflow-hidden `}
+          className={`${activeAlignment} text-left absolute left-0 right-0 px-[5%] w-full pt-[9%] break-words overflow-hidden `}
           style={{
             color: colors.descriptionColor,
             fontFamily: selectedFont || 'Montserrat',
