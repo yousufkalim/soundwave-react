@@ -254,8 +254,8 @@ const Template2: FC<Template2Props> = ({
             <span
               className={
                 selectedAlbum?.label && selectedAlbum?.label.length > 15
-                  ? `font-semibold relative font-proxima-nova template_album_name tracking-tighter`
-                  : `font-semibold relative font-proxima-nova template_album_name tracking-wide`
+                  ? `font-semibold relative font-proxima-nova template_album_name tracking-tight`
+                  : `font-semibold relative font-proxima-nova template_album_name`
               }
               style={{
                 color: colors.songTitleColor,
@@ -266,7 +266,7 @@ const Template2: FC<Template2Props> = ({
                       ? selectedFontFamily === 'Blacksword'
                         ? `${+fontSize?.albumNameSize + 25}px`
                         : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 28}px` //
+                        ? `${+fontSize?.albumNameSize + 28}px`
                         : `${+fontSize?.albumNameSize + 33}px`
                       : selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 45}px`
