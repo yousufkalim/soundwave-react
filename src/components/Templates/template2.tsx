@@ -160,198 +160,188 @@ const Template2: FC<Template2Props> = ({
                 ? BackgroundFrame
                   ? // more than 15 charaters and with background frame and flag
                     posterSize.value === '12 X 18'
-                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
                     : posterSize.value === '16 X 20'
-                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
                     : posterSize.value === '18 X 24'
-                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
                     : posterSize.value === '20 X 28'
-                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
                     : posterSize.value === '24 X 36'
-                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
                     : posterSize.value === '28 X 40'
-                    ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
-                    : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
+                    : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
                   : // more than 15 charaters and with no background frame and flag
                   posterSize.value === '12 X 18'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.6%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.6%]`
                   : posterSize.value === '16 X 20'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
                   : posterSize.value === '18 X 24'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
                   : posterSize.value === '20 X 28'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.9%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.9%]`
                   : posterSize.value === '24 X 36'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.6%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.6%]`
                   : posterSize.value === '28 X 40'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.7%]`
-                  : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.6%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.7%]`
+                  : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.6%]`
                 : BackgroundFrame
                 ? // more than 15 charaters and with background frame
                   posterSize.value === '12 X 18'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.164%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.164%]`
                   : posterSize.value === '16 X 20'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.09%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.09%]`
                   : posterSize.value === '18 X 24'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.05%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.05%]`
                   : posterSize.value === '20 X 28'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.054%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.054%]`
                   : posterSize.value === '24 X 36'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.04%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.04%]`
                   : posterSize.value === '28 X 40'
-                  ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.06%]`
-                  : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[1.154%]`
+                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.06%]`
+                  : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.154%]`
                 : // more than 15 charaters and no background frame
                 posterSize.value === '12 X 18'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.69%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.69%]`
                 : posterSize.value === '16 X 20'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.5%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.5%]`
                 : posterSize.value === '18 X 24'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.55%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.55%]`
                 : posterSize.value === '20 X 28'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.63%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.63%]`
                 : posterSize.value === '24 X 36'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.5%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.5%]`
                 : posterSize.value === '28 X 40'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.5%]`
-                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[0.65%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.5%]`
+                : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.65%]`
               : flag
               ? BackgroundFrame
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[5%]`
-                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[4.5%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[5%]`
+                : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[4.5%]`
               : BackgroundFrame
               ? // less than 15 charaters and with background frame
                 posterSize.value === '12 X 18'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.5%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.5%]`
                 : posterSize.value === '16 X 20'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[3%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[3%]`
                 : posterSize.value === '18 X 24'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.5%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.5%]`
                 : posterSize.value === '20 X 28'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.8%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
                 : posterSize.value === '24 X 36'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.5%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.5%]`
                 : posterSize.value === '28 X 40'
-                ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.7%]`
-                : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.5%]`
+                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.7%]`
+                : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.5%]`
               : // less than 15 charaters and no background frame
               posterSize.value === '12 X 18'
-              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
               : posterSize.value === '16 X 20'
-              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.45%]`
+              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.45%]`
               : posterSize.value === '18 X 24'
-              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
               : posterSize.value === '20 X 28'
-              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.2%]`
+              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.2%]`
               : posterSize.value === '24 X 36'
-              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.1%]`
+              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.1%]`
               : posterSize.value === '28 X 40'
-              ? `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2.1%]`
-              : `break-words w-full left-0 right-0 h-[23%] text-ellipsis-8 px-[5%] absolute bottom-[2%]`
+              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.1%]`
+              : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
           }
-        >
-          <div className="text-center">
-            <span
-              className={
-                selectedAlbum?.label && selectedAlbum?.label.length > 15
-                  ? `font-semibold relative font-proxima-nova template_album_name tracking-tight`
-                  : `font-semibold relative font-proxima-nova template_album_name`
-              }
-              style={{
-                color: colors.songTitleColor,
-                fontFamily: selectedFont || 'Proxima-italic',
-                fontSize: selectedAlbum?.label
-                  ? posterSize.value === '12 X 18'
-                    ? selectedAlbum?.label.length > 15
-                      ? selectedFontFamily === 'Blacksword'
-                        ? `${+fontSize?.albumNameSize + 25}px`
-                        : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 28}px`
-                        : `${+fontSize?.albumNameSize + 33}px`
-                      : selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 45}px`
-                      : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 48}px`
-                      : `${+fontSize?.albumNameSize + 58}px`
-                    : posterSize.value === '16 X 20'
-                    ? selectedAlbum?.label.length > 15
-                      ? selectedFontFamily === 'Blacksword'
-                        ? `${+fontSize?.albumNameSize + 35}px`
-                        : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 33}px`
-                        : `${+fontSize?.albumNameSize + 42}px`
-                      : selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 60}px`
-                      : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 64}px`
-                      : `${+fontSize?.albumNameSize + 78}px`
-                    : posterSize.value === '18 X 24'
-                    ? selectedAlbum?.label.length > 15
-                      ? selectedFontFamily === 'Blacksword'
-                        ? `${+fontSize?.albumNameSize + 40}px`
-                        : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 38}px`
-                        : `${+fontSize?.albumNameSize + 48}px`
-                      : selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 62}px`
-                      : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 67}px`
-                      : `${+fontSize?.albumNameSize + 82}px`
-                    : posterSize.value === '20 X 28'
-                    ? selectedAlbum?.label.length > 15
-                      ? selectedFontFamily === 'Blacksword'
-                        ? `${+fontSize?.albumNameSize + 45}px`
-                        : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 43}px`
-                        : `${+fontSize?.albumNameSize + 53}px`
-                      : selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 75}px`
-                      : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 80}px`
-                      : `${+fontSize?.albumNameSize + 98}px`
-                    : posterSize.value === '24 X 36'
-                    ? selectedAlbum?.label.length > 15
-                      ? selectedFontFamily === 'Blacksword'
-                        ? `${+fontSize?.albumNameSize + 50}px`
-                        : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 51}px`
-                        : `${+fontSize?.albumNameSize + 65}px`
-                      : selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 90}px`
-                      : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 100}px`
-                      : `${+fontSize?.albumNameSize + 120}px`
-                    : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
-                    ? selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 58}px`
-                      : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 59}px`
-                      : `${+fontSize?.albumNameSize + 75}px`
-                    : selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 100}px`
+          style={{
+            color: colors.songTitleColor,
+            fontFamily: selectedFont || 'Proxima-italic',
+            fontSize: selectedAlbum?.label
+              ? posterSize.value === '12 X 18'
+                ? selectedAlbum?.label.length > 15
+                  ? selectedFontFamily === 'Blacksword'
+                    ? `${+fontSize?.albumNameSize + 25}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 112}px`
-                    : `${+fontSize?.albumNameSize + 135}px`
-                  : '64px',
-                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
-              }}
-            >
-              <i>{selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}</i>
-            </span>
-          </div>
-          <div
-            className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%] mt-[5%] template_album_name 
+                    ? `${+fontSize?.albumNameSize + 28}px`
+                    : `${+fontSize?.albumNameSize + 33}px`
+                  : selectedFontFamily === 'Blacksword'
+                  ? `${+fontSize?.albumNameSize + 45}px`
+                  : selectedFontFamily !== 'Morganite'
+                  ? `${+fontSize?.albumNameSize + 48}px`
+                  : `${+fontSize?.albumNameSize + 58}px`
+                : posterSize.value === '16 X 20'
+                ? selectedAlbum?.label.length > 15
+                  ? selectedFontFamily === 'Blacksword'
+                    ? `${+fontSize?.albumNameSize + 35}px`
+                    : selectedFontFamily !== 'Morganite'
+                    ? `${+fontSize?.albumNameSize + 33}px`
+                    : `${+fontSize?.albumNameSize + 42}px`
+                  : selectedFontFamily === 'Blacksword'
+                  ? `${+fontSize?.albumNameSize + 60}px`
+                  : selectedFontFamily !== 'Morganite'
+                  ? `${+fontSize?.albumNameSize + 64}px`
+                  : `${+fontSize?.albumNameSize + 78}px`
+                : posterSize.value === '18 X 24'
+                ? selectedAlbum?.label.length > 15
+                  ? selectedFontFamily === 'Blacksword'
+                    ? `${+fontSize?.albumNameSize + 40}px`
+                    : selectedFontFamily !== 'Morganite'
+                    ? `${+fontSize?.albumNameSize + 38}px`
+                    : `${+fontSize?.albumNameSize + 48}px`
+                  : selectedFontFamily === 'Blacksword'
+                  ? `${+fontSize?.albumNameSize + 62}px`
+                  : selectedFontFamily !== 'Morganite'
+                  ? `${+fontSize?.albumNameSize + 67}px`
+                  : `${+fontSize?.albumNameSize + 82}px`
+                : posterSize.value === '20 X 28'
+                ? selectedAlbum?.label.length > 15
+                  ? selectedFontFamily === 'Blacksword'
+                    ? `${+fontSize?.albumNameSize + 45}px`
+                    : selectedFontFamily !== 'Morganite'
+                    ? `${+fontSize?.albumNameSize + 43}px`
+                    : `${+fontSize?.albumNameSize + 53}px`
+                  : selectedFontFamily === 'Blacksword'
+                  ? `${+fontSize?.albumNameSize + 75}px`
+                  : selectedFontFamily !== 'Morganite'
+                  ? `${+fontSize?.albumNameSize + 80}px`
+                  : `${+fontSize?.albumNameSize + 98}px`
+                : posterSize.value === '24 X 36'
+                ? selectedAlbum?.label.length > 15
+                  ? selectedFontFamily === 'Blacksword'
+                    ? `${+fontSize?.albumNameSize + 50}px`
+                    : selectedFontFamily !== 'Morganite'
+                    ? `${+fontSize?.albumNameSize + 51}px`
+                    : `${+fontSize?.albumNameSize + 65}px`
+                  : selectedFontFamily === 'Blacksword'
+                  ? `${+fontSize?.albumNameSize + 90}px`
+                  : selectedFontFamily !== 'Morganite'
+                  ? `${+fontSize?.albumNameSize + 100}px`
+                  : `${+fontSize?.albumNameSize + 120}px`
+                : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
+                ? selectedFontFamily === 'Blacksword'
+                  ? `${+fontSize?.albumNameSize + 58}px`
+                  : selectedFontFamily !== 'Morganite'
+                  ? `${+fontSize?.albumNameSize + 59}px`
+                  : `${+fontSize?.albumNameSize + 75}px`
+                : selectedFontFamily === 'Blacksword'
+                ? `${+fontSize?.albumNameSize + 100}px`
+                : selectedFontFamily !== 'Morganite'
+                ? `${+fontSize?.albumNameSize + 112}px`
+                : `${+fontSize?.albumNameSize + 135}px`
+              : '64px',
+            letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+          }}
+        >
+          {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
+        </div>
+        <div
+          className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%] mt-[5%] 
             `}
-            style={{
-              whiteSpace: 'pre-wrap',
-              color: colors.descriptionColor,
-              fontFamily: selectedFont || 'Montserrat',
-              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
-              fontSize: descriptionFontSize[posterSize.value] ?? '14px',
-            }}
-          >
-            {albumDescripition}
-          </div>
+          style={{
+            whiteSpace: 'pre-wrap',
+            color: colors.descriptionColor,
+            fontFamily: selectedFont || 'Montserrat',
+            letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+            fontSize: descriptionFontSize[posterSize.value] ?? '14px',
+          }}
+        >
+          {albumDescripition}
         </div>
       </div>
     </div>

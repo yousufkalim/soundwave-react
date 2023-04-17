@@ -123,8 +123,8 @@ const Template1: FC<Template1Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `font-bold template_album_name tracking-tighter`
-                : `font-bold template_album_name tracking-wide`
+                ? `font-bold break-words tracking-tighter`
+                : `font-bold break-words tracking-wide`
             }
             style={{
               color: colors.songTitleColor,
@@ -210,8 +210,8 @@ const Template1: FC<Template1Props> = ({
           <span
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? `text-sm template_album_name relative`
-                : `text-sm template_album_name relative`
+                ? `text-sm break-words relative`
+                : `text-sm break-words relative`
             }
             style={{
               color: colors.songTitleColor,
@@ -289,7 +289,7 @@ const Template1: FC<Template1Props> = ({
                 letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
                 fontSize: descriptionFontSize[posterSize.value] ?? '14px',
               }}
-              className={`template_album_name bg-transparent font-[Montserrat] text-ellipsis-8`}
+              className={`break-words bg-transparent font-[Montserrat] text-ellipsis-8`}
             >
               {albumDescripition}
             </p>

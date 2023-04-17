@@ -173,8 +173,8 @@ const Template2: FC<Template2Props> = ({
             <span
               className={
                 selectedAlbum?.label && selectedAlbum?.label.length > 15
-                  ? `font-semibold relative font-proxima-nova template_album_name`
-                  : `font-semibold relative font-proxima-nova template_album_name`
+                  ? `font-semibold relative font-proxima-nova break-words`
+                  : `font-semibold relative font-proxima-nova break-words`
               }
               style={{
                 letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',

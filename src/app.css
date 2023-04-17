@@ -127,9 +127,7 @@ body::-webkit-scrollbar {
   background: rgba(1, 1, 1, 0.4);
   border-radius: 10px;
 }
-.template_album_name {
-  word-break: break-word;
-}
+
 .cursor_grabbing {
   cursor: grabbing;
 }
@@ -141,7 +139,7 @@ body::-webkit-scrollbar {
   overflow: hidden;
 }
 #hide_Scrollbar::-webkit-scrollbar {
-  display: none;
+  width: 8px !important;
 }
 
 .rbgcp-wrapper

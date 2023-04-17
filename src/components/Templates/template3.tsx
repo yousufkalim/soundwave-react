@@ -123,7 +123,7 @@ const Template3: FC<Template3Props> = ({
         }}
       >
         <div
-          className={`h-[77%] pb-3 py-[2] py-3 overflow-hidden flex flex-wrap justify-around`}
+          className={`h-[77%] pb-3 py-3 overflow-hidden flex flex-wrap justify-around`}
           style={{
             background: colors?.boxColor,
             paddingTop:
@@ -159,18 +159,18 @@ const Template3: FC<Template3Props> = ({
             selectedAlbum?.label && selectedAlbum?.label.length > 15
               ? flag
                 ? BackgroundFrame
-                  ? 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
-                  : 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] template_album_name tracking-tighter'
+                  ? 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] break-words tracking-tighter'
+                  : 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] break-words tracking-tighter'
                 : BackgroundFrame
-                ? 'text-center relative bottom-[1.8%] font-[Aemstel-Regular] template_album_name tracking-tighter'
-                : 'text-center relative bottom-[1.7%] font-[Aemstel-Regular] template_album_name tracking-tighter'
+                ? 'text-center relative bottom-[1.8%] font-[Aemstel-Regular] break-words tracking-tighter'
+                : 'text-center relative bottom-[1.7%] font-[Aemstel-Regular] break-words tracking-tighter'
               : flag
               ? BackgroundFrame
-                ? 'text-center relative bottom-[3%] font-[Aemstel-Regular] template_album_name'
-                : 'text-center relative bottom-[3%] font-[Aemstel-Regular] template_album_name'
+                ? 'text-center relative bottom-[3%] font-[Aemstel-Regular] break-words'
+                : 'text-center relative bottom-[3%] font-[Aemstel-Regular] break-words'
               : BackgroundFrame
-              ? 'text-center relative bottom-[3%]  font-[Aemstel-Regular] template_album_name'
-              : 'text-center relative bottom-[3%]  font-[Aemstel-Regular] template_album_name'
+              ? 'text-center relative bottom-[3%]  font-[Aemstel-Regular] break-words'
+              : 'text-center relative bottom-[3%]  font-[Aemstel-Regular] break-words'
           }
           style={{
             color: colors.songTitleColor,
