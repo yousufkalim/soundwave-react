@@ -53,7 +53,7 @@ const Template2: FC<Template2Props> = ({
 }) => {
   useEffect(() => {
     setColors({
-      boxColor: '#e28743',
+      boxColor: '#EA8444',
       posterColor: '#fff',
       soundWaveColor: 'rgba(0,0,0,1)',
       soundWaveNameColor: 'rgba(0,0,0,1)',
@@ -84,7 +84,7 @@ const Template2: FC<Template2Props> = ({
 
   // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
   // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
-  const selectedFontFamily = selectedFont || 'Proxima-italic';
+  const selectedFontFamily = selectedFont || 'Proxima-Nova-italic';
 
   return (
     <div
@@ -250,8 +250,9 @@ const Template2: FC<Template2Props> = ({
               : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
           }
           style={{
+            fontWeight: 'bold',
             color: colors.songTitleColor,
-            fontFamily: selectedFont || 'Proxima-italic',
+            fontFamily: selectedFont || 'Proxima-Nova-italic',
             fontSize: selectedAlbum?.label
               ? posterSize.value === '12 X 18'
                 ? selectedAlbum?.label.length > 15
@@ -336,7 +337,7 @@ const Template2: FC<Template2Props> = ({
           style={{
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
-            fontFamily: selectedFont || 'Montserrat',
+            fontFamily: selectedFont || 'Proxima-Nova-italic',
             letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
           }}
