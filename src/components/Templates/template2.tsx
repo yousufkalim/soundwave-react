@@ -337,7 +337,7 @@ const Template2: FC<Template2Props> = ({
           style={{
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
-            fontFamily: selectedFont || 'Proxima-Nova-italic',
+            fontFamily: selectedFont || 'Montserrat',
             letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
           }}
