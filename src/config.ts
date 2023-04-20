@@ -18,9 +18,9 @@ switch (window.location.host) {
     mediaUrl = 'https://soundwave-api-staging.falconweb.app';
     break;
 
-  case 'soundwave-prod.falconweb.app/':
-    baseUrl = 'https://soundwave-api-prod.falconweb.app/api/v1';
-    mediaUrl = 'https://soundwave-api-prod.falconweb.app';
+  case 'create.walltonez.com':
+    baseUrl = 'https://api.walltonez.com/api/v1';
+    mediaUrl = 'https://api.walltonez.com';
     break;
 }
 
