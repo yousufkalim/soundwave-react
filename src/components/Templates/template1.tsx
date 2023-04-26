@@ -280,17 +280,17 @@ const Template1: FC<Template1Props> = ({
               }
             })}
           </div>
-          <div className={`${activeAlignment} mt-[2%] absolute left-0 right-0 px-[5%] w-full`}>
-            <p
-              style={{
-                whiteSpace: 'pre-wrap',
-                color: colors.descriptionColor,
-                fontFamily: selectedFont || 'Montserrat',
-                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
-                fontSize: descriptionFontSize[posterSize.value] ?? '14px',
-              }}
-              className={`break-words bg-transparent font-[Montserrat] text-ellipsis-8`}
-            >
+          <div
+            style={{
+              whiteSpace: 'pre-wrap',
+              color: colors.descriptionColor,
+              fontFamily: selectedFont || 'Montserrat',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+              fontSize: descriptionFontSize[posterSize.value] ?? '14px',
+            }}
+            className={`${activeAlignment} mt-[2%] absolute left-0 right-0 px-[5%] w-full`}
+          >
+            <p className={`break-words bg-transparent font-[Montserrat] text-ellipsis-8`}>
               {albumDescripition}
             </p>
           </div>
