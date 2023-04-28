@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import Header from '../../components/Header/index';
 import PosterInfoCard from '../../components/PosterInfoCard/index';
-import { ReactComponent as TitleIcon } from '../../assets/titleIcon.svg';
+// import { ReactComponent as TitleIcon } from '../../assets/titleIcon.svg';
 import { ReactComponent as NoFramePlaceholder } from '../../assets/NoFramePlaceholder.svg';
 import { ReactComponent as Cart } from '../../assets/cart.svg';
 import request from '../../api/request';
@@ -150,13 +150,13 @@ const Checkout: FC = () => {
           </div>
           <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-10 lg:pl-20">
             <div className="w-[85%] sm:w-[65%] md:w-[90%] lg:w-[80%] 2xl:w-[65%] mt-[6%]">
-              <div className="w-full flex items-center justify-start mb-1 sm:mb-2">
-                <TitleIcon className="w-5 sm:w-15" />
+              {/* <div className="w-full flex items-center justify-start mb-1 sm:mb-2">
                 <span className="ml-2 text-[12px] md:text-sm text-md font-semibold tracking-tight text-black">
                   Soundwave Poster
                 </span>
-              </div>
+              </div> */}
               <div className="w-full flex items-center justify-start mb-4 sm:mb-7">
+                {/* <TitleIcon className="w-5 sm:w-20" /> */}
                 <i className="text-lg sm:text-xl text-[#454238] md:text-2xl lg:text-3xl tracking-tight font-semibold">
                   Continue Shopping
                 </i>
