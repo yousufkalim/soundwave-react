@@ -43,7 +43,7 @@ const Theme: FC<ThemeProps> = ({
 }) => {
   const colorsArray = [
     {
-      title: 'Box Color',
+      title: 'Box',
       name: 'boxColor',
       value: boxColor,
       enabled: selectedTemplate === 'template1' || selectedTemplate === 'template2',
@@ -61,7 +61,7 @@ const Theme: FC<ThemeProps> = ({
       enabled: true,
     },
     {
-      title: 'Soundwave Color',
+      title: 'Soundwaves',
       name: 'soundWaveColor',
       value: soundWaveColor,
       enabled: true,

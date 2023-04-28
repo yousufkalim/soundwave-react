@@ -368,7 +368,9 @@ const RightSide: FC<RightSideProps> = ({
       >
         <div className="w-full hidden md:flex items-center justify-start">
           <TitleIcon className="mx-2" />
-          <span className="text-sm font-semibold tracking-tight text-black">Soundwave Poster</span>
+          <span className="text-sm font-semibold tracking-tight text-black">
+            Create Your Own Design
+          </span>
         </div>
         <div className="w-full hidden md:flex md:items-center md:justify-start md:mb-5">
           <i className="text-black text-2xl tracking-tight font-semibold">

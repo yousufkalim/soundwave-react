@@ -10,10 +10,17 @@
   font-family: 'Aemstel-LineInside';
   src: url('../src/assets/fonts/Aemstel-LineInside.otf');
 }
+
+@font-face {
+  font-family: 'Basic';
+  src: url('../src/assets/fonts/Basic-Commercial-LT-Com-Bold.ttf');
+}
+
 @font-face {
   font-family: 'Proxima-Nova-italic';
   src: url('../src/assets/fonts/Proxima-Nova-Bold-It.otf');
 }
+
 @font-face {
   font-family: 'Montserrat-ExtraBold';
   src: url('../src/assets/fonts/Montserrat-ExtraBold.otf');
@@ -23,30 +30,37 @@
   font-family: 'Aemstel-Regular';
   src: url('../src/assets/fonts/Aemstel-Regular.otf');
 }
+
 @font-face {
   font-family: 'Roustel';
   src: url('../src/assets/fonts/Roustel.ttf');
 }
+
 @font-face {
   font-family: 'AspectRatio';
   src: url('../src/assets/fonts/AspectRatio.ttf');
 }
+
 @font-face {
   font-family: 'BronovaBold';
   src: url('../src/assets/fonts/BronovaBold.ttf');
 }
+
 @font-face {
   font-family: 'EdensorFree';
   src: url('../src/assets/fonts/Edensor-Free.otf');
 }
+
 @font-face {
   font-family: 'Edensor';
   src: url('../src/assets/fonts/EdensorBold.ttf');
 }
+
 @font-face {
   font-family: 'FoxliteScript';
   src: url('../src/assets/fonts/FoxliteScript.ttf');
 }
+
 @font-face {
   font-family: 'blowbrush';
   src: url('../src/assets/fonts/blowbrush.otf');
@@ -66,6 +80,7 @@
   font-family: 'julee';
   src: url('../src/assets/fonts/Julee-Regular.ttf');
 }
+
 @font-face {
   font-family: 'Aksentuasi';
   src: url('../src/assets/fonts/aAksentuasi.otf');
@@ -100,6 +115,7 @@ body {
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
   color: black !important;
 }
+
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
   color: black !important;
 }
@@ -111,19 +127,24 @@ body {
 .css-10drtbx-MuiButtonBase-root-MuiCheckbox-root {
   padding: 0px !important;
 }
+
 .css-4ff9q7.Mui-active {
   color: black !important;
 }
+
 body::-webkit-scrollbar {
   /* display: none; */
   width: 4.5px;
 }
+
 .custom_scroll {
   padding-bottom: 2%;
 }
+
 .custom_scroll::-webkit-scrollbar {
   height: 6px !important;
 }
+
 .custom_scroll::-webkit-scrollbar-thumb {
   background: rgba(1, 1, 1, 0.4);
   border-radius: 10px;
@@ -132,6 +153,7 @@ body::-webkit-scrollbar {
 .cursor_grabbing {
   cursor: grabbing;
 }
+
 .text-ellipsis-8 {
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -139,6 +161,7 @@ body::-webkit-scrollbar {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 #hide_Scrollbar::-webkit-scrollbar {
   width: 5px !important;
   overflow-y: scroll !important;
@@ -161,6 +184,7 @@ body::-webkit-scrollbar {
   display: none !important;
   visibility: hidden !important;
 }
+
 /* default ratio */
 #wave-container-15 div:first-child canvas {
   width: 170px !important;
