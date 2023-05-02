@@ -184,7 +184,7 @@ const Checkout: FC = () => {
                   className={
                     cart.totalPoster.length > 0
                       ? 'bg-black flex items-center justify-center h-12 rounded-xl cursor-pointer text-white text-[10px] sm:text-[12px] 2xl:text-[13px] font-semibold'
-                      : 'bg-[#919B9B] flex items-center justify-center h-12 rounded-xl cursor-pointer text-white text-[10px] sm:text-[12px] 2xl:text-[13px] font-semibold'
+                      : 'bg-[#919B9B] flex items-center justify-center h-12 rounded-xl text-white text-[10px] sm:text-[12px] 2xl:text-[13px] font-semibold'
                   }
                 >
                   <Cart className="w-4" />

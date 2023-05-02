@@ -167,7 +167,12 @@ const CartModal: FC<CartModalProps> = ({
                   onClick={() => {
                     handleCheckout(setLoading);
                   }}
-                  className="bg-black py-3 text-white text-sm rounded-lg font-semibold flex items-center justify-center"
+                  disabled={cart.totalPoster?.length === 0}
+                  className={
+                    cart.totalPoster.length > 0
+                      ? 'bg-black py-3 text-white text-sm rounded-lg font-semibold flex items-center justify-center'
+                      : 'bg-[#919B9B] flex items-center justify-center h-12 rounded-xl text-white text-[10px] sm:text-[12px] 2xl:text-[13px] font-semibold'
+                  }
                 >
                   <CartIcon />
                   &nbsp; &nbsp;CHECKOUT

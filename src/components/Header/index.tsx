@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Logo from '../../assets/Logo.svg';
+import Logo from '../../assets/walltonezLogo.svg';
 import { ReactComponent as HeaderCart } from '../../assets/HeaderCart.svg';
 import { Badge } from '@mui/material';
 import { Fade as Hamburger } from 'hamburger-react';
@@ -41,7 +41,6 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
               handleIconClick('https://www.walltonez.com/', 'logo');
             }}
           />
-          {/* <Logo onClick={handleLogoClick} className="cursor-pointer w-[40%] sm:w-auto" /> */}
         </div>
         <div className="hbr:block hidden font-[Basic] font-semibold text-center">
           <div className="text-center leading-1.5 text-[15px]">
@@ -143,17 +142,6 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
             </div>
           </div>
         </div>
-        {/* <span className="text-white font-bold hidden md:text-lg md:block">
-          <i>{HeaderTitle}</i>
-        </span> */}
-        {/* < div className="flex items-center justify-center gap-4 hbr:w-[210px] bg-red-500" > */}
-        {/* <button
-            className="bg-white w-18 py-1 px-2 text-[10px] sm:w-32 sm:py-3 sm:text-sm rounded-md font-medium"
-            onClick={handleReturnToStore}
-          >
-            Return to Store
-          </button> */}
-
         <Badge
           badgeContent={cartItemsLength}
           color="error"
@@ -167,7 +155,6 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
           />
         </Badge>
       </div>
-      {/* </div > */}
     </>
   );
 };
