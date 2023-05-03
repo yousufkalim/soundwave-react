@@ -38,8 +38,8 @@ const MobileNavMenu: FC = () => {
                       }}
                     >
                       About
+                      <ArrowForwardIosIcon sx={{ marginLeft: '8.5px', width: '.92rem' }} />
                     </span>
-                    <ArrowForwardIosIcon sx={{ marginLeft: '8.5px', width: '.92rem' }} />
                   </li>
                   <li className="mb-[0.585em]">
                     <a
@@ -65,8 +65,8 @@ const MobileNavMenu: FC = () => {
                       }}
                     >
                       Help
+                      <ArrowForwardIosIcon sx={{ marginLeft: '8.5px', width: '.92rem' }} />
                     </span>
-                    <ArrowForwardIosIcon sx={{ marginLeft: '8.5px', width: '.92rem' }} />
                   </li>
                 </ul>
               </div>
@@ -81,13 +81,13 @@ const MobileNavMenu: FC = () => {
               <div className="font-[Basic] font-bold text-[20px] msm:text-[30px] text-left ">
                 <ul>
                   <li className="mb-[1.5rem] text-[16px] mt-[10px] flex items-center">
-                    <ChevronLeftIcon fontSize="small" />
                     <span
                       className="hover:border-b-[2px] hover:border-b-current cursor-pointer"
                       onClick={() => {
                         setAboutOptions(false);
                       }}
                     >
+                      <ChevronLeftIcon fontSize="small" />
                       Back
                     </span>
                   </li>

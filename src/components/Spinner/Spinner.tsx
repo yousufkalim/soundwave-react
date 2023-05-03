@@ -8,7 +8,7 @@ const Spinner: FC = () => {
       style={{ backgroundColor: 'rgba(0, 0, 0, .2)', backdropFilter: 'blur(5px)' }}
     >
       <div className="relative h-full w-full">
-        <img className="absolute left-50 inset-2/4" src={Loading} alt="Loading" />
+        <img className="absolute loaderImage" src={Loading} alt="Loading" />
       </div>
     </div>
   );

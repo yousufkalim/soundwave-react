@@ -260,6 +260,7 @@ const index: FC = () => {
             cart={cart}
             setCart={setCart}
             getCartData={getCartData}
+            setFlag={setFlag}
           />
         )}
       </div>

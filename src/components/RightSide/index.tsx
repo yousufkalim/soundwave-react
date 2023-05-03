@@ -272,7 +272,7 @@ const RightSide: FC<RightSideProps> = ({
       await request<IResponseSuccess, IBody>('post', '/cart/add-poster', posterData)
         .then((res) => {
           localStorage.setItem('cartId', res?.data?.cart?._id);
-          handleResetData();
+          // handleResetData();
           getCartData(res?.data?.cart?._id);
           setLoading(false);
           setOpen(true);

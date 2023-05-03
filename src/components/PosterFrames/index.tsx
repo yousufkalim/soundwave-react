@@ -39,8 +39,8 @@ const PosterFrame: FC<PosterFrameProps> = ({
           }}
           className={
             frame === 'No Frame'
-              ? 'border-[3px] border-black w-[32%] flex items-center justify-center rounded-lg py-2 sm:py-3 cursor-pointer'
-              : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-2 sm:py-3 cursor-pointer'
+              ? 'border-[3px] border-black w-[32%] flex items-center justify-center rounded-lg py-[0.9rem] sm:py-3 cursor-pointer'
+              : 'border-[2px] w-[32%] flex items-center justify-center rounded-lg py-[0.9rem] sm:py-3 cursor-pointer'
           }
         >
           <span className="text-[10px] sm:text-[12px]">No Frame</span>
