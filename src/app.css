@@ -275,3 +275,19 @@ input[type='range'] {
   top: calc(50% - 32px);
   left: calc(50% - 32px);
 }
+
+.hamburger-react {
+  height: 47px !important;
+}
+
+.hamburger-react div:nth-child(1) {
+  width: 23px !important;
+}
+
+.hamburger-react div:nth-child(2) {
+  width: 23px !important;
+}
+
+.hamburger-react div:nth-child(3) {
+  width: 23px !important;
+}
