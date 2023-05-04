@@ -247,6 +247,7 @@ const index: FC = () => {
               activeStep={activeStep}
               setActiveStep={setActiveStep}
               setOpen={setOpen}
+              open={open}
               setFlag={setFlag}
               setBackgroundFrame={setBackgroundFrame}
             />

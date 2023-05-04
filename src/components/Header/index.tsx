@@ -143,7 +143,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
             </div>
           </div>
         </div>
-        <div className="z-2 hbr:w-[210px] flex justify-end mb-[3px]">
+        <div className="z-2 hbr:w-[210px] flex justify-end hbr:mb-[3px]">
           <div
             className="relative cursor-pointer md:h-[38px] md:w-[38px] h-[33px] w-[33px] mxl:mr-[9px]"
             onClick={() => {
