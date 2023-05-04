@@ -21,7 +21,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
 
   return (
     <>
-      <div className="w-full h-[65px] hbr:min-h-[5.2rem] bg-black flex items-center justify-between hbr:py-[1.4rem] hbr:px-[1rem] pl-[0.5rem] pr-[1rem] py-[20.5px] ">
+      <div className="w-full h-[65px] hbr:min-h-[5.25rem] bg-black flex items-center justify-between hbr:py-[1.4rem] hbr:px-[1rem] pl-[0.5rem] pr-[1rem] py-[20.5px] ">
         <div className="hbr:hidden block ">
           <Hamburger
             color="#ffff"
@@ -36,7 +36,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
         <div>
           <img
             src={Logo}
-            className="cursor-pointer w-[160px] mr-[5px] md:mr-[0px] md:w-[210px]"
+            className="cursor-pointer w-[160px] mr-[8px] md:mr-[0px] md:w-[210px]"
             alt=""
             onClick={() => {
               handleIconClick('https://www.walltonez.com/', 'logo');
@@ -145,13 +145,13 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
         </div>
         <div className="z-2 hbr:w-[210px] flex justify-end hbr:mb-[3px]">
           <div
-            className="relative cursor-pointer md:h-[38px] md:w-[38px] h-[33px] w-[33px] mxl:mr-[9px]"
+            className="relative cursor-pointer md:h-[38px] md:w-[38px] h-[32px] w-[32px] mxl:mr-[9px]"
             onClick={() => {
               handleIconClick('/cart', 'cart');
             }}
           >
             <CartLogo />
-            <div className="text-white absolute top-[42%] left-[41%] text-[9.5px] font-semibold">
+            <div className="text-white absolute top-[40%] hbr:top-[42%] left-[41%] text-[9.5px] font-medium">
               {cartItemsLength}
             </div>
           </div>
