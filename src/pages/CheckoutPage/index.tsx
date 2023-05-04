@@ -175,7 +175,7 @@ const Checkout: FC = () => {
                   <i>{`$ ${cart?.totalPrice ? CartTotalPrice.toFixed(2) : '0'}`}</i>
                 </div>
               </div>
-              <div className="flex flex-col gap-3 mt-20">
+              <div className="flex flex-col gap-3 md:mt-20 mt-10">
                 <button
                   onClick={() => {
                     handleCheckout(setLoading);

@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import Logo from '../../assets/walltonezLogo.svg';
-import { ReactComponent as HeaderCart } from '../../assets/HeaderCart.svg';
-import { Badge } from '@mui/material';
 import { Fade as Hamburger } from 'hamburger-react';
+import { ReactComponent as CartLogo } from '../../assets/home/cartLogo.svg';
 
 interface HeaderProps {
   cartItemsLength?: number;
@@ -22,7 +21,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
 
   return (
     <>
-      <div className="w-full h-[65px] hbr:min-h-[5.2rem] bg-black flex items-center justify-between hbr:py-[1.4rem] hbr:px-[1.3rem] px-[0.4rem] py-[20.5px] ">
+      <div className="w-full h-[65px] hbr:min-h-[5.2rem] bg-black flex items-center justify-between hbr:py-[1.4rem] hbr:px-[1rem] pl-[0.5rem] pr-[1rem] py-[20.5px] ">
         <div className="hbr:hidden block ">
           <Hamburger
             color="#ffff"
@@ -30,25 +29,27 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
             toggled={cross}
             onToggle={setCross}
             size={24}
+            easing="ease-in"
+            distance="lg"
           />
         </div>
         <div>
           <img
             src={Logo}
-            className="cursor-pointer w-[150px]  md:w-[200px]"
+            className="cursor-pointer w-[160px] mr-[5px] md:mr-[0px] md:w-[210px]"
             alt=""
             onClick={() => {
               handleIconClick('https://www.walltonez.com/', 'logo');
             }}
           />
         </div>
-        <div className="hbr:block hidden font-[Basic] font-semibold text-center">
-          <div className="text-center leading-1.5 text-[15px]">
-            <div className="px-[2em]">
-              <ul className="flex text-white">
+        <div className="hbr:block hidden font-[Basic] font-medium text-center">
+          <div className="text-center text-[14.4px]">
+            <div className="pl-[1.3em] pr-[2em]">
+              <ul className="flex text-white gap-[4.5px] pr-[10px]">
                 <li>
                   <a
-                    className="hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em]"
+                    className="hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em]"
                     href="https://www.walltonez.com/"
                   >
                     Home
@@ -56,7 +57,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
                 </li>
                 <li>
                   <a
-                    className="relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-white py-[0.5em] px-[1.2em]"
+                    className="relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-white py-[0.5em] px-[1.2em]"
                     href="/"
                   >
                     Create
@@ -64,7 +65,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
                 </li>
                 <li className="group relative ">
                   <a
-                    className="z-30 relative hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em] cursor-pointer"
+                    className="z-30 relative hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em] cursor-pointer"
                     aria-haspopup="true"
                   >
                     About
@@ -98,7 +99,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
                 </li>
                 <li>
                   <a
-                    className="z-30 hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em]"
+                    className="z-30 hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em]"
                     href="https://www.walltonez.com/pages/reviews"
                   >
                     Reviews
@@ -106,7 +107,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
                 </li>
                 <li>
                   <a
-                    className="hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em]"
+                    className="hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em]"
                     href="https://www.walltonez.com/blogs/blogs"
                   >
                     Blog
@@ -114,7 +115,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
                 </li>
                 <li className="group relative ">
                   <a
-                    className="z-30 relative hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-0 after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em] cursor-pointer"
+                    className="z-30 relative hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em] cursor-pointer"
                     aria-haspopup="true"
                   >
                     Help
@@ -142,18 +143,19 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
             </div>
           </div>
         </div>
-        <Badge
-          badgeContent={cartItemsLength}
-          color="error"
-          className="z-2 mr-[10px] mt-[7px] hbr:w-[210px] flex justify-end"
-        >
-          <HeaderCart
-            className="cursor-pointer w-19 sm:w-15 md:w-17"
+        <div className="z-2 hbr:w-[210px] flex justify-end hbr:mb-[3px]">
+          <div
+            className="relative cursor-pointer md:h-[38px] md:w-[38px] h-[33px] w-[33px] mxl:mr-[9px]"
             onClick={() => {
               handleIconClick('/cart', 'cart');
             }}
-          />
-        </Badge>
+          >
+            <CartLogo />
+            <div className="text-white absolute top-[42%] left-[41%] text-[9.5px] font-semibold">
+              {cartItemsLength}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

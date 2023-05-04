@@ -19,6 +19,7 @@ interface CartModalProps {
   cart: ICart;
   setCart: (cart: ICart) => void;
   getCartData: (value: string) => void;
+  setFlag: (value: boolean) => void;
 }
 
 const style = {
@@ -33,6 +34,7 @@ const style = {
 };
 
 const CartModal: FC<CartModalProps> = ({
+  setFlag,
   open,
   handleClose,
   setLoading,
@@ -100,6 +102,10 @@ const CartModal: FC<CartModalProps> = ({
   const handleViewCartClick = (): void => {
     navigate('/cart');
   };
+  const handleCartClose = (): void => {
+    setFlag(false);
+    handleClose();
+  };
 
   const CartItems =
     cart?.totalPoster?.length > 0
@@ -138,7 +144,7 @@ const CartModal: FC<CartModalProps> = ({
                 <span className="text-3xl font-bold text-[#454238]">
                   <i>Cart</i>
                 </span>
-                <CrossIcon onClick={handleClose} className="cursor-pointer w-5" />
+                <CrossIcon onClick={handleCartClose} className="cursor-pointer w-5" />
               </div>
               <div
                 className={

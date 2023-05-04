@@ -97,6 +97,7 @@ interface RightSideProps {
   activeStep: number;
   setActiveStep: (value: number) => void;
   setOpen: (value: boolean) => void;
+  open: boolean;
   selectedFont: string;
   setSelectedFont: (value: string) => void;
   setFlag: (value: boolean) => void;
@@ -170,6 +171,7 @@ const RightSide: FC<RightSideProps> = ({
   activeStep,
   setActiveStep,
   setOpen,
+  open,
   selectedFont,
   setSelectedFont,
   setFlag,
@@ -272,7 +274,7 @@ const RightSide: FC<RightSideProps> = ({
       await request<IResponseSuccess, IBody>('post', '/cart/add-poster', posterData)
         .then((res) => {
           localStorage.setItem('cartId', res?.data?.cart?._id);
-          handleResetData();
+          // handleResetData();
           getCartData(res?.data?.cart?._id);
           setLoading(false);
           setOpen(true);
@@ -558,33 +560,35 @@ const RightSide: FC<RightSideProps> = ({
                 )}
               </div>
 
-              <Box className="flex items-end justify-center pt-2 fixed bottom-0 left-0 z-50 w-full">
-                <button
-                  className={
-                    activeStepperStep === 0
-                      ? 'text-white bg-[#3E3E3E] px-6 py-[17px] font-semibold w-[50%] text-[.72rem]'
-                      : 'text-white bg-black px-6 py-[17px] font-semibold w-[50%] text-[.72rem]'
-                  }
-                  disabled={activeStepperStep === 0}
-                  onClick={handleBack}
-                >
-                  Back
-                </button>
-                <button
-                  onClick={activeStepperStep === 4 ? handleAddToCart : handleNext}
-                  className={
-                    'text-white bg-black  font-semibold w-[50%] px-6 py-[17px] text-[.72rem]'
-                  }
-                >
-                  {activeStepperStep === 4 ? (
-                    <span className="text-center  text-[.72rem]">Add To Cart ${posterPrice}</span>
-                  ) : (
-                    <span className="flex items-center justify-center gap-2 ">
-                      Next <NextArrowBtn />
-                    </span>
-                  )}
-                </button>
-              </Box>
+              {!open && (
+                <Box className="flex items-end justify-center pt-2 fixed bottom-0 left-0 z-50 w-full">
+                  <button
+                    className={
+                      activeStepperStep === 0
+                        ? 'text-white bg-[#3E3E3E] px-6 py-[17px] font-semibold w-[50%] text-[.72rem]'
+                        : 'text-white bg-black px-6 py-[17px] font-semibold w-[50%] text-[.72rem]'
+                    }
+                    disabled={activeStepperStep === 0}
+                    onClick={handleBack}
+                  >
+                    Back
+                  </button>
+                  <button
+                    onClick={activeStepperStep === 4 ? handleAddToCart : handleNext}
+                    className={
+                      'text-white bg-black  font-semibold w-[50%] px-6 py-[17px] text-[.72rem]'
+                    }
+                  >
+                    {activeStepperStep === 4 ? (
+                      <span className="text-center  text-[.72rem]">Add To Cart ${posterPrice}</span>
+                    ) : (
+                      <span className="flex items-center justify-center gap-2 ">
+                        Next <NextArrowBtn />
+                      </span>
+                    )}
+                  </button>
+                </Box>
+              )}
             </React.Fragment>
           </div>
         </Box>
