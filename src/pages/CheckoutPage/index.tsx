@@ -145,7 +145,7 @@ const Checkout: FC = () => {
         <MobileNavMenu />
       ) : (
         <div className="flex flex-col md:flex-row md:h-[90vh] overflow-hidden">
-          <div className="bg-[#fcfcfc] w-full md:w-[60%] 2xl:w-[56%] flex flex-col items-center justify-center gap-5 overflow-scroll">
+          <div className="bg-[#fcfcfc] w-full md:w-[60%] 2xl:w-[56%] flex flex-col items-center justify-center gap-5">
             {CartItems}
           </div>
           <div className="bg-white w-full md:w-[40%] 2xl:w-[42%] flex items-start justify-center md:justify-start mt-11 md:pl-10 lg:pl-20">
@@ -175,7 +175,7 @@ const Checkout: FC = () => {
                   <i>{`$ ${cart?.totalPrice ? CartTotalPrice.toFixed(2) : '0'}`}</i>
                 </div>
               </div>
-              <div className="flex flex-col gap-3 md:mt-20 mt-10">
+              <div className="flex flex-col gap-2 md:mt-20 my-8">
                 <button
                   onClick={() => {
                     handleCheckout(setLoading);
