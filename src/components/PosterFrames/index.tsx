@@ -83,11 +83,11 @@ const PosterFrame: FC<PosterFrameProps> = ({
             }}
             className={
               posterType === 'Black Wooden Frame'
-                ? 'border-black border-[3px] flex items-center w-auto xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
-                : 'border-gray-300 border-2 flex items-center w-auto xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
+                ? 'border-black border-[3px] flex items-center w-[32%] xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
+                : 'border-gray-300 border-2 flex items-center w-[32%] xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
             }
           >
-            <img src={metalFrameIcon} className="w-[70%] xmd:w-auto" />
+            <img src={metalFrameIcon} className="w-9 xmd:w-12" />
             <span className="text-center text-[12px]">Black</span>
           </div>
           <div
@@ -96,12 +96,12 @@ const PosterFrame: FC<PosterFrameProps> = ({
             }}
             className={
               posterType === 'Nuteral Wooden Frame'
-                ? 'border-black border-[3px] flex items-center w-auto xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
-                : 'border-gray-300 border-2 flex items-center w-auto xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
+                ? 'border-black border-[3px] flex items-center w-[32%] xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
+                : 'border-gray-300 border-2 flex items-center w-[32%] xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
             }
           >
-            <img src={Neturalframe} className="w-[70%] xmd:w-auto" />
-            <span className="text-center text-[12px]">Neutral</span>
+            <img src={Neturalframe} className="w-9 xmd:w-12" />
+            <span className="text-center text-[12px]">Natural</span>
           </div>
           <div
             onClick={() => {
@@ -109,11 +109,11 @@ const PosterFrame: FC<PosterFrameProps> = ({
             }}
             className={
               posterType === 'White Wooden Frame'
-                ? 'border-black border-[3px] flex items-center w-auto xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
-                : 'border-gray-300 border-2 flex items-center w-auto xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
+                ? 'border-black border-[3px] flex items-center w-[32%] xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
+                : 'border-gray-300 border-2 flex items-center w-[32%] xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
             }
           >
-            <img src={Whiteframe} className="w-[70%] xmd:w-auto" />
+            <img src={Whiteframe} className="w-9 xmd:w-12" />
             <span className="text-center text-[12px]">White</span>
           </div>
         </div>
@@ -130,7 +130,7 @@ const PosterFrame: FC<PosterFrameProps> = ({
                   : 'border-gray-300 border-2 flex items-center w-[30%] xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
               }
             >
-              <img src={Blackframe} className="w-[70%] xmd:w-auto" />
+              <img src={Blackframe} className="w-9 xmd:w-12" />
               <span className="text-center text-[12px]">Black</span>
             </div>
           </div>
