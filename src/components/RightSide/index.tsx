@@ -102,7 +102,7 @@ interface RightSideProps {
   setSelectedFont: (value: string) => void;
   setFlag: (value: boolean) => void;
   setBackgroundFrame: (value: string) => void;
-
+  handleFramesChange: () => void;
   fontSize: IFontSize;
   setFontSize: ({ descriptionSize, singerNameSize, albumNameSize }: IFontSize) => void;
 }
@@ -178,6 +178,7 @@ const RightSide: FC<RightSideProps> = ({
   setBackgroundFrame,
   fontSize,
   setFontSize,
+  handleFramesChange,
 }) => {
   const [posterPrice, setPosterPrice] = useState<number>(0);
   const [activeStepperStep, setActiveStepperStep] = useState<number>(0);
@@ -275,6 +276,7 @@ const RightSide: FC<RightSideProps> = ({
         .then((res) => {
           localStorage.setItem('cartId', res?.data?.cart?._id);
           // handleResetData();
+          handleFramesChange();
           getCartData(res?.data?.cart?._id);
           setLoading(false);
           setOpen(true);

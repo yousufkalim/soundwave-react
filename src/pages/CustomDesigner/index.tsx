@@ -250,6 +250,7 @@ const index: FC = () => {
               open={open}
               setFlag={setFlag}
               setBackgroundFrame={setBackgroundFrame}
+              handleFramesChange={handleFramesChange}
             />
           </div>
         )}

@@ -34,9 +34,15 @@ interface Template3Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
-  flag: boolean;
+  takingScreenShot: boolean;
   fontSize: IFontSize;
 }
+interface IBiggerThan15Chars {
+  background: string;
+}
+
+type IBiggerThan15CharsMap = Record<string, IBiggerThan15Chars>;
+type ILessThan15CharsMap = Record<string, IBiggerThan15Chars>;
 
 const Template3: FC<Template3Props> = ({
   activeAlignment,
@@ -49,7 +55,7 @@ const Template3: FC<Template3Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
-  flag,
+  takingScreenShot,
   fontSize,
 }) => {
   useEffect(() => {
@@ -71,6 +77,121 @@ const Template3: FC<Template3Props> = ({
     '24 X 36': +fontSize?.descriptionSize + 24,
     '28 X 40': +fontSize?.descriptionSize + 28,
   };
+
+  const biggerThan15Chars: IBiggerThan15CharsMap = {
+    '12 X 18': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.7%'
+          : '2.7%'
+        : BackgroundFrame
+        ? '1.7%'
+        : '1.65%',
+    },
+    '16 X 20': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.6%'
+          : '2.5%'
+        : BackgroundFrame
+        ? '1.6%'
+        : '1.6%',
+    },
+    '18 X 24': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.5%'
+          : '2.6%'
+        : BackgroundFrame
+        ? '1.5%'
+        : '1.5%',
+    },
+    '20 X 28': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.5%'
+          : '2.5%'
+        : BackgroundFrame
+        ? '1.65%'
+        : ' 1.6%',
+    },
+    '24 X 36': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.4%'
+          : '2.5%'
+        : BackgroundFrame
+        ? '1.6%'
+        : '1.5%',
+    },
+    '28 X 40': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.5%'
+          : '2.6%'
+        : BackgroundFrame
+        ? '1.75%'
+        : '1.65%',
+    },
+  };
+
+  const lessThan15Chars: ILessThan15CharsMap = {
+    '12 X 18': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4.5%'
+          : '4.6%'
+        : BackgroundFrame
+        ? '2.8%'
+        : '3%',
+    },
+    '16 X 20': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4.5%'
+          : '4.6%'
+        : BackgroundFrame
+        ? '2.9%'
+        : '2.45%',
+    },
+    '18 X 24': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4.3%'
+          : '4.4%'
+        : BackgroundFrame
+        ? '2.9%'
+        : '2.8%',
+    },
+    '20 X 28': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4.5%'
+          : '4.5%'
+        : BackgroundFrame
+        ? '2.8%'
+        : '2.8%',
+    },
+    '24 X 36': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4.4%'
+          : '4.4%'
+        : BackgroundFrame
+        ? '2.8%'
+        : '2.7%',
+    },
+    '28 X 40': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4.4%'
+          : '4.4%'
+        : BackgroundFrame
+        ? '3%'
+        : '2.95%',
+    },
+  };
+
   // for frame padding
   const borderPadding =
     posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
@@ -109,7 +230,7 @@ const Template3: FC<Template3Props> = ({
       }
       style={{
         background: borderWidth ? BackgroundFrame : '',
-        padding: borderPadding,
+        padding: BackgroundFrame ? borderPadding : '',
         height: posterHeigth[posterSize.value] || '1298px',
         width: posterWidth[posterSize.value] || '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
@@ -155,26 +276,14 @@ const Template3: FC<Template3Props> = ({
           })}
         </div>
         <div
-          className={
-            selectedAlbum?.label && selectedAlbum?.label.length > 15
-              ? flag
-                ? BackgroundFrame
-                  ? 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] break-words tracking-tighter'
-                  : 'text-center relative bottom-[2.5%] font-[Aemstel-Regular] break-words tracking-tighter'
-                : BackgroundFrame
-                ? 'text-center relative bottom-[1.8%] font-[Aemstel-Regular] break-words tracking-tighter'
-                : 'text-center relative bottom-[1.7%] font-[Aemstel-Regular] break-words tracking-tighter'
-              : flag
-              ? BackgroundFrame
-                ? 'text-center relative bottom-[3%] font-[Aemstel-Regular] break-words'
-                : 'text-center relative bottom-[3%] font-[Aemstel-Regular] break-words'
-              : BackgroundFrame
-              ? 'text-center relative bottom-[3%]  font-[Aemstel-Regular] break-words'
-              : 'text-center relative bottom-[3%]  font-[Aemstel-Regular] break-words'
-          }
+          className="text-center relative break-words tracking-tighter"
           style={{
+            bottom:
+              selectedAlbum?.label && selectedAlbum?.label.length > 15
+                ? biggerThan15Chars[posterSize.value].background
+                : lessThan15Chars[posterSize.value].background,
             color: colors.songTitleColor,
-            fontFamily: selectedFont,
+            fontFamily: selectedFontFamily,
             fontSize: selectedAlbum?.label
               ? posterSize.value === '12 X 18'
                 ? selectedAlbum?.label.length > 15
@@ -254,7 +363,7 @@ const Template3: FC<Template3Props> = ({
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
         </div>
         <div
-          className={`bg-transparent h-[23%] ${activeAlignment} text-[5px] md:text-[6px] relative left-0 right-0 w-full`}
+          className={`bg-transparent px-[5%] ${activeAlignment} text-[5px] md:text-[6px] absolute left-0 right-0 w-full`}
           style={{
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,

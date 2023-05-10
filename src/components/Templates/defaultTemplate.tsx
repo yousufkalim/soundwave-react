@@ -33,9 +33,16 @@ interface Template2Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
-  flag: boolean;
+  takingScreenShot: boolean;
   fontSize: IFontSize;
 }
+
+interface IBiggerThan15Chars {
+  background: string;
+}
+
+type IBiggerThan15CharsMap = Record<string, IBiggerThan15Chars>;
+type ILessThan15CharsMap = Record<string, IBiggerThan15Chars>;
 
 const Template2: FC<Template2Props> = ({
   activeAlignment,
@@ -48,7 +55,7 @@ const Template2: FC<Template2Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
-  flag,
+  takingScreenShot,
   fontSize,
 }) => {
   useEffect(() => {
@@ -80,14 +87,131 @@ const Template2: FC<Template2Props> = ({
     '24 X 36': +fontSize?.descriptionSize + 24,
     '28 X 40': +fontSize?.descriptionSize + 28,
   };
+
+  const biggerThan15Chars: IBiggerThan15CharsMap = {
+    '12 X 18': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.3%'
+          : '2.7%'
+        : BackgroundFrame
+        ? '1.4%'
+        : '1%',
+    },
+    '16 X 20': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.6%'
+          : '3.2%'
+        : BackgroundFrame
+        ? '1.7%'
+        : '1.2%',
+    },
+    '18 X 24': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.4%'
+          : '2.8%'
+        : BackgroundFrame
+        ? '1.6%'
+        : '1.1%',
+    },
+    '20 X 28': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.2%'
+          : '2.7%'
+        : BackgroundFrame
+        ? '1.8%'
+        : ' 0.9%',
+    },
+    '24 X 36': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.1%'
+          : '2.7%'
+        : BackgroundFrame
+        ? '1.5%'
+        : '1%',
+    },
+    '28 X 40': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '2.2%'
+          : '2.8%'
+        : BackgroundFrame
+        ? '1.6%'
+        : '1.1%',
+    },
+  };
+
+  const lessThan15Chars: ILessThan15CharsMap = {
+    '12 X 18': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '3.7%'
+          : '4.3%'
+        : BackgroundFrame
+        ? '2.4%'
+        : '2%',
+    },
+    '16 X 20': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4.4%'
+          : '5%'
+        : BackgroundFrame
+        ? '2.8%'
+        : '2.4%',
+    },
+    '18 X 24': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '3.98%'
+          : '4.5%'
+        : BackgroundFrame
+        ? '2.7%'
+        : '2.1%',
+    },
+    '20 X 28': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4%'
+          : '4.5%'
+        : BackgroundFrame
+        ? '2.6%'
+        : '1.98%',
+    },
+    '24 X 36': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4.8%'
+          : '5.2%'
+        : BackgroundFrame
+        ? '3.1%'
+        : '2.5%',
+    },
+    '28 X 40': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4%'
+          : '4.6%'
+        : BackgroundFrame
+        ? '2.7%'
+        : '2.3%',
+    },
+  };
+
   const borderPadding =
     posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
       ? posterSizeToBorderWidth[posterSize.value] || '0px'
       : '';
+
+  // const labelLength = selectedAlbum?.label ? selectedAlbum.label.length : 0;
+
   return (
     <div
       id="custom-poster-template"
-      // className={`overflow-hidden scale-[${sizeScaling[0]}] absolute xs:scale-[${scaleXs}] msm:scale-[${scaleMsm}] sm:scale-[${scaleSm}] md:scale-[${scaleMd}] lg:scale-[${scaleLg}] sxl:scale-[${scaleSxl}] 2xl:scale-[${scale2xl}]`}
       className={
         posterSize.value === '12 X 18'
           ? `overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
@@ -105,7 +229,7 @@ const Template2: FC<Template2Props> = ({
       }
       style={{
         background: borderWidth ? BackgroundFrame : '',
-        padding: borderPadding,
+        padding: BackgroundFrame ? borderPadding : '',
         height: posterHeigth[posterSize.value] || '1298px',
         width: posterWidth[posterSize.value] || '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.16)',
@@ -151,23 +275,13 @@ const Template2: FC<Template2Props> = ({
           })}
         </div>
         <div
-          className={
-            selectedAlbum?.label && selectedAlbum?.label.length > 15
-              ? flag
-                ? BackgroundFrame
-                  ? `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute  bottom-[2.7%]`
-                  : `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute  bottom-[1%]`
-                : BackgroundFrame
-                ? `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[2.7%]`
-                : `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[1%]`
-              : flag
-              ? BackgroundFrame
-                ? `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[6%]`
-                : `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[4%]`
-              : BackgroundFrame
-              ? `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[3%]`
-              : `break-words h-[23%] left-0 right-0 px-[5%] text-ellipsis-8 w-full absolute bottom-[2.2%]`
-          }
+          className="text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute"
+          style={{
+            bottom:
+              selectedAlbum?.label && selectedAlbum?.label.length > 15
+                ? biggerThan15Chars[posterSize.value].background
+                : lessThan15Chars[posterSize.value].background,
+          }}
         >
           <div className="text-left pl-2">
             <span
@@ -210,24 +324,24 @@ const Template2: FC<Template2Props> = ({
                       ? selectedFontFamily === 'Blacksword'
                         ? `${+fontSize?.albumNameSize + 40}px`
                         : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 48}px` // completed
+                        ? `${+fontSize?.albumNameSize + 48}px`
                         : `${+fontSize?.albumNameSize + 48}px`
                       : selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 62}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 72}px` // completed
+                      ? `${+fontSize?.albumNameSize + 72}px`
                       : `${+fontSize?.albumNameSize + 82}px`
                     : posterSize.value === '20 X 28'
                     ? selectedAlbum?.label.length > 15
                       ? selectedFontFamily === 'Blacksword'
                         ? `${+fontSize?.albumNameSize + 45}px`
                         : selectedFontFamily !== 'Morganite'
-                        ? `${+fontSize?.albumNameSize + 52}px` // completed
+                        ? `${+fontSize?.albumNameSize + 52}px`
                         : `${+fontSize?.albumNameSize + 53}px`
                       : selectedFontFamily === 'Blacksword'
                       ? `${+fontSize?.albumNameSize + 75}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 80}px` // completed
+                      ? `${+fontSize?.albumNameSize + 80}px`
                       : `${+fontSize?.albumNameSize + 98}px`
                     : posterSize.value === '24 X 36'
                     ? selectedAlbum?.label.length > 15
