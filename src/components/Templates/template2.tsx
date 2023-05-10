@@ -33,9 +33,16 @@ interface Template2Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
-  flag: boolean;
+  takingScreenShot: boolean;
   fontSize: IFontSize;
 }
+
+interface IBiggerThan15Chars {
+  background: string;
+}
+
+type IBiggerThan15CharsMap = Record<string, IBiggerThan15Chars>;
+type ILessThan15CharsMap = Record<string, IBiggerThan15Chars>;
 
 const Template2: FC<Template2Props> = ({
   activeAlignment,
@@ -48,7 +55,7 @@ const Template2: FC<Template2Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
-  flag,
+  takingScreenShot,
   fontSize,
 }) => {
   useEffect(() => {
@@ -61,6 +68,120 @@ const Template2: FC<Template2Props> = ({
       descriptionColor: 'rgba(0,0,0,1)',
     });
   }, []);
+
+  const biggerThan15Chars: IBiggerThan15CharsMap = {
+    '12 X 18': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '1.8%'
+          : '2.4%'
+        : BackgroundFrame
+        ? '1.1%'
+        : '0.69%',
+    },
+    '16 X 20': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '1.9%'
+          : '2.3%'
+        : BackgroundFrame
+        ? '1.05%'
+        : '0.6%',
+    },
+    '18 X 24': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '1.75%'
+          : '2.3%'
+        : BackgroundFrame
+        ? '1.2%'
+        : '0.55%',
+    },
+    '20 X 28': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '1.7%'
+          : '2.3%'
+        : BackgroundFrame
+        ? '1.1%'
+        : ' 0.52%',
+    },
+    '24 X 36': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '1.55%'
+          : '2.3%'
+        : BackgroundFrame
+        ? '1.1%'
+        : '0.5%',
+    },
+    '28 X 40': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '1.6%'
+          : '2.3%'
+        : BackgroundFrame
+        ? '1.2%'
+        : '0.5%',
+    },
+  };
+
+  const lessThan15Chars: ILessThan15CharsMap = {
+    '12 X 18': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '3.9%'
+          : '4.4%'
+        : BackgroundFrame
+        ? '2.4%'
+        : '2%',
+    },
+    '16 X 20': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4.5%'
+          : '5%'
+        : BackgroundFrame
+        ? '2.9%'
+        : '2.45%',
+    },
+    '18 X 24': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '3.98%'
+          : '4.5%'
+        : BackgroundFrame
+        ? '2.4%'
+        : '1.9%',
+    },
+    '20 X 28': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '4%'
+          : '4.6%'
+        : BackgroundFrame
+        ? '2.6%'
+        : '1.98%',
+    },
+    '24 X 36': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '3.95%'
+          : '4.55%'
+        : BackgroundFrame
+        ? '2.561%'
+        : '2%',
+    },
+    '28 X 40': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '3.9%'
+          : '4.5%'
+        : BackgroundFrame
+        ? '2.539%'
+        : '1.95%',
+    },
+  };
 
   const descriptionFontSize: Record<string, number> = {
     '12 X 18': +fontSize?.descriptionSize + 14,
@@ -85,7 +206,6 @@ const Template2: FC<Template2Props> = ({
   // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
   // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
   const selectedFontFamily = selectedFont || 'Proxima-Nova-italic';
-
   return (
     <div
       id="custom-poster-template"
@@ -108,7 +228,7 @@ const Template2: FC<Template2Props> = ({
       }
       style={{
         background: borderWidth ? BackgroundFrame : '',
-        padding: borderPadding,
+        padding: BackgroundFrame ? borderPadding : '',
         height: posterHeigth[posterSize.value] || '1298px',
         width: posterWidth[posterSize.value] || '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
@@ -154,101 +274,7 @@ const Template2: FC<Template2Props> = ({
           })}
         </div>
         <div
-          className={
-            selectedAlbum?.label && selectedAlbum?.label.length > 15
-              ? flag
-                ? BackgroundFrame
-                  ? // more than 15 charaters and with background frame and flag
-                    posterSize.value === '12 X 18'
-                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
-                    : posterSize.value === '16 X 20'
-                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
-                    : posterSize.value === '18 X 24'
-                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
-                    : posterSize.value === '20 X 28'
-                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
-                    : posterSize.value === '24 X 36'
-                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
-                    : posterSize.value === '28 X 40'
-                    ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
-                    : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
-                  : // more than 15 charaters and with no background frame and flag
-                  posterSize.value === '12 X 18'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.6%]`
-                  : posterSize.value === '16 X 20'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
-                  : posterSize.value === '18 X 24'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
-                  : posterSize.value === '20 X 28'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.9%]`
-                  : posterSize.value === '24 X 36'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.6%]`
-                  : posterSize.value === '28 X 40'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.7%]`
-                  : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.6%]`
-                : BackgroundFrame
-                ? // more than 15 charaters and with background frame
-                  posterSize.value === '12 X 18'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.164%]`
-                  : posterSize.value === '16 X 20'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.09%]`
-                  : posterSize.value === '18 X 24'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.05%]`
-                  : posterSize.value === '20 X 28'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.054%]`
-                  : posterSize.value === '24 X 36'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.04%]`
-                  : posterSize.value === '28 X 40'
-                  ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.06%]`
-                  : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[1.154%]`
-                : // more than 15 charaters and no background frame
-                posterSize.value === '12 X 18'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.69%]`
-                : posterSize.value === '16 X 20'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.5%]`
-                : posterSize.value === '18 X 24'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.55%]`
-                : posterSize.value === '20 X 28'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.63%]`
-                : posterSize.value === '24 X 36'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.5%]`
-                : posterSize.value === '28 X 40'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.5%]`
-                : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[0.65%]`
-              : flag
-              ? BackgroundFrame
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[5%]`
-                : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[4.5%]`
-              : BackgroundFrame
-              ? // less than 15 charaters and with background frame
-                posterSize.value === '12 X 18'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.5%]`
-                : posterSize.value === '16 X 20'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[3%]`
-                : posterSize.value === '18 X 24'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.5%]`
-                : posterSize.value === '20 X 28'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.8%]`
-                : posterSize.value === '24 X 36'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.5%]`
-                : posterSize.value === '28 X 40'
-                ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.7%]`
-                : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.5%]`
-              : // less than 15 charaters and no background frame
-              posterSize.value === '12 X 18'
-              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
-              : posterSize.value === '16 X 20'
-              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.45%]`
-              : posterSize.value === '18 X 24'
-              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
-              : posterSize.value === '20 X 28'
-              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.2%]`
-              : posterSize.value === '24 X 36'
-              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.1%]`
-              : posterSize.value === '28 X 40'
-              ? `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2.1%]`
-              : `text-center break-words w-full left-0 right-0 h-[23%] px-[5%] absolute bottom-[2%]`
-          }
+          className="text-center break-words w-full left-0 right-0 h-[23%] px-[5%]"
           style={{
             fontWeight: 'bold',
             color: colors.songTitleColor,
@@ -327,14 +353,19 @@ const Template2: FC<Template2Props> = ({
                 : `${+fontSize?.albumNameSize + 135}px`
               : '64px',
             letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+            position: 'absolute',
+            bottom:
+              selectedAlbum?.label && selectedAlbum?.label.length > 15
+                ? biggerThan15Chars[posterSize.value].background
+                : lessThan15Chars[posterSize.value].background,
           }}
         >
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
         </div>
         <div
-          className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%] mt-[5%] 
-            `}
+          className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%]`}
           style={{
+            marginTop: selectedAlbum?.label && selectedAlbum?.label?.length > 15 ? '8%' : '5%',
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
             fontFamily: selectedFont || 'Montserrat',

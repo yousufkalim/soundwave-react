@@ -102,7 +102,7 @@ const Template5: FC<Template5Props> = ({
       }
       style={{
         background: borderWidth ? BackgroundFrame : '',
-        padding: borderPadding,
+        padding: BackgroundFrame ? borderPadding : '',
         height: posterHeigth[posterSize.value] || '1298px',
         width: posterWidth[posterSize.value] || '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
