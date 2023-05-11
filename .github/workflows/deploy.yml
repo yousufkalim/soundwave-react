@@ -41,7 +41,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Target environment (dev)'
+        description: 'Target environment (dev, staging, prod)'
         type: choice
         options:
           - dev
