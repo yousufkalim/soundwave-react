@@ -121,7 +121,7 @@ const Template4: FC<Template4Props> = ({
         }}
       >
         <div
-          className={`h-[80%] px-1 py-2 border-2 border-white overflow-hidden flex flex-wrap justify-around`}
+          className={`h-[80%] px-1 py-2 border-[2.999px] border-white overflow-hidden flex flex-wrap justify-around`}
           style={{
             backgroundColor: colors.posterColor,
             paddingTop:

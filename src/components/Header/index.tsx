@@ -151,7 +151,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
             }}
           >
             <CartLogo />
-            <div className="text-white absolute top-[40%] hbr:top-[42%] left-[41%] text-[9.5px] font-medium">
+            <div className="text-white absolute top-[40%] hbr:top-[42%] left-[40%] msm:left-[41%] text-[9.3px] font-medium ">
               {cartItemsLength}
             </div>
           </div>
