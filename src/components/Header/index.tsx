@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import Logo from '../../assets/walltonezLogo.svg';
 import { Fade as Hamburger } from 'hamburger-react';
 import { ReactComponent as CartLogo } from '../../assets/home/cartLogo.svg';
+import ReactPixel from 'react-facebook-pixel';
 
 interface HeaderProps {
   cartItemsLength?: number;
@@ -16,7 +17,8 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
       ? window.location.assign(targetRedirect)
       : SelectedIcon === 'cart' && window.location.pathname === '/cart'
       ? window.location.assign(targetRedirect)
-      : setOpen?.(true);
+      : ReactPixel.trackCustom('CartClicked', { buttonName: 'CartButton' });
+    setOpen?.(true);
   };
 
   return (

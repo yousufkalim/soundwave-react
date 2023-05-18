@@ -12,6 +12,8 @@ import { toast } from 'react-toastify';
 import { ICart } from '../types/index';
 import Slide from 'react-reveal/Slide';
 import { handleCheckout } from '../utils/common';
+import ReactPixel from 'react-facebook-pixel';
+
 interface CartModalProps {
   open: boolean;
   handleClose: () => void;
@@ -43,6 +45,14 @@ const CartModal: FC<CartModalProps> = ({
   getCartData,
 }) => {
   const navigate = useNavigate();
+  const obj = {
+    content_name: [] as string[],
+    content_ids: [] as string[],
+    num_items: cart?.totalPoster?.length,
+    value: cart?.totalPrice,
+    currency: 'USD',
+  };
+
   useEffect(() => {
     if (open) {
       const cartId = localStorage.getItem('cartId');
@@ -128,6 +138,18 @@ const CartModal: FC<CartModalProps> = ({
         ))
       : cart?.totalPoster?.length === 0 && <NoFramePlaceholder className=" w-[80%]" />;
   const cartTotalPrice = cart?.totalPrice + cart.shippingCost;
+
+  const handleEventAndCheckout = (): void => {
+    ReactPixel.track('InitiateCheckout', obj);
+    handleCheckout(setLoading);
+  };
+
+  useEffect(() => {
+    cart?.totalPoster?.map((item) => {
+      obj.content_name.push(item?.albumName);
+      obj.content_ids.push(item?._id);
+    });
+  }, [cart]);
   return (
     <div
       className="w-full h-full fixed top-0 bottom-0 right-0 left-0 z-40"
@@ -171,7 +193,7 @@ const CartModal: FC<CartModalProps> = ({
               <div className="py-2 flex flex-col gap-2">
                 <button
                   onClick={() => {
-                    handleCheckout(setLoading);
+                    handleEventAndCheckout();
                   }}
                   disabled={cart.totalPoster?.length === 0}
                   className={

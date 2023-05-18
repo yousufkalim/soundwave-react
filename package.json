@@ -57,6 +57,7 @@
     "react-best-gradient-color-picker": "^2.1.12",
     "react-dom": "^18.2.0",
     "react-easy-router": "^2.1.1",
+    "react-facebook-pixel": "^1.0.4",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^6.6.1",
