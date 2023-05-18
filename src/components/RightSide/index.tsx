@@ -31,6 +31,7 @@ import StepButton from '@mui/material/StepButton';
 import { styled } from '@mui/material/styles';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import { ReactComponent as NextArrowBtn } from '../../assets/nextArrowBtn.svg';
+import ReactPixel from 'react-facebook-pixel';
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -280,6 +281,15 @@ const RightSide: FC<RightSideProps> = ({
           getCartData(res?.data?.cart?._id);
           setLoading(false);
           setOpen(true);
+
+          const lastPoster = res?.data?.cart?.totalPoster[res?.data?.cart?.totalPoster?.length - 1];
+
+          ReactPixel.track('AddToCart', {
+            content_name: lastPoster?.albumName,
+            content_ids: lastPoster?._id,
+            value: lastPoster?.unitPrice,
+            currency: 'USD',
+          });
           toast.success('Poster Added To Cart');
         })
         .catch((err) => {

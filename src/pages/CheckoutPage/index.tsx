@@ -12,6 +12,7 @@ import { ICart } from '../../types/index';
 import { handleCheckout } from '../../utils/common';
 import Fade from 'react-reveal/Fade';
 import MobileNavMenu from '../../components/MobileNavMenu';
+import ReactPixel from 'react-facebook-pixel';
 
 interface IResponseSuccess {
   success: boolean;
@@ -106,6 +107,7 @@ const Checkout: FC = () => {
     }
   };
   useEffect(() => {
+    ReactPixel.trackCustom('CheckoutPageView', { PageName: 'Checkout' });
     const cartId = localStorage.getItem('cartId');
     if (cartId) {
       getCartData(cartId);
