@@ -36,7 +36,13 @@ interface Template4Props {
   selectedFont: string;
   posterSize: IPosterSize;
   fontSize: IFontSize;
+  takingScreenShot: boolean;
 }
+interface IBiggerThan15Chars {
+  background: string;
+}
+type IBiggerThan15CharsMap = Record<string, IBiggerThan15Chars>;
+type ILessThan15CharsMap = Record<string, IBiggerThan15Chars>;
 
 const Template4: FC<Template4Props> = ({
   activeAlignment,
@@ -50,6 +56,7 @@ const Template4: FC<Template4Props> = ({
   selectedFont,
   posterSize,
   fontSize,
+  takingScreenShot,
 }) => {
   useEffect(() => {
     setColors({
@@ -87,6 +94,121 @@ const Template4: FC<Template4Props> = ({
     '28 X 40': +fontSize?.descriptionSize + 28,
   };
   const selectedFontFamily = selectedFont || 'Morganite';
+
+  const biggerThan15Chars: IBiggerThan15CharsMap = {
+    '12 X 18': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '15.7%'
+          : '15.7%'
+        : BackgroundFrame
+        ? '14.8%'
+        : '14.2%',
+    },
+    '16 X 20': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '15.7%'
+          : '15.7%'
+        : BackgroundFrame
+        ? '14.5%'
+        : '14.1%',
+    },
+    '18 X 24': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '15.7%'
+          : '15.7%'
+        : BackgroundFrame
+        ? '14.6%'
+        : '14.2%',
+    },
+    '20 X 28': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '15.7%'
+          : '15.7%'
+        : BackgroundFrame
+        ? '14.7%'
+        : '14.2%',
+    },
+    '24 X 36': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '15.2%'
+          : '15.2%'
+        : BackgroundFrame
+        ? '14.7%'
+        : '14.2%',
+    },
+    '28 X 40': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '15.2%'
+          : '15.2%'
+        : BackgroundFrame
+        ? '14.4%'
+        : '14.2%',
+    },
+  };
+
+  const lessThan15Chars: ILessThan15CharsMap = {
+    '12 X 18': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '16.7%'
+          : '16.7%'
+        : BackgroundFrame
+        ? '15%'
+        : '14.4%',
+    },
+    '16 X 20': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '16.2%'
+          : '16.2%'
+        : BackgroundFrame
+        ? '14.9%'
+        : '14.3%',
+    },
+    '18 X 24': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '16.1%'
+          : '16.1%'
+        : BackgroundFrame
+        ? '15%'
+        : '14.5%',
+    },
+    '20 X 28': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '16.1%'
+          : '16.1%'
+        : BackgroundFrame
+        ? '14.9%'
+        : '14.6%',
+    },
+    '24 X 36': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '16.1%'
+          : '16.1%'
+        : BackgroundFrame
+        ? '14.8%'
+        : '14.4%',
+    },
+    '28 X 40': {
+      background: takingScreenShot
+        ? posterType === 'No Frame'
+          ? '15.8%'
+          : '15.8%'
+        : BackgroundFrame
+        ? '14.7%'
+        : '14.3%',
+    },
+  };
+
   return (
     <div
       id="custom-poster-template"
@@ -158,55 +280,58 @@ const Template4: FC<Template4Props> = ({
             left: leftSpacing,
             color: colors.songTitleColor,
             bottom:
-              posterSize.value === '12 X 18'
-                ? BackgroundFrame
-                  ? selectedFontFamily !== 'Morganite'
-                    ? '16.7%' // changed
-                    : '14.8%' // changed
-                  : selectedFontFamily !== 'Morganite'
-                  ? '16.2%' // changed
-                  : '14.3%' // changed
-                : posterSize.value === '16 X 20'
-                ? BackgroundFrame
-                  ? selectedFontFamily !== 'Morganite'
-                    ? '16%' // changed
-                    : '14.7%' // changed
-                  : selectedFontFamily !== 'Morganite'
-                  ? '15.5%' // changed
-                  : '14.1%' // changed
-                : posterSize.value === '18 X 24'
-                ? BackgroundFrame
-                  ? selectedFontFamily !== 'Morganite'
-                    ? '16.1%' // changed
-                    : '14.8%' // changed
-                  : selectedFontFamily !== 'Morganite'
-                  ? '15.5%' // changed
-                  : '14.2%' // changed
-                : posterSize.value === '20 X 28'
-                ? BackgroundFrame
-                  ? selectedFontFamily !== 'Morganite'
-                    ? '16.1%'
-                    : '14.8%'
-                  : selectedFontFamily !== 'Morganite'
-                  ? '15.5%'
-                  : '14.2%'
-                : posterSize.value === '24 X 36'
-                ? BackgroundFrame
-                  ? selectedFontFamily !== 'Morganite'
-                    ? '16%'
-                    : '14.7%'
-                  : selectedFontFamily !== 'Morganite'
-                  ? '15.4%'
-                  : '14.1%'
-                : posterSize.value === '28 X 40'
-                ? BackgroundFrame
-                  ? selectedFontFamily !== 'Morganite'
-                    ? '15.8%'
-                    : '14.6%'
-                  : selectedFontFamily !== 'Morganite'
-                  ? '15.1%'
-                  : '14%'
-                : '16%',
+              selectedAlbum?.label && selectedAlbum?.label.length > 15
+                ? biggerThan15Chars[posterSize.value].background
+                : lessThan15Chars[posterSize.value].background,
+            // posterSize.value === '12 X 18'
+            //   ? BackgroundFrame
+            //     ? selectedFontFamily !== 'Morganite'
+            //       ? '16.7%' // changed
+            //       : '14.8%' // changed
+            //     : selectedFontFamily !== 'Morganite'
+            //     ? '16.2%' // changed
+            //     : '14.3%' // changed
+            //   : posterSize.value === '16 X 20'
+            //   ? BackgroundFrame
+            //     ? selectedFontFamily !== 'Morganite'
+            //       ? '16%' // changed
+            //       : '14.7%' // changed
+            //     : selectedFontFamily !== 'Morganite'
+            //     ? '15.5%' // changed
+            //     : '14.1%' // changed
+            //   : posterSize.value === '18 X 24'
+            //   ? BackgroundFrame
+            //     ? selectedFontFamily !== 'Morganite'
+            //       ? '16.1%' // changed
+            //       : '14.8%' // changed
+            //     : selectedFontFamily !== 'Morganite'
+            //     ? '15.5%' // changed
+            //     : '14.2%' // changed
+            //   : posterSize.value === '20 X 28'
+            //   ? BackgroundFrame
+            //     ? selectedFontFamily !== 'Morganite'
+            //       ? '16.1%'
+            //       : '14.8%'
+            //     : selectedFontFamily !== 'Morganite'
+            //     ? '15.5%'
+            //     : '14.2%'
+            //   : posterSize.value === '24 X 36'
+            //   ? BackgroundFrame
+            //     ? selectedFontFamily !== 'Morganite'
+            //       ? '16%'
+            //       : '14.7%'
+            //     : selectedFontFamily !== 'Morganite'
+            //     ? '15.4%'
+            //     : '14.1%'
+            //   : posterSize.value === '28 X 40'
+            //   ? BackgroundFrame
+            //     ? selectedFontFamily !== 'Morganite'
+            //       ? '15.8%'
+            //       : '14.6%'
+            //     : selectedFontFamily !== 'Morganite'
+            //     ? '15.1%'
+            //     : '14%'
+            //   : '16%',
           }}
         >
           <div

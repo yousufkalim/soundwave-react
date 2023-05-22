@@ -115,6 +115,7 @@ const index: FC<waveformProps> = ({
         selectedFont={selectedFont}
         posterSize={posterSize}
         fontSize={fontSize}
+        takingScreenShot={flag}
       />
     ) : selectedTemplate === 'template5' ? (
       <Template5
