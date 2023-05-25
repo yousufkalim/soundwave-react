@@ -93,7 +93,7 @@ const CartModal: FC<CartModalProps> = ({
     const updatedPoster = updatedCart.totalPoster.find((item) => item._id === id);
     if (updatedPoster?._id) {
       setLoading(true);
-      request('patch', `/cart/changePosterQuantity/${cart._id}`, {
+      request('put', `/cart/changePosterQuantity/${cart._id}`, {
         isAdd,
         posterId: updatedPoster?._id,
         unitPrice: updatedPoster?.unitPrice,
