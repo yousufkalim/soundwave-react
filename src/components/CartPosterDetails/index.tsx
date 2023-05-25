@@ -50,7 +50,7 @@ const CartPosterDetails: FC<CartPosterDetailsProps> = ({
   };
 
   const deletePoster = (): void => {
-    request('patch', `/cart/deletePoster/${cartId}`, { posterId: id })
+    request('put', `/cart/deletePoster/${cartId}`, { posterId: id })
       .then(() => {
         getCartData(cartId);
         toast.success('Poster removed from cart');

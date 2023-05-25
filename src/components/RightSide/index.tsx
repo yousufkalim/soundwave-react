@@ -249,6 +249,7 @@ const RightSide: FC<RightSideProps> = ({
         logging: false,
         useCORS: true,
         allowTaint: true,
+        scale: 5,
       });
       const img = canvas.toDataURL();
       const cartId = localStorage.getItem('cartId');
