@@ -121,6 +121,7 @@ const Theme: FC<ThemeProps> = ({
                 name={name}
                 value={value}
                 title={title}
+                hideControls={!(title === 'Box' || title === 'Background')}
                 getSetColor={getSetColor}
               />
             );

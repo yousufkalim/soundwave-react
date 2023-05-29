@@ -238,14 +238,14 @@ const Template4: FC<Template4Props> = ({
       <div
         className={`h-full w-full`}
         style={{
-          backgroundColor: colors.posterColor,
+          background: colors.posterColor,
           padding: '6% 5% 0% 5%',
         }}
       >
         <div
           className={`h-[80%] px-1 py-2 border-[2.999px] border-white overflow-hidden flex flex-wrap justify-around`}
           style={{
-            backgroundColor: colors.posterColor,
+            background: colors.posterColor,
             paddingTop:
               dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
                 ? '5%'
@@ -336,7 +336,6 @@ const Template4: FC<Template4Props> = ({
         >
           <div
             style={{
-              backgroundColor: colors.posterColor || 'black',
               letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label

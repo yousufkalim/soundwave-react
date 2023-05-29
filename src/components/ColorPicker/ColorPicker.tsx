@@ -7,10 +7,11 @@ interface IColorPickerProps {
   name: string;
   value: string;
   title: string;
+  hideControls: boolean;
   getSetColor: (currentColor: string, fieldName: string) => void;
 }
 
-const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor }) => {
+const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor, hideControls }) => {
   const [open, setOpen] = useState<boolean>(false);
   // const { setSolid, setGradient } = useColorPicker(color, setColor);
 
@@ -49,7 +50,7 @@ const ColorPicker: FC<IColorPickerProps> = ({ name, title, value, getSetColor })
             <GradientPicker
               hideAdvancedSliders={true}
               hideColorGuide={true}
-              hideControls={false}
+              hideControls={hideControls}
               hideInputType={true}
               hidePresets={false}
               hideOpacity={true}
