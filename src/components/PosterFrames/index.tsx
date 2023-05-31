@@ -92,10 +92,10 @@ const PosterFrame: FC<PosterFrameProps> = ({
           </div>
           <div
             onClick={() => {
-              handleSelectedFrame('Nuteral Wooden Frame');
+              handleSelectedFrame('Natural Wooden Frame');
             }}
             className={
-              posterType === 'Nuteral Wooden Frame'
+              posterType === 'Natural Wooden Frame'
                 ? 'border-black border-[3px] flex items-center w-auto xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
                 : 'border-gray-300 border-2 flex items-center w-auto xmd:w-[30%] rounded-lg cursor-pointer bg-white px-[0.3rem] py-2 flex flex-col'
             }

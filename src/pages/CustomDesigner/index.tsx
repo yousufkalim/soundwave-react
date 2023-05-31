@@ -140,7 +140,7 @@ const index: FC = () => {
   const handleFramesChange = (): void => {
     posterType === 'Black Wooden Frame'
       ? setBackgroundFrame('#0a0705')
-      : posterType === 'Nuteral Wooden Frame'
+      : posterType === 'Natural Wooden Frame'
       ? setBackgroundFrame('#caab94')
       : posterType === 'White Wooden Frame'
       ? setBackgroundFrame('#E8E8E8')

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState, useRef } from 'react';
 import Waveroom from '../WaveItem/index';
 import {
   DataSetProps,
@@ -58,16 +58,8 @@ const Template4: FC<Template4Props> = ({
   fontSize,
   takingScreenShot,
 }) => {
-  useEffect(() => {
-    setColors({
-      boxColor: '#000',
-      posterColor: '#000',
-      soundWaveColor: 'rgba(255,255,255,1)',
-      soundWaveNameColor: '#fff',
-      songTitleColor: '#fff',
-      descriptionColor: '#fff',
-    });
-  }, []);
+  const [currentWidth, setCurrentWidth] = useState<number>(0);
+  const titleDiv = useRef<HTMLDivElement>(null);
 
   // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
   // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
@@ -209,6 +201,25 @@ const Template4: FC<Template4Props> = ({
     },
   };
 
+  useEffect(() => {
+    setColors({
+      boxColor: '#000',
+      posterColor: '#000',
+      soundWaveColor: 'rgba(255,255,255,1)',
+      soundWaveNameColor: '#fff',
+      songTitleColor: '#fff',
+      descriptionColor: '#fff',
+    });
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (titleDiv?.current) {
+        setCurrentWidth(titleDiv?.current?.clientWidth);
+      }
+    }, 100);
+  }, [selectedAlbum, posterSize.value]);
+
   return (
     <div
       id="custom-poster-template"
@@ -243,39 +254,62 @@ const Template4: FC<Template4Props> = ({
         }}
       >
         <div
-          className={`h-[80%] px-1 py-2 border-[2.999px] border-white overflow-hidden flex flex-wrap justify-around`}
+          className={`h-[80%] relative px-1 py-2`}
           style={{
-            background: colors.posterColor,
-            paddingTop:
-              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
-                ? '5%'
-                : '0.5rem',
-            alignItems:
-              dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
-                ? 'baseline'
-                : 'center',
+            borderTop: '2.99px solid white',
+            borderLeft: '2.99px solid white',
+            borderRight: '2.99px solid white',
           }}
         >
-          {dataSets.map((item, index) => {
-            if (index < 30) {
-              return (
-                <Waveroom
-                  songsAmount={dataSets.length}
-                  item={item}
-                  selectedFont={selectedFont}
-                  colors={colors}
-                  key={item.trackId}
-                  height={dataSets.length <= 18 ? 18 : 15}
-                  posterRatio={sizeValues[posterSize.value] || '1218'}
-                />
-              );
-            } else {
-              return '';
-            }
-          })}
+          <div
+            className="absolute bottom-0 left-[-1px]"
+            style={{ borderBottom: '2.99px solid white', width: '11px' }}
+          ></div>
+          <div
+            className="absolute bottom-0 right-[-1px]"
+            style={{
+              borderBottom: '2.99px solid white',
+              width: `calc(98.8% - ${currentWidth ?? 0}px)`,
+            }}
+          ></div>
+
+          <div
+            className={`h-[100%] overflow-hidden flex flex-wrap justify-around`}
+            style={{
+              background: colors.posterColor,
+              paddingTop:
+                dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                  ? '5%'
+                  : '0.5rem',
+              alignItems:
+                dataSets.length >= 10 && dataSets.find((item) => item?.songName?.length >= 30)
+                  ? 'baseline'
+                  : 'center',
+            }}
+          >
+            {dataSets.map((item, index) => {
+              if (index < 30) {
+                return (
+                  <Waveroom
+                    songsAmount={dataSets.length}
+                    item={item}
+                    selectedFont={selectedFont}
+                    colors={colors}
+                    key={item.trackId}
+                    height={dataSets.length <= 18 ? 18 : 15}
+                    posterRatio={sizeValues[posterSize.value] || '1218'}
+                  />
+                );
+              } else {
+                return '';
+              }
+            })}
+          </div>
         </div>
         <div
-          className="absolute break-words flex items-center justify-center flex-col max-w-[85%]"
+          ref={titleDiv}
+          id="title_div"
+          className="absolute break-words flex items-center justify-center flex-col"
           style={{
             left: leftSpacing,
             color: colors.songTitleColor,
@@ -283,59 +317,11 @@ const Template4: FC<Template4Props> = ({
               selectedAlbum?.label && selectedAlbum?.label.length > 15
                 ? biggerThan15Chars[posterSize.value].background
                 : lessThan15Chars[posterSize.value].background,
-            // posterSize.value === '12 X 18'
-            //   ? BackgroundFrame
-            //     ? selectedFontFamily !== 'Morganite'
-            //       ? '16.7%' // changed
-            //       : '14.8%' // changed
-            //     : selectedFontFamily !== 'Morganite'
-            //     ? '16.2%' // changed
-            //     : '14.3%' // changed
-            //   : posterSize.value === '16 X 20'
-            //   ? BackgroundFrame
-            //     ? selectedFontFamily !== 'Morganite'
-            //       ? '16%' // changed
-            //       : '14.7%' // changed
-            //     : selectedFontFamily !== 'Morganite'
-            //     ? '15.5%' // changed
-            //     : '14.1%' // changed
-            //   : posterSize.value === '18 X 24'
-            //   ? BackgroundFrame
-            //     ? selectedFontFamily !== 'Morganite'
-            //       ? '16.1%' // changed
-            //       : '14.8%' // changed
-            //     : selectedFontFamily !== 'Morganite'
-            //     ? '15.5%' // changed
-            //     : '14.2%' // changed
-            //   : posterSize.value === '20 X 28'
-            //   ? BackgroundFrame
-            //     ? selectedFontFamily !== 'Morganite'
-            //       ? '16.1%'
-            //       : '14.8%'
-            //     : selectedFontFamily !== 'Morganite'
-            //     ? '15.5%'
-            //     : '14.2%'
-            //   : posterSize.value === '24 X 36'
-            //   ? BackgroundFrame
-            //     ? selectedFontFamily !== 'Morganite'
-            //       ? '16%'
-            //       : '14.7%'
-            //     : selectedFontFamily !== 'Morganite'
-            //     ? '15.4%'
-            //     : '14.1%'
-            //   : posterSize.value === '28 X 40'
-            //   ? BackgroundFrame
-            //     ? selectedFontFamily !== 'Morganite'
-            //       ? '15.8%'
-            //       : '14.6%'
-            //     : selectedFontFamily !== 'Morganite'
-            //     ? '15.1%'
-            //     : '14%'
-            //   : '16%',
           }}
         >
           <div
             style={{
+              background: 'transparent',
               letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
