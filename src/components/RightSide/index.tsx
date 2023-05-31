@@ -206,7 +206,7 @@ const RightSide: FC<RightSideProps> = ({
       const totalPrice =
         (posterSizePriceResult?.price ?? 0) +
         (posterType === 'Black Wooden Frame' ||
-        posterType === 'Nuteral Wooden Frame' ||
+        posterType === 'Natural Wooden Frame' ||
         posterType === 'White Wooden Frame' ||
         posterType === 'Black Metal Frame'
           ? posterFramePriceResult?.withFramePrice ?? 0
