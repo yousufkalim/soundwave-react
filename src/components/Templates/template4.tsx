@@ -217,7 +217,7 @@ const Template4: FC<Template4Props> = ({
       if (titleDiv?.current) {
         setCurrentWidth(titleDiv?.current?.clientWidth);
       }
-    }, 200);
+    }, 300);
   }, [selectedAlbum, posterSize.value]);
 
   return (
