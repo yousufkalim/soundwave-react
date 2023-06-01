@@ -211,15 +211,17 @@ const Template4: FC<Template4Props> = ({
       descriptionColor: '#fff',
     });
   }, []);
+  const div = document.getElementById('title_div');
 
   useEffect(() => {
     setTimeout(() => {
-      if (titleDiv?.current) {
-        setCurrentWidth(titleDiv?.current?.clientWidth);
-      }
-    }, 300);
-  }, [selectedAlbum, posterSize.value]);
+      handleResize();
+    }, 350);
+  }, [div?.clientWidth, fontSize, selectedFontFamily, selectedAlbum, posterSize.value]);
 
+  const handleResize = (): void => {
+    if (div) setCurrentWidth(div?.clientWidth);
+  };
   return (
     <div
       id="custom-poster-template"
@@ -307,6 +309,8 @@ const Template4: FC<Template4Props> = ({
           </div>
         </div>
         <div
+          // eslint-disable-next-line react/no-unknown-property
+          onResize={handleResize}
           ref={titleDiv}
           id="title_div"
           className="absolute break-words flex items-center justify-center flex-col"
@@ -321,7 +325,7 @@ const Template4: FC<Template4Props> = ({
         >
           <div
             style={{
-              background: 'transparent',
+              background: 'transparent font-[Morganite] !important',
               letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
