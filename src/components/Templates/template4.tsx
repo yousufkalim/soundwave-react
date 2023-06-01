@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useRef } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Waveroom from '../WaveItem/index';
 import {
   DataSetProps,
@@ -59,7 +59,6 @@ const Template4: FC<Template4Props> = ({
   takingScreenShot,
 }) => {
   const [currentWidth, setCurrentWidth] = useState<number>(0);
-  const titleDiv = useRef<HTMLDivElement>(null);
 
   // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
   // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
@@ -311,7 +310,6 @@ const Template4: FC<Template4Props> = ({
         <div
           // eslint-disable-next-line react/no-unknown-property
           onResize={handleResize}
-          ref={titleDiv}
           id="title_div"
           className="absolute break-words flex items-center justify-center flex-col"
           style={{
