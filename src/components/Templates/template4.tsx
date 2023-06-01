@@ -415,7 +415,9 @@ const Template4: FC<Template4Props> = ({
               marginTop:
                 selectedFontFamily === 'Blacksword' || selectedFontFamily === 'Roustel'
                   ? '0rem'
-                  : '-1rem',
+                  : selectedFontFamily === 'Morganite'
+                  ? '-1rem'
+                  : '-0.5rem',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
@@ -446,8 +448,8 @@ const Template4: FC<Template4Props> = ({
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
-                ? 'mt-[-1rem] text-center'
-                : 'mt-[-1rem] text-center'
+                ? 'mt-[-0.5rem] text-center'
+                : 'mt-[-0.5rem] text-center'
             }
           >
             {selectedAlbum?.singerName ? selectedAlbum.singerName : 'SINGER NAME'}
