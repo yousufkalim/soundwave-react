@@ -309,7 +309,7 @@ const Template4: FC<Template4Props> = ({
         </div>
         <div
           id="title_div"
-          className="absolute break-words flex items-center justify-center flex-col"
+          className="absolute break-words flex items-center justify-center flex-col max-w-[85%]"
           style={{
             left: leftSpacing,
             color: colors.songTitleColor,
