@@ -317,7 +317,14 @@ const Template4: FC<Template4Props> = ({
               selectedAlbum?.label && selectedAlbum?.label.length > 15
                 ? biggerThan15Chars[posterSize.value].background
                 : lessThan15Chars[posterSize.value].background,
-            marginBottom: selectedFontFamily !== 'Morganite' ? '1rem' : '0rem',
+            marginBottom:
+              selectedFontFamily === 'Aemstel-Regular'
+                ? '1.5rem'
+                : selectedFontFamily === 'Roustel'
+                ? '0.5rem'
+                : selectedFontFamily !== 'Morganite'
+                ? '1rem'
+                : '0rem',
           }}
         >
           <div
