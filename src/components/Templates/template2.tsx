@@ -365,7 +365,7 @@ const Template2: FC<Template2Props> = ({
         <div
           className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%]`}
           style={{
-            marginTop: selectedAlbum?.label && selectedAlbum?.label?.length > 15 ? '8%' : '5%',
+            marginTop: selectedAlbum?.label && selectedAlbum?.label?.length > 15 ? '5%' : '5%',
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
             fontFamily: selectedFont || 'Montserrat',
