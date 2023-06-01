@@ -213,7 +213,6 @@ const Template4: FC<Template4Props> = ({
   const div = document.getElementById('title_div');
 
   useEffect(() => {
-    console.log(div, 'div');
     const interval = setInterval(() => {
       handleResize();
     }, 200);
@@ -224,7 +223,7 @@ const Template4: FC<Template4Props> = ({
   }, [div]);
 
   const handleResize = (): void => {
-    if (div) setCurrentWidth(div?.clientWidth);
+    if (div && div.clientWidth !== currentWidth) setCurrentWidth(div?.clientWidth);
   };
   return (
     <div
