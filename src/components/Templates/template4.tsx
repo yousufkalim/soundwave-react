@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useRef } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Waveroom from '../WaveItem/index';
 import {
   DataSetProps,
@@ -59,7 +59,6 @@ const Template4: FC<Template4Props> = ({
   takingScreenShot,
 }) => {
   const [currentWidth, setCurrentWidth] = useState<number>(0);
-  const titleDiv = useRef<HTMLDivElement>(null);
 
   // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
   // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
@@ -211,15 +210,17 @@ const Template4: FC<Template4Props> = ({
       descriptionColor: '#fff',
     });
   }, []);
+  const div = document.getElementById('title_div');
 
   useEffect(() => {
     setTimeout(() => {
-      if (titleDiv?.current) {
-        setCurrentWidth(titleDiv?.current?.clientWidth);
-      }
-    }, 300);
-  }, [selectedAlbum, posterSize.value]);
+      handleResize();
+    }, 350);
+  }, [div?.clientWidth, fontSize, selectedFontFamily, selectedAlbum, posterSize.value]);
 
+  const handleResize = (): void => {
+    if (div) setCurrentWidth(div?.clientWidth);
+  };
   return (
     <div
       id="custom-poster-template"
@@ -307,7 +308,8 @@ const Template4: FC<Template4Props> = ({
           </div>
         </div>
         <div
-          ref={titleDiv}
+          // eslint-disable-next-line react/no-unknown-property
+          onResize={handleResize}
           id="title_div"
           className="absolute break-words flex items-center justify-center flex-col"
           style={{
@@ -321,7 +323,7 @@ const Template4: FC<Template4Props> = ({
         >
           <div
             style={{
-              background: 'transparent',
+              background: 'transparent font-[Morganite] !important',
               letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
