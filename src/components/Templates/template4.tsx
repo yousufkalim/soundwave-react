@@ -308,8 +308,6 @@ const Template4: FC<Template4Props> = ({
           </div>
         </div>
         <div
-          // eslint-disable-next-line react/no-unknown-property
-          onResize={handleResize}
           id="title_div"
           className="absolute break-words flex items-center justify-center flex-col"
           style={{
@@ -319,11 +317,12 @@ const Template4: FC<Template4Props> = ({
               selectedAlbum?.label && selectedAlbum?.label.length > 15
                 ? biggerThan15Chars[posterSize.value].background
                 : lessThan15Chars[posterSize.value].background,
+            marginBottom: selectedFontFamily !== 'Morganite' ? '1rem' : '0rem',
           }}
         >
           <div
             style={{
-              background: 'transparent font-[Morganite] !important',
+              background: 'transparent',
               letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
@@ -406,6 +405,10 @@ const Template4: FC<Template4Props> = ({
           </div>
           <div
             style={{
+              marginTop:
+                selectedFontFamily === 'Blacksword' || selectedFontFamily === 'Roustel'
+                  ? '0rem'
+                  : '-1rem',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
