@@ -213,10 +213,15 @@ const Template4: FC<Template4Props> = ({
   const div = document.getElementById('title_div');
 
   useEffect(() => {
-    setTimeout(() => {
+    console.log(div, 'div');
+    const interval = setInterval(() => {
       handleResize();
-    }, 350);
-  }, [div?.clientWidth, fontSize, selectedFontFamily, selectedAlbum, posterSize.value]);
+    }, 200);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [div]);
 
   const handleResize = (): void => {
     if (div) setCurrentWidth(div?.clientWidth);
