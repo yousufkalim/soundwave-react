@@ -41,7 +41,7 @@ const Waveroom: FC<WaveroomProps> = ({
           peaks={item.levels}
           height={height}
           color={rgbaToHex(colors.soundWaveColor)}
-          pixelRatio={1}
+          pixelRatio={10}
           progressColor={rgbaToHex(colors.soundWaveColor)}
         />
         <div
