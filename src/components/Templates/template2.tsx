@@ -58,6 +58,8 @@ const Template2: FC<Template2Props> = ({
   takingScreenShot,
   fontSize,
 }) => {
+  console.log('---->', posterType, BackgroundFrame);
+
   useEffect(() => {
     setColors({
       boxColor: '#EA8444',
@@ -131,7 +133,7 @@ const Template2: FC<Template2Props> = ({
       background: takingScreenShot
         ? posterType === 'No Frame'
           ? '3.9%'
-          : '4.4%'
+          : '3.9%'
         : BackgroundFrame
         ? '2.4%'
         : '2%',
@@ -203,14 +205,10 @@ const Template2: FC<Template2Props> = ({
     posterType !== 'Thick Canvas' &&
     posterSizeToBorderWidth[posterSize.value];
 
-  // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
-  // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
   const selectedFontFamily = selectedFont || 'Proxima-Nova-italic';
   return (
     <div
       id="custom-poster-template"
-      // className={`overflow-hidden scale-[${sizeScaling[0]}] absolute xs:scale-[${scaleXs}] msm:scale-[${scaleMsm}] sm:scale-[${scaleSm}] md:scale-[${scaleMd}] lg:scale-[${scaleLg}] sxl:scale-[${scaleSxl}] 2xl:scale-[${scale2xl}]`}
-
       className={
         posterSize.value === '12 X 18'
           ? `overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
@@ -228,8 +226,8 @@ const Template2: FC<Template2Props> = ({
       }
       style={{
         background: borderWidth ? BackgroundFrame : '',
-        padding: BackgroundFrame ? borderPadding : '',
-        height: posterHeigth[posterSize.value] || '1298px',
+        padding: BackgroundFrame ? borderPadding : '0px 20px 0px 20px',
+        height: posterHeigth[posterSize?.value] || '1298px',
         width: posterWidth[posterSize.value] || '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
@@ -237,7 +235,7 @@ const Template2: FC<Template2Props> = ({
       <div
         className={`h-full w-full`}
         style={{
-          background: colors.posterColor,
+          background: colors?.posterColor,
           padding: '6% 5% 0% 5%',
         }}
       >
@@ -363,7 +361,7 @@ const Template2: FC<Template2Props> = ({
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
         </div>
         <div
-          className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%]`}
+          className={`${activeAlignment} bg-transparent absolute left-0 right-0`}
           style={{
             marginTop: selectedAlbum?.label && selectedAlbum?.label?.length > 15 ? '4.5%' : '5%',
             whiteSpace: 'pre-wrap',
@@ -371,6 +369,7 @@ const Template2: FC<Template2Props> = ({
             fontFamily: selectedFont || 'Montserrat',
             letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
+            padding: posterType === 'Thin Canvas' ? '0px 7% 0px 7%' : '5%',
           }}
         >
           {albumDescripition}
