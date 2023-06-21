@@ -58,8 +58,6 @@ const Template2: FC<Template2Props> = ({
   takingScreenShot,
   fontSize,
 }) => {
-  console.log('---->', posterType, BackgroundFrame);
-
   useEffect(() => {
     setColors({
       boxColor: '#EA8444',
@@ -226,7 +224,7 @@ const Template2: FC<Template2Props> = ({
       }
       style={{
         background: borderWidth ? BackgroundFrame : '',
-        padding: BackgroundFrame ? borderPadding : '0px 20px 0px 20px',
+        padding: BackgroundFrame ? borderPadding : '',
         height: posterHeigth[posterSize?.value] || '1298px',
         width: posterWidth[posterSize.value] || '864px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
@@ -361,7 +359,7 @@ const Template2: FC<Template2Props> = ({
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
         </div>
         <div
-          className={`${activeAlignment} bg-transparent absolute left-0 right-0`}
+          className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%]`}
           style={{
             marginTop: selectedAlbum?.label && selectedAlbum?.label?.length > 15 ? '4.5%' : '5%',
             whiteSpace: 'pre-wrap',
@@ -369,7 +367,6 @@ const Template2: FC<Template2Props> = ({
             fontFamily: selectedFont || 'Montserrat',
             letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
-            padding: posterType === 'Thin Canvas' ? '0px 7% 0px 7%' : '5%',
           }}
         >
           {albumDescripition}
