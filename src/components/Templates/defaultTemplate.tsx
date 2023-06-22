@@ -71,8 +71,6 @@ const Template2: FC<Template2Props> = ({
 
   const selectedFontFamily = selectedFont || 'proxima-nova';
 
-  // const sizeScaling = sizeScales[posterSize.value] || sizeScales['12 X 18'];
-  // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
   const borderWidth =
     posterType !== 'No Frame' &&
     posterType !== 'Thin Canvas' &&
@@ -238,7 +236,7 @@ const Template2: FC<Template2Props> = ({
         style={{
           background: colors.posterColor,
           padding: '6% 5% 0% 5%',
-          scale: posterType === 'Thin Canvas' ? '90%' : '',
+          scale: posterType === 'Thin Canvas' ? '82%' : posterType === 'Thick Canvas' ? '81%' : '',
         }}
       >
         <div
@@ -266,6 +264,7 @@ const Template2: FC<Template2Props> = ({
                   key={item.trackId}
                   height={dataSets.length <= 18 ? 18 : 15}
                   posterRatio={sizeValues[posterSize.value] || '1218'}
+                  posterType={posterType}
                 />
               );
             } else {
@@ -290,7 +289,14 @@ const Template2: FC<Template2Props> = ({
                   : `font-semibold relative font-proxima-nova break-words`
               }
               style={{
-                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+                letterSpacing:
+                  posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
+                    ? selectedFont === 'Morganite'
+                      ? '1px'
+                      : '2px'
+                    : selectedFont === 'Morganite'
+                    ? '1px'
+                    : 'normal',
                 color: colors.songTitleColor,
                 fontFamily: selectedFont,
                 fontSize: selectedAlbum?.label
@@ -376,11 +382,23 @@ const Template2: FC<Template2Props> = ({
             style={{
               color: colors.descriptionColor,
               fontFamily: selectedFont,
-              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+              letterSpacing:
+                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
+                  ? selectedFont === 'Morganite'
+                    ? '1px'
+                    : '2px'
+                  : selectedFont === 'Morganite'
+                  ? '1px'
+                  : 'normal',
               fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
           >
-            <p id="description" style={{ whiteSpace: 'pre-wrap' }}>
+            <p
+              id="description"
+              style={{
+                whiteSpace: 'pre-wrap',
+              }}
+            >
               {albumDescripition}
             </p>
           </div>

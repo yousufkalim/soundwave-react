@@ -115,6 +115,7 @@ const Template5: FC<Template5Props> = ({
           paddingLeft: BackgroundFrame ? '5%' : '5%',
           paddingRight: BackgroundFrame ? '5%' : '5%',
           paddingTop: BackgroundFrame ? '6%' : '6%',
+          scale: posterType === 'Thin Canvas' ? '85%' : posterType === 'Thick Canvas' ? '85%' : '',
         }}
       >
         <div
@@ -141,6 +142,7 @@ const Template5: FC<Template5Props> = ({
                   key={item.trackId}
                   height={dataSets.length <= 18 ? 18 : 15}
                   posterRatio={sizeValues[posterSize.value] || '1218'}
+                  posterType={posterType}
                 />
               );
             } else {
@@ -231,7 +233,14 @@ const Template5: FC<Template5Props> = ({
                   ? `${+fontSize?.albumNameSize + 105}px`
                   : `${+fontSize?.albumNameSize + 123}px`
                 : '64px',
-              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+              letterSpacing:
+                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
+                  ? selectedFont === 'Morganite'
+                    ? '1px'
+                    : '2px'
+                  : selectedFont === 'Morganite'
+                  ? '1px'
+                  : 'normal',
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -266,7 +275,14 @@ const Template5: FC<Template5Props> = ({
                   ? `${+fontSize?.singerNameSize + 40}px`
                   : `${+fontSize?.singerNameSize + 40}px`
                 : `${+fontSize?.singerNameSize + 13}px`,
-              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+              letterSpacing:
+                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
+                  ? selectedFont === 'Morganite'
+                    ? '1px'
+                    : '2px'
+                  : selectedFont === 'Morganite'
+                  ? '1px'
+                  : 'normal',
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
@@ -277,7 +293,14 @@ const Template5: FC<Template5Props> = ({
               whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,
               fontFamily: selectedFont,
-              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+              letterSpacing:
+                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
+                  ? selectedFont === 'Morganite'
+                    ? '1px'
+                    : '2px'
+                  : selectedFont === 'Morganite'
+                  ? '1px'
+                  : 'normal',
               fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
           >
