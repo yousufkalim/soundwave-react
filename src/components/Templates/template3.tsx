@@ -241,7 +241,12 @@ const Template3: FC<Template3Props> = ({
         style={{
           background: colors.posterColor,
           padding: '6% 5% 0% 5%',
-          scale: posterType === 'Thin Canvas' ? '82%' : posterType === 'Thick Canvas' ? '81%' : '',
+          transform:
+            posterType === 'Thin Canvas'
+              ? 'scale(0.75)'
+              : posterType === 'Thick Canvas'
+              ? 'scale(0.74)'
+              : '',
         }}
       >
         <div
@@ -269,7 +274,6 @@ const Template3: FC<Template3Props> = ({
                   key={item.trackId}
                   height={dataSets.length <= 18 ? 18 : 15}
                   posterRatio={sizeValues[posterSize.value] || '1218'}
-                  posterType={posterType}
                 />
               );
             } else {
@@ -359,14 +363,7 @@ const Template3: FC<Template3Props> = ({
                 ? `${+fontSize?.albumNameSize + 100}px`
                 : `${+fontSize?.albumNameSize + 135}px`
               : '64px',
-            letterSpacing:
-              posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                ? selectedFont === 'Morganite'
-                  ? '1px'
-                  : '2px'
-                : selectedFont === 'Morganite'
-                ? '1px'
-                : 'normal',
+            letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
           }}
         >
           {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'Album Name'}
@@ -377,14 +374,7 @@ const Template3: FC<Template3Props> = ({
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
             fontFamily: selectedFont,
-            letterSpacing:
-              posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                ? selectedFont === 'Morganite'
-                  ? '1px'
-                  : '2px'
-                : selectedFont === 'Morganite'
-                ? '1px'
-                : 'normal',
+            letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
           }}
         >
@@ -408,14 +398,7 @@ const Template3: FC<Template3Props> = ({
                     : posterSize.value === '28 X 40'
                     ? `${+fontSize?.singerNameSize + 41}px`
                     : '16px',
-                letterSpacing:
-                  posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                    ? selectedFont === 'Morganite'
-                      ? '1px'
-                      : '2px'
-                    : selectedFont === 'Morganite'
-                    ? '1px'
-                    : 'normal',
+                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
                 borderWidth:
                   posterSize.value === '18 X 24'
                     ? '1.5px'

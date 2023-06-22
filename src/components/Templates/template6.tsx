@@ -117,9 +117,14 @@ const Template6: FC<Template6Props> = ({
       <div
         className={`h-full w-full`}
         style={{
-          background: colors.posterColor,
           padding: '6% 5% 0% 5%',
-          scale: posterType === 'Thin Canvas' ? '82%' : posterType === 'Thick Canvas' ? '81%' : '',
+          background: colors.posterColor,
+          transform:
+            posterType === 'Thin Canvas'
+              ? 'scale(0.75)'
+              : posterType === 'Thick Canvas'
+              ? 'scale(0.74)'
+              : '',
         }}
       >
         <div className="flex pb-[4%] items-center justify-center">
@@ -158,8 +163,6 @@ const Template6: FC<Template6Props> = ({
                   ? `${+fontSize.albumNameSize + 77}px`
                   : `${+fontSize.albumNameSize + 88}px`
                 : `48px`,
-              letterSpacing:
-                posterType === 'Thin Canvas' || posterType === 'Thick Canvas' ? '2px' : 'normal',
             }}
           >
             {selectedAlbum?.label
@@ -191,7 +194,6 @@ const Template6: FC<Template6Props> = ({
                   key={item.trackId}
                   height={dataSets.length <= 18 ? 18 : 15}
                   posterRatio={sizeValues[posterSize.value] || '1218'}
-                  posterType={posterType}
                 />
               );
             } else {
@@ -200,7 +202,7 @@ const Template6: FC<Template6Props> = ({
           })}
         </div>
         <div
-          className={`${activeAlignment} px-[1%] w-full overflow-hidden text-ellipsis-8 break-words relative `}
+          className={`${activeAlignment} px-[1%] w-full overflow-hidden text-ellipsis-8 break-words relative bg-transparent font-[Montserrat]`}
           style={{
             color: colors.descriptionColor,
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
@@ -210,16 +212,8 @@ const Template6: FC<Template6Props> = ({
             style={{
               whiteSpace: 'pre-wrap',
               fontFamily: selectedFont,
-              letterSpacing:
-                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                  ? selectedFont === 'Morganite'
-                    ? '1px'
-                    : '2px'
-                  : selectedFont === 'Morganite'
-                  ? '1px'
-                  : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
-            className={`bg-transparent font-[Montserrat]`}
           >
             {albumDescripition}
           </p>
