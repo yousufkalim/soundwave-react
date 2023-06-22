@@ -9,6 +9,7 @@ interface WaveroomProps {
   height: number;
   songsAmount: number;
   posterRatio?: string;
+  posterType: string;
 }
 const Waveroom: FC<WaveroomProps> = ({
   item,
@@ -17,6 +18,7 @@ const Waveroom: FC<WaveroomProps> = ({
   height,
   songsAmount,
   posterRatio,
+  posterType,
 }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
@@ -55,7 +57,8 @@ const Waveroom: FC<WaveroomProps> = ({
             className={`w-[82%] flex items-center justify-start tracking-tighter font-semibold font-[Montserrat] break-words text-[4px] sm:text-[6px] xl:text-[7px]`}
             style={{
               color: colors.soundWaveNameColor,
-              // fontFamily: selectedFont,
+              letterSpacing:
+                posterType === 'Thin Canvas' || posterType === 'Thick Canvas' ? '2px' : 'normal',
               fontSize:
                 posterRatio === '1218'
                   ? songsAmount > 18
