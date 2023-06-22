@@ -207,8 +207,6 @@ const Template2: FC<Template2Props> = ({
       ? posterSizeToBorderWidth[posterSize.value] || '0px'
       : '';
 
-  // const labelLength = selectedAlbum?.label ? selectedAlbum.label.length : 0;
-
   return (
     <div
       id="custom-poster-template"
@@ -240,6 +238,7 @@ const Template2: FC<Template2Props> = ({
         style={{
           background: colors.posterColor,
           padding: '6% 5% 0% 5%',
+          scale: posterType === 'Thin Canvas' ? '90%' : '',
         }}
       >
         <div
