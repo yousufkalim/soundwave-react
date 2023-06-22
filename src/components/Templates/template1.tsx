@@ -117,7 +117,12 @@ const Template1: FC<Template1Props> = ({
         style={{
           background: colors.posterColor,
           padding: '6% 5% 0% 5%',
-          scale: posterType === 'Thin Canvas' ? '82%' : posterType === 'Thick Canvas' ? '81%' : '',
+          transform:
+            posterType === 'Thin Canvas'
+              ? 'scale(0.75)'
+              : posterType === 'Thick Canvas'
+              ? 'scale(0.74)'
+              : '',
         }}
       >
         <div className="flex items-center justify-center flex-col pb-[1%]">
@@ -203,14 +208,7 @@ const Template1: FC<Template1Props> = ({
                   ? `${+fontSize?.albumNameSize + 105}px`
                   : `${+fontSize?.albumNameSize + 123}px`
                 : '64px',
-              letterSpacing:
-                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                  ? selectedFont === 'Morganite'
-                    ? '1px'
-                    : '2px'
-                  : selectedFont === 'Morganite'
-                  ? '1px'
-                  : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
           >
             {selectedAlbum?.label ? selectedAlbum?.label.toUpperCase() : 'ALBUM NAME'}
@@ -249,14 +247,7 @@ const Template1: FC<Template1Props> = ({
                   ? `${+fontSize?.singerNameSize + 32}px`
                   : `${+fontSize?.singerNameSize + 32}px`
                 : '14px',
-              letterSpacing:
-                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                  ? selectedFont === 'Morganite'
-                    ? '1px'
-                    : '2px'
-                  : selectedFont === 'Morganite'
-                  ? '1px'
-                  : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
           >
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
@@ -288,7 +279,6 @@ const Template1: FC<Template1Props> = ({
                     key={item.trackId}
                     height={dataSets.length <= 18 ? 18 : 15}
                     posterRatio={sizeValues[posterSize.value] || '1218'}
-                    posterType={posterType}
                   />
                 );
               } else {
@@ -301,14 +291,7 @@ const Template1: FC<Template1Props> = ({
               whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,
               fontFamily: selectedFont || 'Montserrat',
-              letterSpacing:
-                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                  ? selectedFont === 'Morganite'
-                    ? '1px'
-                    : '2px'
-                  : selectedFont === 'Morganite'
-                  ? '1px'
-                  : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
               fontSize: descriptionFontSize[posterSize.value] ?? '14px',
             }}
             className={`${activeAlignment} mt-[2%] absolute left-0 right-0 px-[5%] w-full`}

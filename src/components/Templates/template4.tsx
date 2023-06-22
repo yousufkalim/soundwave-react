@@ -253,7 +253,12 @@ const Template4: FC<Template4Props> = ({
         style={{
           background: colors.posterColor,
           padding: '6% 5% 0% 5%',
-          scale: posterType === 'Thin Canvas' ? '82%' : posterType === 'Thick Canvas' ? '81%' : '',
+          transform:
+            posterType === 'Thin Canvas'
+              ? 'scale(0.75)'
+              : posterType === 'Thick Canvas'
+              ? 'scale(0.74)'
+              : '',
         }}
       >
         <div
@@ -301,7 +306,6 @@ const Template4: FC<Template4Props> = ({
                     key={item.trackId}
                     height={dataSets.length <= 18 ? 18 : 15}
                     posterRatio={sizeValues[posterSize.value] || '1218'}
-                    posterType={posterType}
                   />
                 );
               } else {
@@ -333,14 +337,7 @@ const Template4: FC<Template4Props> = ({
           <div
             style={{
               background: 'transparent',
-              letterSpacing:
-                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                  ? selectedFont === 'Morganite'
-                    ? '1px'
-                    : '2px'
-                  : selectedFont === 'Morganite'
-                  ? '1px'
-                  : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
@@ -454,14 +451,7 @@ const Template4: FC<Template4Props> = ({
                   ? `${+fontSize?.singerNameSize + 64}px`
                   : `${+fontSize?.singerNameSize + 41}px`
                 : '18px',
-              letterSpacing:
-                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                  ? selectedFont === 'Morganite'
-                    ? '1px'
-                    : '2px'
-                  : selectedFont === 'Morganite'
-                  ? '1px'
-                  : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
@@ -483,14 +473,7 @@ const Template4: FC<Template4Props> = ({
           <p
             style={{
               whiteSpace: 'pre-wrap',
-              letterSpacing:
-                posterType === 'Thin Canvas' || posterType === 'Thick Canvas'
-                  ? selectedFont === 'Morganite'
-                    ? '1px'
-                    : '2px'
-                  : selectedFont === 'Morganite'
-                  ? '1px'
-                  : 'normal',
+              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
             className={`bg-transparent text-ellipsis-8`}
           >
