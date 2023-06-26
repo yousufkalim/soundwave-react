@@ -278,7 +278,7 @@ const Template5: FC<Template5Props> = ({
             {selectedAlbum?.singerName ? selectedAlbum?.singerName.toUpperCase() : 'SINGER NAME'}
           </span>
           <p
-            className={`${activeAlignment} relative text-[5px] md:text-[6px] bg-transparent text-ellipsis-8 break-words mt-[1.8%] font-[Montserrat]`}
+            className={`${activeAlignment} relative text-[5px] md:text-[6px] bg-transparent break-words mt-[1.8%] font-[Montserrat]`}
             style={{
               whiteSpace: 'pre-wrap',
               color: colors.descriptionColor,

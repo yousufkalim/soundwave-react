@@ -202,7 +202,7 @@ const Template6: FC<Template6Props> = ({
           })}
         </div>
         <div
-          className={`${activeAlignment} px-[1%] w-full overflow-hidden text-ellipsis-8 break-words relative bg-transparent font-[Montserrat]`}
+          className={`${activeAlignment} px-[1%] w-full overflow-hidden break-words relative bg-transparent font-[Montserrat]`}
           style={{
             color: colors.descriptionColor,
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
