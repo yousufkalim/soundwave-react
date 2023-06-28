@@ -378,12 +378,18 @@ const Template3: FC<Template3Props> = ({
             fontSize: descriptionFontSize[posterSize.value] ?? '14px',
           }}
         >
-          <p className={`mb-[3.5%]`}>{albumDescripition}</p>
+          <p className="mb-[3.5%]">{albumDescripition}</p>
           <div className="text-center">
             <span
               style={{
+                position: 'relative',
                 color: colors.songTitleColor,
                 fontFamily: selectedFont,
+                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+                fontWeight: 'bold',
+                border: '1px solid white',
+                borderRadius: '7px',
+                padding: '4px',
                 fontSize:
                   posterSize.value === '12 X 18'
                     ? `${+fontSize?.singerNameSize + 16}px`
@@ -398,7 +404,6 @@ const Template3: FC<Template3Props> = ({
                     : posterSize.value === '28 X 40'
                     ? `${+fontSize?.singerNameSize + 41}px`
                     : '16px',
-                letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
                 borderWidth:
                   posterSize.value === '18 X 24'
                     ? '1.5px'
@@ -408,9 +413,8 @@ const Template3: FC<Template3Props> = ({
                     ? '2px'
                     : posterSize.value === '28 X 40'
                     ? '2px'
-                    : '1px',
+                    : '1.8px',
               }}
-              className="border p-1 rounded-lg font-bold relative"
             >
               {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
             </span>
