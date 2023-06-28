@@ -337,7 +337,7 @@ const Template4: FC<Template4Props> = ({
           <div
             style={{
               background: 'transparent',
-              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+              letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
               fontFamily: selectedFontFamily,
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
@@ -451,7 +451,7 @@ const Template4: FC<Template4Props> = ({
                   ? `${+fontSize?.singerNameSize + 64}px`
                   : `${+fontSize?.singerNameSize + 41}px`
                 : '18px',
-              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+              letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
             }}
             className={
               selectedAlbum?.label && selectedAlbum?.label.length > 24
@@ -473,7 +473,7 @@ const Template4: FC<Template4Props> = ({
           <p
             style={{
               whiteSpace: 'pre-wrap',
-              letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
+              letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
             }}
             className={`bg-transparent text-ellipsis-8`}
           >
