@@ -209,6 +209,7 @@ const Template6: FC<Template6Props> = ({
           }}
         >
           <p
+            className="pb-[2%]"
             style={{
               whiteSpace: 'pre-wrap',
               fontFamily: selectedFont,

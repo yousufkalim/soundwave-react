@@ -208,6 +208,7 @@ const Template3: FC<Template3Props> = ({
   // const [scaleXs, scaleMsm, scaleSm, scaleMd, scaleLg, scaleSxl, scale2xl] = sizeScaling;
   const selectedFontFamily = selectedFont || 'Aemstel-Regular';
 
+  console.log(selectedAlbum?.singerName?.length);
   return (
     <div
       id="custom-poster-template"
@@ -379,8 +380,8 @@ const Template3: FC<Template3Props> = ({
           }}
         >
           <p className="mb-[3.5%]">{albumDescripition}</p>
-          <div className="text-center">
-            <span
+          <div className="flex justify-center text-center">
+            <div
               style={{
                 position: 'relative',
                 color: colors.songTitleColor,
@@ -389,7 +390,7 @@ const Template3: FC<Template3Props> = ({
                 fontWeight: 'bold',
                 border: '1px solid white',
                 borderRadius: '7px',
-                padding: '4px',
+                padding: takingScreenShot ? '1%' : '4px',
                 fontSize:
                   posterSize.value === '12 X 18'
                     ? `${+fontSize?.singerNameSize + 16}px`
@@ -406,18 +407,20 @@ const Template3: FC<Template3Props> = ({
                     : '16px',
                 borderWidth:
                   posterSize.value === '18 X 24'
-                    ? '1.5px'
+                    ? '2.5px'
                     : posterSize.value === '20 X 28'
-                    ? '1.5px'
+                    ? '2.5px'
                     : posterSize.value === '24 X 36'
-                    ? '2px'
+                    ? '2.5px'
                     : posterSize.value === '28 X 40'
-                    ? '2px'
+                    ? '3px'
                     : '1.8px',
               }}
             >
-              {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
-            </span>
+              <div style={{ marginTop: takingScreenShot ? '-11%' : '0' }}>
+                {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
+              </div>
+            </div>
           </div>
         </div>
       </div>

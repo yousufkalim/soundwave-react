@@ -159,7 +159,7 @@ export const sizeValues: Record<string, string> = {
 export const posterHeigth: Record<string, string> = {
   '12 X 18': '1300px',
   '16 X 20': '1440px',
-  '18 X 24': '1737px',
+  '18 X 24': '1740px',
   '20 X 28': '2020px',
   '24 X 36': '2600px',
   '28 X 40': '2900px',
@@ -167,8 +167,8 @@ export const posterHeigth: Record<string, string> = {
 export const posterWidth: Record<string, string> = {
   '12 X 18': '860px',
   '16 X 20': '1150px',
-  '18 X 24': '1300px',
+  '18 X 24': '12800px',
   '20 X 28': '1440px',
-  '24 X 36': '1752px',
+  '24 X 36': '1750px',
   '28 X 40': '2000px',
 };
