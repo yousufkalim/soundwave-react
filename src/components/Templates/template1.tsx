@@ -296,7 +296,7 @@ const Template1: FC<Template1Props> = ({
             }}
             className={`${activeAlignment} mt-[2%] absolute left-0 right-0 px-[5%] w-full`}
           >
-            <p className={`break-words bg-transparent font-[Montserrat] text-ellipsis-8`}>
+            <p className={`break-words bg-transparent font-[Montserrat] text-ellipsis-8 pb-[2%]`}>
               {albumDescripition}
             </p>
           </div>

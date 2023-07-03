@@ -264,19 +264,67 @@ const Template4: FC<Template4Props> = ({
         <div
           className={`h-[80%] relative px-1 py-2`}
           style={{
-            borderTop: '2.99px solid white',
-            borderLeft: '2.99px solid white',
-            borderRight: '2.99px solid white',
+            borderTop:
+              posterSize.value === '18 X 24'
+                ? '3.2px solid white'
+                : posterSize.value === '20 X 28'
+                ? '3.5px solid white'
+                : posterSize.value === '24 X 36'
+                ? '4px solid white'
+                : posterSize.value === '28 X 40'
+                ? '4.5px solid white'
+                : '2.99px solid white',
+            borderLeft:
+              posterSize.value === '18 X 24'
+                ? '3.2px solid white'
+                : posterSize.value === '20 X 28'
+                ? '3.5px solid white'
+                : posterSize.value === '24 X 36'
+                ? '4px solid white'
+                : posterSize.value === '28 X 40'
+                ? '4.5px solid white'
+                : '2.99px solid white',
+            borderRight:
+              posterSize.value === '18 X 24'
+                ? '3.2px solid white'
+                : posterSize.value === '20 X 28'
+                ? '3.5px solid white'
+                : posterSize.value === '24 X 36'
+                ? '4px solid white'
+                : posterSize.value === '28 X 40'
+                ? '4.5px solid white'
+                : '2.99px solid white',
           }}
         >
           <div
             className="absolute bottom-0 left-[-1px]"
-            style={{ borderBottom: '2.99px solid white', width: '11px' }}
+            style={{
+              borderBottom:
+                posterSize.value === '18 X 24'
+                  ? '3.2px solid white'
+                  : posterSize.value === '20 X 28'
+                  ? '3.5px solid white'
+                  : posterSize.value === '24 X 36'
+                  ? '4px solid white'
+                  : posterSize.value === '28 X 40'
+                  ? '4.5px solid white'
+                  : '2.99px solid white',
+              width: '11px',
+            }}
           ></div>
           <div
             className="absolute bottom-0 right-[-1px]"
             style={{
-              borderBottom: '2.99px solid white',
+              borderBottom:
+                posterSize.value === '18 X 24'
+                  ? '3.2px solid white'
+                  : posterSize.value === '20 X 28'
+                  ? '3.5px solid white'
+                  : posterSize.value === '24 X 36'
+                  ? '4px solid white'
+                  : posterSize.value === '28 X 40'
+                  ? '4.5px solid white'
+                  : '2.99px solid white',
               width: `calc(98.8% - ${currentWidth ?? 0}px)`,
             }}
           ></div>
@@ -475,7 +523,7 @@ const Template4: FC<Template4Props> = ({
               whiteSpace: 'pre-wrap',
               letterSpacing: selectedFontFamily === 'Morganite' ? '1px' : 'normal',
             }}
-            className={`bg-transparent text-ellipsis-8`}
+            className={`bg-transparent pb-[2%] text-ellipsis-8`}
           >
             {albumDescripition}
           </p>
