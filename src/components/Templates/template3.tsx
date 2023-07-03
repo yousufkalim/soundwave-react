@@ -383,7 +383,6 @@ const Template3: FC<Template3Props> = ({
           <div className="flex justify-center text-center">
             <div
               style={{
-                width: 'fit-content',
                 position: 'relative',
                 color: colors.songTitleColor,
                 fontFamily: selectedFont,

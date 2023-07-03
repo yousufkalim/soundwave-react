@@ -167,7 +167,7 @@ export const posterHeigth: Record<string, string> = {
 export const posterWidth: Record<string, string> = {
   '12 X 18': '860px',
   '16 X 20': '1150px',
-  '18 X 24': '1300px',
+  '18 X 24': '12800px',
   '20 X 28': '1440px',
   '24 X 36': '1750px',
   '28 X 40': '2000px',
