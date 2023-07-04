@@ -158,7 +158,7 @@ const RightSide: FC<RightSideProps> = ({
   setSelectedTemplate,
   posterType,
   setPosterType,
-  handleResetData,
+  // handleResetData,
   setLoading,
   getCartData,
   openDescripition,
@@ -245,12 +245,14 @@ const RightSide: FC<RightSideProps> = ({
     setLoading(true);
     setTimeout(async () => {
       const element = document.getElementById('custom-poster-template') as HTMLElement;
-      const canvas = await html2canvas(element, {
+      const option = {
         logging: false,
         useCORS: true,
         allowTaint: true,
         scale: 5,
-      });
+        backgroundColor: null,
+      };
+      const canvas = await html2canvas(element, option);
       const img = canvas.toDataURL();
       const cartId = localStorage.getItem('cartId');
 

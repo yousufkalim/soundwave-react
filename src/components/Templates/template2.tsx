@@ -33,7 +33,6 @@ interface Template2Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
-  takingScreenShot: boolean;
   fontSize: IFontSize;
 }
 
@@ -55,7 +54,6 @@ const Template2: FC<Template2Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
-  takingScreenShot,
   fontSize,
 }) => {
   useEffect(() => {
@@ -71,115 +69,43 @@ const Template2: FC<Template2Props> = ({
 
   const biggerThan15Chars: IBiggerThan15CharsMap = {
     '12 X 18': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '1.8%'
-          : '2.4%'
-        : BackgroundFrame
-        ? '1.1%'
-        : '0.69%',
+      background: BackgroundFrame ? '1.15%' : '0.65%',
     },
     '16 X 20': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '1.9%'
-          : '2.3%'
-        : BackgroundFrame
-        ? '1.05%'
-        : '0.6%',
+      background: BackgroundFrame ? '1.05%' : '0.52%',
     },
     '18 X 24': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '1.75%'
-          : '2.3%'
-        : BackgroundFrame
-        ? '1.2%'
-        : '0.55%',
+      background: BackgroundFrame ? '1.1%' : '0.55%',
     },
     '20 X 28': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '1.7%'
-          : '2.3%'
-        : BackgroundFrame
-        ? '1.1%'
-        : ' 0.52%',
+      background: BackgroundFrame ? '1.1%' : ' 0.52%',
     },
     '24 X 36': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '1.55%'
-          : '2.3%'
-        : BackgroundFrame
-        ? '1.1%'
-        : '0.5%',
+      background: BackgroundFrame ? '1%' : '0.4%',
     },
     '28 X 40': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '1.6%'
-          : '2.3%'
-        : BackgroundFrame
-        ? '1.2%'
-        : '0.5%',
+      background: BackgroundFrame ? '1.1%' : '0.5%',
     },
   };
 
   const lessThan15Chars: ILessThan15CharsMap = {
     '12 X 18': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '3.9%'
-          : '3.9%'
-        : BackgroundFrame
-        ? '2.4%'
-        : '2%',
+      background: BackgroundFrame ? '2.4%' : '1.8%',
     },
     '16 X 20': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '4.5%'
-          : '5%'
-        : BackgroundFrame
-        ? '2.9%'
-        : '2.45%',
+      background: BackgroundFrame ? '2.8%' : '2%',
     },
     '18 X 24': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '3.98%'
-          : '4.5%'
-        : BackgroundFrame
-        ? '2.4%'
-        : '1.9%',
+      background: BackgroundFrame ? '2.3%' : '1.8%',
     },
     '20 X 28': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '4%'
-          : '4.6%'
-        : BackgroundFrame
-        ? '2.6%'
-        : '1.98%',
+      background: BackgroundFrame ? '2.5%' : '1.9%',
     },
     '24 X 36': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '3.95%'
-          : '4.55%'
-        : BackgroundFrame
-        ? '2.561%'
-        : '2%',
+      background: BackgroundFrame ? '2.461%' : '1.9%',
     },
     '28 X 40': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '3.9%'
-          : '4.5%'
-        : BackgroundFrame
-        ? '2.539%'
-        : '1.95%',
+      background: BackgroundFrame ? '2.439%' : '1.9%',
     },
   };
 
@@ -225,8 +151,8 @@ const Template2: FC<Template2Props> = ({
       style={{
         background: borderWidth ? BackgroundFrame : '',
         padding: BackgroundFrame ? borderPadding : '',
-        height: posterHeigth[posterSize?.value] || '1298px',
-        width: posterWidth[posterSize.value] || '864px',
+        height: posterHeigth[posterSize?.value] || '1300px',
+        width: posterWidth[posterSize.value] || '860px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
     >
@@ -367,7 +293,7 @@ const Template2: FC<Template2Props> = ({
         <div
           className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%]`}
           style={{
-            marginTop: selectedAlbum?.label && selectedAlbum?.label?.length > 15 ? '4.5%' : '5%',
+            marginTop: selectedAlbum?.label && selectedAlbum?.label?.length > 15 ? '7%' : '5%',
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
             fontFamily: selectedFont || 'Montserrat',
