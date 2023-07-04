@@ -85,115 +85,43 @@ const Template4: FC<Template4Props> = ({
 
   const biggerThan15Chars: IBiggerThan15CharsMap = {
     '12 X 18': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '15.7%'
-          : '15.7%'
-        : BackgroundFrame
-        ? '14.8%'
-        : '14.2%',
+      background: BackgroundFrame ? '14.9%' : '14.3%',
     },
     '16 X 20': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '15.7%'
-          : '15.7%'
-        : BackgroundFrame
-        ? '14.5%'
-        : '14.1%',
+      background: BackgroundFrame ? '14.5%' : '14.1%',
     },
     '18 X 24': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '15.7%'
-          : '15.7%'
-        : BackgroundFrame
-        ? '14.6%'
-        : '14.2%',
+      background: BackgroundFrame ? '14.6%' : '14.2%',
     },
     '20 X 28': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '15.7%'
-          : '15.7%'
-        : BackgroundFrame
-        ? '14.7%'
-        : '14.2%',
+      background: BackgroundFrame ? '14.7%' : '14.2%',
     },
     '24 X 36': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '15.2%'
-          : '15.2%'
-        : BackgroundFrame
-        ? '14.7%'
-        : '14.2%',
+      background: BackgroundFrame ? '14.7%' : '14.2%',
     },
     '28 X 40': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '15.2%'
-          : '15.2%'
-        : BackgroundFrame
-        ? '14.4%'
-        : '14.2%',
+      background: BackgroundFrame ? '14.5%' : '14%',
     },
   };
 
   const lessThan15Chars: ILessThan15CharsMap = {
     '12 X 18': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '16.7%'
-          : '16.7%'
-        : BackgroundFrame
-        ? '15%'
-        : '14.4%',
+      background: BackgroundFrame ? '15%' : '14.4%',
     },
     '16 X 20': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '16.2%'
-          : '16.2%'
-        : BackgroundFrame
-        ? '14.9%'
-        : '14.3%',
+      background: BackgroundFrame ? '14.9%' : '14.3%',
     },
     '18 X 24': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '16.1%'
-          : '16.1%'
-        : BackgroundFrame
-        ? '15%'
-        : '14.5%',
+      background: BackgroundFrame ? '15%' : '14.5%',
     },
     '20 X 28': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '16.1%'
-          : '16.1%'
-        : BackgroundFrame
-        ? '14.9%'
-        : '14.6%',
+      background: BackgroundFrame ? '14.9%' : '14.6%',
     },
     '24 X 36': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '16.1%'
-          : '16.1%'
-        : BackgroundFrame
-        ? '14.8%'
-        : '14.4%',
+      background: BackgroundFrame ? '14.8%' : '14.4%',
     },
     '28 X 40': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '15.8%'
-          : '15.8%'
-        : BackgroundFrame
-        ? '14.7%'
-        : '14.3%',
+      background: BackgroundFrame ? '14.7%' : '14.3%',
     },
   };
 
