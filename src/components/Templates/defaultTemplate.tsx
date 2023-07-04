@@ -86,7 +86,7 @@ const Template2: FC<Template2Props> = ({
 
   const biggerThan15Chars: IBiggerThan15CharsMap = {
     '12 X 18': {
-      background: BackgroundFrame ? '1.4%' : '1%',
+      background: BackgroundFrame ? '1.6%' : '1%',
     },
     '16 X 20': {
       background: BackgroundFrame ? '1.7%' : '1.2%',
@@ -95,7 +95,7 @@ const Template2: FC<Template2Props> = ({
       background: BackgroundFrame ? '1.6%' : '1.1%',
     },
     '20 X 28': {
-      background: BackgroundFrame ? '1.8%' : ' 0.9%',
+      background: BackgroundFrame ? '1.6%' : ' 1%',
     },
     '24 X 36': {
       background: BackgroundFrame ? '1.5%' : '1%',
@@ -107,22 +107,23 @@ const Template2: FC<Template2Props> = ({
 
   const lessThan15Chars: ILessThan15CharsMap = {
     '12 X 18': {
-      background: BackgroundFrame ? '2.4%' : '2%',
+      background: BackgroundFrame ? '2.5%' : '2%',
     },
     '16 X 20': {
-      background: BackgroundFrame ? '2.8%' : '2.4%',
+      background: BackgroundFrame ? '2.9%' : '2.4%',
     },
     '18 X 24': {
-      background: BackgroundFrame ? '2.7%' : '2.1%',
+      background: BackgroundFrame ? '2.7%' : '2.2%',
     },
     '20 X 28': {
-      background: BackgroundFrame ? '2.6%' : '1.98%',
+      background: BackgroundFrame ? '2.6%' : '2.1%',
     },
     '24 X 36': {
-      background: BackgroundFrame ? '3.1%' : '2.5%',
+      background: BackgroundFrame ? '3.2%' : '2.7%',
     },
     '28 X 40': {
-      background: BackgroundFrame ? '2.7%' : '2.3%',
+      background: BackgroundFrame ? '2.8%' : '2.3%',
+
     },
   };
 
