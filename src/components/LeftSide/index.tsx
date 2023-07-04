@@ -70,7 +70,6 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
-        takingScreenShot={flag}
         fontSize={fontSize}
       />
     ) : selectedTemplate === 'template2' ? (
@@ -85,7 +84,6 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
-        takingScreenShot={flag}
         fontSize={fontSize}
       />
     ) : selectedTemplate === 'template3' ? (
@@ -157,7 +155,6 @@ const index: FC<waveformProps> = ({
         BackgroundFrame={BackgroundFrame}
         selectedFont={selectedFont}
         posterSize={posterSize}
-        takingScreenShot={flag}
         fontSize={fontSize}
       />
     );

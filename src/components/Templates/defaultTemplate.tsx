@@ -33,7 +33,6 @@ interface Template2Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
-  takingScreenShot: boolean;
   fontSize: IFontSize;
 }
 
@@ -55,7 +54,6 @@ const Template2: FC<Template2Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
-  takingScreenShot,
   fontSize,
 }) => {
   useEffect(() => {
@@ -125,6 +123,7 @@ const Template2: FC<Template2Props> = ({
     },
     '28 X 40': {
       background: BackgroundFrame ? '2.8%' : '2.3%',
+
     },
   };
 
@@ -152,7 +151,7 @@ const Template2: FC<Template2Props> = ({
           : `overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[50%] 2xl:scale-[50%]`
       }
       style={{
-        background: borderWidth ? BackgroundFrame : '',
+        backgroundColor: borderWidth ? BackgroundFrame : '',
         padding: BackgroundFrame ? borderPadding : '',
         height: posterHeigth[posterSize.value] || '1298px',
         width: posterWidth[posterSize.value] || '864px',

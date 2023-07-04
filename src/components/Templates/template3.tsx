@@ -34,7 +34,6 @@ interface Template3Props {
   BackgroundFrame: string;
   selectedFont: string;
   posterSize: IPosterSize;
-  takingScreenShot: boolean;
   fontSize: IFontSize;
 }
 interface IBiggerThan15Chars {
@@ -55,7 +54,6 @@ const Template3: FC<Template3Props> = ({
   BackgroundFrame,
   selectedFont,
   posterSize,
-  takingScreenShot,
   fontSize,
 }) => {
   useEffect(() => {
@@ -80,115 +78,43 @@ const Template3: FC<Template3Props> = ({
 
   const biggerThan15Chars: IBiggerThan15CharsMap = {
     '12 X 18': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '2.7%'
-          : '2.7%'
-        : BackgroundFrame
-        ? '1.7%'
-        : '1.65%',
+      background: BackgroundFrame ? '1.6%' : '1.7%',
     },
     '16 X 20': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '2.6%'
-          : '2.5%'
-        : BackgroundFrame
-        ? '1.6%'
-        : '1.6%',
+      background: BackgroundFrame ? '1.6%' : '1.58%',
     },
     '18 X 24': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '2.5%'
-          : '2.6%'
-        : BackgroundFrame
-        ? '1.5%'
-        : '1.5%',
+      background: BackgroundFrame ? '1.55%' : '1.5%',
     },
     '20 X 28': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '2.5%'
-          : '2.5%'
-        : BackgroundFrame
-        ? '1.65%'
-        : ' 1.6%',
+      background: BackgroundFrame ? '1.65%' : ' 1.61%',
     },
     '24 X 36': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '2.4%'
-          : '2.5%'
-        : BackgroundFrame
-        ? '1.6%'
-        : '1.5%',
+      background: BackgroundFrame ? '1.4%' : '1.5%',
     },
     '28 X 40': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '2.5%'
-          : '2.6%'
-        : BackgroundFrame
-        ? '1.75%'
-        : '1.65%',
+      background: BackgroundFrame ? '1.65%' : '1.65%',
     },
   };
 
   const lessThan15Chars: ILessThan15CharsMap = {
     '12 X 18': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '4.5%'
-          : '4.6%'
-        : BackgroundFrame
-        ? '2.8%'
-        : '3%',
+      background: BackgroundFrame ? '2.95%' : '3.1%',
     },
     '16 X 20': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '4.5%'
-          : '4.6%'
-        : BackgroundFrame
-        ? '2.9%'
-        : '2.45%',
+      background: BackgroundFrame ? '2.9%' : '2.82%',
     },
     '18 X 24': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '4.3%'
-          : '4.4%'
-        : BackgroundFrame
-        ? '2.9%'
-        : '2.8%',
+      background: BackgroundFrame ? '2.9%' : '2.85%',
     },
     '20 X 28': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '4.5%'
-          : '4.5%'
-        : BackgroundFrame
-        ? '2.8%'
-        : '2.8%',
+      background: BackgroundFrame ? '2.9%' : '2.85%',
     },
     '24 X 36': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '4.4%'
-          : '4.4%'
-        : BackgroundFrame
-        ? '2.8%'
-        : '2.7%',
+      background: BackgroundFrame ? '2.9%' : '2.83%',
     },
     '28 X 40': {
-      background: takingScreenShot
-        ? posterType === 'No Frame'
-          ? '4.4%'
-          : '4.4%'
-        : BackgroundFrame
-        ? '3%'
-        : '2.95%',
+      background: BackgroundFrame ? '3%' : '2.87%',
     },
   };
 
@@ -232,8 +158,8 @@ const Template3: FC<Template3Props> = ({
       style={{
         background: borderWidth ? BackgroundFrame : '',
         padding: BackgroundFrame ? borderPadding : '',
-        height: posterHeigth[posterSize.value] || '1298px',
-        width: posterWidth[posterSize.value] || '864px',
+        height: posterHeigth[posterSize.value] || '1300px',
+        width: posterWidth[posterSize.value] || '860px',
         boxShadow: '0px 15px 40px rgba(0, 0, 0, 0.5)',
       }}
     >
@@ -345,7 +271,7 @@ const Template3: FC<Template3Props> = ({
                   ? selectedFontFamily === 'Blacksword'
                     ? `${+fontSize?.albumNameSize + 50}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 51}px`
+                    ? `${+fontSize?.albumNameSize + 45}px`
                     : `${+fontSize?.albumNameSize + 65}px`
                   : selectedFontFamily === 'Blacksword'
                   ? `${+fontSize?.albumNameSize + 90}px`
@@ -390,7 +316,7 @@ const Template3: FC<Template3Props> = ({
                 fontWeight: 'bold',
                 border: '1px solid white',
                 borderRadius: '7px',
-                padding: takingScreenShot ? '1%' : '4px',
+                padding: '4px',
                 fontSize:
                   posterSize.value === '12 X 18'
                     ? `${+fontSize?.singerNameSize + 16}px`
@@ -417,9 +343,7 @@ const Template3: FC<Template3Props> = ({
                     : '1.8px',
               }}
             >
-              <div style={{ marginTop: takingScreenShot ? '-11%' : '0' }}>
-                {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
-              </div>
+              {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
             </div>
           </div>
         </div>
