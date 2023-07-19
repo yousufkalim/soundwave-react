@@ -8,13 +8,13 @@ import {
   IPosterSize,
 } from '../../types/index';
 import {
-  // sizeScales,
   posterSizeToBorderWidth,
   sizeValues,
   posterHeigth,
   posterMainDiv,
   posterWidth,
 } from '../../utils/data';
+import { capitalizeAfterSpaceOrParenthesis } from '../../utils/common';
 
 interface Template6Props {
   activeAlignment: string;
@@ -60,11 +60,6 @@ const Template6: FC<Template6Props> = ({
       descriptionColor: '#fff',
     });
   }, []);
-
-  const capitalizeAfterSpaceOrParenthesis = (str: string): string => {
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    return str.replace(/(\s+|\()(\w)/g, (match, p1, p2) => `${p1}${p2.toUpperCase()}`);
-  };
 
   const descriptionFontSize: Record<string, number> = {
     '12 X 18': +fontSize?.descriptionSize + 14,
