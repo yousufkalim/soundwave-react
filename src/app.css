@@ -203,35 +203,35 @@ body::-webkit-scrollbar {
 
 /* 12 x 18 ratio */
 #wave-container-15-1218 div:first-child canvas {
-  width: 200px !important;
-  height: 30px !important;
+  width: 850px !important;
+  height: 110px !important;
 }
 
 #wave-container-18-1218 div:first-child canvas {
-  width: 200px !important;
-  height: 30px !important;
+  width: 850px !important;
+  height: 120px !important;
 }
 
 /* 16 x 20 ratio */
 #wave-container-15-1620 div:first-child canvas {
-  width: 270px !important;
-  height: 40px !important;
+  width: 990px !important;
+  height: 140px !important;
 }
 
 #wave-container-18-1620 div:first-child canvas {
-  width: 270px !important;
-  height: 40px !important;
+  width: 990px !important;
+  height: 140px !important;
 }
 
 /* 18 x 24 ratio */
 #wave-container-15-1824 div:first-child canvas {
-  width: 300px !important;
-  height: 50px !important;
+  width: 1200px !important;
+  height: 170px !important;
 }
 
 #wave-container-18-1824 div:first-child canvas {
-  width: 300px !important;
-  height: 50px !important;
+  width: 1200px !important;
+  height: 170px !important;
 }
 
 /* 20 x 28 ratio */

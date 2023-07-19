@@ -137,38 +137,52 @@ export const sizeValues: Record<string, string> = {
   '24 X 36': '2436',
   '28 X 40': '2840',
 };
-
-// export const posterHeigth: Record<string, string> = {
-//   '12 X 18': '1298px',
-//   '16 X 20': '1440.5px',
-//   '18 X 24': '1728px',
-//   '20 X 28': '2015px',
-//   '24 X 36': '2592px',
-//   '28 X 40': '2880px',
-// };
-
-// export const posterWidth: Record<string, string> = {
-//   '12 X 18': '864px',
-//   '16 X 20': '1151.7px',
-//   '18 X 24': '1296px',
-//   '20 X 28': '1440px',
-//   '24 X 36': '1728px',
-//   '28 X 40': '2015.7px',
-// };
+export const posterMainDiv: Record<string, string> = {
+  '12 X 18':
+    'overflow-hidden scale-[7%] absolute xs:scale-[9%] msm:scale-[10%] sm:scale-[10%] md:scale-[10%] lg:scale-[10%] sxl:scale-[10%] 2xl:scale-[11%]',
+  '16 X 20':
+    'overflow-hidden scale-[6%] absolute xs:scale-[6%] msm:scale-[7%] sm:scale-[8%] md:scale-[8%] lg:scale-[8%] sxl:scale-[8%] 2xl:scale-[9.5%]',
+  '18 X 24':
+    'overflow-hidden scale-[4.5%] absolute xs:scale-[6%] msm:scale-[6.5%] sm:scale-[7%] md:scale-[7%] lg:scale-[7%] sxl:scale-[8%] 2xl:scale-[8%]',
+  '20 X 28':
+    'overflow-hidden scale-[4.5%] absolute xs:scale-[5%] msm:scale-[5.5%] sm:scale-[6%] md:scale-[6%] lg:scale-[6.5%] sxl:scale-[7%] 2xl:scale-[7%]',
+  '24 X 36':
+    'overflow-hidden scale-[3.7%] absolute xs:scale-[4%] msm:scale-[4.5%] sm:scale-[4.5%] md:scale-[5%] lg:scale-[5%] sxl:scale-[5.5%] 2xl:scale-[5.5%]',
+  '28 X 40':
+    'overflow-hidden scale-[3.4%] absolute xs:scale-[3.9%] msm:scale-[4%] sm:scale-[4.3%] md:scale-[4.5%] lg:scale-[4.5%] sxl:scale-[4.7%] 2xl:scale-[5%]',
+};
 
 export const posterHeigth: Record<string, string> = {
-  '12 X 18': '1300px',
-  '16 X 20': '1440px',
-  '18 X 24': '1740px',
-  '20 X 28': '2020px',
-  '24 X 36': '2600px',
-  '28 X 40': '2900px',
+  '12 X 18': '5409px',
+  '16 X 20': '6000px',
+  '18 X 24': '7181px',
+  '20 X 28': '8362px',
+  '24 X 36': '10724px',
+  '28 X 40': '11906px',
 };
+
 export const posterWidth: Record<string, string> = {
-  '12 X 18': '860px',
-  '16 X 20': '1150px',
-  '18 X 24': '1280px',
-  '20 X 28': '1440px',
-  '24 X 36': '1750px',
-  '28 X 40': '2000px',
+  '12 X 18': '3638px',
+  '16 X 20': '4819px',
+  '18 X 24': '5409px',
+  '20 X 28': '6000px',
+  '24 X 36': '7181px',
+  '28 X 40': '8362px',
 };
+
+// export const posterHeigth: Record<string, string> = {
+//   '12 X 18': '1300px',
+//   '16 X 20': '1440px',
+//   '18 X 24': '1740px',
+//   '20 X 28': '2020px',
+//   '24 X 36': '2600px',
+//   '28 X 40': '2900px',
+// };
+// export const posterWidth: Record<string, string> = {
+//   '12 X 18': '860px',
+//   '16 X 20': '1150px',
+//   '18 X 24': '1280px',
+//   '20 X 28': '1440px',
+//   '24 X 36': '1750px',
+//   '28 X 40': '2000px',
+// };

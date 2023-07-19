@@ -249,7 +249,21 @@ const RightSide: FC<RightSideProps> = ({
         logging: false,
         useCORS: true,
         allowTaint: true,
-        scale: 5,
+        scale:
+          posterSize.value === '12 X 18'
+            ? 9.5
+            : posterSize.value === '16 X 20'
+            ? 11
+            : posterSize.value === '18 X 24'
+            ? 9.5
+            : posterSize.value === '20 X 28'
+            ? 9.5
+            : posterSize.value === '24 X 36'
+            ? 9.5
+            : posterSize.value === '28 X 40'
+            ? 9.5
+            : 9.5,
+
         backgroundColor: null,
       };
       const canvas = await html2canvas(element, option);
@@ -279,7 +293,6 @@ const RightSide: FC<RightSideProps> = ({
       await request<IResponseSuccess, IBody>('post', '/cart/add-poster', posterData)
         .then((res) => {
           localStorage.setItem('cartId', res?.data?.cart?._id);
-          // handleResetData();
           handleFramesChange();
           getCartData(res?.data?.cart?._id);
           setLoading(false);

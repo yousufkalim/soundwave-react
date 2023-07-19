@@ -151,7 +151,7 @@ const Theme: FC<ThemeProps> = ({
           <span className="text-[12px]">
             Title Font Size (
             {posterSize.value === '12 X 18'
-              ? `${+fontSize.albumNameSize + 48}px`
+              ? `${+fontSize.albumNameSize + 200}px`
               : posterSize.value === '16 X 20'
               ? `${+fontSize.albumNameSize + 64}px`
               : posterSize.value === '18 X 24'
@@ -168,9 +168,9 @@ const Theme: FC<ThemeProps> = ({
           <FontChanger
             id="albumName"
             name="albumName"
-            min="-13"
-            max="13"
-            step="0.1"
+            min="-40"
+            max="40"
+            step="0.2"
             value={fontSize?.albumNameSize}
             onChange={handleAlbumNameFontSize}
           />
