@@ -1,10 +1,12 @@
 /* Defaults */
 @tailwind base;
+
 @layer base {
   img {
     @apply inline-block;
   }
 }
+
 @tailwind components;
 @tailwind utilities;
 
@@ -236,35 +238,35 @@ body::-webkit-scrollbar {
 
 /* 20 x 28 ratio */
 #wave-container-15-2028 div:first-child canvas {
-  width: 350px !important;
-  height: 60px !important;
+  width: 1300px !important;
+  height: 200px !important;
 }
 
 #wave-container-18-2028 div:first-child canvas {
-  width: 350px !important;
-  height: 60px !important;
+  width: 1300px !important;
+  height: 200px !important;
 }
 
 /* 24 x 36 ratio */
 #wave-container-15-2436 div:first-child canvas {
-  width: 400px !important;
-  height: 80px !important;
+  width: 1500px !important;
+  height: 250px !important;
 }
 
 #wave-container-18-2436 div:first-child canvas {
-  width: 400px !important;
-  height: 80px !important;
+  width: 1500px !important;
+  height: 250px !important;
 }
 
 /* 28 x 40 ratio */
 #wave-container-15-2840 div:first-child canvas {
-  width: 470px !important;
-  height: 80px !important;
+  width: 1700px !important;
+  height: 300px !important;
 }
 
 #wave-container-18-2840 div:first-child canvas {
-  width: 470px !important;
-  height: 90px !important;
+  width: 1700px !important;
+  height: 300px !important;
 }
 
 /* All browsers */
