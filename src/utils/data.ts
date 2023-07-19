@@ -129,6 +129,7 @@ export const posterSizeToBorderWidth: Record<string, string> = {
   '24 X 36': '26px',
   '28 X 40': '30px',
 };
+
 export const sizeValues: Record<string, string> = {
   '12 X 18': '1218',
   '16 X 20': '1620',
@@ -137,6 +138,7 @@ export const sizeValues: Record<string, string> = {
   '24 X 36': '2436',
   '28 X 40': '2840',
 };
+
 export const posterMainDiv: Record<string, string> = {
   '12 X 18':
     'overflow-hidden scale-[7%] absolute xs:scale-[9%] msm:scale-[10%] sm:scale-[10%] md:scale-[10%] lg:scale-[10%] sxl:scale-[10%] 2xl:scale-[11%]',

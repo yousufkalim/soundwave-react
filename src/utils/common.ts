@@ -26,3 +26,8 @@ export const handleCheckout = (setLoading: (value: boolean) => void): void => {
       });
   }
 };
+
+export const capitalizeAfterSpaceOrParenthesis = (str: string): string => {
+  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+  return str.replace(/(\s+|\()(\w)/g, (match, p1, p2) => `${p1}${p2.toUpperCase()}`);
+};
