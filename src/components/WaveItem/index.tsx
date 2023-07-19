@@ -10,14 +10,7 @@ interface WaveroomProps {
   songsAmount: number;
   posterRatio?: string;
 }
-const Waveroom: FC<WaveroomProps> = ({
-  item,
-
-  colors,
-  height,
-  songsAmount,
-  posterRatio,
-}) => {
+const Waveroom: FC<WaveroomProps> = ({ item, colors, height, songsAmount, posterRatio }) => {
   const convertMilisecondToMinutes = (duration: number): string => {
     const minutes = duration / 60;
     const minutesAsInt = Math.floor(minutes);
@@ -58,16 +51,16 @@ const Waveroom: FC<WaveroomProps> = ({
               fontSize:
                 posterRatio === '1218'
                   ? songsAmount > 18
-                    ? '10px'
-                    : '12px'
+                    ? '43px'
+                    : '58px'
                   : posterRatio === '1620'
                   ? songsAmount > 18
-                    ? '12px'
-                    : '14px'
+                    ? '45px'
+                    : '68px'
                   : posterRatio === '1824'
                   ? songsAmount > 18
-                    ? '14px'
-                    : '16px'
+                    ? '48px'
+                    : '75px'
                   : posterRatio === '2028'
                   ? songsAmount > 18
                     ? '16px'
@@ -81,7 +74,7 @@ const Waveroom: FC<WaveroomProps> = ({
                   : '24px',
             }}
           >
-            &quot;{item.songName}&quot;
+            &quot;{item?.songName}&quot;
           </span>
           <span
             className={`
@@ -91,21 +84,21 @@ const Waveroom: FC<WaveroomProps> = ({
           2xl:text-[8px] 
           `}
             style={{
-              color: colors.soundWaveNameColor,
+              color: colors?.soundWaveNameColor,
               // fontFamily: selectedFont,
               fontSize:
                 posterRatio === '1218'
                   ? songsAmount > 18
-                    ? '10px'
-                    : '12px'
+                    ? '43px'
+                    : '58px'
                   : posterRatio === '1620'
                   ? songsAmount > 18
-                    ? '12px'
-                    : '14px'
+                    ? '45px'
+                    : '68px'
                   : posterRatio === '1824'
                   ? songsAmount > 18
-                    ? '14px'
-                    : '16px'
+                    ? '48px'
+                    : '75px'
                   : posterRatio === '2028'
                   ? songsAmount > 18
                     ? '16px'
@@ -119,7 +112,7 @@ const Waveroom: FC<WaveroomProps> = ({
                   : '24px',
             }}
           >
-            {convertMilisecondToMinutes(item.time)}
+            {convertMilisecondToMinutes(item?.time)}
           </span>
         </div>
       </div>

@@ -4,10 +4,8 @@ import Router from 'react-easy-router';
 import { toast, ToastContainer } from 'react-toastify';
 import request from './api/request';
 import { AxiosResponse } from 'axios';
-
 // Routes
 import routes from './routes';
-
 // CSS Integration
 import 'react-toastify/dist/ReactToastify.css';
 import './app.css';
