@@ -63,15 +63,15 @@ const Waveroom: FC<WaveroomProps> = ({ item, colors, height, songsAmount, poster
                     : '75px'
                   : posterRatio === '2028'
                   ? songsAmount > 18
-                    ? '16px'
-                    : '18px'
+                    ? '55px'
+                    : '90px'
                   : posterRatio === '2436'
                   ? songsAmount > 18
-                    ? '22px'
-                    : '22px'
+                    ? '68px'
+                    : '110px'
                   : posterRatio === '2840' && songsAmount > 18
-                  ? '24px'
-                  : '24px',
+                  ? '80px'
+                  : '120px',
             }}
           >
             &quot;{item?.songName}&quot;
@@ -101,15 +101,15 @@ const Waveroom: FC<WaveroomProps> = ({ item, colors, height, songsAmount, poster
                     : '75px'
                   : posterRatio === '2028'
                   ? songsAmount > 18
-                    ? '16px'
-                    : '18px'
+                    ? '55px'
+                    : '90px'
                   : posterRatio === '2436'
                   ? songsAmount > 18
-                    ? '22px'
-                    : '22px'
+                    ? '68px'
+                    : '110px'
                   : posterRatio === '2840' && songsAmount > 18
-                  ? '24px'
-                  : '24px',
+                  ? '80px'
+                  : '120px',
             }}
           >
             {convertMilisecondToMinutes(item?.time)}
