@@ -111,12 +111,12 @@ const Template2: FC<Template2Props> = ({
   };
 
   const descriptionFontSize: Record<string, number> = {
-    '12 X 18': +fontSize?.descriptionSize + 14,
-    '16 X 20': +fontSize?.descriptionSize + 16,
-    '18 X 24': +fontSize?.descriptionSize + 18,
-    '20 X 28': +fontSize?.descriptionSize + 20,
-    '24 X 36': +fontSize?.descriptionSize + 24,
-    '28 X 40': +fontSize?.descriptionSize + 28,
+    '12 X 18': +fontSize?.descriptionSize + 60,
+    '16 X 20': +fontSize?.descriptionSize + 79,
+    '18 X 24': +fontSize?.descriptionSize + 90,
+    '20 X 28': +fontSize?.descriptionSize + 100,
+    '24 X 36': +fontSize?.descriptionSize + 119,
+    '28 X 40': +fontSize?.descriptionSize + 139,
   };
   // for frame padding
   const borderPadding =
