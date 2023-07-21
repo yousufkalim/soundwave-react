@@ -67,7 +67,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
                 </li>
                 <li className="group relative ">
                   <a
-                    className="z-30 relative hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em] cursor-pointer"
+                    className="z-30 relative hover:after:bg-white after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em] cursor-pointer"
                     aria-haspopup="true"
                   >
                     About
@@ -117,7 +117,7 @@ const index: FC<HeaderProps> = ({ cartItemsLength, setOpen, setCross, cross }) =
                 </li>
                 <li className="group relative ">
                   <a
-                    className="z-30 relative hover:after:bg-white relative after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em] cursor-pointer"
+                    className="z-30 relative hover:after:bg-white after:absolute after:w-[calc(100%-2.4em)] after:bottom-[-4px] after:left-1/2 after:translate-x-[-50%] after:h-[2px] after:bg-transparent py-[0.5em] px-[1.2em] cursor-pointer"
                     aria-haspopup="true"
                   >
                     Help

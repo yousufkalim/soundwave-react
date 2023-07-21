@@ -70,40 +70,40 @@ const Template2: FC<Template2Props> = ({
 
   const biggerThan15Chars: IBiggerThan15CharsMap = {
     '12 X 18': {
-      background: BackgroundFrame ? '1.15%' : '0.65%',
+      background: BackgroundFrame ? '1.15%' : '0.63%',
     },
     '16 X 20': {
-      background: BackgroundFrame ? '1.05%' : '0.52%',
+      background: BackgroundFrame ? '1.3%' : '0.75%',
     },
     '18 X 24': {
-      background: BackgroundFrame ? '1.1%' : '0.55%',
+      background: BackgroundFrame ? '1.25%' : '0.65%',
     },
     '20 X 28': {
-      background: BackgroundFrame ? '1.1%' : ' 0.52%',
+      background: BackgroundFrame ? '1.25%' : ' 0.65%',
     },
     '24 X 36': {
-      background: BackgroundFrame ? '1%' : '0.4%',
+      background: BackgroundFrame ? '1.2%' : '0.7%',
     },
     '28 X 40': {
-      background: BackgroundFrame ? '1.1%' : '0.5%',
+      background: BackgroundFrame ? '1.2%' : '0.7%',
     },
   };
 
   const lessThan15Chars: ILessThan15CharsMap = {
     '12 X 18': {
-      background: BackgroundFrame ? '2.4%' : '1.8%',
+      background: BackgroundFrame ? '2.2%' : '1.7%',
     },
     '16 X 20': {
-      background: BackgroundFrame ? '2.8%' : '2%',
+      background: BackgroundFrame ? '2.5%' : '1.9%',
     },
     '18 X 24': {
       background: BackgroundFrame ? '2.3%' : '1.8%',
     },
     '20 X 28': {
-      background: BackgroundFrame ? '2.5%' : '1.9%',
+      background: BackgroundFrame ? '2.3%' : '1.8%',
     },
     '24 X 36': {
-      background: BackgroundFrame ? '2.461%' : '1.9%',
+      background: BackgroundFrame ? '2.4%' : '1.9%',
     },
     '28 X 40': {
       background: BackgroundFrame ? '2.439%' : '1.9%',
@@ -118,6 +118,7 @@ const Template2: FC<Template2Props> = ({
     '24 X 36': +fontSize?.descriptionSize + 119,
     '28 X 40': +fontSize?.descriptionSize + 139,
   };
+
   // for frame padding
   const borderPadding =
     posterType !== 'No Frame' && posterType !== 'Thin Canvas' && posterType !== 'Thick Canvas'
@@ -131,6 +132,119 @@ const Template2: FC<Template2Props> = ({
     posterSizeToBorderWidth[posterSize.value];
 
   const selectedFontFamily = selectedFont || 'Proxima-Nova-italic';
+
+  let fontSizeValue = 190; // Default font size
+  if (selectedAlbum?.label) {
+    const length = selectedAlbum.label.length;
+    if (posterSize.value === '12 X 18') {
+      if (length > 15) {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 130;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 120;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 130;
+        }
+      } else {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 200;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 200;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 250;
+        }
+      }
+    } else if (posterSize.value === '16 X 20') {
+      if (length > 15) {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 170;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 160;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 180;
+        }
+      } else {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 240;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 250;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 300;
+        }
+      }
+    } else if (posterSize.value === '18 X 24') {
+      if (length > 15) {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 190;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 180;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 230;
+        }
+      } else {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 280;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 285;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 350;
+        }
+      }
+    } else if (posterSize.value === '20 X 28') {
+      if (length > 15) {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 210;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 200;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 250;
+        }
+      } else {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 320;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 320;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 400;
+        }
+      }
+    } else if (posterSize.value === '24 X 36') {
+      if (length > 15) {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 260;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 250;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 300;
+        }
+      } else {
+        if (selectedFontFamily === 'Blacksword') {
+          fontSizeValue = +fontSize?.albumNameSize + 400;
+        } else if (selectedFontFamily !== 'Morganite') {
+          fontSizeValue = +fontSize?.albumNameSize + 420;
+        } else {
+          fontSizeValue = +fontSize?.albumNameSize + 500;
+        }
+      }
+    } else if (posterSize.value === '28 X 40' && length > 15) {
+      if (selectedFontFamily === 'Blacksword') {
+        fontSizeValue = +fontSize?.albumNameSize + 300;
+      } else if (selectedFontFamily !== 'Morganite') {
+        fontSizeValue = +fontSize?.albumNameSize + 285;
+      } else {
+        fontSizeValue = +fontSize?.albumNameSize + 350;
+      }
+    } else {
+      if (selectedFontFamily === 'Blacksword') {
+        fontSizeValue = +fontSize?.albumNameSize + 500;
+      } else if (selectedFontFamily !== 'Morganite') {
+        fontSizeValue = +fontSize?.albumNameSize + 480;
+      } else {
+        fontSizeValue = +fontSize?.albumNameSize + 600;
+      }
+    }
+  }
+
   return (
     <div
       id="custom-poster-template"
@@ -144,7 +258,7 @@ const Template2: FC<Template2Props> = ({
       }}
     >
       <div
-        className={`h-full w-full`}
+        className="h-full w-ful"
         style={{
           background: colors?.posterColor,
           padding: '6% 5% 0% 5%',
@@ -189,86 +303,12 @@ const Template2: FC<Template2Props> = ({
           })}
         </div>
         <div
-          className="text-center break-words w-full left-0 right-0 h-[23%] px-[5%]"
+          className="text-bold text-center break-words w-full absolute left-0 right-0 h-[23%] px-[5%]"
           style={{
-            fontWeight: 'bold',
             color: colors.songTitleColor,
             fontFamily: selectedFont || 'Proxima-Nova-italic',
-            fontSize: selectedAlbum?.label
-              ? posterSize.value === '12 X 18'
-                ? selectedAlbum?.label.length > 15
-                  ? selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 25}px`
-                    : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 28}px`
-                    : `${+fontSize?.albumNameSize + 33}px`
-                  : selectedFontFamily === 'Blacksword'
-                  ? `${+fontSize?.albumNameSize + 45}px`
-                  : selectedFontFamily !== 'Morganite'
-                  ? `${+fontSize?.albumNameSize + 48}px`
-                  : `${+fontSize?.albumNameSize + 58}px`
-                : posterSize.value === '16 X 20'
-                ? selectedAlbum?.label.length > 15
-                  ? selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 35}px`
-                    : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 33}px`
-                    : `${+fontSize?.albumNameSize + 42}px`
-                  : selectedFontFamily === 'Blacksword'
-                  ? `${+fontSize?.albumNameSize + 60}px`
-                  : selectedFontFamily !== 'Morganite'
-                  ? `${+fontSize?.albumNameSize + 64}px`
-                  : `${+fontSize?.albumNameSize + 78}px`
-                : posterSize.value === '18 X 24'
-                ? selectedAlbum?.label.length > 15
-                  ? selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 40}px`
-                    : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 38}px`
-                    : `${+fontSize?.albumNameSize + 48}px`
-                  : selectedFontFamily === 'Blacksword'
-                  ? `${+fontSize?.albumNameSize + 62}px`
-                  : selectedFontFamily !== 'Morganite'
-                  ? `${+fontSize?.albumNameSize + 67}px`
-                  : `${+fontSize?.albumNameSize + 82}px`
-                : posterSize.value === '20 X 28'
-                ? selectedAlbum?.label.length > 15
-                  ? selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 45}px`
-                    : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 43}px`
-                    : `${+fontSize?.albumNameSize + 53}px`
-                  : selectedFontFamily === 'Blacksword'
-                  ? `${+fontSize?.albumNameSize + 75}px`
-                  : selectedFontFamily !== 'Morganite'
-                  ? `${+fontSize?.albumNameSize + 80}px`
-                  : `${+fontSize?.albumNameSize + 98}px`
-                : posterSize.value === '24 X 36'
-                ? selectedAlbum?.label.length > 15
-                  ? selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 50}px`
-                    : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 51}px`
-                    : `${+fontSize?.albumNameSize + 65}px`
-                  : selectedFontFamily === 'Blacksword'
-                  ? `${+fontSize?.albumNameSize + 90}px`
-                  : selectedFontFamily !== 'Morganite'
-                  ? `${+fontSize?.albumNameSize + 100}px`
-                  : `${+fontSize?.albumNameSize + 120}px`
-                : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 15
-                ? selectedFontFamily === 'Blacksword'
-                  ? `${+fontSize?.albumNameSize + 58}px`
-                  : selectedFontFamily !== 'Morganite'
-                  ? `${+fontSize?.albumNameSize + 59}px`
-                  : `${+fontSize?.albumNameSize + 75}px`
-                : selectedFontFamily === 'Blacksword'
-                ? `${+fontSize?.albumNameSize + 100}px`
-                : selectedFontFamily !== 'Morganite'
-                ? `${+fontSize?.albumNameSize + 112}px`
-                : `${+fontSize?.albumNameSize + 135}px`
-              : '64px',
+            fontSize: fontSizeValue,
             letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
-            position: 'absolute',
             bottom:
               selectedAlbum?.label && selectedAlbum?.label.length > 15
                 ? biggerThan15Chars[posterSize.value].background
@@ -280,7 +320,7 @@ const Template2: FC<Template2Props> = ({
         <div
           className={`${activeAlignment} bg-transparent absolute left-0 right-0 px-[5%]`}
           style={{
-            marginTop: selectedAlbum?.label && selectedAlbum?.label?.length > 15 ? '7%' : '5%',
+            marginTop: selectedAlbum?.label && selectedAlbum?.label?.length > 15 ? '8%' : '5%',
             whiteSpace: 'pre-wrap',
             color: colors.descriptionColor,
             fontFamily: selectedFont || 'Montserrat',

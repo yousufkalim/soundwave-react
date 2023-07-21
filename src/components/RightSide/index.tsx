@@ -249,6 +249,7 @@ const RightSide: FC<RightSideProps> = ({
         logging: false,
         useCORS: true,
         allowTaint: true,
+        backgroundColor: null,
         scale:
           posterSize.value === '12 X 18'
             ? 9.5
@@ -263,8 +264,6 @@ const RightSide: FC<RightSideProps> = ({
             : posterSize.value === '28 X 40'
             ? 9.5
             : 9.5,
-
-        backgroundColor: null,
       };
       const canvas = await html2canvas(element, option);
       const img = canvas.toDataURL();
