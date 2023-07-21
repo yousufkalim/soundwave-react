@@ -132,11 +132,10 @@ const Template2: FC<Template2Props> = ({
       ? posterSizeToBorderWidth[posterSize.value] || '0px'
       : '';
 
-  let fontSizeValue = 190; // Default font size
+  let fontSizeValue = 190;
 
   if (selectedAlbum?.label) {
     const length = selectedAlbum.label.length;
-
     if (posterSize.value === '12 X 18') {
       if (length > 15) {
         if (selectedFontFamily === 'Blacksword') {
@@ -342,7 +341,7 @@ const Template2: FC<Template2Props> = ({
                   : selectedFont === 'Morganite'
                   ? '1px'
                   : 'normal',
-              fontSize: descriptionFontSize[posterSize.value] ?? '14px',
+              fontSize: descriptionFontSize[posterSize.value],
             }}
           >
             <p

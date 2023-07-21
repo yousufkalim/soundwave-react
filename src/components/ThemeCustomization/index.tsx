@@ -110,6 +110,32 @@ const Theme: FC<ThemeProps> = ({
     setFontSize({ ...fontSize, singerNameSize: event.target.value });
   };
 
+  const TitleFontSize: Record<string, string> = {
+    '12 X 18': `${+fontSize.albumNameSize + 200}px`,
+    '16 X 20': `${+fontSize.albumNameSize + 64}px`,
+    '18 X 24': `${+fontSize.albumNameSize + 72}px`,
+    '20 X 28': `${+fontSize.albumNameSize + 80}px`,
+    '24 X 36': `${+fontSize.albumNameSize + 120}px`,
+    '28 X 40': `${+fontSize.albumNameSize + 128}px`,
+  };
+
+  const DescriptionFontSize: Record<string, string> = {
+    '12 X 18': `${+fontSize.descriptionSize + 14}px`,
+    '16 X 20': `${+fontSize.descriptionSize + 16}px`,
+    '18 X 24': `${+fontSize.descriptionSize + 18}px`,
+    '20 X 28': `${+fontSize.descriptionSize + 20}px`,
+    '24 X 36': `${+fontSize.descriptionSize + 24}px`,
+    '28 X 40': `${+fontSize.descriptionSize + 28}px`,
+  };
+  const ArtistFontSize: Record<string, string> = {
+    '12 X 18': `${+fontSize.singerNameSize + 14}px`,
+    '16 X 20': `${+fontSize.singerNameSize + 16}px`,
+    '18 X 24': `${+fontSize.singerNameSize + 18}px`,
+    '20 X 28': `${+fontSize.singerNameSize + 20}px`,
+    '24 X 36': `${+fontSize.singerNameSize + 24}px`,
+    '28 X 40': `${+fontSize.singerNameSize + 28}px`,
+  };
+
   return (
     <div>
       <div className="flex justify-start flex-col">
@@ -148,23 +174,7 @@ const Theme: FC<ThemeProps> = ({
           </FormControl>
         </div>
         <div className="flex items-center justify-between py-5 border-b-[1px] border-[#CCCCCC]">
-          <span className="text-[12px]">
-            Title Font Size (
-            {posterSize.value === '12 X 18'
-              ? `${+fontSize.albumNameSize + 200}px`
-              : posterSize.value === '16 X 20'
-              ? `${+fontSize.albumNameSize + 64}px`
-              : posterSize.value === '18 X 24'
-              ? `${+fontSize.albumNameSize + 72}px`
-              : posterSize.value === '20 X 28'
-              ? `${+fontSize.albumNameSize + 80}px`
-              : posterSize.value === '24 X 36'
-              ? `${+fontSize.albumNameSize + 120}px`
-              : posterSize.value === '28 X 40'
-              ? `${+fontSize.albumNameSize + 128}px`
-              : '32px'}
-            )
-          </span>
+          <span className="text-[12px]">Title Font Size ({TitleFontSize[posterSize.value]})</span>
           <FontChanger
             id="albumName"
             name="albumName"
@@ -177,28 +187,14 @@ const Theme: FC<ThemeProps> = ({
         </div>
         <div className="flex items-center justify-between py-5 border-b-[1px] border-[#CCCCCC]">
           <span className="text-[12px]">
-            Description Font Size (
-            {posterSize.value === '12 X 18'
-              ? `${+fontSize?.descriptionSize + 14}px`
-              : posterSize.value === '16 X 20'
-              ? `${+fontSize?.descriptionSize + 16}px`
-              : posterSize.value === '18 X 24'
-              ? `${+fontSize?.descriptionSize + 18}px`
-              : posterSize.value === '20 X 28'
-              ? `${+fontSize?.descriptionSize + 20}px`
-              : posterSize.value === '24 X 36'
-              ? `${+fontSize?.descriptionSize + 24}px`
-              : posterSize.value === '28 X 40'
-              ? `${+fontSize?.descriptionSize + 28}px`
-              : '14px'}
-            )
+            Description Font Size ({DescriptionFontSize[posterSize.value]})
           </span>
           <FontChanger
             id="description"
             name="description"
-            min="-8"
-            max="8"
-            step="0.1"
+            min="-40"
+            max="40"
+            step="0.2"
             value={fontSize?.descriptionSize}
             onChange={handleDescriptionFontSize}
           />
@@ -209,28 +205,14 @@ const Theme: FC<ThemeProps> = ({
         selectedTemplate === 'template5' ? (
           <div className="flex items-center justify-between py-5">
             <span className="text-[12px]">
-              Artist Font Size (
-              {posterSize.value === '12 X 18'
-                ? `${+fontSize?.singerNameSize + 14}px`
-                : posterSize.value === '16 X 20'
-                ? `${+fontSize?.singerNameSize + 16}px`
-                : posterSize.value === '18 X 24'
-                ? `${+fontSize?.singerNameSize + 18}px`
-                : posterSize.value === '20 X 28'
-                ? `${+fontSize?.singerNameSize + 20}px`
-                : posterSize.value === '24 X 36'
-                ? `${+fontSize?.singerNameSize + 22}px`
-                : posterSize.value === '28 X 40'
-                ? `${+fontSize?.singerNameSize + 24}px`
-                : '14px'}
-              )
+              Artist Font Size ({ArtistFontSize[posterSize.value]})
             </span>
             <FontChanger
               id="singerName"
               name="singerName"
-              min="-8"
-              max="9"
-              step="0.1"
+              min="-40"
+              max="40"
+              step="0.2"
               value={fontSize?.singerNameSize}
               onChange={handleSingerNameFontSize}
             />
