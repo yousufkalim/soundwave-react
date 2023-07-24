@@ -189,21 +189,21 @@ export const singerNamePaddingTemplate3: Record<string, string> = {
 };
 
 export const posterHeigth: Record<string, string> = {
-  '12 X 18': '5409px',
-  '16 X 20': '6000px',
-  '18 X 24': '7181px',
-  '20 X 28': '8362px',
-  '24 X 36': '10724px',
-  '28 X 40': '11906px',
+  '12 X 18': '5509px',
+  '16 X 20': '6100px',
+  '18 X 24': '7281px',
+  '20 X 28': '8462px',
+  '24 X 36': '10824px',
+  '28 X 40': '12006px',
 };
 
 export const posterWidth: Record<string, string> = {
-  '12 X 18': '3638px',
-  '16 X 20': '4819px',
-  '18 X 24': '5409px',
-  '20 X 28': '6000px',
-  '24 X 36': '7181px',
-  '28 X 40': '8362px',
+  '12 X 18': '3738px',
+  '16 X 20': '4919px',
+  '18 X 24': '5509px',
+  '20 X 28': '6100px',
+  '24 X 36': '7281px',
+  '28 X 40': '8462px',
 };
 
 export const borderWidthTemplate4: Record<string, string> = {
