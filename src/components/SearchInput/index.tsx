@@ -56,11 +56,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   }, [options]);
 
   const handleInputChange = (e: { target: HTMLInputElement }) => {
-    const { value } = e.target;
-    // setQuery(value);
-    onChange(value);
-    // const updatedOptions: SelectedAlbumProps[] = !value
-    //   : [...options.filter((option) => option.label.toLowerCase().includes(value.toLowerCase()))];
+    onChange(e.target.value);
     setOptionsData(options);
   };
 
@@ -107,11 +103,6 @@ const SearchInput: React.FC<SearchInputProps> = ({
                 <div className="overflow-hidden text-ellipsis whitespace-nowrap text-[14px] 2xl:text-[15px] font-semibold">
                   {optionItem.label}
                 </div>
-                {/* dangerouslySetInnerHTML={{
-                    __html: hilightSearchText(),
-                  }}
-                /> */}
-
                 <span className="text-[13px] 2xl:text-[14px]">{optionItem.singerName}</span>
               </div>
             </li>

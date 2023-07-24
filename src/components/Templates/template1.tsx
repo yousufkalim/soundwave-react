@@ -208,31 +208,20 @@ const Template1: FC<Template1Props> = ({
             style={{
               color: colors.songTitleColor,
               fontFamily: selectedFont,
-              fontSize: selectedAlbum?.label
-                ? posterSize.value === '12 X 18'
-                  ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize?.singerNameSize + 14}px`
-                    : `${+fontSize?.singerNameSize + 14}px`
+              fontSize:
+                posterSize.value === '12 X 18'
+                  ? `${+fontSize?.singerNameSize + 70}px`
                   : posterSize.value === '16 X 20'
-                  ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize?.singerNameSize + 16}px`
-                    : `${+fontSize?.singerNameSize + 16}px`
+                  ? `${+fontSize?.singerNameSize + 80}px`
                   : posterSize.value === '18 X 24'
-                  ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize?.singerNameSize + 19}px`
-                    : `${+fontSize?.singerNameSize + 19}px`
+                  ? `${+fontSize?.singerNameSize + 95}px`
                   : posterSize.value === '20 X 28'
-                  ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize?.singerNameSize + 22}px`
-                    : `${+fontSize?.singerNameSize + 22}px`
+                  ? `${+fontSize?.singerNameSize + 100}px`
                   : posterSize.value === '24 X 36'
-                  ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize?.singerNameSize + 28}px`
-                    : `${+fontSize?.singerNameSize + 28}px`
-                  : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
-                  ? `${+fontSize?.singerNameSize + 32}px`
-                  : `${+fontSize?.singerNameSize + 32}px`
-                : '14px',
+                  ? `${+fontSize?.singerNameSize + 130}px`
+                  : posterSize.value === '28 X 40'
+                  ? `${+fontSize?.singerNameSize + 140}px`
+                  : '70px',
               letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
           >

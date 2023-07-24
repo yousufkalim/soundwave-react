@@ -363,7 +363,7 @@ const Template3: FC<Template3Props> = ({
                     ? `${+fontSize?.singerNameSize + 130}px`
                     : posterSize.value === '28 X 40'
                     ? `${+fontSize?.singerNameSize + 140}px`
-                    : '16px',
+                    : '70px',
               }}
             >
               {selectedAlbum?.singerName ? selectedAlbum.singerName.toUpperCase() : 'SINGER NAME'}
