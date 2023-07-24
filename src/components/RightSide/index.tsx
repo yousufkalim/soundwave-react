@@ -20,7 +20,7 @@ import {
   IFontSize,
   IResponseCart,
 } from '../../types/index';
-import { PricingArray } from '../../utils/data';
+import { PricingArray, steps } from '../../utils/data';
 import Tab from '../Tab/index';
 import { Collapse, StepLabel } from '@mui/material';
 import Fade from 'react-reveal/Fade';
@@ -55,6 +55,7 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
     borderRadius: 1,
   },
 }));
+
 interface RightSideProps {
   selected: string;
   setSelected: (value: string) => void;
@@ -84,7 +85,6 @@ interface RightSideProps {
   getSetColor: (currentColor: string, fieldName: string) => void;
   posterType: string;
   setPosterType: (value: string) => void;
-  handleResetData: () => void;
   setLoading: (loading: boolean) => void;
   getCartData: (value: string) => void;
   openDescripition: boolean;
@@ -127,7 +127,6 @@ interface IBody {
   totalPoster: IBodyTotalPoster[];
   cartId?: string;
 }
-const steps = ['Album', 'Description', 'Theme', 'Print', 'Size'];
 
 const RightSide: FC<RightSideProps> = ({
   selected,
@@ -158,7 +157,6 @@ const RightSide: FC<RightSideProps> = ({
   setSelectedTemplate,
   posterType,
   setPosterType,
-  // handleResetData,
   setLoading,
   getCartData,
   openDescripition,
@@ -250,20 +248,20 @@ const RightSide: FC<RightSideProps> = ({
         useCORS: true,
         allowTaint: true,
         backgroundColor: null,
-        scale:
-          posterSize.value === '12 X 18'
-            ? 9.5
-            : posterSize.value === '16 X 20'
-            ? 11
-            : posterSize.value === '18 X 24'
-            ? 9.5
-            : posterSize.value === '20 X 28'
-            ? 9.5
-            : posterSize.value === '24 X 36'
-            ? 9.5
-            : posterSize.value === '28 X 40'
-            ? 9.5
-            : 9.5,
+        scale: 15,
+        // posterSize.value === '12 X 18'
+        //   ? 9.5
+        //   : posterSize.value === '16 X 20'
+        //   ? 11
+        //   : posterSize.value === '18 X 24'
+        //   ? 13.5
+        //   : posterSize.value === '20 X 28'
+        //   ? 15
+        //   : posterSize.value === '24 X 36'
+        //   ? 15
+        //   : posterSize.value === '28 X 40'
+        //   ? 14
+        //   : 9.5,
       };
       const canvas = await html2canvas(element, option);
       const img = canvas.toDataURL();
