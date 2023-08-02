@@ -189,12 +189,12 @@ export const singerNamePaddingTemplate3: Record<string, string> = {
 };
 
 export const posterHeigth: Record<string, string> = {
-  '12 X 18': '5509px',
-  '16 X 20': '6100px',
-  '18 X 24': '7281px',
-  '20 X 28': '8462px',
-  '24 X 36': '10824px',
-  '28 X 40': '12006px',
+  '12 X 18': '5607px',
+  '16 X 20': '7378.50px',
+  '18 X 24': '8263.50px',
+  '20 X 28': '9150px',
+  '24 X 36': '10921.50px',
+  '28 X 40': '12693px',
 };
 
 export const posterWidth: Record<string, string> = {

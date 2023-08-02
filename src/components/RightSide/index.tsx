@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 import React, { FC, useState, useEffect } from 'react';
 import html2canvas from 'html2canvas';
+import JsPDF from 'jspdf';
 import Step1 from '../PosterSteps/step1';
 import Step2 from '../PosterSteps/step2';
 import Step3 from '../PosterSteps/step3';
@@ -248,7 +249,7 @@ const RightSide: FC<RightSideProps> = ({
         useCORS: true,
         allowTaint: true,
         backgroundColor: null,
-        scale: 15,
+        scale: 30,
         // posterSize.value === '12 X 18'
         //   ? 9.5
         //   : posterSize.value === '16 X 20'
@@ -264,8 +265,21 @@ const RightSide: FC<RightSideProps> = ({
         //   : 9.5,
       };
       const canvas = await html2canvas(element, option);
-      const img = canvas.toDataURL();
+      const img = canvas.toDataURL('image/png');
+
+      const firstRatio = posterSize.value.split(' ')[0];
+      const secondRatio = posterSize.value.split(' ')[2];
+
+      const pdf = new JsPDF({
+        orientation: 'portrait',
+        unit: 'in',
+        format: [parseInt(firstRatio), parseInt(secondRatio)],
+      });
       const cartId = localStorage.getItem('cartId');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(canvas, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('captured_content.pdf');
 
       const posterData: IBody = {
         totalPoster: [

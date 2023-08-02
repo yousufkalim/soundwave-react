@@ -6,3 +6,4 @@ declare module 'react-reveal/Zoom';
 declare module 'react-reveal/LightSpeed';
 declare module '@material-ui/core';
 declare module 'webfontloader';
+declare module 'jspdf';
