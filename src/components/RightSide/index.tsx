@@ -21,7 +21,7 @@ import {
   IFontSize,
   IResponseCart,
 } from '../../types/index';
-import { PricingArray, steps } from '../../utils/data';
+import { posterHeightCm, posterWidthCm, PricingArray, steps } from '../../utils/data';
 import Tab from '../Tab/index';
 import { Collapse, StepLabel } from '@mui/material';
 import Fade from 'react-reveal/Fade';
@@ -238,6 +238,9 @@ const RightSide: FC<RightSideProps> = ({
     }
   }, [activeStepperStep]);
 
+  const widthCm = posterWidthCm[posterSize.value];
+  const heightCm = posterHeightCm[posterSize.value];
+
   const handleAddToCart = () => {
     setFlag(true);
     setBackgroundFrame('');
@@ -249,7 +252,7 @@ const RightSide: FC<RightSideProps> = ({
         useCORS: true,
         allowTaint: true,
         backgroundColor: null,
-        scale: 30,
+        scale: 15,
         // posterSize.value === '12 X 18'
         //   ? 9.5
         //   : posterSize.value === '16 X 20'
@@ -265,15 +268,13 @@ const RightSide: FC<RightSideProps> = ({
         //   : 9.5,
       };
       const canvas = await html2canvas(element, option);
-      const img = canvas.toDataURL('image/png');
 
-      const firstRatio = posterSize.value.split(' ')[0];
-      const secondRatio = posterSize.value.split(' ')[2];
+      const img = canvas.toDataURL('image/png');
 
       const pdf = new JsPDF({
         orientation: 'portrait',
-        unit: 'in',
-        format: [parseInt(firstRatio), parseInt(secondRatio)],
+        unit: 'cm',
+        format: [parseFloat(widthCm), parseFloat(heightCm)],
       });
       const cartId = localStorage.getItem('cartId');
       const pdfWidth = pdf.internal.pageSize.getWidth();
