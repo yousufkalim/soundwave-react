@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 import React, { FC, useState, useEffect } from 'react';
 import html2canvas from 'html2canvas';
+import JsPDF from 'jspdf';
 import Step1 from '../PosterSteps/step1';
 import Step2 from '../PosterSteps/step2';
 import Step3 from '../PosterSteps/step3';
@@ -20,7 +21,7 @@ import {
   IFontSize,
   IResponseCart,
 } from '../../types/index';
-import { PricingArray, steps } from '../../utils/data';
+import { posterHeightCm, posterWidthCm, PricingArray, steps } from '../../utils/data';
 import Tab from '../Tab/index';
 import { Collapse, StepLabel } from '@mui/material';
 import Fade from 'react-reveal/Fade';
@@ -122,6 +123,7 @@ interface IBodyTotalPoster {
   posterType: string;
   albumName?: string;
   singerName?: string;
+  posterPdf: string;
 }
 interface IBody {
   totalPoster: IBodyTotalPoster[];
@@ -237,6 +239,9 @@ const RightSide: FC<RightSideProps> = ({
     }
   }, [activeStepperStep]);
 
+  const widthCm = posterWidthCm[posterSize.value];
+  const heightCm = posterHeightCm[posterSize.value];
+
   const handleAddToCart = () => {
     setFlag(true);
     setBackgroundFrame('');
@@ -263,14 +268,41 @@ const RightSide: FC<RightSideProps> = ({
         //   ? 14
         //   : 9.5,
       };
+      const canvasForImage = await html2canvas(element, {
+        ...option,
+        scale: 1,
+      });
+      const img = canvasForImage.toDataURL('image/png');
+
+      // creating pdf for gelato
       const canvas = await html2canvas(element, option);
-      const img = canvas.toDataURL();
+      const pdf = new JsPDF({
+        orientation: 'portrait',
+        unit: 'cm',
+        format: [parseFloat(widthCm), parseFloat(heightCm)],
+      });
       const cartId = localStorage.getItem('cartId');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(canvas, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+
+      async function blobToBase64(blob: Blob): Promise<string> {
+        return await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = (): void => {
+            resolve(reader.result as string);
+          };
+          reader.readAsDataURL(blob);
+        });
+      }
+      const file = pdf.output('blob');
+      const PDFBase64 = await blobToBase64(file);
 
       const posterData: IBody = {
         totalPoster: [
           {
             posterImage: img,
+            posterPdf: PDFBase64,
             posterQuantity: 1,
             unitPrice: posterPrice,
             totalPrice: posterPrice,

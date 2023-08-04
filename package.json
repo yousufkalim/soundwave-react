@@ -52,6 +52,7 @@
     "hamburger-react": "^2.5.0",
     "html2canvas": "^1.4.1",
     "jimp": "^0.16.2",
+    "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-audio-waveform": "^0.0.5",
     "react-best-gradient-color-picker": "^2.1.12",

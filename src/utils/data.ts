@@ -189,21 +189,37 @@ export const singerNamePaddingTemplate3: Record<string, string> = {
 };
 
 export const posterHeigth: Record<string, string> = {
-  '12 X 18': '5509px',
-  '16 X 20': '6100px',
-  '18 X 24': '7281px',
-  '20 X 28': '8462px',
-  '24 X 36': '10824px',
-  '28 X 40': '12006px',
+  '12 X 18': '5610px',
+  '16 X 20': '6125px',
+  '18 X 24': '7200px',
+  '20 X 28': '8400px',
+  '24 X 36': '10920px',
+  '28 X 40': '12000px',
 };
 
 export const posterWidth: Record<string, string> = {
-  '12 X 18': '3738px',
-  '16 X 20': '4919px',
-  '18 X 24': '5509px',
-  '20 X 28': '6100px',
-  '24 X 36': '7281px',
-  '28 X 40': '8462px',
+  '12 X 18': '3740px',
+  '16 X 20': '4900px',
+  '18 X 24': '5400px',
+  '20 X 28': '6000px',
+  '24 X 36': '7280px',
+  '28 X 40': '8400px',
+};
+export const posterWidthCm: Record<string, string> = {
+  '12 X 18': '30.81',
+  '16 X 20': '40.81',
+  '18 X 24': '45.81',
+  '20 X 28': '50.8',
+  '24 X 36': '60.8',
+  '28 X 40': '70.81',
+};
+export const posterHeightCm: Record<string, string> = {
+  '12 X 18': '45.81',
+  '16 X 20': '50.8',
+  '18 X 24': '60.8',
+  '20 X 28': '70.81',
+  '24 X 36': '90.81',
+  '28 X 40': '100.8',
 };
 
 export const borderWidthTemplate4: Record<string, string> = {
