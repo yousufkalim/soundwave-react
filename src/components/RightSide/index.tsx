@@ -123,6 +123,7 @@ interface IBodyTotalPoster {
   posterType: string;
   albumName?: string;
   singerName?: string;
+  posterPdf: string;
 }
 interface IBody {
   totalPoster: IBodyTotalPoster[];
@@ -268,9 +269,9 @@ const RightSide: FC<RightSideProps> = ({
         //   : 9.5,
       };
       const canvas = await html2canvas(element, option);
-
       const img = canvas.toDataURL('image/png');
 
+      // creating pdf for gelato
       const pdf = new JsPDF({
         orientation: 'portrait',
         unit: 'cm',
@@ -280,12 +281,24 @@ const RightSide: FC<RightSideProps> = ({
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
       pdf.addImage(canvas, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('captured_content.pdf');
+
+      async function blobToBase64(blob: Blob): Promise<string> {
+        return await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = (): void => {
+            resolve(reader.result as string);
+          };
+          reader.readAsDataURL(blob);
+        });
+      }
+      const file = pdf.output('blob');
+      const PDFBase64 = await blobToBase64(file);
 
       const posterData: IBody = {
         totalPoster: [
           {
             posterImage: img,
+            posterPdf: PDFBase64,
             posterQuantity: 1,
             unitPrice: posterPrice,
             totalPrice: posterPrice,
