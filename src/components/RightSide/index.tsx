@@ -268,10 +268,14 @@ const RightSide: FC<RightSideProps> = ({
         //   ? 14
         //   : 9.5,
       };
-      const canvas = await html2canvas(element, option);
-      const img = canvas.toDataURL('image/png');
+      const canvasForImage = await html2canvas(element, {
+        ...option,
+        scale: 1,
+      });
+      const img = canvasForImage.toDataURL('image/png');
 
       // creating pdf for gelato
+      const canvas = await html2canvas(element, option);
       const pdf = new JsPDF({
         orientation: 'portrait',
         unit: 'cm',
