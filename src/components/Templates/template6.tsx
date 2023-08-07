@@ -62,12 +62,12 @@ const Template6: FC<Template6Props> = ({
   }, []);
 
   const descriptionFontSize: Record<string, number> = {
-    '12 X 18': +fontSize?.descriptionSize + 60,
-    '16 X 20': +fontSize?.descriptionSize + 79,
-    '18 X 24': +fontSize?.descriptionSize + 90,
-    '20 X 28': +fontSize?.descriptionSize + 100,
-    '24 X 36': +fontSize?.descriptionSize + 119,
-    '28 X 40': +fontSize?.descriptionSize + 139,
+    '12 X 18': +fontSize?.descriptionSize + 14,
+    '16 X 20': +fontSize?.descriptionSize + 16,
+    '18 X 24': +fontSize?.descriptionSize + 18,
+    '20 X 28': +fontSize?.descriptionSize + 20,
+    '24 X 36': +fontSize?.descriptionSize + 24,
+    '28 X 40': +fontSize?.descriptionSize + 28,
   };
   // for frame padding
   const borderPadding =
@@ -120,27 +120,27 @@ const Template6: FC<Template6Props> = ({
               fontSize: selectedAlbum?.label
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize.albumNameSize + 115}px`
-                    : `${+fontSize.albumNameSize + 200}px`
+                    ? `${+fontSize.albumNameSize + 34}px`
+                    : `${+fontSize.albumNameSize + 45}px`
                   : posterSize.value === '16 X 20'
                   ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize.albumNameSize + 150}px`
-                    : `${+fontSize.albumNameSize + 250}px`
+                    ? `${+fontSize.albumNameSize + 45}px`
+                    : `${+fontSize.albumNameSize + 51}px`
                   : posterSize.value === '18 X 24'
                   ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize.albumNameSize + 180}px`
-                    : `${+fontSize.albumNameSize + 285}px`
+                    ? `${+fontSize.albumNameSize + 50}px`
+                    : `${+fontSize.albumNameSize + 56}px`
                   : posterSize.value === '20 X 28'
                   ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize.albumNameSize + 190}px`
-                    : `${+fontSize.albumNameSize + 320}px`
+                    ? `${+fontSize.albumNameSize + 54}px`
+                    : `${+fontSize.albumNameSize + 64}px`
                   : posterSize.value === '24 X 36'
                   ? selectedAlbum?.label.length > 24
-                    ? `${+fontSize.albumNameSize + 250}px`
-                    : `${+fontSize.albumNameSize + 420}px`
+                    ? `${+fontSize.albumNameSize + 65}px`
+                    : `${+fontSize.albumNameSize + 80}px`
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
-                  ? `${+fontSize.albumNameSize + 285}px`
-                  : `${+fontSize.albumNameSize + 480}px`
+                  ? `${+fontSize.albumNameSize + 77}px`
+                  : `${+fontSize.albumNameSize + 88}px`
                 : `48px`,
             }}
           >

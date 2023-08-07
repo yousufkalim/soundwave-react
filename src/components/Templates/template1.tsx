@@ -63,12 +63,12 @@ const Template1: FC<Template1Props> = ({
   }, []);
 
   const descriptionFontSize: Record<string, number> = {
-    '12 X 18': +fontSize?.descriptionSize + 60,
-    '16 X 20': +fontSize?.descriptionSize + 79,
-    '18 X 24': +fontSize?.descriptionSize + 90,
-    '20 X 28': +fontSize?.descriptionSize + 100,
-    '24 X 36': +fontSize?.descriptionSize + 119,
-    '28 X 40': +fontSize?.descriptionSize + 139,
+    '12 X 18': +fontSize?.descriptionSize + 14,
+    '16 X 20': +fontSize?.descriptionSize + 16,
+    '18 X 24': +fontSize?.descriptionSize + 18,
+    '20 X 28': +fontSize?.descriptionSize + 20,
+    '24 X 36': +fontSize?.descriptionSize + 24,
+    '28 X 40': +fontSize?.descriptionSize + 28,
   };
   // for frame padding
   const borderPadding =
@@ -125,74 +125,74 @@ const Template1: FC<Template1Props> = ({
                 ? posterSize.value === '12 X 18'
                   ? selectedAlbum?.label.length > 24
                     ? selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 130}px`
+                      ? `${+fontSize?.albumNameSize + 17}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 115}px`
-                      : `${+fontSize?.albumNameSize + 130}px`
+                      ? `${+fontSize?.albumNameSize + 23}px`
+                      : `${+fontSize?.albumNameSize + 48}px`
                     : selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 200}px`
+                    ? `${+fontSize?.albumNameSize + 30}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 200}px`
-                    : `${+fontSize?.albumNameSize + 250}px`
+                    ? `${+fontSize?.albumNameSize + 43}px`
+                    : `${+fontSize?.albumNameSize + 64}px`
                   : posterSize.value === '16 X 20'
                   ? selectedAlbum?.label.length > 24
                     ? selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 170}px`
+                      ? `${+fontSize?.albumNameSize + 23}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 150}px`
-                      : `${+fontSize?.albumNameSize + 180}px`
+                      ? `${+fontSize?.albumNameSize + 29}px`
+                      : `${+fontSize?.albumNameSize + 51}px`
                     : selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 240}px`
+                    ? `${+fontSize?.albumNameSize + 40}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 250}px`
-                    : `${+fontSize?.albumNameSize + 300}px`
+                    ? `${+fontSize?.albumNameSize + 54}px`
+                    : `${+fontSize?.albumNameSize + 67}px`
                   : posterSize.value === '18 X 24'
                   ? selectedAlbum?.label.length > 24
                     ? selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 190}px`
+                      ? `${+fontSize?.albumNameSize + 26}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 180}px` // completed
-                      : `${+fontSize?.albumNameSize + 230}px`
+                      ? `${+fontSize?.albumNameSize + 33}px` // completed
+                      : `${+fontSize?.albumNameSize + 56}px`
                     : selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 280}px`
+                    ? `${+fontSize?.albumNameSize + 45}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 285}px` // completed
-                    : `${+fontSize?.albumNameSize + 350}px`
+                    ? `${+fontSize?.albumNameSize + 60}px` // completed
+                    : `${+fontSize?.albumNameSize + 74}px`
                   : posterSize.value === '20 X 28'
                   ? selectedAlbum?.label.length > 24
                     ? selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 210}px`
+                      ? `${+fontSize?.albumNameSize + 28}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 190}px` // completed
-                      : `${+fontSize?.albumNameSize + 250}px`
+                      ? `${+fontSize?.albumNameSize + 38}px` // completed
+                      : `${+fontSize?.albumNameSize + 64}px`
                     : selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 320}px`
+                    ? `${+fontSize?.albumNameSize + 48}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 320}px` // completed
-                    : `${+fontSize?.albumNameSize + 400}px`
+                    ? `${+fontSize?.albumNameSize + 70}px` // completed
+                    : `${+fontSize?.albumNameSize + 86}px`
                   : posterSize.value === '24 X 36'
                   ? selectedAlbum?.label.length > 24
                     ? selectedFontFamily === 'Blacksword'
-                      ? `${+fontSize?.albumNameSize + 260}px`
+                      ? `${+fontSize?.albumNameSize + 35}px`
                       : selectedFontFamily !== 'Morganite'
-                      ? `${+fontSize?.albumNameSize + 250}px`
-                      : `${+fontSize?.albumNameSize + 300}px`
+                      ? `${+fontSize?.albumNameSize + 46}px`
+                      : `${+fontSize?.albumNameSize + 80}px`
                     : selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 400}px`
+                    ? `${+fontSize?.albumNameSize + 60}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 420}px`
-                    : `${+fontSize?.albumNameSize + 500}px`
+                    ? `${+fontSize?.albumNameSize + 90}px`
+                    : `${+fontSize?.albumNameSize + 112}px`
                   : posterSize.value === '28 X 40' && selectedAlbum?.label.length > 24
                   ? selectedFontFamily === 'Blacksword'
-                    ? `${+fontSize?.albumNameSize + 300}px`
+                    ? `${+fontSize?.albumNameSize + 41}px`
                     : selectedFontFamily !== 'Morganite'
-                    ? `${+fontSize?.albumNameSize + 285}px`
-                    : `${+fontSize?.albumNameSize + 350}px`
+                    ? `${+fontSize?.albumNameSize + 53}px`
+                    : `${+fontSize?.albumNameSize + 88}px`
                   : selectedFontFamily === 'Blacksword'
-                  ? `${+fontSize?.albumNameSize + 500}px`
+                  ? `${+fontSize?.albumNameSize + 68}px`
                   : selectedFontFamily !== 'Morganite'
-                  ? `${+fontSize?.albumNameSize + 480}px`
-                  : `${+fontSize?.albumNameSize + 600}px`
+                  ? `${+fontSize?.albumNameSize + 105}px`
+                  : `${+fontSize?.albumNameSize + 123}px`
                 : '64px',
               letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
@@ -210,17 +210,17 @@ const Template1: FC<Template1Props> = ({
               fontFamily: selectedFont,
               fontSize:
                 posterSize.value === '12 X 18'
-                  ? `${+fontSize?.singerNameSize + 70}px`
+                  ? `${+fontSize?.singerNameSize + 14}px`
                   : posterSize.value === '16 X 20'
-                  ? `${+fontSize?.singerNameSize + 80}px`
+                  ? `${+fontSize?.singerNameSize + 16}px`
                   : posterSize.value === '18 X 24'
-                  ? `${+fontSize?.singerNameSize + 95}px`
+                  ? `${+fontSize?.singerNameSize + 19}px`
                   : posterSize.value === '20 X 28'
-                  ? `${+fontSize?.singerNameSize + 100}px`
+                  ? `${+fontSize?.singerNameSize + 22}px`
                   : posterSize.value === '24 X 36'
-                  ? `${+fontSize?.singerNameSize + 130}px`
+                  ? `${+fontSize?.singerNameSize + 28}px`
                   : posterSize.value === '28 X 40'
-                  ? `${+fontSize?.singerNameSize + 140}px`
+                  ? `${+fontSize?.singerNameSize + 32}px`
                   : '70px',
               letterSpacing: selectedFont === 'Morganite' ? '1px' : 'normal',
             }}
