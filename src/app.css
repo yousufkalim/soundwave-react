@@ -198,79 +198,79 @@ body::-webkit-scrollbar {
 
 /* default ratio */
 #wave-container-15 div:first-child canvas {
-  width: 170px !important;
-  height: 30px !important;
+  width: 117px !important;
+  height: 13px !important;
 }
 
 #wave-container-18 div:first-child canvas {
-  width: 170px !important;
-  height: 30px !important;
+  width: 115px !important;
+  height: 13px !important;
 }
 
 /* 12 x 18 ratio */
 #wave-container-15-1218 div:first-child canvas {
-  width: 850px !important;
-  height: 110px !important;
+  width: 200px !important;
+  height: 30px !important;
 }
 
 #wave-container-18-1218 div:first-child canvas {
-  width: 850px !important;
-  height: 120px !important;
+  width: 200px !important;
+  height: 30px !important;
 }
 
 /* 16 x 20 ratio */
 #wave-container-15-1620 div:first-child canvas {
-  width: 990px !important;
-  height: 140px !important;
+  width: 270px !important;
+  height: 40px !important;
 }
 
 #wave-container-18-1620 div:first-child canvas {
-  width: 990px !important;
-  height: 140px !important;
+  width: 270px !important;
+  height: 40px !important;
 }
 
 /* 18 x 24 ratio */
 #wave-container-15-1824 div:first-child canvas {
-  width: 1200px !important;
-  height: 170px !important;
+  width: 300px !important;
+  height: 50px !important;
 }
 
 #wave-container-18-1824 div:first-child canvas {
-  width: 1200px !important;
-  height: 170px !important;
+  width: 300px !important;
+  height: 50px !important;
 }
 
 /* 20 x 28 ratio */
 #wave-container-15-2028 div:first-child canvas {
-  width: 1300px !important;
-  height: 200px !important;
+  width: 350px !important;
+  height: 60px !important;
 }
 
 #wave-container-18-2028 div:first-child canvas {
-  width: 1300px !important;
-  height: 200px !important;
+  width: 350px !important;
+  height: 60px !important;
 }
 
 /* 24 x 36 ratio */
 #wave-container-15-2436 div:first-child canvas {
-  width: 1500px !important;
-  height: 250px !important;
+  width: 400px !important;
+  height: 80px !important;
 }
 
 #wave-container-18-2436 div:first-child canvas {
-  width: 1500px !important;
-  height: 250px !important;
+  width: 400px !important;
+  height: 80px !important;
 }
 
 /* 28 x 40 ratio */
 #wave-container-15-2840 div:first-child canvas {
-  width: 1700px !important;
-  height: 300px !important;
+  width: 470px !important;
+  height: 80px !important;
 }
 
 #wave-container-18-2840 div:first-child canvas {
-  width: 1700px !important;
-  height: 300px !important;
+  width: 470px !important;
+  height: 90px !important;
 }
 
 /* All browsers */

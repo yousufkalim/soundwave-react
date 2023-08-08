@@ -103,12 +103,12 @@ interface PosterSize {
 }
 
 export const posterSizes: Record<string, PosterSize> = {
-  '12 X 18': { withFrame: '15.5rem', withoutFrame: '13rem' },
-  '16 X 20': { withFrame: '20rem', withoutFrame: '17rem' },
-  '18 X 24': { withFrame: '23.5rem', withoutFrame: '19rem' },
-  '20 X 28': { withFrame: '26.5rem', withoutFrame: '21rem' },
-  '24 X 36': { withFrame: '30rem', withoutFrame: '25rem' },
-  '28 X 40': { withFrame: '35rem', withoutFrame: '30rem' },
+  '12 X 18': { withFrame: '4.5rem', withoutFrame: '3.8rem' },
+  '16 X 20': { withFrame: '5.7rem', withoutFrame: '4.9rem' },
+  '18 X 24': { withFrame: '6.4rem', withoutFrame: '5.6rem' },
+  '20 X 28': { withFrame: '7rem', withoutFrame: '6rem' },
+  '24 X 36': { withFrame: '8.3rem', withoutFrame: '6.9rem' },
+  '28 X 40': { withFrame: '9.5rem', withoutFrame: '7.8rem' },
 };
 
 export const sizeScales: Record<string, string[]> = {
@@ -121,12 +121,12 @@ export const sizeScales: Record<string, string[]> = {
 };
 
 export const posterSizeToBorderWidth: Record<string, string> = {
-  '12 X 18': '50px',
-  '16 X 20': '60px',
-  '18 X 24': '70px',
-  '20 X 28': '80px',
-  '24 X 36': '90px',
-  '28 X 40': '100px',
+  '12 X 18': '12px',
+  '16 X 20': '14px',
+  '18 X 24': '16px',
+  '20 X 28': '20px',
+  '24 X 36': '26px',
+  '28 X 40': '30px',
 };
 
 export const sizeValues: Record<string, string> = {
@@ -140,17 +140,17 @@ export const sizeValues: Record<string, string> = {
 
 export const posterMainDiv: Record<string, string> = {
   '12 X 18':
-    'overflow-hidden scale-[7%] absolute xs:scale-[7%] msm:scale-[8%] sm:scale-[8%] md:scale-[10%] lg:scale-[10%] sxl:scale-[10%] 2xl:scale-[11%]',
+    'overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[40%] 2xl:scale-[50%]',
   '16 X 20':
-    'overflow-hidden scale-[6%] absolute xs:scale-[6%] msm:scale-[7%] sm:scale-[8%] md:scale-[8%] lg:scale-[8%] sxl:scale-[8%] 2xl:scale-[9.5%]',
+    'overflow-hidden scale-[23%] absolute xs:scale-[30%] msm:scale-[30%] sm:scale-[30%] md:scale-[35%] lg:scale-[40%] sxl:scale-[35%] 2xl:scale-[40%]',
   '18 X 24':
-    'overflow-hidden scale-[4.5%] absolute xs:scale-[6%] msm:scale-[6.5%] sm:scale-[7%] md:scale-[7%] lg:scale-[7%] sxl:scale-[8%] 2xl:scale-[8%]',
+    'overflow-hidden scale-[20%] absolute xs:scale-[25%] msm:scale-[25%] sm:scale-[25%] md:scale-[30%] lg:scale-[30%] sxl:scale-[30%] 2xl:scale-[35%]',
   '20 X 28':
-    'overflow-hidden scale-[4.5%] absolute xs:scale-[5%] msm:scale-[5.5%] sm:scale-[6%] md:scale-[6%] lg:scale-[6.5%] sxl:scale-[7%] 2xl:scale-[7%]',
+    'overflow-hidden scale-[18%] absolute xs:scale-[20%] msm:scale-[22%] sm:scale-[25%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[30%]',
   '24 X 36':
-    'overflow-hidden scale-[3.7%] absolute xs:scale-[4%] msm:scale-[4.1%] sm:scale-[4.5%] md:scale-[5%] lg:scale-[5%] sxl:scale-[5.5%] 2xl:scale-[5.5%]',
+    'overflow-hidden scale-[15%] absolute xs:scale-[15%] msm:scale-[18%] sm:scale-[20%] md:scale-[22%] lg:scale-[22%] sxl:scale-[22%] 2xl:scale-[25%]',
   '28 X 40':
-    'overflow-hidden scale-[3.4%] absolute xs:scale-[3.5%] msm:scale-[3.6%] sm:scale-[3.8%] md:scale-[4.5%] lg:scale-[4.5%] sxl:scale-[4.7%] 2xl:scale-[5%]',
+    'overflow-hidden scale-[13%] absolute xs:scale-[15%] msm:scale-[15%] sm:scale-[18%] md:scale-[20%] lg:scale-[20%] sxl:scale-[20%] 2xl:scale-[22%]',
 };
 
 export const posterMainFooterDiv: Record<string, string> = {
@@ -163,12 +163,12 @@ export const posterMainFooterDiv: Record<string, string> = {
 };
 
 export const singerNameBorderTemplate3: Record<string, string> = {
-  '12 X 18': '8px solid white',
-  '16 X 20': '10px solid white',
-  '18 X 24': '12px solid white',
-  '20 X 28': '14px solid white',
-  '24 X 36': '16px solid white',
-  '28 X 40': '18px solid white',
+  '12 X 18': '1.8px solid white',
+  '16 X 20': '1.8px solid white',
+  '18 X 24': '2.5px solid white',
+  '20 X 28': '2.5px solid white',
+  '24 X 36': '2.5px solid white',
+  '28 X 40': '3px solid white',
 };
 
 // export const singerNameBorderWidthTemplate3: Record<string, string> = {
@@ -179,31 +179,31 @@ export const singerNameBorderTemplate3: Record<string, string> = {
 //   '24 X 36': '2.5px',
 //   '28 X 40': '3px',
 // };
-export const singerNamePaddingTemplate3: Record<string, string> = {
-  '12 X 18': '10px 20px',
-  '16 X 20': '10px 20px',
-  '18 X 24': '10px 20px',
-  '20 X 28': '10px 25px',
-  '24 X 36': '10px 30px',
-  '28 X 40': '10px 35px',
-};
+// export const singerNamePaddingTemplate3: Record<string, string> = {
+//   '12 X 18': '10px 20px',
+//   '16 X 20': '10px 20px',
+//   '18 X 24': '10px 20px',
+//   '20 X 28': '10px 25px',
+//   '24 X 36': '10px 30px',
+//   '28 X 40': '10px 35px',
+// };
 
 export const posterHeigth: Record<string, string> = {
-  '12 X 18': '5610px',
-  '16 X 20': '6125px',
-  '18 X 24': '7200px',
-  '20 X 28': '8400px',
-  '24 X 36': '10920px',
-  '28 X 40': '12000px',
+  '12 X 18': '1440px',
+  '16 X 20': '1600px',
+  '18 X 24': '1960px',
+  '20 X 28': '2156px',
+  '24 X 36': '2700px',
+  '28 X 40': '3000px',
 };
 
 export const posterWidth: Record<string, string> = {
-  '12 X 18': '3740px',
-  '16 X 20': '4900px',
-  '18 X 24': '5400px',
-  '20 X 28': '6000px',
-  '24 X 36': '7280px',
-  '28 X 40': '8400px',
+  '12 X 18': '960px',
+  '16 X 20': '1280px',
+  '18 X 24': '1470px',
+  '20 X 28': '1540px',
+  '24 X 36': '1800px',
+  '28 X 40': '2100px',
 };
 export const posterWidthCm: Record<string, string> = {
   '12 X 18': '30.81',
@@ -223,12 +223,12 @@ export const posterHeightCm: Record<string, string> = {
 };
 
 export const borderWidthTemplate4: Record<string, string> = {
-  '12 X 18': '8px solid white',
-  '16 X 20': '14px solid white',
-  '18 X 24': '15px solid white',
-  '20 X 28': '18px solid white',
-  '24 X 36': '24px solid white',
-  '28 X 40': '29px solid white',
+  '12 X 18': '2.99px solid white',
+  '16 X 20': '2.99px solid white',
+  '18 X 24': '3.2px solid white',
+  '20 X 28': '3.5px solid white',
+  '24 X 36': '4px solid white',
+  '28 X 40': '4.5px solid white',
 };
 
 export const descPaddingTopTemplate4: Record<string, string> = {

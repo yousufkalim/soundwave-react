@@ -51,27 +51,27 @@ const Waveroom: FC<WaveroomProps> = ({ item, colors, height, songsAmount, poster
               fontSize:
                 posterRatio === '1218'
                   ? songsAmount > 18
-                    ? '43px'
-                    : '58px'
+                    ? '10px'
+                    : '12px'
                   : posterRatio === '1620'
                   ? songsAmount > 18
-                    ? '45px'
-                    : '68px'
+                    ? '12px'
+                    : '14px'
                   : posterRatio === '1824'
                   ? songsAmount > 18
-                    ? '48px'
-                    : '75px'
+                    ? '14px'
+                    : '16px'
                   : posterRatio === '2028'
                   ? songsAmount > 18
-                    ? '55px'
-                    : '90px'
+                    ? '16px'
+                    : '18px'
                   : posterRatio === '2436'
                   ? songsAmount > 18
-                    ? '68px'
-                    : '110px'
+                    ? '22px'
+                    : '22px'
                   : posterRatio === '2840' && songsAmount > 18
-                  ? '80px'
-                  : '120px',
+                  ? '24px'
+                  : '24px',
             }}
           >
             &quot;{item?.songName}&quot;
@@ -89,27 +89,27 @@ const Waveroom: FC<WaveroomProps> = ({ item, colors, height, songsAmount, poster
               fontSize:
                 posterRatio === '1218'
                   ? songsAmount > 18
-                    ? '43px'
-                    : '58px'
+                    ? '10px'
+                    : '12px'
                   : posterRatio === '1620'
                   ? songsAmount > 18
-                    ? '45px'
-                    : '68px'
+                    ? '12px'
+                    : '14px'
                   : posterRatio === '1824'
                   ? songsAmount > 18
-                    ? '48px'
-                    : '75px'
+                    ? '14px'
+                    : '16px'
                   : posterRatio === '2028'
                   ? songsAmount > 18
-                    ? '55px'
-                    : '90px'
+                    ? '16px'
+                    : '18px'
                   : posterRatio === '2436'
                   ? songsAmount > 18
-                    ? '68px'
-                    : '110px'
+                    ? '22px'
+                    : '22px'
                   : posterRatio === '2840' && songsAmount > 18
-                  ? '80px'
-                  : '120px',
+                  ? '24px'
+                  : '24px',
             }}
           >
             {convertMilisecondToMinutes(item?.time)}
