@@ -191,7 +191,7 @@ export const singerNameBorderTemplate3: Record<string, string> = {
 export const posterHeigth: Record<string, string> = {
   '12 X 18': '1440px',
   '16 X 20': '1600px',
-  '18 X 24': '1960px',
+  '18 X 24': '1920px',
   '20 X 28': '2156px',
   '24 X 36': '2700px',
   '28 X 40': '3000px',
@@ -200,7 +200,7 @@ export const posterHeigth: Record<string, string> = {
 export const posterWidth: Record<string, string> = {
   '12 X 18': '960px',
   '16 X 20': '1280px',
-  '18 X 24': '1470px',
+  '18 X 24': '1440px',
   '20 X 28': '1540px',
   '24 X 36': '1800px',
   '28 X 40': '2100px',
