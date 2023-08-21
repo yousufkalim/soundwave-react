@@ -140,26 +140,26 @@ export const sizeValues: Record<string, string> = {
 
 export const posterMainDiv: Record<string, string> = {
   '12 X 18':
-    'overflow-hidden scale-[30%] absolute xs:scale-[35%] msm:scale-[35%] sm:scale-[35%] md:scale-[45%] lg:scale-[45%] sxl:scale-[40%] 2xl:scale-[50%]',
+    'overflow-hidden scale-[24%] absolute xs:scale-[26%] msm:scale-[26%] sm:scale-[28%] md:scale-[35%] lg:scale-[35%] sxl:scale-[40%] 2xl:scale-[50%]',
   '16 X 20':
-    'overflow-hidden scale-[23%] absolute xs:scale-[30%] msm:scale-[30%] sm:scale-[30%] md:scale-[35%] lg:scale-[40%] sxl:scale-[35%] 2xl:scale-[40%]',
+    'overflow-hidden scale-[23%] absolute xs:scale-[24%] msm:scale-[24%] sm:scale-[26%] md:scale-[32%] lg:scale-[32%] sxl:scale-[35%] 2xl:scale-[40%]',
   '18 X 24':
-    'overflow-hidden scale-[20%] absolute xs:scale-[25%] msm:scale-[25%] sm:scale-[25%] md:scale-[30%] lg:scale-[30%] sxl:scale-[30%] 2xl:scale-[35%]',
+    'overflow-hidden scale-[20%] absolute xs:scale-[20%] msm:scale-[20%] sm:scale-[21%] md:scale-[26%] lg:scale-[26%] sxl:scale-[30%] 2xl:scale-[35%]',
   '20 X 28':
-    'overflow-hidden scale-[18%] absolute xs:scale-[20%] msm:scale-[22%] sm:scale-[25%] md:scale-[25%] lg:scale-[25%] sxl:scale-[25%] 2xl:scale-[30%]',
+    'overflow-hidden scale-[18%] absolute xs:scale-[18%] msm:scale-[18%] sm:scale-[19%] md:scale-[25%] lg:scale-[25%] sxl:scale-[28%] 2xl:scale-[30%]',
   '24 X 36':
-    'overflow-hidden scale-[15%] absolute xs:scale-[15%] msm:scale-[18%] sm:scale-[20%] md:scale-[22%] lg:scale-[22%] sxl:scale-[22%] 2xl:scale-[25%]',
+    'overflow-hidden scale-[14%] absolute xs:scale-[14%] msm:scale-[14%] sm:scale-[15%] md:scale-[20%] lg:scale-[20%] sxl:scale-[23%] 2xl:scale-[25%]',
   '28 X 40':
-    'overflow-hidden scale-[13%] absolute xs:scale-[15%] msm:scale-[15%] sm:scale-[18%] md:scale-[20%] lg:scale-[20%] sxl:scale-[20%] 2xl:scale-[22%]',
+    'overflow-hidden scale-[13%] absolute xs:scale-[13%] msm:scale-[13%] sm:scale-[14%] md:scale-[17%] lg:scale-[17%] sxl:scale-[20%] 2xl:scale-[22%]',
 };
 
 export const posterMainFooterDiv: Record<string, string> = {
-  '12 X 18': `scale-[32%] xs:scale-[32%] msm:scale-[37%] sm:scale-[37%] md:scale-[45%] lg:scale-[45%] sxl:scale-[45%] 2xl:scale-[50%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
-  '16 X 20': `scale-[35%] xs:scale-[36%] msm:scale-[42%] sm:scale-[48%] md:scale-[48%] lg:scale-[47%] sxl:scale-[49%] 2xl:scale-[56%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
-  '18 X 24': `scale-[30%] xs:scale-[40%] msm:scale-[44%] sm:scale-[47%] md:scale-[47%] lg:scale-[47%] sxl:scale-[53%] 2xl:scale-[54%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
-  '20 X 28': `scale-[33%] xs:scale-[37%] msm:scale-[41%] sm:scale-[45%] md:scale-[45%] lg:scale-[49%] sxl:scale-[53%] 2xl:scale-[53%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
-  '24 X 36': `scale-[33%] xs:scale-[36%] msm:scale-[37%] sm:scale-[40%] md:scale-[45%] lg:scale-[45%] sxl:scale-[49%] 2xl:scale-[49%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
-  '28 X 40': `scale-[36%] xs:scale-[37%] msm:scale-[38%] sm:scale-[40%] md:scale-[46%] lg:scale-[47%] sxl:scale-[50%] 2xl:scale-[52%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
+  '12 X 18': `scale-[24%] xs:scale-[26%] msm:scale-[26%] sm:scale-[28%] md:scale-[35%] lg:scale-[35%] sxl:scale-[40%] 2xl:scale-[50%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
+  '16 X 20': `scale-[23%] xs:scale-[24%] msm:scale-[24%] sm:scale-[26%] md:scale-[32%] lg:scale-[32%] sxl:scale-[35%] 2xl:scale-[40%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
+  '18 X 24': `scale-[20%] xs:scale-[20%] msm:scale-[20%] sm:scale-[21%] md:scale-[26%] lg:scale-[26%] sxl:scale-[30%] 2xl:scale-[35%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
+  '20 X 28': `scale-[18%] xs:scale-[18%] msm:scale-[18%] sm:scale-[19%] md:scale-[25%] lg:scale-[25%] sxl:scale-[28%] 2xl:scale-[30%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
+  '24 X 36': `scale-[14%] xs:scale-[14%] msm:scale-[14%] sm:scale-[15%] md:scale-[20%] lg:scale-[20%] sxl:scale-[23%] 2xl:scale-[25%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
+  '28 X 40': `scale-[13%] xs:scale-[13%] msm:scale-[13%] sm:scale-[14%] md:scale-[17%] lg:scale-[17%] sxl:scale-[20%] 2xl:scale-[22%] bg-white h-[9%] shadow-xl shadow-gray-600 flex items-center justify-between px-5 absolute sm:bottom-[-0.7rem] bottom-1`,
 };
 
 export const singerNameBorderTemplate3: Record<string, string> = {
