@@ -181,6 +181,9 @@ const RightSide: FC<RightSideProps> = ({
   setFontSize,
   handleFramesChange,
 }) => {
+  const tablet = window.innerWidth < 992;
+  const mobile = window.innerWidth < 500;
+
   const [posterPrice, setPosterPrice] = useState<number>(0);
   const [activeStepperStep, setActiveStepperStep] = useState<number>(0);
 
@@ -253,7 +256,7 @@ const RightSide: FC<RightSideProps> = ({
         useCORS: true,
         allowTaint: true,
         backgroundColor: null,
-        scale: 8,
+        scale: mobile ? 8 : tablet ? 12 : 15,
         // posterSize.value === '12 X 18'
         //   ? 9.5
         //   : posterSize.value === '16 X 20'
