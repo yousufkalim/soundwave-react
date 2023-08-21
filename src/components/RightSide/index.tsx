@@ -253,7 +253,7 @@ const RightSide: FC<RightSideProps> = ({
         useCORS: true,
         allowTaint: true,
         backgroundColor: null,
-        scale: 15,
+        scale: 8,
         // posterSize.value === '12 X 18'
         //   ? 9.5
         //   : posterSize.value === '16 X 20'

@@ -3,7 +3,7 @@ import { ReactComponent as Left } from '../../assets/LeftSidePosterFooter/LeftPo
 import { ReactComponent as Centered } from '../../assets/LeftSidePosterFooter/CenteredPosterInactive.svg';
 import { ReactComponent as Right } from '../../assets/LeftSidePosterFooter/RightPosterInactive.svg';
 import { IPosterSize } from '../../types/index';
-import { posterMainFooterDiv } from '../../utils/data';
+import { posterMainFooterDiv, posterWidth } from '../../utils/data';
 interface FooterProps {
   activeAlignment: string;
   setActiveAlignment: (value: string) => void;
@@ -19,7 +19,7 @@ const Footer: FC<FooterProps> = ({ activeAlignment, setActiveAlignment, posterSi
     <div
       className={posterMainFooterDiv[posterSize.value]}
       style={{
-        width: '800px',
+        width: posterWidth[posterSize.value],
       }}
     >
       <div
